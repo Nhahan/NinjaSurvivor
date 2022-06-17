@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    TouchControls touchControls;
+
+    void Awake() {
+        touchControls = new TouchControls();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void OnEnable() {
+        touchControls.Enable();
+    }
+
+    void OnDisable() {
+        touchControls.Disable();
+    }
+
+    void Start() {
+        touchControls.Touch.TouchPress.started += context => StartTouch(context);
+        touchControls.Touch.TouchPress.cancelled += context => EndTouch(context);
     }
 }
