@@ -15,17 +15,21 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         rb.velocity = new Vector2(joystick.Horizontal * moveSpeed, joystick.Vertical * moveSpeed);
-        FlipSprite();
+        bool hasHorizontalSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
+        Run(hasHorizontalSpeed);
+        FlipSprite(hasHorizontalSpeed);
     }
 
-    void FlipSprite()
+    void Run(bool hasHorizontalSpeed)
     {
-        bool hasHorizontalSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
+        animator.SetBool("isRunning", hasHorizontalSpeed);
+    }
 
+    void FlipSprite(bool hasHorizontalSpeed)
+    {
         if (hasHorizontalSpeed)
         {
             transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f);
