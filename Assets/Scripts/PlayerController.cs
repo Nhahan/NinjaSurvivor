@@ -35,4 +35,9 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f);
         }
     }
+
+    public Vector3 GetPlayerPosition()
+    {
+        return transform.position;
+    }
 }
