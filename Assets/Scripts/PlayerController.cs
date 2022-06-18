@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] FixedJoystick joystick;
     [SerializeField] Animator animator;
     [SerializeField] float moveSpeed;
+    public static Vector2 LatestDirection { get; private set; }
 
     void Start()
     {
@@ -18,7 +19,12 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = new Vector2(joystick.Horizontal * moveSpeed, joystick.Vertical * moveSpeed);
+        LatestDirection = new Vector2(
+            rb.velocity.x / Mathf.Abs(rb.velocity.x),
+            rb.velocity.y / Mathf.Abs(rb.velocity.y));
+
         bool hasHorizontalSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
+
         Run(hasHorizontalSpeed);
         FlipSprite(hasHorizontalSpeed);
     }
@@ -34,10 +40,5 @@ public class PlayerController : MonoBehaviour
         {
             transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f);
         }
-    }
-
-    public Vector3 GetPlayerPosition()
-    {
-        return transform.position;
     }
 }
