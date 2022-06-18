@@ -7,13 +7,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject monsterPrefab;
 
     [SerializeField] float createDelay = 2f;
-    PlayerStatus playerStatus;
 
     bool isGameOver;
 
     void Start()
     {
-        InitializeGameManger();
+        isGameOver = false;
         Time.timeScale = 1;
         if (spawnPoints.Length > 0)
         {
@@ -21,13 +20,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
-        CheckGameConditon();
-        if (isGameOver)
-        {
-            Time.timeScale = 0;
-        }
+        //if (isGameOver == true)
+        //{
+        //    Time.timeScale = 0;
+        //}
+
+        //Debug.Log(playerStatus.GetCurrentHp());
+        Debug.Log(isGameOver);
+        //CheckGameConditon();
     }
 
     IEnumerator CreateMonster()
@@ -43,15 +45,10 @@ public class GameManager : MonoBehaviour
 
     void CheckGameConditon()
     {
-        float playerHp = playerStatus.GetCurrentHp();
-        if (playerHp <= 0)
-        {
-            isGameOver = true;
-        }
-    }
-
-    void InitializeGameManger()
-    {
-        playerStatus.InitializeStatus();
+        //float playerHp = playerStatus.GetCurrentHp();
+        //if (playerHp <= 0)
+        //{
+        //    isGameOver = true;
+        //}
     }
 }

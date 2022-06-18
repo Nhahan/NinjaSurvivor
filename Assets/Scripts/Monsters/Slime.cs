@@ -5,12 +5,11 @@ using UnityEngine;
 public class Slime : MonoBehaviour, IMonster
 {
     [SerializeField] float monsterSpeed = 1.5f;
-    float monsterDamage = 20f;
+
+    //float monsterDamage = 20f;
     float monsterHp = 13f;
 
     Transform player;
-
-    PlayerStatus playerStatus;
 
     void Start()
     {
@@ -34,10 +33,10 @@ public class Slime : MonoBehaviour, IMonster
 
     void AttackPlayer()
     {
-        float playerHp = playerStatus.GetCurrentHp();
-        playerStatus.SetCurrentHp(playerHp - monsterDamage);
-        Debug.Log("슬라임의 공격!");
-        Debug.Log(playerStatus.GetCurrentHp());
+        //float playerHp = playerStatus.GetCurrentHp();
+        //playerStatus.SetCurrentHp(playerHp - monsterDamage);
+        //Debug.Log("슬라임의 공격!");
+        //Debug.Log(playerStatus.GetCurrentHp());
     }
 
     void FlipSprite()
