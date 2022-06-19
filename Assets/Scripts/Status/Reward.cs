@@ -104,5 +104,7 @@ namespace Status
             p.LuckySeven.RemoveAllModifiersFromSource(this);
             p.ThrowingStar.RemoveAllModifiersFromSource(this);
         }
+        
+        public RewardType RewardTypes { get; set; }
     }
 }

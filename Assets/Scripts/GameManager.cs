@@ -1,5 +1,7 @@
 using System.Collections;
+using Monsters;
 using Status;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -58,5 +60,25 @@ public class GameManager : MonoBehaviour
     public void LevelUpEvent()
     {
         Debug.Log("Need to define LevelUpEvent()");
+    }
+
+    public void AllStop()
+    {
+        Time.timeScale = 0;
+        // var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        // foreach (var enemy in enemies)
+        // {
+        //     enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        // }
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        // var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        // foreach (var enemy in enemies)
+        // {
+        //     enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(1, 1);
+        // }
     }
 }
