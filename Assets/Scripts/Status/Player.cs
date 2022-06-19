@@ -9,7 +9,6 @@ namespace Status
     public class Player : MonoBehaviour
     {
         [SerializeField] private Player player;
-        [SerializeField] private GameManager gameManager;
 
         private int Level; // level starts form 0
         private float nextLevelExp;
@@ -44,8 +43,6 @@ namespace Status
         private void Start()
         {
             Level = _levelTable[0].value;
-            Debug.Log(3);
-            Debug.Log(Level);
             foreach (var reward in rewards)
             {
                 reward.Equip(player);
@@ -60,6 +57,7 @@ namespace Status
         public void TakeDamage(float damage)
         {
             Hp.SetValue(Hp.CalculateFinalValue() - damage);
+            Debug.Log($"Took damage: {damage} / currentHp: {Hp}");
         }
 
         public IEnumerable<string> GetActivatedSkills()
@@ -94,7 +92,7 @@ namespace Status
             nextLevelExp = _levelTable[Level].exp;
             Level += 1;
             Debug.Log($"LevelUp! to {Level}");
-            gameManager.LevelUpEvent();
+            GameManager.Instance.LevelUpEvent();
         }
 
         public void EarnExp(float exp)

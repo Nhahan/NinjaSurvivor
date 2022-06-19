@@ -8,7 +8,6 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private Player player;
-    [SerializeField] private AttackAppendix attackAppendix;
     
     private float _createDelay;
     private readonly List<GameObject> _weaponPrefabs = new();

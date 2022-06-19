@@ -11,7 +11,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player player;
 
     private bool _isGameOver;
+    public static GameManager Instance;
 
+    private void Awake()
+    {
+        if(Instance == null) // If there is no instance already
+        {
+            DontDestroyOnLoad(gameObject); // Keep the GameObject, this component is attached to, across different scenes
+            Instance = this;
+        } else if(Instance != this) // If there is already an instance and it's not `this` instance
+        {
+            Destroy(gameObject); // Destroy the GameObject, this component is attached to
+        }
+    }
     private void Start()
     {
         _isGameOver = false;
@@ -27,6 +39,7 @@ public class GameManager : MonoBehaviour
         if (_isGameOver == true)
         {
             Time.timeScale = 0;
+            Debug.Log("Game Over!");
         }
         //CheckGameCondition();
     }
