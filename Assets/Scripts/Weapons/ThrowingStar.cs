@@ -26,8 +26,7 @@ namespace Weapons
         private void Start()
         {
             _bulletDirection = GetRandomSign();
-            var bulletVelocity = PlayerController.LatestDirection;
-            transform.position = Vector2.MoveTowards(transform.position, bulletVelocity, bulletSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, bulletSpeed * Time.deltaTime);
         }
 
         private void Update()
@@ -55,7 +54,6 @@ namespace Weapons
         {
             int[] plusMinus = { 1, -1 };
             var idx = Random.Range(0, 2);
-            Debug.Log(plusMinus[idx]);
             return plusMinus[idx];
         }
     }

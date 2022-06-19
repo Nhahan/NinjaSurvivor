@@ -12,23 +12,25 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private float createDelay = 2f;
     [SerializeField] private Player player;
+    [SerializeField] private LevelUpRewards levelUpRewards;
 
-    [FormerlySerializedAs("_isGameOver")] public bool isGameOver;
+    private bool isGameOver;
     public static GameManager Instance;
 
     private void Awake()
     {
-        if(Instance == null) // If there is no instance already
+        if(Instance == null)
         {
-            DontDestroyOnLoad(gameObject); // Keep the GameObject, this component is attached to, across different scenes
+            DontDestroyOnLoad(gameObject);
             Instance = this;
-        } else if(Instance != this) // If there is already an instance and it's not `this` instance
+        } else if(Instance != this)
         {
-            Destroy(gameObject); // Destroy the GameObject, this component is attached to
+            Destroy(gameObject);
         }
     }
     private void Start()
     {
+        levelUpRewards.gameObject.SetActive(false); // to be sure rewards UI is off
         isGameOver = false;
         Time.timeScale = 1;
         if (spawnPoints.Length > 0)
@@ -52,19 +54,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void GameOver()
+    public void SetIsGameOver(bool value)
     {
-        isGameOver = true;
+        isGameOver = value;
+    }
+
+    public bool GetIsGameOver()
+    {
+        return isGameOver;
     }
 
     public void LevelUpEvent()
     {
-        Debug.Log("Need to define LevelUpEvent()");
+        levelUpRewards.ShowRewards();
     }
 
     public void AllStop()
     {
         Time.timeScale = 0;
+        Debug.Log("AllStop");
         // var enemies = GameObject.FindGameObjectsWithTag("Enemy");
         // foreach (var enemy in enemies)
         // {
@@ -75,6 +83,7 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1;
+        Debug.Log("Resume");
         // var enemies = GameObject.FindGameObjectsWithTag("Enemy");
         // foreach (var enemy in enemies)
         // {

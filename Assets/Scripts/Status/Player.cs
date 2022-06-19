@@ -56,7 +56,7 @@ namespace Status
             // ReSharper disable once InvertIf
             if (Hp.CalculateFinalValue() <= 0)
             {
-                GameManager.Instance.isGameOver = true;
+                GameManager.Instance.SetIsGameOver(true);
                 Debug.Log($"Game Over / currentHp: {Hp}");
             }
         }

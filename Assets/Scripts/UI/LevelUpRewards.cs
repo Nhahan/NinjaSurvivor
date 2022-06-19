@@ -20,21 +20,30 @@ public class LevelUpRewards : MonoBehaviour
     
     private void Start()
     {
-        _rewards.AddRange(Resources.LoadAll<Reward>("Rewards"));
+        var resources = Resources.LoadAll("Rewards") as Reward[];
+        Debug.Log($"resources: {resources}");
+        _rewards.AddRange(resources);
         _adSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.AdSkill));
         _apSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.ApSkill));
         _subSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.SubSkill));
         _onlySkillRewards.AddRange(_adSkillRewards);
         _onlySkillRewards.AddRange(_apSkillRewards);
         _onlySkillRewards.AddRange(_subSkillRewards);
+        
+        Debug.Log($"_rewards: {_rewards}");
     }
 
     private List<Reward> GetRandomRewards(int count)
     {
         List<Reward> randomRewards = new();
         var total = _rewards.Count;
-        for (var i = 0; i < count; i ++){
-            randomRewards.Add(_rewards[Random.Range(0, total)]);
+        for (var i = 0; i < count; i ++)
+        {
+            Debug.Log($"randomRewards{i}: {randomRewards[i]} / Total Rewards count: {total}");
+            var randomNum = Random.Range(0, total);
+            Debug.Log($"randomNum: {randomNum}");
+            randomRewards.Add(_rewards[randomNum]);
+            Debug.Log($"_rewards[idx]: {_rewards[randomNum]}");
         }
 
         return randomRewards;
@@ -52,5 +61,6 @@ public class LevelUpRewards : MonoBehaviour
         var randomRewards = GetRandomRewards(3);
         SetRewards(randomRewards);
         GameManager.Instance.AllStop();
+        gameObject.SetActive(true);
     }
 }
