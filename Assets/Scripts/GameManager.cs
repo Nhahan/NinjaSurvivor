@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        levelUpRewards.gameObject.SetActive(false); // to be sure rewards UI is off
+        levelUpRewards.HideRewards();
         isGameOver = false;
         Time.timeScale = 1;
         if (spawnPoints.Length > 0)

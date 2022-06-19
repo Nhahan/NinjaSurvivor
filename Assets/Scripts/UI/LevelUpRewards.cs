@@ -4,8 +4,6 @@ using Status;
 using UnityEngine;
 using UnityEngine.UI;
 
-[SuppressMessage("ReSharper", "CheckNamespace")]
-[SuppressMessage("ReSharper", "ReturnValueOfPureMethodIsNotUsed")]
 public class LevelUpRewards : MonoBehaviour
 {
     [SerializeField] private GameObject rewardSlot1;
@@ -17,39 +15,37 @@ public class LevelUpRewards : MonoBehaviour
     private readonly List<Reward> _apSkillRewards = new();
     private readonly List<Reward> _subSkillRewards = new();
     private readonly List<Reward> _onlySkillRewards = new();
+
+    private readonly List<Reward> randomRewards = new();
     
     private void Start()
     {
-        var resources = Resources.LoadAll("Rewards") as Reward[];
-        Debug.Log($"resources: {resources}");
-        _rewards.AddRange(resources);
+        Debug.Log($"_rewards count: {_rewards.Count}");
         _adSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.AdSkill));
         _apSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.ApSkill));
         _subSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.SubSkill));
         _onlySkillRewards.AddRange(_adSkillRewards);
         _onlySkillRewards.AddRange(_apSkillRewards);
         _onlySkillRewards.AddRange(_subSkillRewards);
-        
-        Debug.Log($"_rewards: {_rewards}");
     }
 
-    private List<Reward> GetRandomRewards(int count)
+    private void SetRandomRewards(int count)
     {
-        List<Reward> randomRewards = new();
+        List<Reward> rewards = new();
         var total = _rewards.Count;
         for (var i = 0; i < count; i ++)
         {
-            Debug.Log($"randomRewards{i}: {randomRewards[i]} / Total Rewards count: {total}");
+            Debug.Log($"randomRewards{i}: {rewards[i]} / Total Rewards count: {total}");
             var randomNum = Random.Range(0, total);
             Debug.Log($"randomNum: {randomNum}");
-            randomRewards.Add(_rewards[randomNum]);
+            rewards.Add(_rewards[randomNum]);
             Debug.Log($"_rewards[idx]: {_rewards[randomNum]}");
         }
 
-        return randomRewards;
+        randomRewards.AddRange(rewards);
     }
 
-    private void SetRewards(List<Reward> rewards)
+    private void SetRewardsOnSlots(List<Reward> rewards)
     {
         rewardSlot1.GetComponent<Image>().sprite = rewards[0].Icon;
         rewardSlot2.GetComponent<Image>().sprite = rewards[1].Icon;
@@ -58,9 +54,20 @@ public class LevelUpRewards : MonoBehaviour
 
     public void ShowRewards()
     {
-        var randomRewards = GetRandomRewards(3);
-        SetRewards(randomRewards);
+        SetRandomRewards(3);
+        SetRewardsOnSlots(randomRewards);
         GameManager.Instance.AllStop();
-        gameObject.SetActive(true);
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void HideRewards()
+    {
+        GameManager.Instance.Resume();
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+    }
+
+    public List<Reward> GetRandomRewards()
+    {
+        return randomRewards;
     }
 }
