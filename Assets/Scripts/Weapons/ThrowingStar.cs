@@ -45,7 +45,8 @@ namespace Weapons
         {
             if (!coll.CompareTag("Enemy")) return;
             Destroy(gameObject);
-            coll.gameObject.GetComponent<IMonster>().TakeDamage(_player.AttackDamage.CalculateFinalValue() * coefficient);
+            var monster = coll.gameObject.GetComponent<IMonster>();
+            monster.TakeDamage(_player.AttackDamage.CalculateFinalValue() * coefficient);
         }
 
         private int GetRandomSign()

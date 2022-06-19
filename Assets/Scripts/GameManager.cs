@@ -28,9 +28,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
         }
-
-        Debug.Log(player.Hp.CalculateFinalValue());
-        //CheckGameConditon();
+        //CheckGameCondition();
     }
 
     private IEnumerator CreateMonster()
@@ -39,17 +37,22 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(createDelay);
 
-            int idx = Random.Range(1, spawnPoints.Length);
+            var idx = Random.Range(1, spawnPoints.Length);
             Instantiate(monsterPrefab, spawnPoints[idx].position, spawnPoints[idx].rotation);
         }
     }
 
-    void CheckGameConditon()
+    private void CheckGameCondition()
     {
         //float playerHp = playerStatus.GetCurrentHp();
         //if (playerHp <= 0)
         //{
         //    isGameOver = true;
         //}
+    }
+
+    public void LevelUpEvent()
+    {
+        
     }
 }

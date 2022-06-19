@@ -1,3 +1,4 @@
+using System;
 using Status;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Monsters
 
         [SerializeField] private float monsterDamage = 20f;
         [SerializeField] private float monsterHp = 10f;
+        [SerializeField] private float monsterExp = 1f;
 
         private Player _player;
 
@@ -45,19 +47,19 @@ namespace Monsters
             return monsterHp;
         }
 
-        public void SetMonsterHp(float monsterHp)
+        public void SetMonsterHp(float hp)
         {
-            this.monsterHp = monsterHp;
+            monsterHp = hp;
         }
-
+        
         public void TakeDamage(float damage)
         {
             var currentHp = GetMonsterHp();
             SetMonsterHp(currentHp - damage);
-            if (GetMonsterHp() <= 0)
-            {
-                Destroy(gameObject);
-            }
+            
+            if (!(GetMonsterHp() <= 0)) return;
+            _player.SetExp(_player.Exp.CalculateFinalValue() + monsterExp);
+            Destroy(gameObject);
         }
     }
 }

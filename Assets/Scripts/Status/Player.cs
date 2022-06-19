@@ -9,9 +9,12 @@ namespace Status
     public class Player : MonoBehaviour
     {
         [SerializeField] private Player player;
+        [SerializeField] private GameManager gameManager;
 
+        private int Level; // level starts form 0
+        private float nextLevelExp;
         public PlayerStat Exp; // Level will be automatically calculated by Exp
-        public PlayerStat ExpEfficiency; // Earn Exp(100+ExpEfficiency)
+        public PlayerStat ExpMultiplier; // Earn Exp(100+ExpMultiplier)
         [Space]
         public PlayerStat MaxHp;
         public PlayerStat Hp;
@@ -29,16 +32,26 @@ namespace Status
 
         public Reward[] rewards;
 
-        private LevelList _levelList;
+        private LevelInfo[] _levelTable;
+        
 
         private void Awake()
         {
-            var jsonAsset = Resources.Load<TextAsset>("JSON/level.json");
-            _levelList = JsonUtility.FromJson<LevelList>(jsonAsset.text);
+            var levelTableAsset = Resources.Load<TextAsset>("JSON/level").ToString();
+            Debug.Log(1);
+            Debug.Log(levelTableAsset);
+            _levelTable = JsonUtility.FromJson<LevelInfoList>(levelTableAsset).levels;
+            Debug.Log(2);
+            Debug.Log(_levelTable); 
+            Debug.Log("asd");
+            Debug.Log(_levelTable.Length); // 10
         }
 
         private void Start()
         {
+            Level = _levelTable[0].value;
+            Debug.Log(3);
+            Debug.Log(Level);
             foreach (var reward in rewards)
             {
                 reward.Equip(player);
@@ -47,7 +60,7 @@ namespace Status
 
         private void Update()
         {
-            SetLevel();
+            
         }
 
         public void TakeDamage(float damage)
@@ -70,25 +83,32 @@ namespace Status
         }
 
         [System.Serializable]
-        public class Level
+        public class LevelInfo
         {
             public int value;
             public float exp;
         }
         
         [System.Serializable]
-        public class LevelList
+        public class LevelInfoList
         {
-            public Level[] levels;
+            public LevelInfo[] levels;
         }
         
-        // ReSharper disable Unity.PerformanceAnalysis
         private void SetLevel()
         {
-            foreach (var level in _levelList.levels)
-            {
-                Debug.Log(level);
-            }
+            nextLevelExp = _levelTable[Level].value;
+            Level += 1;
+            gameManager.LevelUpEvent();
+        }
+
+        public void SetExp(float exp)
+        {
+            var calculatedExp = exp * (100 + ExpMultiplier.CalculateFinalValue()) / 100;
+            Exp.SetValue(Exp.CalculateFinalValue() + calculatedExp);
+            
+            if (!(Exp.CalculateFinalValue() >= nextLevelExp)) return;
+            SetLevel();
         }
     }
 }

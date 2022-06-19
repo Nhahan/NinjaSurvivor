@@ -1,5 +1,9 @@
 {
-    "level": [
+    "levels": [
+        {
+            "value": 1,
+            "exp": 0
+        },
         {
             "value": 2,
             "exp": 2
@@ -33,7 +37,7 @@
             "exp": 56
         },
         {
-            "value": 8,
+            "value": 10,
             "exp": 68
         }
     ]

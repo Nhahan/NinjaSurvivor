@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Weapons
 {
     [SuppressMessage("ReSharper", "Unity.InefficientPropertyAccess")]
-    public class BasicStar : MonoBehaviour
+    public class LuckySeven : MonoBehaviour
     {
         [SerializeField] private float bulletSpeed = 11f;
         [SerializeField] private float possibleAttackDistance = 11f;
@@ -32,20 +32,6 @@ namespace Weapons
         private void Start()
         {
             IsAvailable();
-            StartCoroutine(this.LuckySeven());
-        }
-        
-        private IEnumerator LuckySeven()
-        {
-            // var luckySeven = (int)_player.LuckySeven.CalculateFinalValue();
-            const int luckySeven = 3;
-            if (luckySeven < 1) yield break;
-            yield return new WaitForSeconds(0.4f);
-                
-            for (var i = 0; i <= luckySeven; i++)
-            {
-                Instantiate(this, _player.transform.position, this.transform.rotation);
-            }
         }
 
         private void Update()
