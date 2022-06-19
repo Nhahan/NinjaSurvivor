@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private LevelUpRewards levelUpRewards;
 
-    private bool isGameOver;
+    private bool _isGameOver;
     public static GameManager Instance;
 
     private void Awake()
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         levelUpRewards.HideRewards();
-        isGameOver = false;
+        _isGameOver = false;
         Time.timeScale = 1;
         if (spawnPoints.Length > 0)
         {
@@ -39,13 +39,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-    }
-
     private IEnumerator CreateMonster()
     {
-        while (!isGameOver)
+        while (!_isGameOver)
         {
             yield return new WaitForSeconds(createDelay);
 
@@ -56,12 +52,12 @@ public class GameManager : MonoBehaviour
 
     public void SetIsGameOver(bool value)
     {
-        isGameOver = value;
+        _isGameOver = value;
     }
 
     public bool GetIsGameOver()
     {
-        return isGameOver;
+        return _isGameOver;
     }
 
     public void LevelUpEvent()
@@ -73,21 +69,21 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         Debug.Log("AllStop");
-        // var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        // foreach (var enemy in enemies)
-        // {
-        //     enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        // }
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemy in enemies)
+        {
+            enemy.GetComponent<IMonster>().StopMonster();
+        }
     }
 
     public void Resume()
     {
         Time.timeScale = 1;
         Debug.Log("Resume");
-        // var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        // foreach (var enemy in enemies)
-        // {
-        //     enemy.GetComponent<Rigidbody2D>().velocity = new Vector2(1, 1);
-        // }
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemy in enemies)
+        {
+            enemy.GetComponent<IMonster>().ResumeMonster();
+        }
     }
 }

@@ -81,12 +81,18 @@ namespace Status
             if (CriticalDamagePercentBonus != 0)
                 p.CriticalDamage.AddModifier(new StatModifier(CriticalDamagePercentBonus, StatModType.PercentMult, this));
 
+            // Skills
             if (BasicStar != 0)
                 p.BasicStar.AddModifier(new StatModifier(BasicStar, StatModType.Flat, this));
             if (LuckySeven != 0)
                 p.LuckySeven.AddModifier(new StatModifier(LuckySeven, StatModType.Flat, this));
             if (ThrowingStar != 0)
                 p.ThrowingStar.AddModifier(new StatModifier(ThrowingStar, StatModType.Flat, this));
+            
+            Debug.Log($"Equip: {this.Name}, " +
+                      $"BasicStar: {p.BasicStar.CalculateFinalValue()}, " +
+                      $"LuckySeven: {p.LuckySeven.CalculateFinalValue()}, " +
+                      $"ThrowingStar: {p.ThrowingStar.CalculateFinalValue()}");
         }
 
         public void Unequip(Player p)

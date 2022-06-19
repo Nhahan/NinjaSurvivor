@@ -31,18 +31,12 @@ public class LevelUpRewards : MonoBehaviour
 
     private void SetRandomRewards(int count)
     {
-        List<Reward> rewards = new();
         var total = _rewards.Count;
         for (var i = 0; i < count; i ++)
         {
-            Debug.Log($"randomRewards{i}: {rewards[i]} / Total Rewards count: {total}");
             var randomNum = Random.Range(0, total);
-            Debug.Log($"randomNum: {randomNum}");
-            rewards.Add(_rewards[randomNum]);
-            Debug.Log($"_rewards[idx]: {_rewards[randomNum]}");
+            randomRewards.Add(_rewards[randomNum]);
         }
-
-        randomRewards.AddRange(rewards);
     }
 
     private void SetRewardsOnSlots(List<Reward> rewards)

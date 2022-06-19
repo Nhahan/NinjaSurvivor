@@ -11,6 +11,7 @@ namespace Monsters
         [SerializeField] private float monsterHp = 10f;
         [SerializeField] private float monsterExp = 1f;
 
+        private float _monsterSpeedMultiplier = 1;
         private Player _player;
 
         private void Start()
@@ -20,7 +21,10 @@ namespace Monsters
 
         private void FixedUpdate()
         {
-            transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, monsterSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(
+                transform.position, 
+                _player.transform.position, 
+                monsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
             FlipSprite();
         }
 
@@ -57,6 +61,18 @@ namespace Monsters
             if (!(monsterHp <= 0)) return;
             _player.EarnExp(monsterExp);
             Destroy(gameObject);
+        }
+
+        public void StopMonster()
+        {
+            _monsterSpeedMultiplier = 0;
+            GetComponent<Animator>().enabled = false;
+        }
+        
+        public void ResumeMonster()
+        {
+            _monsterSpeedMultiplier = 1;
+            GetComponent<Animator>().enabled = true;
         }
     }
 }
