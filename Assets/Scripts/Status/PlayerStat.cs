@@ -19,12 +19,11 @@ namespace Status
         {
             get
             {
-                if (isDirty || lastBaseValue != BaseValue)
-                {
-                    lastBaseValue = BaseValue;
-                    _value = CalculateFinalValue();
-                    isDirty = false;
-                }
+                // ReSharper disable once CompareOfFloatsByEqualityOperator
+                if (!isDirty && lastBaseValue == BaseValue) return _value;
+                lastBaseValue = BaseValue;
+                _value = CalculateFinalValue();
+                isDirty = false;
                 return _value;
             }
         }

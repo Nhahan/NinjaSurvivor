@@ -1,0 +1,40 @@
+{
+    "level": [
+        {
+            "value": 2,
+            "exp": 2
+        },
+        {
+            "value": 3,
+            "exp": 6
+        },
+        {
+            "value": 4,
+            "exp": 11
+        },
+        {
+            "value": 5,
+            "exp": 17
+        },
+        {
+            "value": 6,
+            "exp": 25
+        },
+        {
+            "value": 7,
+            "exp": 34
+        },
+        {
+            "value": 8,
+            "exp": 45
+        },
+        {
+            "value": 9,
+            "exp": 56
+        },
+        {
+            "value": 8,
+            "exp": 68
+        }
+    ]
+}

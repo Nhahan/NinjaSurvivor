@@ -11,7 +11,6 @@ namespace Status
         [SerializeField] private Player player;
 
         public PlayerStat Exp; // Level will be automatically calculated by Exp
-        public int Level = 1;
         public PlayerStat ExpEfficiency; // Earn Exp(100+ExpEfficiency)
         [Space]
         public PlayerStat MaxHp;
@@ -30,7 +29,15 @@ namespace Status
 
         public Reward[] rewards;
 
+        private LevelList _levelList;
+
         private void Awake()
+        {
+            var jsonAsset = Resources.Load<TextAsset>("JSON/level.json");
+            _levelList = JsonUtility.FromJson<LevelList>(jsonAsset.text);
+        }
+
+        private void Start()
         {
             foreach (var reward in rewards)
             {
@@ -48,7 +55,7 @@ namespace Status
             Hp.SetValue(Hp.CalculateFinalValue() - damage);
         }
 
-        public List<string> GetActivatedSkills()
+        public IEnumerable<string> GetActivatedSkills()
         {
             List<string> skills = new();
             if (BasicStar.CalculateFinalValue() >= 1) { skills.Add("BasicStar"); }
@@ -62,18 +69,26 @@ namespace Status
             return skills;
         }
 
+        [System.Serializable]
+        public class Level
+        {
+            public int value;
+            public float exp;
+        }
+        
+        [System.Serializable]
+        public class LevelList
+        {
+            public Level[] levels;
+        }
+        
+        // ReSharper disable Unity.PerformanceAnalysis
         private void SetLevel()
         {
-            Level = player.Exp.CalculateFinalValue() switch
+            foreach (var level in _levelList.levels)
             {
-                10 => 1,
-                20 => 2,
-                30 => 3,
-                40 => 4,
-                50 => 5,
-                60 => 6,
-                _ => 7
-            };
+                Debug.Log(level);
+            }
         }
     }
 }
