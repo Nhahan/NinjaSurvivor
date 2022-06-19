@@ -1,3 +1,4 @@
+using System.Collections;
 using Monsters;
 using Status;
 using UnityEngine;
@@ -23,8 +24,9 @@ namespace Weapons
             }
         }
 
-        private void Start()
+        private IEnumerator Start()
         {
+            yield return new WaitForSeconds(1);
             _bulletDirection = GetRandomSign();
             transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, bulletSpeed * Time.deltaTime);
         }
@@ -45,8 +47,9 @@ namespace Weapons
             if (!coll.CompareTag("Enemy")) return;
             Destroy(gameObject);
             var monster = coll.gameObject.GetComponent<IMonster>();
-
-            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier;
+            var skillLevelBonus = (float)(1 + 0.1 * _player.BasicStar.CalculateFinalValue());
+            
+            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
             monster.TakeDamage(damage);
         }
 

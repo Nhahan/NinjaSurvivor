@@ -50,8 +50,10 @@ namespace Weapons
             if (!coll.CompareTag("Enemy")) return;
             Destroy(gameObject);
             var monster = coll.gameObject.GetComponent<IMonster>();
-            
-            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier;
+
+            var skillLevelBonus = (float)(1 + 0.1 * _player.BasicStar.CalculateFinalValue());
+
+            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
             monster.TakeDamage(damage);
         }
 
