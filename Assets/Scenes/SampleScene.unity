@@ -69450,8 +69450,12 @@ MonoBehaviour:
     BaseValue: 1
   LuckySeven:
     BaseValue: 0
+  DiagonalStar:
+    BaseValue: 0
   ThrowingStar:
     BaseValue: 1
+  AssassinationTraining:
+    BaseValue: 0
   rewards: []
 --- !u!114 &752662085
 MonoBehaviour:

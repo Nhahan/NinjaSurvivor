@@ -45,9 +45,12 @@ namespace Status
         public int LuckySeven;
         public int DiagonalStar;
         public int ThrowingStar;
+        [Space] 
+        public int AssassinationTraining;
 
         public void Equip(Player p)
         {
+            // simple plus minus
             if (MaxHpBonus != 0)
                 p.MaxHp.AddModifier(new StatModifier(MaxHpBonus, StatModType.Flat, this));
             if (HpBonus != 0)
@@ -65,6 +68,7 @@ namespace Status
             if (CriticalBonus != 0)
                 p.Critical.AddModifier(new StatModifier(CriticalBonus, StatModType.Flat, this));
 
+            // percentage
             if (MaxHpPercentBonus != 0)
                 p.MaxHp.AddModifier(new StatModifier(MaxHpPercentBonus, StatModType.PercentMult, this));
             if (HpPercentBonus != 0)
@@ -84,7 +88,7 @@ namespace Status
             if (CriticalDamagePercentBonus != 0)
                 p.CriticalDamage.AddModifier(new StatModifier(CriticalDamagePercentBonus, StatModType.PercentMult, this));
 
-            // Skills
+            // skills
             if (BasicStar != 0)
                 p.BasicStar.AddModifier(new StatModifier(BasicStar, StatModType.Flat, this));
             if (LuckySeven != 0)
@@ -93,6 +97,10 @@ namespace Status
                 p.DiagonalStar.AddModifier(new StatModifier(DiagonalStar, StatModType.Flat, this));
             if (ThrowingStar != 0)
                 p.ThrowingStar.AddModifier(new StatModifier(ThrowingStar, StatModType.Flat, this));
+            
+            // Training
+            if (AssassinationTraining != 0)
+                p.AssassinationTraining.AddModifier(new StatModifier(AssassinationTraining, StatModType.Flat, this));
         }
 
         public void Unequip(Player p)

@@ -28,6 +28,8 @@ namespace Status
         public PlayerStat LuckySeven; // BasicStar Recycling;
         public PlayerStat DiagonalStar;
         public PlayerStat ThrowingStar;
+        [Space]
+        public PlayerStat AssassinationTraining;
 
         public Reward[] rewards;
 
