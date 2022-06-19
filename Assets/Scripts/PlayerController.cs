@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Status;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] FixedJoystick joystick;
-    [SerializeField] Animator animator;
-    [SerializeField] Player player;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private FixedJoystick joystick;
+    [SerializeField] private Animator animator;
+    [SerializeField] private Player player;
 
     public static Vector2 LatestDirection { get; private set; }
 
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         rb.velocity = new Vector2(joystick.Horizontal, joystick.Vertical) * player.MovementSpeed.CalculateFinalValue();
         LatestDirection = new Vector2(
@@ -30,12 +31,12 @@ public class PlayerController : MonoBehaviour
         FlipSprite(hasHorizontalSpeed);
     }
 
-    void Run(bool hasHorizontalSpeed)
+    private void Run(bool hasHorizontalSpeed)
     {
         animator.SetBool("isRunning", hasHorizontalSpeed);
     }
 
-    void FlipSprite(bool hasHorizontalSpeed)
+    private void FlipSprite(bool hasHorizontalSpeed)
     {
         if (hasHorizontalSpeed)
         {

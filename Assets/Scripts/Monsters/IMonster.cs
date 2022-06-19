@@ -1,8 +1,11 @@
-public interface IMonster
+namespace Monsters
 {
-    float GetMonsterHp();
+    public interface IMonster
+    {
+        float GetMonsterHp();
 
-    void SetMonsterHp(float monsterHp);
+        void SetMonsterHp(float monsterHp);
 
-    void TakeDamage(float damage);
+        void TakeDamage(float damage);
+    }
 }

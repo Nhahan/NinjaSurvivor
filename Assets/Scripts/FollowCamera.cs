@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class FollowCamera : MonoBehaviour
 {
-    Transform thingToFollow;
+    private Transform _thingToFollow;
 
-    void Start()
+    private void Start()
     {
-        thingToFollow = GameObject.FindWithTag("Player").transform;
+        _thingToFollow = GameObject.FindWithTag("Player").transform;
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
-        transform.position = thingToFollow.position + new Vector3(0, 0, -10);
+        transform.position = _thingToFollow.position + new Vector3(0, 0, -10);
     }
 }

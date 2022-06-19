@@ -1,19 +1,20 @@
 using System.Collections;
+using Status;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] Transform[] spawnPoints;
-    [SerializeField] GameObject monsterPrefab;
+    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private GameObject monsterPrefab;
 
-    [SerializeField] float createDelay = 2f;
-    [SerializeField] Player player;
+    [SerializeField] private float createDelay = 2f;
+    [SerializeField] private Player player;
 
-    bool isGameOver;
+    private bool _isGameOver;
 
-    void Start()
+    private void Start()
     {
-        isGameOver = false;
+        _isGameOver = false;
         Time.timeScale = 1;
         if (spawnPoints.Length > 0)
         {
@@ -21,9 +22,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
-        if (isGameOver == true)
+        if (_isGameOver == true)
         {
             Time.timeScale = 0;
         }
@@ -32,9 +33,9 @@ public class GameManager : MonoBehaviour
         //CheckGameConditon();
     }
 
-    IEnumerator CreateMonster()
+    private IEnumerator CreateMonster()
     {
-        while (!isGameOver)
+        while (!_isGameOver)
         {
             yield return new WaitForSeconds(createDelay);
 

@@ -1,56 +1,59 @@
+using Monsters;
+using Status;
 using UnityEngine;
 
-public class ThrowingStar : MonoBehaviour
+namespace Weapons
 {
-    [SerializeField] float bulletSpeed = 11f;
-    [SerializeField] float coefficient = 1;
-
-    Player player;
-
-    float liveTime = 0;
-    float bulletDirection = 1;
-
-    void Awake()
+    public class ThrowingStar : MonoBehaviour
     {
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        if (player.BasicStar.CalculateFinalValue() < 1)
+        [SerializeField] private float bulletSpeed = 11f;
+        [SerializeField] private float coefficient = 1;
+
+        private Player _player;
+
+        private float _liveTime = 0;
+        private float _bulletDirection = 1;
+
+        private void Awake()
         {
-            Destroy(gameObject);
+            _player = GameObject.FindWithTag("Player").GetComponent<Player>();
+            if (_player.BasicStar.CalculateFinalValue() < 1)
+            {
+                Destroy(gameObject);
+            }
         }
-    }
 
-    void Start()
-    {
-        bulletDirection = GetRandomSign();
-        Vector2 bulletVelocity = PlayerController.LatestDirection;
-        transform.position = Vector2.MoveTowards(transform.position, bulletVelocity, bulletSpeed * Time.deltaTime);
-    }
-
-    void Update()
-    {
-        liveTime += Time.deltaTime;
-        if (liveTime > 8)
+        private void Start()
         {
-            Destroy(gameObject);
+            _bulletDirection = GetRandomSign();
+            var bulletVelocity = PlayerController.LatestDirection;
+            transform.position = Vector2.MoveTowards(transform.position, bulletVelocity, bulletSpeed * Time.deltaTime);
         }
-        transform.Translate(bulletDirection * bulletSpeed * Time.deltaTime * Vector3.up);
-        transform.Rotate(0, 0, -300 * Time.deltaTime);
-    }
 
-    void OnTriggerEnter2D(Collider2D coll)
-    {
-        if (coll.CompareTag("Enemy"))
+        private void Update()
         {
-            Destroy(gameObject);
-            coll.gameObject.GetComponent<IMonster>().TakeDamage(player.AttackDamage.CalculateFinalValue() * coefficient);
+            _liveTime += Time.deltaTime;
+            if (_liveTime > 8)
+            {
+                Destroy(gameObject);
+            }
+            transform.Translate(_bulletDirection * bulletSpeed * Time.deltaTime * Vector3.up);
+            transform.Rotate(0, 0, -300 * Time.deltaTime);
         }
-    }
 
-    int GetRandomSign()
-    {
-        int[] plusMinus = { 1, -1 };
-        int idx = Random.Range(0, 2);
-        Debug.Log(plusMinus[idx]);
-        return plusMinus[idx];
+        private void OnTriggerEnter2D(Collider2D coll)
+        {
+            if (!coll.CompareTag("Enemy")) return;
+            Destroy(gameObject);
+            coll.gameObject.GetComponent<IMonster>().TakeDamage(_player.AttackDamage.CalculateFinalValue() * coefficient);
+        }
+
+        private int GetRandomSign()
+        {
+            int[] plusMinus = { 1, -1 };
+            var idx = Random.Range(0, 2);
+            Debug.Log(plusMinus[idx]);
+            return plusMinus[idx];
+        }
     }
 }
