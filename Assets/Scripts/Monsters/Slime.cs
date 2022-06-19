@@ -6,19 +6,19 @@ public class Slime : MonoBehaviour, IMonster
 {
     [SerializeField] float monsterSpeed = 1.5f;
 
-    //float monsterDamage = 20f;
-    float monsterHp = 13f;
+    float monsterDamage = 20f;
+    float monsterHp = 10f;
 
-    Transform player;
+    Player player;
 
     void Start()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     void FixedUpdate()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.position, monsterSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, monsterSpeed * Time.deltaTime);
         FlipSprite();
     }
 
@@ -33,15 +33,12 @@ public class Slime : MonoBehaviour, IMonster
 
     void AttackPlayer()
     {
-        //float playerHp = playerStatus.GetCurrentHp();
-        //playerStatus.SetCurrentHp(playerHp - monsterDamage);
-        //Debug.Log("슬라임의 공격!");
-        //Debug.Log(playerStatus.GetCurrentHp());
+        player.TakeDamage(monsterDamage);
     }
 
     void FlipSprite()
     {
-        transform.localScale = transform.position.x < player.position.x ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
+        transform.localScale = transform.position.x < player.transform.position.x ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
     }
 
     public float GetMonsterHp()

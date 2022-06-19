@@ -69395,7 +69395,7 @@ MonoBehaviour:
   rb: {fileID: 752662075}
   joystick: {fileID: 1411078991}
   animator: {fileID: 752662078}
-  moveSpeed: 5
+  player: {fileID: 752662084}
 --- !u!70 &752662082
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -69443,9 +69443,26 @@ MonoBehaviour:
     BaseValue: 0
   CriticalDamage:
     BaseValue: 0
-  LuckySeven:
+  BasicStar:
     BaseValue: 1
+  LuckySeven:
+    BaseValue: 0
+  ThrowingStar:
+    BaseValue: 0
   rewards: []
+--- !u!114 &752662085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752662067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3853ccd1d8a14e14bcd647d3dd4968b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 752662084}
 --- !u!1 &849594083
 GameObject:
   m_ObjectHideFlags: 0
@@ -70108,7 +70125,6 @@ GameObject:
   - component: {fileID: 1308799140}
   - component: {fileID: 1308799143}
   - component: {fileID: 1308799142}
-  - component: {fileID: 1308799141}
   m_Layer: 5
   m_Name: LevelUpRewards
   m_TagString: Untagged
@@ -70137,21 +70153,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &1308799141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1308799139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c83cdbd7009ba494ba721c24bc31b4cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rewards: []
-  rewardsParent: {fileID: 0}
-  rewardSlots: []
 --- !u!114 &1308799142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70656,7 +70657,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1927299678}
   - component: {fileID: 1927299677}
-  - component: {fileID: 1927299679}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -70695,6 +70695,7 @@ MonoBehaviour:
   - {fileID: 1039333178}
   monsterPrefab: {fileID: 3576486947292440663, guid: 3aef5df4c30384bb5ac4be2275c6f95f, type: 3}
   createDelay: 0.5
+  player: {fileID: 752662084}
 --- !u!4 &1927299678
 Transform:
   m_ObjectHideFlags: 0
@@ -70710,77 +70711,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1927299679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927299676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d1e1adb5054045f5a5f04145cb1011c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1970255827
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1970255828}
-  - component: {fileID: 1970255829}
-  - component: {fileID: 1970255830}
-  m_Layer: 7
-  m_Name: WeaponSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1970255828
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970255827}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 752662079}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1970255829
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970255827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3853ccd1d8a14e14bcd647d3dd4968b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  createDelay: 1.5
-  weaponPrefab: {fileID: 5447375999564444073, guid: b821ec25721ec47959ff4823ac8e06d1, type: 3}
---- !u!114 &1970255830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970255827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d1e1adb5054045f5a5f04145cb1011c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2042050286
 PrefabInstance:
   m_ObjectHideFlags: 0

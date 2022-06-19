@@ -7,10 +7,22 @@ public class BasicStar : MonoBehaviour
 {
     [SerializeField] float bulletSpeed = 11f;
     [SerializeField] float possibleAttackDistance = 11f;
+    [SerializeField] float coefficient = 1;
+
+    Player player;
 
     float liveTime = 0;
     Vector3 nearestEnemy;
     Vector3 bulletDirection;
+
+    void Awake()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        if (player.BasicStar.CalculateFinalValue() < 1)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -50,7 +62,7 @@ public class BasicStar : MonoBehaviour
         if (coll.CompareTag("Enemy"))
         {
             Destroy(gameObject);
-            //coll.gameObject.GetComponent<IMonster>().SetMonsterHp(playerStatus.GetCurrentAttackDamage());
+            coll.gameObject.GetComponent<IMonster>().TakeDamage(player.AttackDamage.CalculateFinalValue() * coefficient);
         }
     }
 

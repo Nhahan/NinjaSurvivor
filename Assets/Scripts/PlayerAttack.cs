@@ -1,27 +1,38 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [SerializeField] float createDelay = 1.5f;
-    [SerializeField] GameObject weaponPrefab;
+    [SerializeField] Player player;
+    float createDelay;
+    readonly List<GameObject> weaponPrefabs = new();
 
     void Start()
     {
+        foreach (string skill in player.GetActivatedSkills())
+        {
+            GameObject prefab = Resources.Load<GameObject>("Prefabs/AdWeapon/" + skill) as GameObject;
+            weaponPrefabs.Add(prefab);
+        }
+
+        createDelay = player.AttackSpeed.CalculateFinalValue();
         StartCoroutine(this.CreateWeapon());
     }
 
     void Update()
     {
-
     }
 
     IEnumerator CreateWeapon()
     {
-        //while (playerStatus.GetCurrentHp() > 0)
+        while (player.Hp.CalculateFinalValue() > 0)
         {
             yield return new WaitForSeconds(createDelay);
-            Instantiate(weaponPrefab, transform.position, transform.rotation);
+            foreach (GameObject prefab in weaponPrefabs)
+            {
+                Instantiate(prefab, transform.position, transform.rotation);
+            }
         }
     }
 }

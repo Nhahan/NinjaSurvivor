@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject monsterPrefab;
 
     [SerializeField] float createDelay = 2f;
+    [SerializeField] Player player;
 
     bool isGameOver;
 
@@ -22,13 +23,12 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        //if (isGameOver == true)
-        //{
-        //    Time.timeScale = 0;
-        //}
+        if (isGameOver == true)
+        {
+            Time.timeScale = 0;
+        }
 
-        //Debug.Log(playerStatus.GetCurrentHp());
-        Debug.Log(isGameOver);
+        Debug.Log(player.Hp.CalculateFinalValue());
         //CheckGameConditon();
     }
 

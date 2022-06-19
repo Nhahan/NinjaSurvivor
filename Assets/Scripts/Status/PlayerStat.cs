@@ -45,6 +45,11 @@ public class PlayerStat
         statModifiers.Add(mod);
     }
 
+    public void SetValue(float value)
+    {
+        BaseValue = value;
+    }
+
     public virtual bool RemoveModifier(StatModifier mod)
     {
         if (statModifiers.Remove(mod))
@@ -76,7 +81,7 @@ public class PlayerStat
         return 0; //if (a.Order == b.Order)
     }
 
-    protected virtual float CalculateFinalValue()
+    public virtual float CalculateFinalValue()
     {
         float finalValue = BaseValue;
         float sumPercentAdd = 0;

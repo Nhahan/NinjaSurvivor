@@ -3,9 +3,21 @@ using UnityEngine;
 public class ThrowingStar : MonoBehaviour
 {
     [SerializeField] float bulletSpeed = 11f;
+    [SerializeField] float coefficient = 1;
+
+    Player player;
 
     float liveTime = 0;
     float bulletDirection = 1;
+
+    void Awake()
+    {
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+        if (player.BasicStar.CalculateFinalValue() < 1)
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -30,7 +42,7 @@ public class ThrowingStar : MonoBehaviour
         if (coll.CompareTag("Enemy"))
         {
             Destroy(gameObject);
-            Destroy(coll.gameObject);
+            coll.gameObject.GetComponent<IMonster>().TakeDamage(player.AttackDamage.CalculateFinalValue() * coefficient);
         }
     }
 

@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -21,11 +23,30 @@ public class Player : MonoBehaviour
 
     public Reward[] rewards;
 
-    private void Awake()
+    void Awake()
     {
         foreach (Reward reward in rewards)
         {
             reward.Equip(player);
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        Hp.SetValue(Hp.CalculateFinalValue() - damage);
+    }
+
+    public List<string> GetActivatedSkills()
+    {
+        List<string> skills = new();
+        if (BasicStar.CalculateFinalValue() >= 1) { skills.Add("BasicStar"); }
+        if (ThrowingStar.CalculateFinalValue() >= 1) { skills.Add("ThrowingStar"); };
+
+        foreach (string skill in skills)
+        {
+            Debug.Log(skill);
+        }
+
+        return skills;
     }
 }
