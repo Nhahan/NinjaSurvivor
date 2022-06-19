@@ -7,7 +7,6 @@ namespace Monsters
     public class Slime : MonoBehaviour, IMonster
     {
         [SerializeField] private float monsterSpeed = 1.5f;
-
         [SerializeField] private float monsterDamage = 20f;
         [SerializeField] private float monsterHp = 10f;
         [SerializeField] private float monsterExp = 1f;
@@ -58,7 +57,7 @@ namespace Monsters
             SetMonsterHp(currentHp - damage);
             
             if (!(GetMonsterHp() <= 0)) return;
-            _player.SetExp(_player.Exp.CalculateFinalValue() + monsterExp);
+            _player.EarnExp(monsterExp);
             Destroy(gameObject);
         }
     }

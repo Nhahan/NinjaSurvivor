@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class AttackAppendix : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void CreateLuckySeven((GameObject prefab, Vector3 position, Quaternion rotation) info, int luckySeven)
     {
-        
+        StartCoroutine(this.StartLuckySeven(info, luckySeven));
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator StartLuckySeven((GameObject prefab, Vector3 position, Quaternion rotation) info, int luckySeven)
     {
-        
+        for (var i = 0; i < luckySeven; i++) {
+            yield return new WaitForSeconds(0.3f);
+            Instantiate(info.prefab, info.position, info.rotation);
+        }
     }
 }

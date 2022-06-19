@@ -89,21 +89,22 @@ namespace Status
             public LevelInfo[] levels;
         }
         
-        private void SetLevel()
+        private void LevelUp()
         {
-            nextLevelExp = _levelTable[Level].value;
+            nextLevelExp = _levelTable[Level].exp;
             Level += 1;
+            Debug.Log($"LevelUp! to {Level}");
             gameManager.LevelUpEvent();
         }
 
-        public void SetExp(float exp)
+        public void EarnExp(float exp)
         {
             var calculatedExp = exp * (100 + ExpMultiplier.CalculateFinalValue()) / 100;
             Debug.Log($"GetExp: {calculatedExp}");
             Exp.SetValue(Exp.CalculateFinalValue() + calculatedExp);
             
             if (!(Exp.CalculateFinalValue() >= nextLevelExp)) return;
-            SetLevel();
+            LevelUp();
         }
     }
 }

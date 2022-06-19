@@ -32,20 +32,6 @@ namespace Weapons
         private void Start()
         {
             IsAvailable();
-            StartCoroutine(this.LuckySeven());
-        }
-        
-        private IEnumerator LuckySeven()
-        {
-            var luckySeven = (int)_player.LuckySeven.CalculateFinalValue();
-            if (luckySeven < 1) yield break;
-            
-            yield return new WaitForSeconds(0.5f);
-                
-            for (var i = 0; i <= luckySeven; i++)
-            {
-                Instantiate(this, _player.transform.position, this.transform.rotation);
-            }
         }
 
         private void Update()

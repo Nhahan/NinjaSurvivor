@@ -53,6 +53,6 @@ public class GameManager : MonoBehaviour
 
     public void LevelUpEvent()
     {
-        
+        Debug.Log("Need to define LevelUpEvent()");
     }
 }
