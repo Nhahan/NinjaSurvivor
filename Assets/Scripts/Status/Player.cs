@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Status
         [SerializeField] private Player player;
 
         public PlayerStat Exp; // Level will be automatically calculated by Exp
+        public int Level = 1;
         public PlayerStat ExpEfficiency; // Earn Exp(100+ExpEfficiency)
         [Space]
         public PlayerStat MaxHp;
@@ -36,6 +38,11 @@ namespace Status
             }
         }
 
+        private void Update()
+        {
+            SetLevel();
+        }
+
         public void TakeDamage(float damage)
         {
             Hp.SetValue(Hp.CalculateFinalValue() - damage);
@@ -53,6 +60,20 @@ namespace Status
             }
 
             return skills;
+        }
+
+        private void SetLevel()
+        {
+            Level = player.Exp.CalculateFinalValue() switch
+            {
+                10 => 1,
+                20 => 2,
+                30 => 3,
+                40 => 4,
+                50 => 5,
+                60 => 6,
+                _ => 7
+            };
         }
     }
 }
