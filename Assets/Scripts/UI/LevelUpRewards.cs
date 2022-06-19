@@ -11,8 +11,8 @@ public class LevelUpRewards : MonoBehaviour
     [SerializeField] private GameObject rewardSlot1;
     [SerializeField] private GameObject rewardSlot2;
     [SerializeField] private GameObject rewardSlot3;
+    [SerializeField] private List<Reward> _rewards = new();
     
-    private readonly List<Reward> _rewards = new();
     private readonly List<Reward> _adSkillRewards = new();
     private readonly List<Reward> _apSkillRewards = new();
     private readonly List<Reward> _subSkillRewards = new();

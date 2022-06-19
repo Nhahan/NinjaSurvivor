@@ -70165,6 +70165,10 @@ MonoBehaviour:
   rewardSlot1: {fileID: 979445120}
   rewardSlot2: {fileID: 1220519082}
   rewardSlot3: {fileID: 1019357833}
+  _rewards:
+  - {fileID: 11400000, guid: b8c05178e34be43a6872204ef63884b2, type: 2}
+  - {fileID: 11400000, guid: 1ec21729794bf4b2fa888752f329d811, type: 2}
+  - {fileID: 11400000, guid: 1f624bca5fe324d8b8402a0a461c1006, type: 2}
 --- !u!1 &1347206072
 GameObject:
   m_ObjectHideFlags: 0

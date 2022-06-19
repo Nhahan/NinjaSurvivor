@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7a67ee28b6adf441814e60bcb404307, type: 3}
-  m_Name: LuckySeven
+  m_Name: ThrowingStar
   m_EditorClassIdentifier: 
   RewardType: 0
   Name: BasicStar
-  Icon: {fileID: -273662881, guid: 67f7ac2aaf77f46ed98054397b576b2d, type: 3}
+  Icon: {fileID: 21300000, guid: b716020a13c974826a2c00aed2515082, type: 3}
+  MaxCount: 20
   MaxHpBonus: 0
   HpBonus: 0
   AttackDamageBonus: 0
@@ -33,5 +34,5 @@ MonoBehaviour:
   CriticalPercentBonus: 0
   CriticalDamagePercentBonus: 0
   BasicStar: 0
-  LuckySeven: 1
-  ThrowingStar: 0
+  LuckySeven: 0
+  ThrowingStar: 1
