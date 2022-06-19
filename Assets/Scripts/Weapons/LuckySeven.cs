@@ -12,7 +12,7 @@ namespace Weapons
     {
         [SerializeField] private float bulletSpeed = 11f;
         [SerializeField] private float possibleAttackDistance = 11f;
-        [SerializeField] private float coefficient = 1;
+        [SerializeField] private float damageMultiplier = 1;
 
         private Player _player;
 
@@ -50,7 +50,9 @@ namespace Weapons
             if (!coll.CompareTag("Enemy")) return;
             Destroy(gameObject);
             var monster = coll.gameObject.GetComponent<IMonster>();
-            monster.TakeDamage(_player.AttackDamage.CalculateFinalValue() * coefficient);
+
+            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier;
+            monster.TakeDamage(damage);
         }
 
         private void IsAvailable()

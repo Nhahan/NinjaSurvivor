@@ -12,7 +12,7 @@ namespace Weapons
     {
         [SerializeField] private float bulletSpeed = 11f;
         [SerializeField] private float possibleAttackDistance = 11f;
-        [SerializeField] private float coefficient = 1;
+        [SerializeField] private float damageMultiplier = 1;
 
         private Player _player;
 
@@ -37,10 +37,10 @@ namespace Weapons
         
         private IEnumerator LuckySeven()
         {
-            // var luckySeven = (int)_player.LuckySeven.CalculateFinalValue();
-            const int luckySeven = 3;
+            var luckySeven = (int)_player.LuckySeven.CalculateFinalValue();
             if (luckySeven < 1) yield break;
-            yield return new WaitForSeconds(0.4f);
+            
+            yield return new WaitForSeconds(0.5f);
                 
             for (var i = 0; i <= luckySeven; i++)
             {
@@ -64,7 +64,9 @@ namespace Weapons
             if (!coll.CompareTag("Enemy")) return;
             Destroy(gameObject);
             var monster = coll.gameObject.GetComponent<IMonster>();
-            monster.TakeDamage(_player.AttackDamage.CalculateFinalValue() * coefficient);
+            
+            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier;
+            monster.TakeDamage(damage);
         }
 
         private void IsAvailable()

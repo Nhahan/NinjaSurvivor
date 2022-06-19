@@ -38,13 +38,7 @@ namespace Status
         private void Awake()
         {
             var levelTableAsset = Resources.Load<TextAsset>("JSON/level").ToString();
-            Debug.Log(1);
-            Debug.Log(levelTableAsset);
             _levelTable = JsonUtility.FromJson<LevelInfoList>(levelTableAsset).levels;
-            Debug.Log(2);
-            Debug.Log(_levelTable); 
-            Debug.Log("asd");
-            Debug.Log(_levelTable.Length); // 10
         }
 
         private void Start()
@@ -105,6 +99,7 @@ namespace Status
         public void SetExp(float exp)
         {
             var calculatedExp = exp * (100 + ExpMultiplier.CalculateFinalValue()) / 100;
+            Debug.Log($"GetExp: {calculatedExp}");
             Exp.SetValue(Exp.CalculateFinalValue() + calculatedExp);
             
             if (!(Exp.CalculateFinalValue() >= nextLevelExp)) return;

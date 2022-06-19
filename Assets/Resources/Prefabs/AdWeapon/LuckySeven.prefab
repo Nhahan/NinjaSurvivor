@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 472409538678720170}
   - component: {fileID: 8780800531209885348}
   - component: {fileID: 1046574007960841263}
+  - component: {fileID: 8763748726423262357}
   m_Layer: 6
   m_Name: LuckySeven
   m_TagString: Weapon
@@ -101,3 +102,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.68
+--- !u!114 &8763748726423262357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5447375999564444073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ec4d3878c374e129ab9f3130a4e245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 9.5
+  possibleAttackDistance: 11.5
+  coefficient: 1
