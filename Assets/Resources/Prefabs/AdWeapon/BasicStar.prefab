@@ -115,5 +115,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 9.5
-  possibleAttackDistance: 11.5
-  player: {fileID: 0}
+  possibleAttackDistance: 10.75
+  damageMultiplier: 1

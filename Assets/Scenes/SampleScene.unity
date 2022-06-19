@@ -69425,9 +69425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 752662084}
-  gameManager: {fileID: 0}
-  Exp:
-    BaseValue: 0
+  Exp: 0
   ExpMultiplier:
     BaseValue: 0
   MaxHp:
@@ -69453,7 +69451,7 @@ MonoBehaviour:
   LuckySeven:
     BaseValue: 0
   ThrowingStar:
-    BaseValue: 0
+    BaseValue: 1
   rewards: []
 --- !u!114 &752662085
 MonoBehaviour:
@@ -69732,7 +69730,7 @@ GameObject:
   - component: {fileID: 979445124}
   - component: {fileID: 979445123}
   m_Layer: 5
-  m_Name: Item Slot (1)
+  m_Name: Reward Slot (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69765,7 +69763,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 979445120}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -69808,7 +69806,7 @@ GameObject:
   - component: {fileID: 1019357837}
   - component: {fileID: 1019357836}
   m_Layer: 5
-  m_Name: Item Slot (3)
+  m_Name: Reward Slot (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69841,7 +69839,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019357833}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -70010,7 +70008,7 @@ GameObject:
   - component: {fileID: 1220519086}
   - component: {fileID: 1220519085}
   m_Layer: 5
-  m_Name: Item Slot (2)
+  m_Name: Reward Slot (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70043,7 +70041,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1220519082}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -70162,7 +70160,7 @@ GameObject:
   - component: {fileID: 1347206073}
   - component: {fileID: 1347206074}
   m_Layer: 5
-  m_Name: Item Slots Grid
+  m_Name: Rewards Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70656,6 +70654,7 @@ MonoBehaviour:
   monsterPrefab: {fileID: 3576486947292440663, guid: 3aef5df4c30384bb5ac4be2275c6f95f, type: 3}
   createDelay: 0.5
   player: {fileID: 752662084}
+  isGameOver: 0
 --- !u!4 &1927299678
 Transform:
   m_ObjectHideFlags: 0

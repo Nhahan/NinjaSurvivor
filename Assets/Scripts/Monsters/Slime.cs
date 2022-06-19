@@ -41,11 +41,6 @@ namespace Monsters
             transform.localScale = transform.position.x < _player.transform.position.x ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
         }
 
-        public float GetMonsterHp()
-        {
-            return monsterHp;
-        }
-
         public void SetMonsterHp(float hp)
         {
             monsterHp = hp;
@@ -53,10 +48,13 @@ namespace Monsters
         
         public void TakeDamage(float damage)
         {
-            var currentHp = GetMonsterHp();
-            SetMonsterHp(currentHp - damage);
-            
-            if (!(GetMonsterHp() <= 0)) return;
+            if (monsterHp <= 0)
+            {
+                Destroy(gameObject);
+            }
+            SetMonsterHp(monsterHp - damage);
+
+            if (!(monsterHp <= 0)) return;
             _player.EarnExp(monsterExp);
             Destroy(gameObject);
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using Status;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float createDelay = 2f;
     [SerializeField] private Player player;
 
-    private bool _isGameOver;
+    [FormerlySerializedAs("_isGameOver")] public bool isGameOver;
     public static GameManager Instance;
 
     private void Awake()
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        _isGameOver = false;
+        isGameOver = false;
         Time.timeScale = 1;
         if (spawnPoints.Length > 0)
         {
@@ -36,17 +37,11 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (_isGameOver == true)
-        {
-            Time.timeScale = 0;
-            Debug.Log("Game Over!");
-        }
-        //CheckGameCondition();
     }
 
     private IEnumerator CreateMonster()
     {
-        while (!_isGameOver)
+        while (!isGameOver)
         {
             yield return new WaitForSeconds(createDelay);
 
@@ -55,13 +50,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void CheckGameCondition()
+    private void GameOver()
     {
-        //float playerHp = playerStatus.GetCurrentHp();
-        //if (playerHp <= 0)
-        //{
-        //    isGameOver = true;
-        //}
+        isGameOver = true;
     }
 
     public void LevelUpEvent()

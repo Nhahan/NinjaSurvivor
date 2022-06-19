@@ -34,9 +34,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 var fixedTransform = transform;
                 Instantiate(prefab, fixedTransform.position, fixedTransform.rotation);
-                
-                if (prefab.name != "BasicStar" || !(player.LuckySeven.CalculateFinalValue() >= 1)) continue;
-                for (var i = 0; i < player.LuckySeven.CalculateFinalValue(); i++)
+                if (prefab.name == "BasicStar")
                 {
                     StartCoroutine(AdditionalWeapon(prefab, fixedTransform.position, fixedTransform.rotation));
                 }
@@ -44,9 +42,11 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private static IEnumerator AdditionalWeapon(GameObject prefab, Vector3 position, Quaternion rotation)
+    private IEnumerator AdditionalWeapon(GameObject prefab, Vector3 position, Quaternion rotation)
     {
-        yield return new WaitForSeconds(0.25f);
-        Instantiate(prefab, position, rotation);
+        for (var i = 0; i < player.LuckySeven.CalculateFinalValue(); i++) {
+            yield return new WaitForSeconds(0.05f);
+            Instantiate(prefab, position, rotation);
+        }
     }
 }
