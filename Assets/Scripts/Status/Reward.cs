@@ -43,6 +43,7 @@ namespace Status
         [Space]
         public int BasicStar;
         public int LuckySeven;
+        public int DiagonalStar;
         public int ThrowingStar;
 
         public void Equip(Player p)
@@ -88,13 +89,10 @@ namespace Status
                 p.BasicStar.AddModifier(new StatModifier(BasicStar, StatModType.Flat, this));
             if (LuckySeven != 0)
                 p.LuckySeven.AddModifier(new StatModifier(LuckySeven, StatModType.Flat, this));
+            if (DiagonalStar != 0)
+                p.DiagonalStar.AddModifier(new StatModifier(DiagonalStar, StatModType.Flat, this));
             if (ThrowingStar != 0)
                 p.ThrowingStar.AddModifier(new StatModifier(ThrowingStar, StatModType.Flat, this));
-            
-            Debug.Log($"Equip: {this.Name}, " +
-                      $"BasicStar: {p.BasicStar.CalculateFinalValue()}, " +
-                      $"LuckySeven: {p.LuckySeven.CalculateFinalValue()}, " +
-                      $"ThrowingStar: {p.ThrowingStar.CalculateFinalValue()}");
         }
 
         public void Unequip(Player p)
@@ -111,6 +109,7 @@ namespace Status
 
             p.BasicStar.RemoveAllModifiersFromSource(this);
             p.LuckySeven.RemoveAllModifiersFromSource(this);
+            p.DiagonalStar.RemoveAllModifiersFromSource(this);
             p.ThrowingStar.RemoveAllModifiersFromSource(this);
         }
         

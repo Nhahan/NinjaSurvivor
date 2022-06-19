@@ -25,7 +25,8 @@ namespace Status
         public PlayerStat CriticalDamage;
         [Space]
         public PlayerStat BasicStar;
-        public PlayerStat LuckySeven; // BasicStar related Upgrade
+        public PlayerStat LuckySeven; // BasicStar Recycling;
+        public PlayerStat DiagonalStar;
         public PlayerStat ThrowingStar;
 
         public Reward[] rewards;
