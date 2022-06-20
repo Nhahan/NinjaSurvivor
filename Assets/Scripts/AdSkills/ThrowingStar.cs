@@ -3,9 +3,9 @@ using Monsters;
 using Status;
 using UnityEngine;
 
-namespace Weapons
+namespace AdSkills
 {
-    public class ThrowingStar : MonoBehaviour
+    public class ThrowingStar : AdSkill
     {
         [SerializeField] private float bulletSpeed = 11f;
         [SerializeField] private float damageMultiplier = 1;
@@ -39,7 +39,7 @@ namespace Weapons
                 Destroy(gameObject);
             }
             transform.Translate(_bulletDirection * bulletSpeed * Time.deltaTime * Vector3.up);
-            transform.Rotate(0, 0, -300 * Time.deltaTime);
+            transform.Rotate(0, 0, -350 * Time.deltaTime);
         }
 
         private void OnTriggerEnter2D(Collider2D coll)

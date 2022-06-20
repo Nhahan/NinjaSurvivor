@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RewardType: 3
   Name: AssassinationTraining
-  Icon: {fileID: 21300000, guid: 5eda94a9dcf71e445ad17e3c065d1460, type: 3}
-  RewardIcon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: ff271e612aa442f4fbfb974e0cf361e8, type: 3}
   MaxCount: 99
   MaxHpBonus: 0
   HpBonus: 0

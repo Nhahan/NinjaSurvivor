@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: LuckySeven
   m_EditorClassIdentifier: 
   RewardType: 0
-  Name: BasicStar
-  Icon: {fileID: -273662881, guid: 67f7ac2aaf77f46ed98054397b576b2d, type: 3}
+  Name: LuckySeven
+  Icon: {fileID: 21300000, guid: 1fbae1ce5271d4bd4b193d3ff287aa6a, type: 3}
   MaxCount: 10
   MaxHpBonus: 0
   HpBonus: 0
@@ -35,4 +35,6 @@ MonoBehaviour:
   CriticalDamagePercentBonus: 0
   BasicStar: 0
   LuckySeven: 1
+  DiagonalStar: 0
   ThrowingStar: 0
+  AssassinationTraining: 0

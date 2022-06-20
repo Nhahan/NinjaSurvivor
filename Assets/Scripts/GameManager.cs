@@ -39,10 +39,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        
-    }
+    private void Update() { }
 
     private IEnumerator CreateMonster()
     {

@@ -1,14 +1,14 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Collections;
 using System.Linq;
+using AdSkills;
 using Monsters;
 using Status;
 using UnityEngine;
 
-namespace Weapons
+namespace AdSkills
 {
-    [SuppressMessage("ReSharper", "Unity.InefficientPropertyAccess")]
-    public class BasicStar : MonoBehaviour
+    public class AdSkill : MonoBehaviour, IAdSkill
     {
         [SerializeField] private float bulletSpeed = 11f;
         [SerializeField] private float possibleAttackDistance = 11f;
@@ -17,10 +17,11 @@ namespace Weapons
         private Player _player;
 
         private float _liveTime = 0;
+        private const float DestroyTime = 3.3f;
         private Vector3 _nearestEnemy;
         private Vector3 _bulletDirection;
 
-        private void Awake()
+        void IAdSkill.Awake()
         {
             _player = GameObject.FindWithTag("Player").GetComponent<Player>();
             if (_player.BasicStar.CalculateFinalValue() < 1)
@@ -29,15 +30,15 @@ namespace Weapons
             }
         }
 
-        private void Start()
+        void IAdSkill.Start()
         {
             IsAvailable();
         }
 
-        private void Update()
+        void IAdSkill.Update()
         {
             _liveTime += Time.deltaTime;
-            if (_liveTime > 3.3)
+            if (_liveTime > DestroyTime)
             {
                 Destroy(gameObject);
             }
@@ -45,7 +46,7 @@ namespace Weapons
             transform.Rotate(0, 0, -230 * Time.deltaTime);
         }
 
-        private void OnTriggerEnter2D(Collider2D coll)
+        void IAdSkill.OnTriggerEnter2D(Collider2D coll)
         {
             if (!coll.CompareTag("Enemy")) return;
             Destroy(gameObject);
@@ -57,7 +58,7 @@ namespace Weapons
             monster.TakeDamage(damage);
         }
 
-        private void IsAvailable()
+        void IAdSkill.IsAvailable()
         {
             try
             {
@@ -78,6 +79,7 @@ namespace Weapons
                 Destroy(gameObject);
             }
         }
+
         private GameObject FindNearestObject()
         {
             return GameObject.FindGameObjectsWithTag("Enemy").ToList()

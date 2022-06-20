@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RewardType: 0
   Name: BasicStar
-  Icon: {fileID: 21300000, guid: 388bd9f840dd34dc988331d1d81b34f7, type: 3}
-  MaxCount: 10
+  Icon: {fileID: 21300000, guid: 30d7bb260ece3463fa63c3217a70732a, type: 3}
+  MaxCount: 20
   MaxHpBonus: 0
   HpBonus: 0
   AttackDamageBonus: 0
@@ -35,4 +35,6 @@ MonoBehaviour:
   CriticalDamagePercentBonus: 0
   BasicStar: 1
   LuckySeven: 0
+  DiagonalStar: 0
   ThrowingStar: 0
+  AssassinationTraining: 0
