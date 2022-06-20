@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Status;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
