@@ -2,6 +2,7 @@ using System.Collections;
 using Monsters;
 using Status;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float createDelay = 2f;
     [SerializeField] private Player player;
     [SerializeField] private LevelUpRewards levelUpRewards;
+    [SerializeField] public PostProcessVolume post;
 
     private bool _isGameOver;
     public static GameManager Instance;
@@ -35,6 +37,11 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(this.CreateMonster());
         }
+    }
+
+    private void Update()
+    {
+        
     }
 
     private IEnumerator CreateMonster()

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a67ee28b6adf441814e60bcb404307, type: 3}
+  m_Name: DiagonalStar
+  m_EditorClassIdentifier: 
+  RewardType: 0
+  Name: DiagonalStar
+  Icon: {fileID: 21300000, guid: 54628aafa20f64b40ae661038ee7abf0, type: 3}
+  RewardIcon: {fileID: 0}
+  MaxCount: 99
+  MaxHpBonus: 0
+  HpBonus: 0
+  AttackDamageBonus: 0
+  DefenseBonus: 0
+  AttackSpeedBonus: 0
+  MovementSpeedBonus: 0
+  CooltimeBonus: 0
+  CriticalBonus: 0
+  MaxHpPercentBonus: 0
+  HpPercentBonus: 0
+  AttackDamagePercentBonus: 0
+  DefensePercentBonus: 0
+  AttackSpeedPercentBonus: 0
+  MovementSpeedPercentBonus: 0
+  CooltimePercentBonus: 0
+  CriticalPercentBonus: 0
+  CriticalDamagePercentBonus: 0
+  BasicStar: 0
+  LuckySeven: 0
+  DiagonalStar: 1
+  ThrowingStar: 0

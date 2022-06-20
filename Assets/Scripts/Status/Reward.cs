@@ -19,7 +19,6 @@ namespace Status
         public RewardType RewardType;
         public string Name;
         public Sprite Icon;
-        public Sprite RewardIcon;
         public int MaxCount;
         [Space]
         public int MaxHpBonus;

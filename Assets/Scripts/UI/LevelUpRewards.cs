@@ -48,16 +48,20 @@ public class LevelUpRewards : MonoBehaviour
 
     public void ShowRewards()
     {
+        GameManager.Instance.post.isGlobal = true;
         SetRandomRewards(3);
         SetRewardsOnSlots(randomRewards);
         GameManager.Instance.AllStop();
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        gameObject.transform.GetChild(1).gameObject.SetActive(true);
     }
 
     public void HideRewards()
     {
         GameManager.Instance.Resume();
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        GameManager.Instance.post.isGlobal = false;
     }
 
     public List<Reward> GetRandomRewards()
