@@ -22,6 +22,11 @@ public class LevelUpRewardsClick : MonoBehaviour
         var reward = levelUpRewards.GetRandomRewards().Find(r => r.Icon == _sprite);
         
         reward.Equip(player);
+        Debug.Log($"Equipped: {reward.Name} / " +
+                  $"BasicStar: {player.BasicStar.CalculateFinalValue()} / " +
+                  $"LuckySeven: {player.LuckySeven.CalculateFinalValue()} / " +
+                  $"DiagonalStar: {player.DiagonalStar.CalculateFinalValue()} / " +
+                  $"ThrowingStar: {player.ThrowingStar.CalculateFinalValue()}");
         
         levelUpRewards.HideRewards();
     }

@@ -15,7 +15,7 @@ MonoBehaviour:
   RewardType: 0
   Name: ThrowingStar
   Icon: {fileID: 21300000, guid: 9fb654390d01e4086bafdfc5350ccaac, type: 3}
-  MaxCount: 10
+  MaxCount: 20
   MaxHpBonus: 0
   HpBonus: 0
   AttackDamageBonus: 0

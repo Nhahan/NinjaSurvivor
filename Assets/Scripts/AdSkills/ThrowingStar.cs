@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace AdSkills
 {
-    public class ThrowingStar : AdSkill
+    public class ThrowingStar : MonoBehaviour
     {
         [SerializeField] private float bulletSpeed = 11f;
         [SerializeField] private float damageMultiplier = 1;
@@ -13,20 +13,18 @@ namespace AdSkills
         private Player _player;
 
         private float _liveTime = 0;
+        private const float DestroyTime = 8f;
         private float _bulletDirection = 1;
 
         private void Awake()
         {
             _player = GameObject.FindWithTag("Player").GetComponent<Player>();
-            if (_player.BasicStar.CalculateFinalValue() < 1)
-            {
-                Destroy(gameObject);
-            }
+            if (_player.BasicStar.CalculateFinalValue() < 1) { Destroy(gameObject); }
         }
 
         private IEnumerator Start()
         {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2);
             _bulletDirection = GetRandomSign();
             transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, bulletSpeed * Time.deltaTime);
         }
@@ -34,10 +32,8 @@ namespace AdSkills
         private void Update()
         {
             _liveTime += Time.deltaTime;
-            if (_liveTime > 8)
-            {
-                Destroy(gameObject);
-            }
+            if (_liveTime > DestroyTime) { Destroy(gameObject); }
+            
             transform.Translate(_bulletDirection * bulletSpeed * Time.deltaTime * Vector3.up);
             transform.Rotate(0, 0, -350 * Time.deltaTime);
         }
@@ -45,11 +41,13 @@ namespace AdSkills
         private void OnTriggerEnter2D(Collider2D coll)
         {
             if (!coll.CompareTag("Enemy")) return;
-            Destroy(gameObject);
-            var monster = coll.gameObject.GetComponent<IMonster>();
-            var skillLevelBonus = (float)(1 + 0.1 * _player.BasicStar.CalculateFinalValue());
             
+            Destroy(gameObject);
+            
+            var monster = coll.gameObject.GetComponent<IMonster>();
+            var skillLevelBonus = (float)(0.6 + 0.05 * _player.BasicStar.CalculateFinalValue());
             var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
+            
             monster.TakeDamage(damage);
         }
 

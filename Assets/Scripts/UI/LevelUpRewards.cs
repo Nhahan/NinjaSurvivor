@@ -29,12 +29,12 @@ public class LevelUpRewards : MonoBehaviour
         _rewardsGrid = transform.GetChild(1).gameObject;
         
         Debug.Log($"_rewards count: {rewards.Count}");
-        _adSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.AdSkill));
-        _apSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.ApSkill));
-        _subSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.SubSkill));
-        _onlySkillRewards.AddRange(_adSkillRewards);
-        _onlySkillRewards.AddRange(_apSkillRewards);
-        _onlySkillRewards.AddRange(_subSkillRewards);
+        // _adSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.AdSkill));
+        // _apSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.ApSkill));
+        // _subSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.SubSkill));
+        // _onlySkillRewards.AddRange(_adSkillRewards);
+        // _onlySkillRewards.AddRange(_apSkillRewards);
+        // _onlySkillRewards.AddRange(_subSkillRewards);
     }
 
     private void SetRandomRewards(int count)
