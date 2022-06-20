@@ -1,6 +1,4 @@
 using Status;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
@@ -9,36 +7,12 @@ public class LevelUpRewardsClick : MonoBehaviour
 {
     [SerializeField] private Player player;
     private Sprite _sprite;
-    private Bloom _bloom;
-    private bool _isGoingUp = true;
+    private Sprite _frameSprite;
 
     private void Start()
     {
-        GameManager.Instance.post.profile.TryGetSettings(out _bloom);
-        _bloom.intensity.value = 4.5f;
-        _bloom.anamorphicRatio.value = -1;
-    }
-
-    private void LateUpdate()
-    {
-        _isGoingUp = _bloom.intensity.value switch
-        {
-            < 4.6f => true,
-            > 7.2f => false,
-            _ => _isGoingUp
-        };
-
-        switch (_isGoingUp)
-        {
-            case true:
-                _bloom.intensity.value = Mathf.Lerp(_bloom.intensity.value, 7.3f, 1.5f * Time.deltaTime);
-                _bloom.anamorphicRatio.value = Mathf.Lerp(_bloom.anamorphicRatio.value, 0.5f, 0.3f * Time.deltaTime);
-                break;
-            case false:
-                _bloom.intensity.value = Mathf.Lerp(_bloom.intensity.value, 4.5f, 1f * Time.deltaTime);
-                _bloom.anamorphicRatio.value = Mathf.Lerp(_bloom.anamorphicRatio.value, -1f, 0.3f * Time.deltaTime);
-                break;
-        }
+        GameManager.Instance.post.profile.TryGetSettings(out Bloom bloom);
+        bloom.intensity.value = 4.5f;
     }
 
     public void GetReward()

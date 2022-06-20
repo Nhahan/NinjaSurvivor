@@ -70726,10 +70726,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376d5f1c6c0c6417398cea9af88239fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardSlot1: {fileID: 979445120}
-  rewardSlot2: {fileID: 1108441097}
-  rewardSlot3: {fileID: 1173717445}
-  _rewards:
+  rewardSlots:
+  - {fileID: 979445120}
+  - {fileID: 1108441097}
+  - {fileID: 1173717445}
+  slotFrames:
+  - {fileID: 194704678}
+  - {fileID: 1386177708}
+  - {fileID: 1680998377}
+  rewards:
   - {fileID: 11400000, guid: b8c05178e34be43a6872204ef63884b2, type: 2}
   - {fileID: 11400000, guid: 1ec21729794bf4b2fa888752f329d811, type: 2}
   - {fileID: 11400000, guid: 1f624bca5fe324d8b8402a0a461c1006, type: 2}

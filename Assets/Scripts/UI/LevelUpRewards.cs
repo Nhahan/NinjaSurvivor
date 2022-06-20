@@ -1,26 +1,34 @@
+using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Status;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class LevelUpRewards : MonoBehaviour
 {
-    [SerializeField] private GameObject rewardSlot1;
-    [SerializeField] private GameObject rewardSlot2;
-    [SerializeField] private GameObject rewardSlot3;
-    [SerializeField] private List<Reward> _rewards = new();
+    [SerializeField] private GameObject[] rewardSlots;
+    [SerializeField] private GameObject[] slotFrames;
+    [SerializeField] private List<Reward> rewards = new();
     
     private readonly List<Reward> _adSkillRewards = new();
     private readonly List<Reward> _apSkillRewards = new();
     private readonly List<Reward> _subSkillRewards = new();
     private readonly List<Reward> _onlySkillRewards = new();
 
-    private readonly List<Reward> randomRewards = new();
+    private readonly List<Reward> _randomRewards = new();
+
+    private GameObject _framesGrid;
+    private GameObject _rewardsGrid;
     
     private void Start()
     {
-        Debug.Log($"_rewards count: {_rewards.Count}");
+        _framesGrid = transform.GetChild(0).gameObject;
+        _rewardsGrid = transform.GetChild(1).gameObject;
+        
+        Debug.Log($"_rewards count: {rewards.Count}");
         _adSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.AdSkill));
         _apSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.ApSkill));
         _subSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.SubSkill));
@@ -31,41 +39,62 @@ public class LevelUpRewards : MonoBehaviour
 
     private void SetRandomRewards(int count)
     {
-        var total = _rewards.Count;
+        var total = rewards.Count;
         for (var i = 0; i < count; i ++)
         {
             var randomNum = Random.Range(0, total);
-            randomRewards.Add(_rewards[randomNum]);
+            _randomRewards.Add(rewards[randomNum]);
         }
     }
-
-    private void SetRewardsOnSlots(List<Reward> rewards)
-    {
-        rewardSlot1.GetComponent<Image>().sprite = rewards[0].Icon;
-        rewardSlot2.GetComponent<Image>().sprite = rewards[1].Icon;
-        rewardSlot3.GetComponent<Image>().sprite = rewards[2].Icon;
-    }
-
+    
     public void ShowRewards()
     {
         GameManager.Instance.post.isGlobal = true;
         SetRandomRewards(3);
-        SetRewardsOnSlots(randomRewards);
+        SetRewardsOnSlots(_randomRewards);
         GameManager.Instance.AllStop();
-        gameObject.transform.GetChild(0).gameObject.SetActive(true);
-        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        _framesGrid.SetActive(true);
+        _rewardsGrid.SetActive(true);
     }
-
+    
     public void HideRewards()
     {
         GameManager.Instance.Resume();
-        gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        _randomRewards.Clear();
+        _framesGrid.SetActive(false);
+        _rewardsGrid.SetActive(false);
         GameManager.Instance.post.isGlobal = false;
+    }
+    
+    private void SetRewardsOnSlots(List<Reward> rewardList)
+    {
+        for (var i = 0; i < rewardSlots.Length; i++)
+        {
+            rewardSlots[i].GetComponent<Image>().sprite = rewardList[i].Icon;
+        }
     }
 
     public List<Reward> GetRandomRewards()
     {
-        return randomRewards;
+        return _randomRewards;
+    }
+
+    public void SetFramesColor()
+    {
+        var rewardTypes = _randomRewards.Select(reward => reward.RewardType).ToList();
+        for (var i = 0; i < rewardTypes.Count; i++)
+        {
+            var frame = slotFrames[i].GetComponent<Image>().color; 
+            switch (rewardTypes[i])
+            {
+                case RewardType.AdSkill: frame = new Color32(1, 1, 1, 100); break;
+                case RewardType.ApSkill: frame = new Color32(1, 1, 1, 100); break;
+                case RewardType.SubSkill: frame = new Color32(1, 1, 1, 100); break;
+                case RewardType.Training: frame = new Color32(1, 1, 1, 100); break;
+                case RewardType.Item: frame = new Color32(1, 1, 1, 100); break;
+                default:
+                    throw new ArgumentNullException();
+            }
+        }
     }
 }
