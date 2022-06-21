@@ -95,7 +95,7 @@ public class LevelUpRewards : MonoBehaviour
 
             rewardSlots[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = 
                 activatedSkillsConvertedToSting.Contains(_randomRewards[i].name) ? 
-                    "Lv" + stat.CalculateFinalValue() : "New";
+                    "Lv " + stat.CalculateFinalValue() : "New";
         }
     }
     
