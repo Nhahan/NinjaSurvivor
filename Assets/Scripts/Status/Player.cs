@@ -77,9 +77,9 @@ namespace Status
             void s(PlayerStat stat) { if (stat.CalculateFinalValue() >= 1) activatedSkills.Add((stat)); }
         }
 
-        public List<PlayerStat> GetActivatedSkills()
+        public List<PlayerStat> GetActivatedSkills(bool set)
         {
-            SetActivatedSkills();
+            if (set) SetActivatedSkills();
             return activatedSkills;
         }
 
