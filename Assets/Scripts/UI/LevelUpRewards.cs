@@ -26,6 +26,7 @@ public class LevelUpRewards : MonoBehaviour
 
     private GameObject _framesGrid;
     private GameObject _rewardsGrid;
+    private GameObject _textGrid;
     
     private void Start()
     {
@@ -63,6 +64,7 @@ public class LevelUpRewards : MonoBehaviour
         
         _framesGrid.SetActive(true);
         _rewardsGrid.SetActive(true);
+        _textGrid.SetActive(true);
     }
     
     public void HideRewards()
@@ -72,14 +74,14 @@ public class LevelUpRewards : MonoBehaviour
         _randomRewards.Clear();
         _framesGrid.SetActive(false);
         _rewardsGrid.SetActive(false);
+        _textGrid.SetActive(false);
         
         GameManager.Instance.post.isGlobal = false;
     }
     
     private void SetRewardsOnSlots()
     {
-        var player = GameManager.Instance.GetPlayer();
-        var activatedSkills = player.GetActivatedSkills();
+        var activatedSkills = GameManager.Instance.GetPlayer().GetActivatedSkills();
         var activatedSkillsConvertedToSting = activatedSkills.ConvertAll(s => s.ToString()).ToList();
 
         for (var i = 0; i < rewardSlots.Length; i++)
@@ -90,12 +92,8 @@ public class LevelUpRewards : MonoBehaviour
             // Set text
             var skillIndex = activatedSkillsConvertedToSting.IndexOf(_randomRewards[i].name);
 
-            // ReSharper disable once SuggestVarOrType_SimpleTypes
-            PlayerStat stat = activatedSkills[skillIndex];
-
-            rewardSlots[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = 
-                activatedSkillsConvertedToSting.Contains(_randomRewards[i].name) ? 
-                    "Lv " + stat.CalculateFinalValue() : "New";
+            _textGrid.transform.GetChild(i).GetComponent<TextMeshProUGUI>().text = 
+                skillIndex == -1 ? "New" : "Lv " + activatedSkills[skillIndex].CalculateFinalValue();
         }
     }
     
@@ -128,5 +126,6 @@ public class LevelUpRewards : MonoBehaviour
     {
         _framesGrid = transform.GetChild(0).gameObject;
         _rewardsGrid = transform.GetChild(1).gameObject;
+        _textGrid = transform.GetChild(2).gameObject;
     }
 }
