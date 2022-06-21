@@ -7,7 +7,7 @@ namespace AdSkills
 {
     public class DiagonalStar : MonoBehaviour
     {
-        [SerializeField] private float bulletSpeed = 11f;
+        [SerializeField] private float bulletSpeed = 12.5f;
         [SerializeField] private float possibleAttackDistance = 10f;
         [SerializeField] private float damageMultiplier = 1;
 
@@ -28,17 +28,17 @@ namespace AdSkills
         private void Start()
         {
             IsAvailable();
-            Debug.Log("Start");
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             _liveTime += Time.deltaTime;
             if (_liveTime > DestroyTime) { Destroy(gameObject); }
             
-            transform.position += _bulletDirection * (bulletSpeed * Time.deltaTime);
-            transform.Rotate(0, 0, -230 * Time.deltaTime);
-            Debug.Log("Update");
+            // transform.position += _bulletDirection * (bulletSpeed * Time.deltaTime);
+            // transform.Translate(_bulletDirection * (bulletSpeed * Time.deltaTime));
+            transform.position = Vector2.MoveTowards(transform.position, _bulletDirection, bulletSpeed * Time.deltaTime);
+            transform.Rotate(0, 0, -450 * Time.deltaTime);
         }
 
         private void OnTriggerEnter2D(Collider2D coll)
@@ -48,7 +48,7 @@ namespace AdSkills
             Destroy(gameObject);
             
             var monster = coll.gameObject.GetComponent<IMonster>();
-            var skillLevelBonus = (float)(0.8 + 0.9 * _player.BasicStar.CalculateFinalValue());
+            var skillLevelBonus = (float)(1.1 * _player.BasicStar.CalculateFinalValue());
             var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
             
             monster.TakeDamage(damage);
@@ -64,12 +64,10 @@ namespace AdSkills
                     Destroy(gameObject);
                 }
 
-                _player.GetComponent<PlayerAttack>().diagonalAngle += 1;
-                var toDiagonal = _player.GetComponent<PlayerAttack>().diagonalAngle * 30;
+                var childNum = Random.Range(0, 16);
                 
-                _bulletDirection = new Vector3(Random.Range(0, 90) * toDiagonal, 0, 0);
-                Debug.Log(toDiagonal);
-                Debug.Log(_bulletDirection);
+                _bulletDirection = (_player.transform.GetChild(0).GetChild(childNum).position) - 
+                                   new Vector3((float)(Random.Range(-14, 5)), (float)(Random.Range(-14, 5)), 0);
             }
             catch
             {

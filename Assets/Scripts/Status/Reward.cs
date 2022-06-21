@@ -39,7 +39,7 @@ namespace Status
         public float CooltimePercentBonus;
         public float CriticalPercentBonus;
         public float CriticalDamagePercentBonus;
-        [Space]
+        [Space] // AdSkill
         public int BasicStar;
         public int LuckySeven;
         public int DiagonalStar;

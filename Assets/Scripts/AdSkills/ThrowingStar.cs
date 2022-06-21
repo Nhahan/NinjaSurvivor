@@ -26,10 +26,9 @@ namespace AdSkills
         {
             yield return new WaitForSeconds(2);
             _bulletDirection = GetRandomSign();
-            transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, bulletSpeed * Time.deltaTime);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             _liveTime += Time.deltaTime;
             if (_liveTime > DestroyTime) { Destroy(gameObject); }

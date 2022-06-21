@@ -59,4 +59,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Custom
-/Downloaded
+/[Aa]ssets/Downloaded/

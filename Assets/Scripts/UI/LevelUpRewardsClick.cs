@@ -12,7 +12,7 @@ public class LevelUpRewardsClick : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.post.profile.TryGetSettings(out Bloom bloom);
-        bloom.intensity.value = 4.5f;
+        bloom.intensity.value = 5.0f;
     }
 
     public void GetReward()

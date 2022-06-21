@@ -13,10 +13,11 @@ public class LevelUpRewards : MonoBehaviour
     [SerializeField] private GameObject[] slotFrames;
     [SerializeField] private List<Reward> rewards = new();
     
-    private readonly List<Reward> _adSkillRewards = new();
-    private readonly List<Reward> _apSkillRewards = new();
-    private readonly List<Reward> _subSkillRewards = new();
-    private readonly List<Reward> _onlySkillRewards = new();
+    private List<Reward> _adSkillRewards = new();
+    private List<Reward> _apSkillRewards = new();
+    private List<Reward> _subSkillRewards = new();
+    private List<Reward> _itemRewards = new();
+    private List<Reward> _onlySkillRewards = new();
 
     private readonly List<Reward> _randomRewards = new();
 
@@ -25,17 +26,19 @@ public class LevelUpRewards : MonoBehaviour
     
     private void Start()
     {
-        _framesGrid = transform.GetChild(0).gameObject;
-        _rewardsGrid = transform.GetChild(1).gameObject;
-        
+        SetSlotSettingsOnGrids();
+
         Debug.Log($"_rewards count: {rewards.Count}");
-        // _adSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.AdSkill));
-        // _apSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.ApSkill));
-        // _subSkillRewards.FindAll(r => r.RewardType.Equals(RewardType.SubSkill));
-        // _onlySkillRewards.AddRange(_adSkillRewards);
-        // _onlySkillRewards.AddRange(_apSkillRewards);
-        // _onlySkillRewards.AddRange(_subSkillRewards);
+        _adSkillRewards = rewards.FindAll(r => r.RewardType.Equals(RewardType.AdSkill));
+        _apSkillRewards = rewards.FindAll(r => r.RewardType.Equals(RewardType.ApSkill));
+        _subSkillRewards = rewards.FindAll(r => r.RewardType.Equals(RewardType.SubSkill));
+
+        _onlySkillRewards = _adSkillRewards.Concat(_apSkillRewards).Concat(_subSkillRewards).ToList();
+
+        _itemRewards = rewards.FindAll(r => r.RewardType.Equals(RewardType.Item));
     }
+
+
 
     private void SetRandomRewards(int count)
     {
@@ -50,9 +53,13 @@ public class LevelUpRewards : MonoBehaviour
     public void ShowRewards()
     {
         GameManager.Instance.post.isGlobal = true;
+        
         SetRandomRewards(3);
         SetRewardsOnSlots(_randomRewards);
+        SetFramesColor();
+        
         GameManager.Instance.AllStop();
+        
         _framesGrid.SetActive(true);
         _rewardsGrid.SetActive(true);
     }
@@ -60,9 +67,11 @@ public class LevelUpRewards : MonoBehaviour
     public void HideRewards()
     {
         GameManager.Instance.Resume();
+        
         _randomRewards.Clear();
         _framesGrid.SetActive(false);
         _rewardsGrid.SetActive(false);
+        
         GameManager.Instance.post.isGlobal = false;
     }
     
@@ -87,14 +96,20 @@ public class LevelUpRewards : MonoBehaviour
             var frame = slotFrames[i].GetComponent<Image>().color; 
             switch (rewardTypes[i])
             {
-                case RewardType.AdSkill: frame = new Color32(1, 1, 1, 100); break;
-                case RewardType.ApSkill: frame = new Color32(1, 1, 1, 100); break;
-                case RewardType.SubSkill: frame = new Color32(1, 1, 1, 100); break;
-                case RewardType.Training: frame = new Color32(1, 1, 1, 100); break;
-                case RewardType.Item: frame = new Color32(1, 1, 1, 100); break;
+                case RewardType.AdSkill: frame = new Color32(255, 70, 125, 255); break;
+                case RewardType.ApSkill: frame = new Color32(50, 100, 255, 255); break;
+                case RewardType.SubSkill: frame = new Color32(255, 144, 255, 255); break;
+                case RewardType.Training: frame = new Color32(122, 217, 105, 100); break;
+                case RewardType.Item: frame = new Color32(255, 255, 255, 255); break;
                 default:
                     throw new ArgumentNullException();
             }
         }
+    }
+    
+    private void SetSlotSettingsOnGrids()
+    {
+        _framesGrid = transform.GetChild(0).gameObject;
+        _rewardsGrid = transform.GetChild(1).gameObject;
     }
 }

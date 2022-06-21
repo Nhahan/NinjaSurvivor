@@ -13,8 +13,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private List<GameObject> weaponPrefabs = new();
     
     private float _createDelay;
-    
-    public float diagonalAngle = 0; 
 
     private IEnumerator Start()
     {  
@@ -24,12 +22,11 @@ public class PlayerAttack : MonoBehaviour
             yield return new WaitForSeconds(_createDelay);
             foreach (var prefab in weaponPrefabs)
             {
-                Debug.Log(prefab);
                 var fixedTransform = transform;
                 switch (prefab.name)
                 {
                     case "BasicStar": StartCoroutine(BasicStar(prefab, fixedTransform.position, fixedTransform.rotation)); break;
-                    case "DiagonalStar": StartCoroutine(DiagonalStar(prefab, fixedTransform.position, fixedTransform.rotation)); break;
+                    case "DiagonalStar": DiagonalStar(prefab, fixedTransform.position, fixedTransform.rotation); break;
                     case "ThrowingStar": StartCoroutine(ThrowingStar(prefab, fixedTransform.position, fixedTransform.rotation)); break;
                 }
             }
@@ -44,23 +41,22 @@ public class PlayerAttack : MonoBehaviour
             }
     }
     
-    private IEnumerator DiagonalStar(GameObject prefab, Vector3 position, Quaternion rotation)
+    private void DiagonalStar(GameObject prefab, Vector3 position, Quaternion rotation)
     { 
-            for (var i = 0; i < player.DiagonalStar.CalculateFinalValue(); i++)
+            for (var i = 0; i < player.DiagonalStar.CalculateFinalValue() * 2; i++)
             {
-                yield return new WaitForSeconds(0f);
                 Instantiate(prefab, position, rotation);
-                Debug.Log("Hello");
             }
     }
 
     private IEnumerator ThrowingStar(GameObject prefab, Vector3 position, Quaternion rotation)
-    { 
-        for (var i = 0; i < player.ThrowingStar.CalculateFinalValue() * 2; i++) {
-            yield return new WaitForSeconds(_createDelay / 3 * 2);
+    {
+        var starCounts = player.ThrowingStar.CalculateFinalValue() + 1;
+        for (var i = 0; i < starCounts; i++)
+        {
+            yield return new WaitForSeconds(_createDelay / 3 * 2 / starCounts);
             Instantiate(prefab, position, rotation);
-            yield return new WaitForSeconds(_createDelay / 3 * 1);
+            yield return new WaitForSeconds(_createDelay / 3 * 1 / starCounts);
         }
-        
     }
 }

@@ -9,7 +9,10 @@ namespace AdSkills
     {
         [SerializeField] private float bulletSpeed = 11f;
         [SerializeField] private float possibleAttackDistance = 11.3f;
+        
         [SerializeField] private float damageMultiplier = 1;
+        // [SerializeField] private float baseskillLevelMultiplier = 1;
+        // [SerializeField] private float 
 
         private Player _player;
 
@@ -30,11 +33,11 @@ namespace AdSkills
             IsAvailable();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             _lifeTime += Time.deltaTime;
             if (_lifeTime > DestroyTime) { Destroy(gameObject); }
-            
+
             transform.position += _bulletDirection * (bulletSpeed * Time.deltaTime);
             transform.Rotate(0, 0, -230 * Time.deltaTime);
         }
@@ -42,13 +45,12 @@ namespace AdSkills
         private void OnTriggerEnter2D(Collider2D coll)
         {
             if (!coll.CompareTag("Enemy")) return;
-            
+
             Destroy(gameObject);
-            
             var monster = coll.gameObject.GetComponent<IMonster>();
             var skillLevelBonus = (float)(1 + 0.1 * _player.BasicStar.CalculateFinalValue());
             var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
-            
+
             monster.TakeDamage(damage);
         }
 
@@ -62,11 +64,8 @@ namespace AdSkills
                     Destroy(gameObject);
                 }
 
-                _bulletDirection = (
-                        _nearestEnemy -
-                        transform.position -
-                        new Vector3((float)(Random.Range(-1, 2)), (float)(Random.Range(-1, 2)), 0))
-                    .normalized;
+                _bulletDirection = (_nearestEnemy - transform.position -
+                                    new Vector3((float)(Random.Range(-1, 2)), (float)(Random.Range(-1, 2)), 0)).normalized;
             }
             catch
             {
