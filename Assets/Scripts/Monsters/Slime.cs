@@ -16,7 +16,7 @@ namespace Monsters
 
         private void Start()
         {
-            _player = GameObject.FindWithTag("Player").GetComponent<Player>();
+            _player = GameManager.Instance.GetPlayer();
         }
 
         private void FixedUpdate()

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Monsters;
 using Status;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     private bool _isGameOver;
     public static GameManager Instance;
+    private List<PlayerStat> _activatedSkills = new();
 
     private void Awake()
     {
@@ -33,13 +35,17 @@ public class GameManager : MonoBehaviour
         levelUpRewards.HideRewards();
         _isGameOver = false;
         Time.timeScale = 1;
+        _activatedSkills = player.GetActivatedSkills();
         if (spawnPoints.Length > 0)
         {
             StartCoroutine(this.CreateMonster());
         }
     }
 
-    private void Update() { }
+    public Player GetPlayer()
+    {
+        return player;
+    }
 
     private IEnumerator CreateMonster()
     {
@@ -87,5 +93,6 @@ public class GameManager : MonoBehaviour
         {
             enemy.GetComponent<IMonster>().ResumeMonster();
         }
+        _activatedSkills = player.GetActivatedSkills();
     }
 }

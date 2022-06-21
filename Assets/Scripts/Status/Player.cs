@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
+using UnityEditor.Compilation;
 using UnityEngine;
 
 namespace Status
@@ -7,13 +9,11 @@ namespace Status
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class Player : MonoBehaviour
     {
-        [SerializeField] private Player player;
-
         private int Level; // level starts form 0
         private float nextLevelExp;
         public float Exp; // Level will be automatically calculated by Exp
         public PlayerStat ExpMultiplier; // Earn Exp(100+ExpMultiplier)
-        [Space]
+        [Space] 
         public PlayerStat MaxHp;
         public PlayerStat Hp;
         public PlayerStat AttackDamage;
@@ -23,18 +23,19 @@ namespace Status
         public PlayerStat Cooltime;
         public PlayerStat Critical;
         public PlayerStat CriticalDamage;
-        [Space]
+        [Space] 
         public PlayerStat BasicStar;
         public PlayerStat LuckySeven; // BasicStar Recycling;
         public PlayerStat DiagonalStar;
         public PlayerStat ThrowingStar;
-        [Space]
+        [Space] 
         public PlayerStat AssassinationTraining;
 
         public Reward[] rewards;
 
         private LevelInfo[] _levelTable;
-        
+        private readonly List<PlayerStat> activatedSkills = new();
+
 
         private void Awake()
         {
@@ -47,7 +48,7 @@ namespace Status
             Level = _levelTable[0].value;
             foreach (var reward in rewards)
             {
-                reward.Equip(player);
+                reward.Equip(this);
             }
         }
 
@@ -55,7 +56,7 @@ namespace Status
         {
             Hp.SetValue(Hp.CalculateFinalValue() - damage);
             Debug.Log($"Took damage: {damage} / currentHp: {Hp}");
-            
+
             // ReSharper disable once InvertIf
             if (Hp.CalculateFinalValue() <= 0)
             {
@@ -64,13 +65,22 @@ namespace Status
             }
         }
 
-        public IEnumerable<string> GetActivatedSkills()
+        public void SetActivatedSkills()
         {
-            List<string> skills = new();
-            if (BasicStar.CalculateFinalValue() >= 1) { skills.Add("BasicStar"); }
-            if (ThrowingStar.CalculateFinalValue() >= 1) { skills.Add("ThrowingStar"); }
+            var fields = typeof(Player).GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
-            return skills;
+            foreach (var field in fields)
+            {
+                var stat = (PlayerStat)field.GetValue(typeof(Player));
+                s(stat);
+            }
+            void s(PlayerStat stat) { if (stat.CalculateFinalValue() >= 1) activatedSkills.Add((stat)); }
+        }
+
+        public List<PlayerStat> GetActivatedSkills()
+        {
+            SetActivatedSkills();
+            return activatedSkills;
         }
 
         [System.Serializable]
@@ -79,13 +89,13 @@ namespace Status
             public int value;
             public float exp;
         }
-        
+
         [System.Serializable]
         public class LevelInfoList
         {
             public LevelInfo[] levels;
         }
-        
+
         private void LevelUp()
         {
             nextLevelExp = _levelTable[Level].exp;
@@ -98,7 +108,7 @@ namespace Status
         {
             var calculatedExp = exp * (100 + ExpMultiplier.CalculateFinalValue()) / 100;
             Exp += calculatedExp;
-            
+
             if (!(Exp >= nextLevelExp)) return;
             LevelUp();
         }

@@ -18,7 +18,7 @@ namespace AdSkills
 
         private void Awake()
         {
-            _player = GameObject.FindWithTag("Player").GetComponent<Player>();
+            _player = GameManager.Instance.GetPlayer();
             if (_player.BasicStar.CalculateFinalValue() < 1) { Destroy(gameObject); }
         }
 

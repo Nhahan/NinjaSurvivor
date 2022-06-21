@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using AdSkills;
 using Status;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -38,8 +41,6 @@ public class LevelUpRewards : MonoBehaviour
         _itemRewards = rewards.FindAll(r => r.RewardType.Equals(RewardType.Item));
     }
 
-
-
     private void SetRandomRewards(int count)
     {
         var total = rewards.Count;
@@ -55,7 +56,7 @@ public class LevelUpRewards : MonoBehaviour
         GameManager.Instance.post.isGlobal = true;
         
         SetRandomRewards(3);
-        SetRewardsOnSlots(_randomRewards);
+        SetRewardsOnSlots();
         SetFramesColor();
         
         GameManager.Instance.AllStop();
@@ -75,14 +76,29 @@ public class LevelUpRewards : MonoBehaviour
         GameManager.Instance.post.isGlobal = false;
     }
     
-    private void SetRewardsOnSlots(List<Reward> rewardList)
+    private void SetRewardsOnSlots()
     {
+        var player = GameManager.Instance.GetPlayer();
+        var activatedSkills = player.GetActivatedSkills();
+        var activatedSkillsConvertedToSting = activatedSkills.ConvertAll(s => s.ToString()).ToList();
+
         for (var i = 0; i < rewardSlots.Length; i++)
         {
-            rewardSlots[i].GetComponent<Image>().sprite = rewardList[i].Icon;
+            // Set icon
+            rewardSlots[i].GetComponent<Image>().sprite = _randomRewards[i].Icon;
+
+            // Set text
+            var skillIndex = activatedSkillsConvertedToSting.IndexOf(_randomRewards[i].name);
+
+            // ReSharper disable once SuggestVarOrType_SimpleTypes
+            PlayerStat stat = activatedSkills[skillIndex];
+
+            rewardSlots[i].transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = 
+                activatedSkillsConvertedToSting.Contains(_randomRewards[i].name) ? 
+                    "Lv" + stat.CalculateFinalValue() : "New";
         }
     }
-
+    
     public List<Reward> GetRandomRewards()
     {
         return _randomRewards;
@@ -93,6 +109,7 @@ public class LevelUpRewards : MonoBehaviour
         var rewardTypes = _randomRewards.Select(reward => reward.RewardType).ToList();
         for (var i = 0; i < rewardTypes.Count; i++)
         {
+            // ReSharper disable once NotAccessedVariable
             var frame = slotFrames[i].GetComponent<Image>().color; 
             switch (rewardTypes[i])
             {
