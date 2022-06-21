@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
-using UnityEditor.Compilation;
 using UnityEngine;
 
 namespace Status
@@ -36,6 +35,11 @@ namespace Status
         private LevelInfo[] _levelTable;
         private readonly List<PlayerStat> activatedSkills = new();
 
+        public class TemporalStat
+        {
+            
+        }
+
 
         private void Awake()
         {
@@ -67,10 +71,12 @@ namespace Status
 
         public void SetActivatedSkills()
         {
+            List<string> strings = new() { "level", "nextLevelExp", "Exp", "rewards", "_levelTable", "activatedSkills" };
             var fields = typeof(Player).GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
             foreach (var field in fields)
             {
+                if (strings.Contains(field.ToString())) continue;
                 var stat = (PlayerStat)field.GetValue(typeof(Player));
                 s(stat);
             }

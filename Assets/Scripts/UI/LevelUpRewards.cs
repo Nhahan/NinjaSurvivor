@@ -1,12 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using AdSkills;
 using Status;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -81,7 +78,7 @@ public class LevelUpRewards : MonoBehaviour
     
     private void SetRewardsOnSlots()
     {
-        var activatedSkills = GameManager.Instance.GetPlayer().GetActivatedSkills();
+        var activatedSkills = GameManager.Instance.GetPlayer().GetActivatedSkills(true);
         var activatedSkillsConvertedToSting = activatedSkills.ConvertAll(s => s.ToString()).ToList();
 
         for (var i = 0; i < rewardSlots.Length; i++)
