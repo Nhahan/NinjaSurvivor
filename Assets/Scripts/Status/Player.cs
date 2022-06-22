@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
@@ -45,6 +47,7 @@ namespace Status
         {
             var levelTableAsset = Resources.Load<TextAsset>("JSON/level").ToString();
             _levelTable = JsonUtility.FromJson<LevelInfoList>(levelTableAsset).levels;
+            SetActivatedSkills();
         }
 
         private void Start()
@@ -69,18 +72,41 @@ namespace Status
             }
         }
 
+            // List<string> strings = new() { "level", "nextLevelExp", "Exp", "rewards", "_levelTable", "activatedSkills" };
         public void SetActivatedSkills()
         {
-            List<string> strings = new() { "level", "nextLevelExp", "Exp", "rewards", "_levelTable", "activatedSkills" };
-            var fields = typeof(Player).GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            var fields = typeof(Player).GetFields().ToList(); // 클래스의 변수들 가져오기
 
             foreach (var field in fields)
             {
-                if (strings.Contains(field.ToString())) continue;
-                var stat = (PlayerStat)field.GetValue(typeof(Player));
-                s(stat);
+                Debug.Log(field); // 예를 들어 여기선 Status.PlayerStat ThrowingStar 라고 찍힙니다
+                try
+                {
+                    PlayerStat stat = field.GetValue(typeof(PlayerStat)) as PlayerStat; // 여기서 에러..
+            
+                    Debug.Log(field);
+                    s(stat);
+                }
+                catch (Exception e)
+                {
+                    Debug.Log(e);
+                    // 에러 내용
+                    // System.ArgumentException:
+                    // Field AssassinationTraining defined on type Status.Player
+                    // is not a field on the target object which is of type System.RuntimeType.
+                    // Parameter name: obj
+                }
             }
-            void s(PlayerStat stat) { if (stat.CalculateFinalValue() >= 1) activatedSkills.Add((stat)); }
+
+            void s(PlayerStat stat)
+            {
+                try { if (stat.CalculateFinalValue() >= 1) activatedSkills.Add((stat)); }
+                catch (Exception e )
+                {
+                    Debug.Log("why");
+                    Debug.Log(e);
+                }
+            }
         }
 
         public List<PlayerStat> GetActivatedSkills(bool set)
