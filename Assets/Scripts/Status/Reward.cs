@@ -29,6 +29,7 @@ namespace Status
         public int MovementSpeedBonus;
         public int CooltimeBonus;
         public int CriticalBonus;
+        public int CriticalDamageBonus;
         [Space]
         public float MaxHpPercentBonus;
         public float HpPercentBonus;
@@ -46,6 +47,7 @@ namespace Status
         public int ThrowingStar;
         [Space] 
         public int Flamer;
+        public int ExplosiveShuriken;
         public int LightningStrike;
         [Space] 
         public int AssassinationTraining; // 공격속도 5% 증가
@@ -75,6 +77,8 @@ namespace Status
             if (CooltimeBonus != 0)
                 p.Cooltime.AddModifier(new StatModifier(CooltimeBonus, StatModType.Flat, this));
             if (CriticalBonus != 0)
+                p.Critical.AddModifier(new StatModifier(CriticalBonus, StatModType.Flat, this));
+            if (CriticalDamageBonus != 0)
                 p.Critical.AddModifier(new StatModifier(CriticalBonus, StatModType.Flat, this));
 
             // percentage
@@ -110,6 +114,8 @@ namespace Status
             // apSkills
             if (Flamer != 0)
                 p.Flamer.AddModifier(new StatModifier(Flamer, StatModType.Flat, this));
+            if (ExplosiveShuriken != 0)
+                p.ExplosiveShuriken.AddModifier(new StatModifier(ExplosiveShuriken, StatModType.Flat, this));
             if (LightningStrike != 0)
                 p.LightningStrike.AddModifier(new StatModifier(LightningStrike, StatModType.Flat, this));
             
@@ -144,6 +150,7 @@ namespace Status
             p.ThrowingStar.RemoveAllModifiersFromSource(this);
             
             p.Flamer.RemoveAllModifiersFromSource(this);
+            p.ExplosiveShuriken.RemoveAllModifiersFromSource(this);
             p.LightningStrike.RemoveAllModifiersFromSource(this);
             
             p.AssassinationTraining.RemoveAllModifiersFromSource(this);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Status;
 using UnityEngine;
 
@@ -30,6 +31,7 @@ public class PlayerApAttack : MonoBehaviour
                 {
                     case "Flamer": StartCoroutine(Flamer(prefab, _v, transform.rotation)); break;
                     case "LightningStrike": StartCoroutine(LightningStrike(prefab, _v, transform.rotation)); break;
+                    case "ExplosiveShuriken": StartCoroutine(ExplosiveShuriken(prefab, _v, transform.rotation)); break;
                 }
             }
         }
@@ -67,5 +69,11 @@ public class PlayerApAttack : MonoBehaviour
             }
             yield return new WaitForSeconds(0);
         }
+    }
+    
+    private IEnumerator ExplosiveShuriken(GameObject prefab, Vector3 position, Quaternion rotation)
+    {
+        if (_player.ExplosiveShuriken.CalculateFinalValue() < 1) yield break;
+        Instantiate(prefab, _player.transform.position, rotation);
     }
 }

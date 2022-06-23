@@ -18,15 +18,10 @@ namespace AdSkills
         
         private Vector3 _nearestEnemy;
         private Vector3 _bulletDirection;
-        
-        private void Awake()
-        {
-            _player = GameManager.Instance.GetPlayer();
-            if (_player.DiagonalStar.CalculateFinalValue() < 1) { Destroy(gameObject); }
-        }
 
         private void Start()
         {
+            _player = GameManager.Instance.GetPlayer();
             IsAvailable();
         }
 

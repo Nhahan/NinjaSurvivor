@@ -32,6 +32,7 @@ namespace Status
         public PlayerStat ThrowingStar;
         [Space] 
         public PlayerStat Flamer;
+        public PlayerStat ExplosiveShuriken;
         public PlayerStat LightningStrike;
         [Space] 
         public PlayerStat AssassinationTraining;

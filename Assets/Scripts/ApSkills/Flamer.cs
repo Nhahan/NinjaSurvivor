@@ -20,12 +20,12 @@ namespace ApSkills
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
-            if (_player.Flamer.CalculateFinalValue() < 1) { Destroy(gameObject); }
-            
             _playerRb = _player.GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
             _flamer = _player.transform.Find("SkillPoints").Find("Flamer");
+            
             var animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
+            
             Invoke(nameof(ToNotAvailable), animationLength / 0.8f);
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }

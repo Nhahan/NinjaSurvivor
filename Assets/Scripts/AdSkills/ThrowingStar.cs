@@ -15,13 +15,7 @@ namespace AdSkills
         private float _liveTime = 0;
         private const float DestroyTime = 6f;
         private float _bulletDirection = 1;
-
-        private void Awake()
-        {
-            _player = GameManager.Instance.GetPlayer();
-            if (_player.BasicStar.CalculateFinalValue() < 1) { Destroy(gameObject); }
-        }
-
+        
         private IEnumerator Start()
         {
             yield return new WaitForSeconds(2);

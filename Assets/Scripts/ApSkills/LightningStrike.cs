@@ -15,12 +15,8 @@ namespace ApSkills
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
-            if (_player.LightningStrike.CalculateFinalValue() < 1)
-            {
-                Destroy(gameObject);
-            }
-            
             _animator = GetComponent<Animator>();
+            
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
 
