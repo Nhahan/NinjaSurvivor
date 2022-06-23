@@ -1,51 +1,54 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Status;
 using UnityEngine;
-using Object = UnityEngine.Object;
 
-public class ExpSoul1 : MonoBehaviour
+namespace Pickups
 {
-    private Player _player;
-    private bool _isTriggered;
-    private float _liveTime;
-
-    private float _timeToDisappear = 7f;
-    
-    private void Start()
+    public class ExpSoul1 : MonoBehaviour
     {
-        _player = GameManager.Instance.GetPlayer();
-    }
+        private Player _player;
+        private bool _isTriggered;
+        private float _liveTime;
+        private float _speed;
 
-    private void FixedUpdate()
-    {
-        if (_isTriggered)
+        private const float TimeToDisappear = 7f;
+
+        private void Start()
         {
-            _liveTime += Time.deltaTime * 0.3f;
-            transform.position = Vector2.MoveTowards(
-                transform.position, 
-                _player.transform.position, 
-                _liveTime * _liveTime);
+            _player = GameManager.Instance.GetPlayer();
         }
 
-        if (_isTriggered && transform.position == _player.transform.position)
+        private void FixedUpdate()
         {
-            _player.EarnExp(1);
-            Destroy(gameObject);
+            if (_isTriggered)
+            {
+                _speed += Time.deltaTime * 0.3f;
+                transform.position = Vector2.MoveTowards(
+                    transform.position, 
+                    _player.transform.position, 
+                    _liveTime * _liveTime);
+            }
+
+            if (_isTriggered && transform.position == _player.transform.position)
+            {
+                _player.EarnExp(1);
+                Destroy(gameObject);
+            }
         }
 
-        if (_liveTime > _timeToDisappear)
+        private void LateUpdate()
         {
-            Destroy(gameObject);
+            if (_liveTime > TimeToDisappear)
+            {
+                Destroy(gameObject);
+            }
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.tag.Equals("PickupRadius"))
+        private void OnTriggerEnter2D(Collider2D col)
         {
-            _isTriggered = true;
+            if (col.tag.Equals("PickupRadius"))
+            {
+                _isTriggered = true;
+            }
         }
     }
 }
