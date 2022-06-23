@@ -11,7 +11,8 @@ public class PlayerApAttack : MonoBehaviour
 
     private Player _player;
     private float _createDelay;
-
+    
+    private readonly Vector3 _v = new(0, 0, 0);
 
     private IEnumerator Start()
     {
@@ -27,7 +28,8 @@ public class PlayerApAttack : MonoBehaviour
                 var fixedTransform = transform;
                 switch (prefab.name)
                 {
-                    case "Flamer": StartCoroutine(Flamer(prefab, flamer.transform.position, fixedTransform.rotation)); break;
+                    case "Flamer": StartCoroutine(Flamer(prefab, _v, transform.rotation)); break;
+                    case "LightningStrike": StartCoroutine(LightningStrike(prefab, _v, transform.rotation)); break;
                 }
             }
         }
@@ -39,5 +41,19 @@ public class PlayerApAttack : MonoBehaviour
         Instantiate(prefab, flamer.transform.position, rotation);
         yield return new WaitForSeconds(_createDelay / 2f);
         Instantiate(prefab, flamer.transform.position, rotation);
+    }
+    
+    private IEnumerator LightningStrike(GameObject prefab, Vector3 position, Quaternion rotation)
+    {
+        var level = (int)_player.Flamer.CalculateFinalValue();
+        if (level < 1) yield break;
+        
+        var count = level * 2;
+        var targets = GameManager.Instance.GetNearestTargets(count);
+        
+        for (var i = 0; i < count; i++) {
+            Instantiate(prefab, targets[i], rotation);
+            yield return new WaitForSeconds(0);
+        }
     }
 }

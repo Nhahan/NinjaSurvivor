@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7a67ee28b6adf441814e60bcb404307, type: 3}
-  m_Name: PhysicalTraining
+  m_Name: LightningStrike
   m_EditorClassIdentifier: 
-  RewardType: 3
-  Name: PhysicalTraining
-  Icon: {fileID: 21300000, guid: c445ed891100621448ba39899d370c42, type: 3}
+  RewardType: 1
+  Name: LightningStrike
+  Icon: {fileID: 21300000, guid: 7c215ea3063934123ad1e892db5a7578, type: 3}
   MaxCount: 0
   MaxHpBonus: 0
   HpBonus: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   MaxHpPercentBonus: 0
   HpPercentBonus: 0
   AttackDamagePercentBonus: 0
-  DefensePercentBonus: 5
+  DefensePercentBonus: 0
   AttackSpeedPercentBonus: 0
   MovementSpeedPercentBonus: 0
   CooltimePercentBonus: 0
@@ -38,9 +38,5 @@ MonoBehaviour:
   DiagonalStar: 0
   ThrowingStar: 0
   Flamer: 0
-  LightningStrike: 0
+  LightningStrike: 1
   AssassinationTraining: 0
-  PhysicalTraining: 1
-  BodycoreTraining: 0
-  FootworkTraining: 0
-  memo: "\uC721\uCCB4\uAC15\uD654/\uBC29\uC5B4\uB8255%\uC99D\uAC00"

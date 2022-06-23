@@ -6,19 +6,23 @@ namespace Monsters
 {
     public class Suicider : MonoBehaviour, IMonster
     {
-        [SerializeField] private float monsterSpeed = 1.5f;
-        [SerializeField] private float monsterDamage = 20f;
-        [SerializeField] private float monsterHp = 10f;
         [SerializeField] private GameObject prefab;
 
         private float _monsterSpeedMultiplier = 1;
         private Player _player;
         private Animator _animator;
 
+        private float _monsterHp = 10f;
+        private const float MonsterDamage = 20f;
+        private float _randomDamage;
+        private const float MonsterSpeed = 1.65f;
+
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
+
+            _randomDamage = Random.Range(0, 3);
         }
 
         private void FixedUpdate()
@@ -27,7 +31,7 @@ namespace Monsters
             transform.position = Vector2.MoveTowards(
                 transform.position, 
                 _player.transform.position, 
-                monsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
+                MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
             FlipSprite();
         }
 
@@ -43,7 +47,8 @@ namespace Monsters
 
         private void AttackPlayer()
         {
-            _player.TakeDamage(monsterDamage);
+            var finalDamage = MonsterDamage - _player.Defense.CalculateFinalValue() + _randomDamage;
+            _player.TakeDamage(finalDamage);
         }
 
         private void FlipSprite()
@@ -53,14 +58,14 @@ namespace Monsters
 
         public void SetMonsterHp(float hp)
         {
-            monsterHp = hp;
+            _monsterHp = hp;
         }
         
         public void TakeDamage(float damage)
         {
-            SetMonsterHp(monsterHp - damage);
+            SetMonsterHp(_monsterHp - damage);
 
-            if (monsterHp > 0) return;
+            if (_monsterHp > 0) return;
             _animator.SetBool("isDead", true);
             _monsterSpeedMultiplier = 0;
             GetComponent<SpriteRenderer>().color = new Color(255, 83, 83, 255);

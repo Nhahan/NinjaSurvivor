@@ -46,8 +46,16 @@ namespace Status
         public int ThrowingStar;
         [Space] 
         public int Flamer;
+        public int LightningStrike;
         [Space] 
-        public int AssassinationTraining;
+        public int AssassinationTraining; // 공격속도 5% 증가
+        public int BodycoreTraining; // 방어력 5% 증가
+        public int FootworkTraining; // 이동속도 5% 증가
+        public int MuscleTraining; // 공격력 1 증가
+        public int PhysicalTraining; // 방어력 1 증가
+
+        [Space] 
+        public string memo;
 
         public void Equip(Player p)
         {
@@ -102,6 +110,8 @@ namespace Status
             // apSkills
             if (Flamer != 0)
                 p.Flamer.AddModifier(new StatModifier(Flamer, StatModType.Flat, this));
+            if (LightningStrike != 0)
+                p.LightningStrike.AddModifier(new StatModifier(LightningStrike, StatModType.Flat, this));
             
             // Training
             if (AssassinationTraining != 0)
@@ -126,6 +136,7 @@ namespace Status
             p.ThrowingStar.RemoveAllModifiersFromSource(this);
             
             p.Flamer.RemoveAllModifiersFromSource(this);
+            p.LightningStrike.RemoveAllModifiersFromSource(this);
         }
         
         public RewardType RewardTypes { get; set; }

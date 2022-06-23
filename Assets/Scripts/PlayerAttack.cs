@@ -53,15 +53,14 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator ThrowingStar(GameObject prefab, Vector3 _, Quaternion rotation)
     {
         var level = _player.ThrowingStar.CalculateFinalValue();
-
-        if (level >= 1) {
-            var starCounts = level + 1;
-            for (var i = 0; i < starCounts; i++)
-            {
-                yield return new WaitForSeconds(_createDelay / 3 * 2 / starCounts);
-                Instantiate(prefab, _player.transform.position, rotation);
-                yield return new WaitForSeconds(_createDelay / 3 * 1 / starCounts);
-            }
+        if (level < 1) yield break;
+        
+        var starCounts = level + 1;
+        for (var i = 0; i < starCounts; i++)
+        {
+            yield return new WaitForSeconds(_createDelay / 3 * 2 / starCounts);
+            Instantiate(prefab, _player.transform.position, rotation);
+            yield return new WaitForSeconds(_createDelay / 3 * 1 / starCounts);
         }
     }
 }

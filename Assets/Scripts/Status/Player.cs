@@ -32,6 +32,7 @@ namespace Status
         public PlayerStat ThrowingStar;
         [Space] 
         public PlayerStat Flamer;
+        public PlayerStat LightningStrike;
         [Space] 
         public PlayerStat AssassinationTraining;
 
@@ -57,7 +58,6 @@ namespace Status
             }
 
             sprite = GetComponent<SpriteFlash>();
-            StartCoroutine(FindNearestObject(), 1.5f);
         }
 
         public void TakeDamage(float damage)

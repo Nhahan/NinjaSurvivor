@@ -109,6 +109,18 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(second);
     }
 
+    public List<Vector3> GetNearestTargets(int count)
+    {
+        try
+        {
+            return nearestTargets.Take(count) as List<Vector3>;
+        }
+        catch
+        {
+            return nearestTargets;
+        }
+    }
+    
     public Vector3 GetNearestTarget()
     {
         return nearestTargets[0];

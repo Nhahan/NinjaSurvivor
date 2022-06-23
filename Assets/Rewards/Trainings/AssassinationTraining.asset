@@ -28,7 +28,7 @@ MonoBehaviour:
   HpPercentBonus: 0
   AttackDamagePercentBonus: 0
   DefensePercentBonus: 0
-  AttackSpeedPercentBonus: 0
+  AttackSpeedPercentBonus: 5
   MovementSpeedPercentBonus: 0
   CooltimePercentBonus: 0
   CriticalPercentBonus: 0
@@ -37,4 +37,10 @@ MonoBehaviour:
   LuckySeven: 0
   DiagonalStar: 0
   ThrowingStar: 0
+  Flamer: 0
+  LightningStrike: 0
   AssassinationTraining: 1
+  PhysicalTraining: 0
+  BodycoreTraining: 0
+  FootworkTraining: 0
+  memo: "\uC554\uC0B4\uC218\uB828/\uACF5\uACA9\uB8255%\uC99D\uAC00"

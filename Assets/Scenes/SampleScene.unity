@@ -70604,6 +70604,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bb4db3efe1f3843e2912b150662ac5be, type: 2}
   - {fileID: 11400000, guid: fdcf2b1f2d1ee4482b3d08bf29dd01ec, type: 2}
   - {fileID: 11400000, guid: eef35823dfc624b41811903b21d9d1bf, type: 2}
+  - {fileID: 11400000, guid: 181c044c76e104c2683e903a10a0142e, type: 2}
+  - {fileID: 11400000, guid: 69db1d6635ae049f48df3f812051f631, type: 2}
+  - {fileID: 11400000, guid: 20666f5c163a6476daad697a08003610, type: 2}
+  - {fileID: 11400000, guid: f347cb93b80244fd881a3e18622cf327, type: 2}
+  - {fileID: 11400000, guid: a3223cdaa5e544e69a45e93c8602f7fe, type: 2}
+  - {fileID: 11400000, guid: cf0b22150a5944b8e9c6f77a2994a24e, type: 2}
   levelUpEffect: {fileID: 204947396}
 --- !u!1 &1347206072
 GameObject:
@@ -71190,6 +71196,7 @@ MonoBehaviour:
   player: {fileID: 752662084}
   levelUpRewards: {fileID: 1308799144}
   post: {fileID: 1927299679}
+  nearestTargets: []
 --- !u!4 &1927299678
 Transform:
   m_ObjectHideFlags: 0
@@ -72046,7 +72053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: BasicStar.BaseValue
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: LuckySeven.BaseValue
@@ -72059,6 +72066,10 @@ PrefabInstance:
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: ThrowingStar.BaseValue
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
+      propertyPath: LightningStrike.BaseValue
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801055, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: m_FlipX
@@ -72157,6 +72168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   apSkillPrefabs:
   - {fileID: 7492017199412092725, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+  - {fileID: 3539641286269772436, guid: 66591bb4b1e3f446f9a0393a5336b46b, type: 3}
   flamer: {fileID: 1274011007}
 --- !u!222 &8282208141825825780
 CanvasRenderer:

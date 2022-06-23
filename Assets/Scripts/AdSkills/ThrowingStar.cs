@@ -13,7 +13,7 @@ namespace AdSkills
         private Player _player;
 
         private float _liveTime = 0;
-        private const float DestroyTime = 8f;
+        private const float DestroyTime = 6f;
         private float _bulletDirection = 1;
 
         private void Awake()

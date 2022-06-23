@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RewardType: 3
   Name: BodycoreTraining
-  Icon: {fileID: 0}
-  RewardIcon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 7dad286f05fdefe44bd172247fb1fc4f, type: 3}
   MaxCount: 0
   MaxHpBonus: 0
   HpBonus: 0
   AttackDamageBonus: 0
-  DefenseBonus: 0
+  DefenseBonus: 1
   AttackSpeedBonus: 0
   MovementSpeedBonus: 0
   CooltimeBonus: 0
@@ -28,7 +27,7 @@ MonoBehaviour:
   MaxHpPercentBonus: 0
   HpPercentBonus: 0
   AttackDamagePercentBonus: 0
-  DefensePercentBonus: 0
+  DefensePercentBonus: 5
   AttackSpeedPercentBonus: 0
   MovementSpeedPercentBonus: 0
   CooltimePercentBonus: 0
@@ -38,3 +37,10 @@ MonoBehaviour:
   LuckySeven: 0
   DiagonalStar: 0
   ThrowingStar: 0
+  Flamer: 0
+  LightningStrike: 0
+  AssassinationTraining: 0
+  PhysicalTraining: 0
+  BodycoreTraining: 1
+  FootworkTraining: 0
+  memo: "\uB2E8\uC804\uAC15\uD654/\uBC29\uC5B4\uB8251\uC99D\uAC00"
