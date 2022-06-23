@@ -7,5 +7,7 @@ namespace Monsters
         public void StopMonster();
 
         public void ResumeMonster();
+
+        public void Flamer(float damage);
     }
 }

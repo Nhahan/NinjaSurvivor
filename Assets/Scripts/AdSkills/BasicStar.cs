@@ -7,17 +7,15 @@ namespace AdSkills
 {
     public class BasicStar : MonoBehaviour
     {
-        [SerializeField] private float bulletSpeed = 11f;
+        [SerializeField] private float bulletSpeed = 12f;
         [SerializeField] private float possibleAttackDistance = 11.3f;
         
         [SerializeField] private float damageMultiplier = 1;
-        // [SerializeField] private float baseskillLevelMultiplier = 1;
-        // [SerializeField] private float 
 
         private Player _player;
 
         private float _lifeTime = 0;
-        private const float DestroyTime = 3.3f;
+        private const float DestroyTime = 2.5f;
 
         private Vector3 _nearestEnemy;
         private Vector3 _bulletDirection;
@@ -65,7 +63,7 @@ namespace AdSkills
                 }
 
                 _bulletDirection = (_nearestEnemy - transform.position -
-                                    new Vector3((float)(Random.Range(-1, 2)), (float)(Random.Range(-1, 2)), 0)).normalized;
+                                    new Vector3((Random.Range(-1, 2)*0.5f), (Random.Range(-1, 2)*0.5f), 0)).normalized;
             }
             catch
             {

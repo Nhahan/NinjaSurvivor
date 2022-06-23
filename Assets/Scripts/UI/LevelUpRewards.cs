@@ -55,7 +55,7 @@ public class LevelUpRewards : MonoBehaviour
     {
         GameManager.Instance.post.isGlobal = true;
 
-        StartCoroutine(levelUpEffect.OnLevelUp());
+        // StartCoroutine(levelUpEffect.OnLevelUp());
         SetRandomRewards(3);
         SetRewardsOnSlots();
         

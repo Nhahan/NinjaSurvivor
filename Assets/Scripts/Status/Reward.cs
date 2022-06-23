@@ -45,6 +45,8 @@ namespace Status
         public int DiagonalStar;
         public int ThrowingStar;
         [Space] 
+        public int Flamer;
+        [Space] 
         public int AssassinationTraining;
 
         public void Equip(Player p)
@@ -87,7 +89,7 @@ namespace Status
             if (CriticalDamagePercentBonus != 0)
                 p.CriticalDamage.AddModifier(new StatModifier(CriticalDamagePercentBonus, StatModType.PercentMult, this));
 
-            // skills
+            // adSkills
             if (BasicStar != 0)
                 p.BasicStar.AddModifier(new StatModifier(BasicStar, StatModType.Flat, this));
             if (LuckySeven != 0)
@@ -96,6 +98,10 @@ namespace Status
                 p.DiagonalStar.AddModifier(new StatModifier(DiagonalStar, StatModType.Flat, this));
             if (ThrowingStar != 0)
                 p.ThrowingStar.AddModifier(new StatModifier(ThrowingStar, StatModType.Flat, this));
+            
+            // apSkills
+            if (Flamer != 0)
+                p.Flamer.AddModifier(new StatModifier(Flamer, StatModType.Flat, this));
             
             // Training
             if (AssassinationTraining != 0)
@@ -118,6 +124,8 @@ namespace Status
             p.LuckySeven.RemoveAllModifiersFromSource(this);
             p.DiagonalStar.RemoveAllModifiersFromSource(this);
             p.ThrowingStar.RemoveAllModifiersFromSource(this);
+            
+            p.Flamer.RemoveAllModifiersFromSource(this);
         }
         
         public RewardType RewardTypes { get; set; }

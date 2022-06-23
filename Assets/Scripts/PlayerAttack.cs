@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Status;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerAttack : MonoBehaviour
 {
     // This script is only for the AdSkills.
-    [SerializeField] private List<GameObject> weaponPrefabs = new();
+    [SerializeField] private List<GameObject> adSkillPrefabs = new();
 
     private Player _player;
     private float _createDelay;
@@ -20,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
         while (_player.Hp.CalculateFinalValue() > 0)
         {
             yield return new WaitForSeconds(_createDelay);
-            foreach (var prefab in weaponPrefabs)
+            foreach (var prefab in adSkillPrefabs)
             {
                 var fixedTransform = transform;
                 switch (prefab.name)

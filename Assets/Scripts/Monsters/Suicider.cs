@@ -15,6 +15,8 @@ namespace Monsters
         private Player _player;
         private Animator _animator;
 
+        private bool _flamer = false;
+
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
@@ -85,6 +87,14 @@ namespace Monsters
             yield return new WaitForSeconds(second);
             Instantiate(prefab, transform.position, transform.rotation);
             Destroy(gameObject);
+        }
+
+        public void Flamer(float damage)
+        {
+            if (_flamer) return;
+
+            _flamer = true;
+            TakeDamage(damage);
         }
     }
 }

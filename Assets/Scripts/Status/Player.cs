@@ -30,6 +30,8 @@ namespace Status
         public PlayerStat DiagonalStar;
         public PlayerStat ThrowingStar;
         [Space] 
+        public PlayerStat Flamer;
+        [Space] 
         public PlayerStat AssassinationTraining;
 
         public Reward[] rewards;
@@ -77,7 +79,8 @@ namespace Status
             foreach (var field in fields)
             {
                 var statName = field.Name;
-                if (statName is "BasicStar" or "LuckySeven" or "DiagonalStar" or "ThrowingStar")
+                // if (statName is "BasicStar" or "LuckySeven" or "DiagonalStar" or "ThrowingStar" or "Flamer")
+                if (statName is not ("Level" or "nextLevelExp" or "Exp" or "ExpMultiplier" or "MaxHp" or "Hp" or "AttackDamage" or "Defense" or "AttackSpeed" or "MovementSpeed" or "Cooltime" or "Critical" or "CriticalDamage" or "rewards" or "_levelTable" or "activatedSkills"))
                 {
                     var stat = (PlayerStat)field.GetValue(this);
 
@@ -88,7 +91,6 @@ namespace Status
                     else 
                     {
                         activatedSkills.Add(statName, stat.CalculateFinalValue());
-                        
                     }
                 }
             }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Status;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class ExpSoul1 : MonoBehaviour
 {
@@ -28,6 +29,12 @@ public class ExpSoul1 : MonoBehaviour
 
         if (_isTriggered && transform.position == _player.transform.position)
         {
+            _player.EarnExp(1);
+            Destroy(gameObject);
+        }
+
+        if (_liveTime > 8f)
+        {
             Destroy(gameObject);
         }
     }
@@ -38,10 +45,5 @@ public class ExpSoul1 : MonoBehaviour
         {
             _isTriggered = true;
         }
-    }
-
-    private void OnDestroy()
-    {
-        _player.EarnExp(1);
     }
 }

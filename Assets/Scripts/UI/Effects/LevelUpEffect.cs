@@ -11,10 +11,11 @@ public class LevelUpEffect : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public IEnumerator OnLevelUp()
+    // public IEnumerator OnLevelUp()
+    public void OnLevelUp()
     {
-        _animator.SetBool("isLeveling", true);
-        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
-        _animator.SetBool("isLeveling", false);
+        // _animator.SetBool("isLeveling", true);
+        // yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+        // _animator.SetBool("isLeveling", false);
     }
 }
