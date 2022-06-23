@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - HitArea
   - Dead
+  - PickupRadius
+  - ExpSoul1
   layers:
   - Default
   - TransparentFX

@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using Status;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Monsters
 {
@@ -11,7 +9,7 @@ namespace Monsters
         [SerializeField] private float monsterSpeed = 1.5f;
         [SerializeField] private float monsterDamage = 20f;
         [SerializeField] private float monsterHp = 10f;
-        [SerializeField] private float monsterExp = 1f;
+        [SerializeField] private GameObject prefab;
 
         private float _monsterSpeedMultiplier = 1;
         private Player _player;
@@ -40,7 +38,7 @@ namespace Monsters
             _monsterSpeedMultiplier = 0;
             _animator.SetBool("isAttacking", true);
             gameObject.tag = "Dead";
-            StartCoroutine(DestroyAfter(_animator.GetCurrentAnimatorStateInfo(0).length));
+            StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
 
         private void AttackPlayer()
@@ -67,7 +65,7 @@ namespace Monsters
             _monsterSpeedMultiplier = 0;
             GetComponent<SpriteRenderer>().color = new Color(255, 83, 83, 255);
             gameObject.tag = "Dead";
-            StartCoroutine(DestroyAfter(_animator.GetCurrentAnimatorStateInfo(0).length));
+            StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
 
         public void StopMonster()
@@ -82,10 +80,10 @@ namespace Monsters
             GetComponent<Animator>().enabled = true;
         }
 
-        private IEnumerator DestroyAfter(float second)
+        private IEnumerator BeforeDestroy(float second)
         {
             yield return new WaitForSeconds(second);
-            _player.EarnExp(monsterExp);
+            Instantiate(prefab, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

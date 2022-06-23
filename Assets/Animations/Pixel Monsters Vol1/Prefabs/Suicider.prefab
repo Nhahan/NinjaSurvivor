@@ -123,7 +123,7 @@ MonoBehaviour:
   monsterSpeed: 1.5
   monsterDamage: 33
   monsterHp: 13
-  monsterExp: 1
+  prefab: {fileID: 5601239791881696676, guid: 55f4fc2701b9f45289b7ba81f1572523, type: 3}
 --- !u!50 &302503506
 Rigidbody2D:
   serializedVersion: 4

@@ -58,7 +58,7 @@ public class PlayerAttack : MonoBehaviour
             for (var i = 0; i < starCounts; i++)
             {
                 yield return new WaitForSeconds(_createDelay / 3 * 2 / starCounts);
-                Instantiate(prefab, transform.position, rotation);
+                Instantiate(prefab, _player.transform.position, rotation);
                 yield return new WaitForSeconds(_createDelay / 3 * 1 / starCounts);
             }
         }
