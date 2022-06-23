@@ -16,6 +16,7 @@ namespace ApSkills
         private Vector2 _fireDirection;
     
         private bool _isAvailable = true;
+        private float _damage;
 
         private void Start()
         {
@@ -23,6 +24,9 @@ namespace ApSkills
             _playerRb = _player.GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
             _flamer = _player.transform.Find("SkillPoints").Find("Flamer");
+            
+            var skillLevelBonus = (float)(1 + 1.5 * _player.Flamer.CalculateFinalValue());
+            _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
             
             var animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
             
@@ -57,10 +61,8 @@ namespace ApSkills
             if (!coll.CompareTag("Enemy")) return;
 
             var monster = coll.gameObject.GetComponent<IMonster>();
-            var skillLevelBonus = (float)(1 + 1.5 * _player.Flamer.CalculateFinalValue());
-            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
 
-            monster.TakeDamage(damage);
+            monster.TakeDamage(_damage);
         }
     
         private void FlipSprite()

@@ -12,10 +12,15 @@ namespace ApSkills
         private Player _player;
         private Animator _animator;
 
+        private float _damage;
+
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
+            
+            var skillLevelBonus = (float)(1 + 0.1 * _player.BasicStar.CalculateFinalValue());
+            _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
             
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
@@ -25,10 +30,8 @@ namespace ApSkills
             if (!coll.CompareTag("Enemy")) return;
 
             var monster = coll.gameObject.GetComponent<IMonster>();
-            var skillLevelBonus = (float)(1 + 0.1 * _player.BasicStar.CalculateFinalValue());
-            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
 
-            monster.TakeDamage(damage);
+            monster.TakeDamage(_damage);
         }
         
         private IEnumerator BeforeDestroy(float second)
