@@ -56,7 +56,7 @@ namespace AdSkills
         {
             try
             {
-                _nearestEnemy = FindNearestObject().transform.position;
+                _nearestEnemy = GameManager.Instance.GetNearestTarget();
                 if (_nearestEnemy == null || Vector3.Distance(_nearestEnemy, transform.position) > possibleAttackDistance)
                 {
                     Destroy(gameObject);
@@ -69,11 +69,6 @@ namespace AdSkills
             {
                 Destroy(gameObject);
             }
-        }
-        private GameObject FindNearestObject()
-        {
-            return GameObject.FindGameObjectsWithTag("Enemy").ToList()
-                .OrderBy(obj => Vector3.Distance(transform.position, obj.transform.position)).FirstOrDefault();
         }
     }
 }

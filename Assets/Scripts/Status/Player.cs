@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace Status
         private readonly Dictionary<string, float> activatedSkills = new();
 
         private SpriteFlash sprite;
-
+        
         private void Awake()
         {
             var levelTableAsset = Resources.Load<TextAsset>("JSON/level").ToString();
@@ -56,6 +57,7 @@ namespace Status
             }
 
             sprite = GetComponent<SpriteFlash>();
+            StartCoroutine(FindNearestObject(), 1.5f);
         }
 
         public void TakeDamage(float damage)

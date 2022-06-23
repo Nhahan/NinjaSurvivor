@@ -10,6 +10,8 @@ public class ExpSoul1 : MonoBehaviour
     private Player _player;
     private bool _isTriggered;
     private float _liveTime;
+
+    private float _timeToDisappear = 7f;
     
     private void Start()
     {
@@ -33,7 +35,7 @@ public class ExpSoul1 : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (_liveTime > 8f)
+        if (_liveTime > _timeToDisappear)
         {
             Destroy(gameObject);
         }

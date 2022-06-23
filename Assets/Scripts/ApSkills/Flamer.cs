@@ -1,74 +1,74 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using Monsters;
 using Status;
 using UnityEngine;
 
-public class Flamer : MonoBehaviour
+namespace ApSkills
 {
-    [SerializeField] private float damageMultiplier = 1;
+    public class Flamer : MonoBehaviour
+    {
+        [SerializeField] private float damageMultiplier = 1;
 
-    private Player _player;
-    private Transform _flamer;
-    private Animator _animator;
-    private Rigidbody2D _playerRb;
-    private Vector2 _fireDirection;
+        private Player _player;
+        private Transform _flamer;
+        private Animator _animator;
+        private Rigidbody2D _playerRb;
+        private Vector2 _fireDirection;
     
-    private bool _isAvailable = true;
+        private bool _isAvailable = true;
 
-    private void Awake()
-    {
-        _player = GameManager.Instance.GetPlayer();
-        if (_player.Flamer.CalculateFinalValue() < 1) { Destroy(gameObject); }
-    }
-
-    private void Start()
-    {
-        _playerRb = _player.GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-        _flamer = _player.transform.Find("SkillPoints").Find("Flamer");
-        var animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
-        Invoke(nameof(ToNotAvailable), animationLength / 0.8f);
-        StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
-    }
-
-    private IEnumerator BeforeDestroy(float second)
-    {
-        yield return new WaitForSeconds(second);
-        Destroy(gameObject);
-    }
-
-    private void Update()
-    {
-        _fireDirection = _playerRb.velocity;
-        FlipSprite();
-        if (_isAvailable)
+        private void Awake()
         {
-            transform.position = _flamer.position;
+            _player = GameManager.Instance.GetPlayer();
+            if (_player.Flamer.CalculateFinalValue() < 1) { Destroy(gameObject); }
         }
-    }
 
-    private void ToNotAvailable()
-    {
-        _isAvailable = false;
-    }
+        private void Start()
+        {
+            _playerRb = _player.GetComponent<Rigidbody2D>();
+            _animator = GetComponent<Animator>();
+            _flamer = _player.transform.Find("SkillPoints").Find("Flamer");
+            var animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
+            Invoke(nameof(ToNotAvailable), animationLength / 0.8f);
+            StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
+        }
 
-    private void OnTriggerEnter2D(Collider2D coll)
-    {
-        if (!_isAvailable) return;
-        if (!coll.CompareTag("Enemy")) return;
+        private IEnumerator BeforeDestroy(float second)
+        {
+            yield return new WaitForSeconds(second);
+            Destroy(gameObject);
+        }
 
-        var monster = coll.gameObject.GetComponent<IMonster>();
-        var skillLevelBonus = (float)(1 + 1.5 * _player.Flamer.CalculateFinalValue());
-        var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
+        private void Update()
+        {
+            _fireDirection = _playerRb.velocity;
+            FlipSprite();
+            if (_isAvailable)
+            {
+                transform.position = _flamer.position;
+            }
+        }
 
-        monster.Flamer(damage);
-    }
+        private void ToNotAvailable()
+        {
+            _isAvailable = false;
+        }
+
+        private void OnTriggerEnter2D(Collider2D coll)
+        {
+            if (!_isAvailable) return;
+            if (!coll.CompareTag("Enemy")) return;
+
+            var monster = coll.gameObject.GetComponent<IMonster>();
+            var skillLevelBonus = (float)(1 + 1.5 * _player.Flamer.CalculateFinalValue());
+            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
+
+            monster.TakeDamage(damage);
+        }
     
-    private void FlipSprite()
-    {
-        transform.localScale = new Vector2(Mathf.Sign(_fireDirection.x), 1f);
+        private void FlipSprite()
+        {
+            transform.localScale = new Vector2(Mathf.Sign(_fireDirection.x), 1f);
+        }
     }
 }

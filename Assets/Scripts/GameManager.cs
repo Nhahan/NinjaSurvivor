@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     private bool _isGameOver;
     public static GameManager Instance;
     public Dictionary<string, float> ActivatedSkills = new();
+    public List<Vector3> nearestTargets = new();
 
     private void Awake()
     {
@@ -36,13 +37,10 @@ public class GameManager : MonoBehaviour
     {
         levelUpRewards.HideRewards();
         _isGameOver = false;
-        Time.timeScale = 1;
-        ActivatedSkills = player.GetActivatedSkills(true);
+        Resume();
 
-        if (spawnPoints.Length > 0)
-        {
-            StartCoroutine(this.CreateMonster());
-        }
+        StartCoroutine(CreateMonster());
+        StartCoroutine(FindNearestTargets(2f));
     }
 
     public Player GetPlayer()
@@ -99,9 +97,20 @@ public class GameManager : MonoBehaviour
         }
         ActivatedSkills = player.GetActivatedSkills(true);
     }
-
-    public Dictionary<string, float> GetActivatedSkillsDict()
+    
+    // ReSharper disable Unity.PerformanceAnalysis
+    private IEnumerator FindNearestTargets(float second)
     {
-        return ActivatedSkills;
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+        nearestTargets = enemies.Select(enemy => enemy.transform.position)
+            .OrderBy(position => Vector2.Distance(transform.position, position))
+            .ToList();
+
+        yield return new WaitForSeconds(second);
+    }
+
+    public Vector3 GetNearestTarget()
+    {
+        return nearestTargets[0];
     }
 }
