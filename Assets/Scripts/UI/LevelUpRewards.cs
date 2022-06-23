@@ -4,14 +4,15 @@ using System.Linq;
 using Status;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class LevelUpRewards : MonoBehaviour
 {
     [SerializeField] private GameObject[] rewardSlots;
-    [SerializeField] private GameObject[] slotFrames;
     [SerializeField] private List<Reward> rewards = new();
+    [SerializeField] private LevelUpEffect levelUpEffect;
     
     private List<Reward> _adSkillRewards = new();
     private List<Reward> _apSkillRewards = new();
@@ -24,6 +25,7 @@ public class LevelUpRewards : MonoBehaviour
     private GameObject _framesGrid;
     private GameObject _rewardsGrid;
     private GameObject _textGrid;
+    private GameObject _levelGrid;
     
     private void Start()
     {
@@ -52,16 +54,17 @@ public class LevelUpRewards : MonoBehaviour
     public void ShowRewards()
     {
         GameManager.Instance.post.isGlobal = true;
-        
+
+        StartCoroutine(levelUpEffect.OnLevelUp());
         SetRandomRewards(3);
         SetRewardsOnSlots();
-        SetFramesColor();
         
         GameManager.Instance.AllStop();
         
         _framesGrid.SetActive(true);
         _rewardsGrid.SetActive(true);
         _textGrid.SetActive(true);
+        _levelGrid.SetActive(true);
     }
     
     public void HideRewards()
@@ -72,6 +75,7 @@ public class LevelUpRewards : MonoBehaviour
         _framesGrid.SetActive(false);
         _rewardsGrid.SetActive(false);
         _textGrid.SetActive(false);
+        _levelGrid.SetActive(false);
         
         GameManager.Instance.post.isGlobal = false;
     }
@@ -79,7 +83,6 @@ public class LevelUpRewards : MonoBehaviour
     private void SetRewardsOnSlots()
     {
         var activatedSkills = GameManager.Instance.GetPlayer().GetActivatedSkills(true);
-        var activatedSkillsConvertedToSting = activatedSkills.ConvertAll(s => s.ToString()).ToList();
 
         for (var i = 0; i < rewardSlots.Length; i++)
         {
@@ -87,10 +90,33 @@ public class LevelUpRewards : MonoBehaviour
             rewardSlots[i].GetComponent<Image>().sprite = _randomRewards[i].Icon;
 
             // Set text
-            var skillIndex = activatedSkillsConvertedToSting.IndexOf(_randomRewards[i].name);
+            var skillLevel = activatedSkills[_randomRewards[i].name];
+            var newTmp = _textGrid.transform.GetChild(i).GetComponent<TextMeshProUGUI>();
+            var levelTmp = _levelGrid.transform.GetChild(i).GetComponent<TextMeshProUGUI>();
+            if (skillLevel >= 1)
+            {
+                levelTmp.enabled = true;
+                newTmp.enabled = false;
+                levelTmp.text = "Lv " + skillLevel;
+            }
+            else
+            {
+                levelTmp.enabled = false;
+                newTmp.enabled = true;
+            }
 
-            _textGrid.transform.GetChild(i).GetComponent<TextMeshProUGUI>().text = 
-                skillIndex == -1 ? "New" : "Lv " + activatedSkills[skillIndex].CalculateFinalValue();
+            // Set frame
+            var rewardType = _randomRewards[i].RewardType;
+            switch (rewardType)
+            {
+                case RewardType.AdSkill: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 70, 125, 255); break;
+                case RewardType.ApSkill: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(50, 100, 255, 255); break;
+                case RewardType.SubSkill: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 144, 255, 255); break;
+                case RewardType.Training: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(122, 217, 105, 100); break;
+                case RewardType.Item: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 255, 255, 255); break;
+                default:
+                    throw new ArgumentNullException();
+            }
         }
     }
     
@@ -99,30 +125,11 @@ public class LevelUpRewards : MonoBehaviour
         return _randomRewards;
     }
 
-    public void SetFramesColor()
-    {
-        var rewardTypes = _randomRewards.Select(reward => reward.RewardType).ToList();
-        for (var i = 0; i < rewardTypes.Count; i++)
-        {
-            // ReSharper disable once NotAccessedVariable
-            var frame = slotFrames[i].GetComponent<Image>().color; 
-            switch (rewardTypes[i])
-            {
-                case RewardType.AdSkill: frame = new Color32(255, 70, 125, 255); break;
-                case RewardType.ApSkill: frame = new Color32(50, 100, 255, 255); break;
-                case RewardType.SubSkill: frame = new Color32(255, 144, 255, 255); break;
-                case RewardType.Training: frame = new Color32(122, 217, 105, 100); break;
-                case RewardType.Item: frame = new Color32(255, 255, 255, 255); break;
-                default:
-                    throw new ArgumentNullException();
-            }
-        }
-    }
-    
     private void SetSlotSettingsOnGrids()
     {
         _framesGrid = transform.GetChild(0).gameObject;
         _rewardsGrid = transform.GetChild(1).gameObject;
         _textGrid = transform.GetChild(2).gameObject;
+        _levelGrid = transform.GetChild(3).gameObject;
     }
 }

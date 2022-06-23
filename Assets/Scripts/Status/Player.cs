@@ -12,7 +12,7 @@ namespace Status
     {
         private int Level; // level starts form 0
         private float nextLevelExp;
-        public float Exp; // Level will be automatically calculated by Exp
+        private float Exp; // Level will be automatically calculated by Exp
         public PlayerStat ExpMultiplier; // Earn Exp(100+ExpMultiplier)
         [Space] 
         public PlayerStat MaxHp;
@@ -26,7 +26,7 @@ namespace Status
         public PlayerStat CriticalDamage;
         [Space] 
         public PlayerStat BasicStar;
-        public PlayerStat LuckySeven; // BasicStar Recycling;
+        public PlayerStat LuckySeven;
         public PlayerStat DiagonalStar;
         public PlayerStat ThrowingStar;
         [Space] 
@@ -35,19 +35,14 @@ namespace Status
         public Reward[] rewards;
 
         private LevelInfo[] _levelTable;
-        private readonly List<PlayerStat> activatedSkills = new();
+        private readonly Dictionary<string, float> activatedSkills = new();
 
-        public class TemporalStat
-        {
-            
-        }
-
+        private SpriteFlash sprite;
 
         private void Awake()
         {
             var levelTableAsset = Resources.Load<TextAsset>("JSON/level").ToString();
             _levelTable = JsonUtility.FromJson<LevelInfoList>(levelTableAsset).levels;
-            SetActivatedSkills();
         }
 
         private void Start()
@@ -57,11 +52,14 @@ namespace Status
             {
                 reward.Equip(this);
             }
+
+            sprite = GetComponent<SpriteFlash>();
         }
 
         public void TakeDamage(float damage)
         {
             Hp.SetValue(Hp.CalculateFinalValue() - damage);
+            sprite.Flash();
             Debug.Log($"Took damage: {damage} / currentHp: {Hp}");
 
             // ReSharper disable once InvertIf
@@ -72,44 +70,31 @@ namespace Status
             }
         }
 
-            // List<string> strings = new() { "level", "nextLevelExp", "Exp", "rewards", "_levelTable", "activatedSkills" };
         public void SetActivatedSkills()
         {
-            var fields = typeof(Player).GetFields().ToList(); // 클래스의 변수들 가져오기
+            var fields = typeof(Player).GetFields().ToList();
 
             foreach (var field in fields)
             {
-                Debug.Log(field); // 예를 들어 여기선 Status.PlayerStat ThrowingStar 라고 찍힙니다
-                try
+                var statName = field.Name;
+                if (statName is "BasicStar" or "LuckySeven" or "DiagonalStar" or "ThrowingStar")
                 {
-                    PlayerStat stat = field.GetValue(typeof(PlayerStat)) as PlayerStat; // 여기서 에러..
-            
-                    Debug.Log(field);
-                    s(stat);
-                }
-                catch (Exception e)
-                {
-                    Debug.Log(e);
-                    // 에러 내용
-                    // System.ArgumentException:
-                    // Field AssassinationTraining defined on type Status.Player
-                    // is not a field on the target object which is of type System.RuntimeType.
-                    // Parameter name: obj
-                }
-            }
+                    var stat = (PlayerStat)field.GetValue(this);
 
-            void s(PlayerStat stat)
-            {
-                try { if (stat.CalculateFinalValue() >= 1) activatedSkills.Add((stat)); }
-                catch (Exception e )
-                {
-                    Debug.Log("why");
-                    Debug.Log(e);
+                    if (activatedSkills.ContainsKey(statName))
+                    {
+                        activatedSkills[statName] = stat.CalculateFinalValue();
+                    } 
+                    else 
+                    {
+                        activatedSkills.Add(statName, stat.CalculateFinalValue());
+                        
+                    }
                 }
             }
         }
 
-        public List<PlayerStat> GetActivatedSkills(bool set)
+        public Dictionary<string, float> GetActivatedSkills(bool set)
         {
             if (set) SetActivatedSkills();
             return activatedSkills;

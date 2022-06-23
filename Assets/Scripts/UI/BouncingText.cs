@@ -16,7 +16,8 @@ public class BouncingText : MonoBehaviour
 
     private void Start()
     {
-        _text = GetComponent<TextMeshProUGUI>().text;
+        var tmp = GetComponent<TextMeshProUGUI>();
+        _text = tmp.text;
     }
     
     private void FixedUpdate()

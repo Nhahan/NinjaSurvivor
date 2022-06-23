@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     private bool _isGameOver;
     public static GameManager Instance;
-    public List<PlayerStat> activatedSkills = new();
+    public Dictionary<string, float> ActivatedSkills = new();
 
     private void Awake()
     {
@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour
         levelUpRewards.HideRewards();
         _isGameOver = false;
         Time.timeScale = 1;
-        activatedSkills = player.GetActivatedSkills(false);
+        ActivatedSkills = player.GetActivatedSkills(true);
+
         if (spawnPoints.Length > 0)
         {
             StartCoroutine(this.CreateMonster());
@@ -63,6 +64,7 @@ public class GameManager : MonoBehaviour
     public void SetIsGameOver(bool value)
     {
         _isGameOver = value;
+        AllStop();
     }
 
     public bool GetIsGameOver()
@@ -95,11 +97,11 @@ public class GameManager : MonoBehaviour
         {
             enemy.GetComponent<IMonster>().ResumeMonster();
         }
-        activatedSkills = player.GetActivatedSkills(true);
+        ActivatedSkills = player.GetActivatedSkills(true);
     }
 
-    public List<string> GetActivatedSkillsString()
+    public Dictionary<string, float> GetActivatedSkillsDict()
     {
-        return activatedSkills.ConvertAll(s => s.ToString()).ToList();
+        return ActivatedSkills;
     }
 }
