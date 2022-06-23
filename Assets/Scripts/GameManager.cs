@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private GameObject monsterPrefab;
 
-    private const float CreateDelay = 1f;
+    private const float CreateDelay = 0.1f;
     [SerializeField] private Player player;
     [SerializeField] private LevelUpRewards levelUpRewards;
     [SerializeField] public PostProcessVolume post;
@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
         while (!_isGameOver) {
             yield return new WaitForSeconds(second);
             var enemies = GameObject.FindGameObjectsWithTag("Enemy").Select(enemy => enemy.transform.position).ToList();
+            
             nearestTargets = enemies.OrderBy(position => Vector3.Distance(transform.position, position)).ToList();
         }
     }

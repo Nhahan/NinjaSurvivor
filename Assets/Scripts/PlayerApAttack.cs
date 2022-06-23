@@ -46,19 +46,17 @@ public class PlayerApAttack : MonoBehaviour
     private IEnumerator LightningStrike(GameObject prefab, Vector3 position, Quaternion rotation)
     {
         var level = (int)_player.LightningStrike.CalculateFinalValue();
-        Debug.Log($"Level: {level}");
         if (level < 1) yield break;
         
         var count = level * 2;
         var targets = GameManager.Instance.GetNearestTargets(count);
-        Debug.Log($"targetNum: {targets.Count}");
         
         for (var i = 0; i < count; i++)
         {
             try
             {
                 var distance = Vector3.Distance(_player.transform.position, targets[i]);
-                if (distance < 24)
+                if (distance < 16)
                 {
                     Instantiate(prefab, targets[i], rotation);
                 }

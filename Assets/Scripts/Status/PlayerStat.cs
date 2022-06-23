@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
+using UnityEngine;
 
 namespace Status
 {
@@ -102,7 +103,7 @@ namespace Status
                 else if (mod.Type == StatModType.PercentAdd)
                 {
                     sumPercentAdd += mod.Value;
-
+                
                     if (i + 1 >= statModifiers.Count || statModifiers[i + 1].Type != StatModType.PercentAdd)
                     {
                         finalValue *= 1 + sumPercentAdd;
@@ -111,7 +112,7 @@ namespace Status
                 }
                 else if (mod.Type == StatModType.PercentMult)
                 {
-                    finalValue *= 1 + mod.Value;
+                    finalValue *= (finalValue + mod.Value / 100 );
                 }
             }
 

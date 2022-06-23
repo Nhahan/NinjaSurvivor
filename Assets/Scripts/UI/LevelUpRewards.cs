@@ -4,6 +4,7 @@ using System.Linq;
 using Status;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -53,8 +54,6 @@ public class LevelUpRewards : MonoBehaviour
     
     public void ShowRewards()
     {
-        GameManager.Instance.post.isGlobal = true;
-
         // StartCoroutine(levelUpEffect.OnLevelUp());
         SetRandomRewards(3);
         SetRewardsOnSlots();
@@ -77,7 +76,8 @@ public class LevelUpRewards : MonoBehaviour
         _textGrid.SetActive(false);
         _levelGrid.SetActive(false);
         
-        GameManager.Instance.post.isGlobal = false;
+        GameManager.Instance.post.profile.TryGetSettings(out Bloom bloom);
+        bloom.intensity.value = 5.5f;
     }
     
     private void SetRewardsOnSlots()
@@ -112,7 +112,7 @@ public class LevelUpRewards : MonoBehaviour
                 case RewardType.AdSkill: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 70, 125, 255); break;
                 case RewardType.ApSkill: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(50, 100, 255, 255); break;
                 case RewardType.SubSkill: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 144, 255, 255); break;
-                case RewardType.Training: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(180, 217, 105, 100); break;
+                case RewardType.Training: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(111, 217, 105, 255); break;
                 case RewardType.Item: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 255, 255, 255); break;
                 default:
                     throw new ArgumentNullException();

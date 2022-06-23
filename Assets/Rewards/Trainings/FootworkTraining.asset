@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a67ee28b6adf441814e60bcb404307, type: 3}
   m_Name: FootworkTraining
   m_EditorClassIdentifier: 
-  RewardType: 0
+  RewardType: 3
   Name: FootworkTraining
   Icon: {fileID: 21300000, guid: d0b6cc61d25464c48806479f9ce72fe0, type: 3}
   MaxCount: 10
@@ -21,7 +21,7 @@ MonoBehaviour:
   AttackDamageBonus: 0
   DefenseBonus: 0
   AttackSpeedBonus: 0
-  MovementSpeedBonus: 5
+  MovementSpeedBonus: 0
   CooltimeBonus: 0
   CriticalBonus: 0
   MaxHpPercentBonus: 0
@@ -29,7 +29,7 @@ MonoBehaviour:
   AttackDamagePercentBonus: 0
   DefensePercentBonus: 0
   AttackSpeedPercentBonus: 0
-  MovementSpeedPercentBonus: 0
+  MovementSpeedPercentBonus: 5
   CooltimePercentBonus: 0
   CriticalPercentBonus: 0
   CriticalDamagePercentBonus: 0
@@ -40,7 +40,8 @@ MonoBehaviour:
   Flamer: 0
   LightningStrike: 0
   AssassinationTraining: 0
-  PhysicalTraining: 0
   BodycoreTraining: 0
   FootworkTraining: 1
+  MuscleTraining: 0
+  PhysicalTraining: 0
   memo: "\uBCF4\uBC95\uC218\uB828/\uC774\uB3D9\uC18D\uB3C45%\uC99D\uAC00/\uCD5C\uB30010\uD68C"
