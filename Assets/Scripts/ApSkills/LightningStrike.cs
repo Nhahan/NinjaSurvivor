@@ -14,7 +14,10 @@ namespace ApSkills
         private void Awake()
         {
             _player = GameManager.Instance.GetPlayer();
-            if (_player.BasicStar.CalculateFinalValue() < 1) { Destroy(gameObject); }
+            if (_player.BasicStar.CalculateFinalValue() < 1)
+            {
+                Destroy(gameObject);
+            }
         }
 
         private void Start()
@@ -49,6 +52,5 @@ namespace ApSkills
                 Destroy(gameObject);
             }
         }
-
     }
 }
