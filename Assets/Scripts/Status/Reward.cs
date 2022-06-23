@@ -116,6 +116,14 @@ namespace Status
             // Training
             if (AssassinationTraining != 0)
                 p.AssassinationTraining.AddModifier(new StatModifier(AssassinationTraining, StatModType.Flat, this));
+            if (BodycoreTraining != 0)
+                p.AssassinationTraining.AddModifier(new StatModifier(AssassinationTraining, StatModType.Flat, this));
+            if (FootworkTraining != 0)
+                p.AssassinationTraining.AddModifier(new StatModifier(AssassinationTraining, StatModType.Flat, this));
+            if (MuscleTraining != 0)
+                p.AssassinationTraining.AddModifier(new StatModifier(AssassinationTraining, StatModType.Flat, this));
+            if (PhysicalTraining != 0)
+                p.AssassinationTraining.AddModifier(new StatModifier(AssassinationTraining, StatModType.Flat, this));
         }
 
         public void Unequip(Player p)
@@ -137,6 +145,12 @@ namespace Status
             
             p.Flamer.RemoveAllModifiersFromSource(this);
             p.LightningStrike.RemoveAllModifiersFromSource(this);
+            
+            p.AssassinationTraining.RemoveAllModifiersFromSource(this);
+            p.BodycoreTraining.RemoveAllModifiersFromSource(this);
+            p.FootworkTraining.RemoveAllModifiersFromSource(this);
+            p.MuscleTraining.RemoveAllModifiersFromSource(this);
+            p.PhysicalTraining.RemoveAllModifiersFromSource(this);
         }
         
         public RewardType RewardTypes { get; set; }

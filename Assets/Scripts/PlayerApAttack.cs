@@ -52,6 +52,7 @@ public class PlayerApAttack : MonoBehaviour
         var targets = GameManager.Instance.GetNearestTargets(count);
         
         for (var i = 0; i < count; i++) {
+            Debug.Log(targets[i]);
             Instantiate(prefab, targets[i], rotation);
             yield return new WaitForSeconds(0);
         }

@@ -35,6 +35,10 @@ namespace Status
         public PlayerStat LightningStrike;
         [Space] 
         public PlayerStat AssassinationTraining;
+        public PlayerStat BodycoreTraining;
+        public PlayerStat FootworkTraining;
+        public PlayerStat MuscleTraining;
+        public PlayerStat PhysicalTraining;
 
         public Reward[] rewards;
 
