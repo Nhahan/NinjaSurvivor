@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private GameObject monsterPrefab;
 
-    [SerializeField] private float createDelay = 2f;
+    private const float CreateDelay = 1f;
     [SerializeField] private Player player;
     [SerializeField] private LevelUpRewards levelUpRewards;
     [SerializeField] public PostProcessVolume post;
@@ -36,11 +36,9 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         levelUpRewards.HideRewards();
-        _isGameOver = false;
-        Resume();
 
         StartCoroutine(CreateMonster());
-        StartCoroutine(FindNearestTargets(2f));
+        StartCoroutine(FindNearestTargets(1.5f));
     }
 
     public Player GetPlayer()
@@ -52,7 +50,7 @@ public class GameManager : MonoBehaviour
     {
         while (!_isGameOver)
         {
-            yield return new WaitForSeconds(createDelay);
+            yield return new WaitForSeconds(CreateDelay);
 
             var idx = Random.Range(1, spawnPoints.Length);
             Instantiate(monsterPrefab, spawnPoints[idx].position, spawnPoints[idx].rotation);
@@ -101,19 +99,18 @@ public class GameManager : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator FindNearestTargets(float second)
     {
-        var enemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
-        nearestTargets = enemies.Select(enemy => enemy.transform.position)
-            .OrderBy(position => Vector2.Distance(transform.position, position))
-            .ToList();
-
-        yield return new WaitForSeconds(second);
+        while (!_isGameOver) {
+            yield return new WaitForSeconds(second);
+            var enemies = GameObject.FindGameObjectsWithTag("Enemy").Select(enemy => enemy.transform.position).ToList();
+            nearestTargets = enemies.OrderBy(position => Vector3.Distance(transform.position, position)).ToList();
+        }
     }
 
     public List<Vector3> GetNearestTargets(int count)
     {
         try
         {
-            return nearestTargets.Take(count) as List<Vector3>;
+            return nearestTargets.GetRange(0, count);
         }
         catch
         {

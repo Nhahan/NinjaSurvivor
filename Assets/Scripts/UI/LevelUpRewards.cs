@@ -112,7 +112,7 @@ public class LevelUpRewards : MonoBehaviour
                 case RewardType.AdSkill: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 70, 125, 255); break;
                 case RewardType.ApSkill: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(50, 100, 255, 255); break;
                 case RewardType.SubSkill: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 144, 255, 255); break;
-                case RewardType.Training: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(122, 217, 105, 100); break;
+                case RewardType.Training: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(180, 217, 105, 100); break;
                 case RewardType.Item: _framesGrid.transform.GetChild(i).GetComponent<Image>().color = new Color32(255, 255, 255, 255); break;
                 default:
                     throw new ArgumentNullException();

@@ -17,14 +17,11 @@ namespace ApSkills
     
         private bool _isAvailable = true;
 
-        private void Awake()
+        private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
             if (_player.Flamer.CalculateFinalValue() < 1) { Destroy(gameObject); }
-        }
-
-        private void Start()
-        {
+            
             _playerRb = _player.GetComponent<Rigidbody2D>();
             _animator = GetComponent<Animator>();
             _flamer = _player.transform.Find("SkillPoints").Find("Flamer");
