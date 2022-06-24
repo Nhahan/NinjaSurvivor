@@ -41,7 +41,7 @@ namespace AdSkills
 
             Destroy(gameObject);
             var monster = coll.gameObject.GetComponent<IMonster>();
-            var skillLevelBonus = (float)(1 + 0.1 * _player.BasicStar.CalculateFinalValue());
+            var skillLevelBonus = 1f + 0.1f * _player.BasicStar.CalculateFinalValue();
             var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
 
             monster.TakeDamage(damage);

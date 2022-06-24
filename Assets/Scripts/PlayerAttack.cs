@@ -36,18 +36,25 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator BasicStar(GameObject prefab, Vector3 _, Quaternion rotation)
     {      // BasicStar Level + LuckySeven Level
-            for (var i = 0; i < _player.LuckySeven.CalculateFinalValue() + 1; i++) {
-                yield return new WaitForSeconds(0.04f);
-                Instantiate(prefab, transform.position, rotation);
-            }
+        var level = _player.BasicStar.CalculateFinalValue();
+        if (level < 1) yield break;
+        
+        for (var i = 0; i < _player.LuckySeven.CalculateFinalValue(); i++) {
+            yield return new WaitForSeconds(0.04f);
+            Instantiate(prefab, transform.position, rotation);
+        }
     }
 
-    private void DiagonalStar(GameObject prefab, Vector3 _, Quaternion rotation)
+    private IEnumerator DiagonalStar(GameObject prefab, Vector3 _, Quaternion rotation)
     {
-            for (var i = 0; i < _player.DiagonalStar.CalculateFinalValue() * 2; i++)
-            {
-                Instantiate(prefab, transform.position, rotation);
-            }
+        var level = _player.DiagonalStar.CalculateFinalValue();
+        if (level < 1) yield break;
+        
+        for (var i = 0; i < _player.DiagonalStar.CalculateFinalValue() * 2; i++)
+        {
+            Instantiate(prefab, transform.position, rotation);
+            yield return new WaitForSeconds(0);
+        }
     }
 
     private IEnumerator ThrowingStar(GameObject prefab, Vector3 _, Quaternion rotation)

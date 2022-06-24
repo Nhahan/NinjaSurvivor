@@ -9,6 +9,8 @@ using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private bool isSpawning;
+    
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private GameObject monsterPrefab;
 
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator CreateMonster()
     {
-        while (!_isGameOver)
+        while (!_isGameOver && isSpawning)
         {
             yield return new WaitForSeconds(CreateDelay);
 

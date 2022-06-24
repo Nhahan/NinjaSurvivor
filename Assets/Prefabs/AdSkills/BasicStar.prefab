@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 472409538678720170}
   - component: {fileID: 8780800531209885348}
   - component: {fileID: 1046574007960841263}
-  - component: {fileID: 4810691387820906552}
+  - component: {fileID: -5497512151956144236}
   m_Layer: 6
   m_Name: BasicStar
   m_TagString: Weapon
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5447375999564444073}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,7 +102,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.68
---- !u!114 &4810691387820906552
+--- !u!114 &-5497512151956144236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,8 +111,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5447375999564444073}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99e71b29a07f940319d25531c036543f, type: 3}
+  m_Script: {fileID: 11500000, guid: 81928e378158946c5b79dd6e40c62dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 7.5
+  bulletSpeed: 12
+  possibleAttackDistance: 11.3
   damageMultiplier: 1

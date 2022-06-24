@@ -58,7 +58,7 @@ public class PlayerApAttack : MonoBehaviour
             try
             {
                 var distance = Vector3.Distance(_player.transform.position, targets[i]);
-                if (distance < 16)
+                if (distance < 17)
                 {
                     Instantiate(prefab, targets[i], rotation);
                 }
