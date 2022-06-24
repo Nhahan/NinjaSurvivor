@@ -17,9 +17,9 @@ public class SpriteFlash : MonoBehaviour
         #endregion
         #region Private Fields
 
-        private SpriteRenderer spriteRenderer;
-        private Material originalMaterial;
-        private Coroutine flashRoutine;
+        private SpriteRenderer _spriteRenderer;
+        private Material _originalMaterial;
+        private Coroutine _flashRoutine;
 
         #endregion
 
@@ -32,30 +32,30 @@ public class SpriteFlash : MonoBehaviour
 
         void Start()
         {
-            spriteRenderer = GameManager.Instance.GetPlayer().GetComponent<SpriteRenderer>();
-            originalMaterial = spriteRenderer.material;
+            _spriteRenderer = GameManager.Instance.GetPlayer().GetComponent<SpriteRenderer>();
+            _originalMaterial = _spriteRenderer.material;
         }
 
         #endregion
 
         public void Flash()
         {
-            if (flashRoutine != null)
+            if (_flashRoutine != null)
             {
-                StopCoroutine(flashRoutine);
+                StopCoroutine(_flashRoutine);
             }
 
-            flashRoutine = StartCoroutine(FlashRoutine());
+            _flashRoutine = StartCoroutine(FlashRoutine());
             Debug.Log(345);
         }
 
         private IEnumerator FlashRoutine()
         {
-            spriteRenderer.material = flashMaterial;
+            _spriteRenderer.material = flashMaterial;
             yield return new WaitForSeconds(duration);
 
-            spriteRenderer.material = originalMaterial;
-            flashRoutine = null;
+            _spriteRenderer.material = _originalMaterial;
+            _flashRoutine = null;
         }
 
         #endregion

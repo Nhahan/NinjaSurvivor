@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4924402475967583405}
   - component: {fileID: 6244158569338581852}
   m_Layer: 0
-  m_Name: monster_16_bullet
+  m_Name: AicdSpitterBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

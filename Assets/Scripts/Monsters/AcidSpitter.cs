@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Monsters
 {
-    public class Suicider : MonoBehaviour, IMonster
+    public class AcidSpitter : MonoBehaviour
     {
         [SerializeField] private GameObject ExpSoul1;
 
@@ -12,13 +12,14 @@ namespace Monsters
         private Player _player;
         private Animator _animator;
 
-        private float _monsterHp = 20f;
+        private float _monsterHp = 40f;
         private const float MonsterDamage = 20f;
         private float _randomDamage;
         private const float MonsterSpeed = 1.65f;
 
         private void Start()
         {
+            GetComponent<CircleCollider2D>().radius += (float)Random.Range(-5, 5) / 100;
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
 
@@ -66,9 +67,9 @@ namespace Monsters
             SetMonsterHp(_monsterHp - damage);
 
             if (_monsterHp > 0) return;
-            GetComponent<SpriteRenderer>().color = new Color(255, 83, 83, 255);
             _animator.SetBool("isDead", true);
             _monsterSpeedMultiplier = 0;
+            GetComponent<SpriteRenderer>().color = new Color(255, 83, 83, 255);
             gameObject.tag = "Dead";
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
