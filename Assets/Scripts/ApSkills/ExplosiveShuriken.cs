@@ -21,24 +21,21 @@ namespace ApSkills
 
         private void Start()
         {
-            GetComponent<CircleCollider2D>().radius = 0f;
+            GetComponent<CircleCollider2D>().radius = 0.05f;
+            
+            AdjustDirection();
 
             _player = GameManager.Instance.GetPlayer();
             var targets = GameManager.Instance.GetNearestTargets(5);
             _target = targets.Aggregate(new Vector3(0,0,0), (s,v) => s + v) / targets.Count;
             _animator = GetComponent<Animator>();
 
-            var skillLevelBonus = (float)(1.5 + 0.2 * _player.ExplosiveShuriken.CalculateFinalValue());
+            var skillLevelBonus = 1.5f + 0.2f * _player.ExplosiveShuriken.CalculateFinalValue();
             _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
-
-            StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
 
         private void FixedUpdate()
         {
-            var v_diff = (new Vector3(0,0,0) - transform.position);
-            var atan2 = Mathf.Atan2 ( v_diff.y, v_diff.x );
-            transform.rotation = Quaternion.Euler(0f, 0f, atan2 * Mathf.Rad2Deg - 90);
             if (!_isHit) {
                 transform.position = Vector2.MoveTowards(transform.position, Vector2.zero, 8.5f * Time.deltaTime);
             }
@@ -59,13 +56,21 @@ namespace ApSkills
 
         private void Explosion()
         {
-            GetComponent<CircleCollider2D>().radius = 2.5f;
+            GetComponent<CircleCollider2D>().radius = 1.8f;
+            StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
 
         private IEnumerator BeforeDestroy(float second)
         {
             yield return new WaitForSeconds(second);
             Destroy(gameObject);
+        }
+        
+        private void AdjustDirection()
+        {
+            var vDiff = (new Vector3(0, 0, 0) - transform.position);
+            var atan2 = Mathf.Atan2(vDiff.y, vDiff.x);
+            transform.rotation = Quaternion.Euler(0f, 0f, atan2 * Mathf.Rad2Deg - 90);
         }
     }
 }
