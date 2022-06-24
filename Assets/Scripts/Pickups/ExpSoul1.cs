@@ -8,7 +8,7 @@ namespace Pickups
         private Player _player;
         private bool _isTriggered;
         private float _liveTime;
-        private float _speed;
+        private float _speed = 0f;
 
         private const float TimeToDisappear = 7f;
 
@@ -19,13 +19,14 @@ namespace Pickups
 
         private void FixedUpdate()
         {
+            if (_speed == 0f) { _liveTime += Time.deltaTime; }
             if (_isTriggered)
             {
                 _speed += Time.deltaTime * 0.3f;
                 transform.position = Vector2.MoveTowards(
                     transform.position, 
                     _player.transform.position, 
-                    _liveTime * _liveTime);
+                    _speed * _speed);
             }
 
             if (_isTriggered && transform.position == _player.transform.position)
