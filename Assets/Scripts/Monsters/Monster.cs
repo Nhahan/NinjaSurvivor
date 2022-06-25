@@ -50,7 +50,7 @@ namespace Monsters
             KnockbackTimer -= Time.deltaTime;
         }
 
-        public void Flash()
+        public virtual void Flash()
         {
             if (_flashRoutine != null)
             {
@@ -61,7 +61,7 @@ namespace Monsters
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
-        private IEnumerator FlashRoutine()
+        protected virtual IEnumerator FlashRoutine()
         {
             SpriteRenderer = GetComponent<SpriteRenderer>();
             SpriteRenderer.material = GameManager.Instance.GetFlashMaterial();

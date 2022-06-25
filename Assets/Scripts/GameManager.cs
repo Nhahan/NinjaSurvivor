@@ -11,19 +11,19 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private GameObject monsterPrefab;
-
-    private const float CreateDelay = 0.1f;
     [SerializeField] private Player player;
     [SerializeField] private LevelUpRewards levelUpRewards;
     [SerializeField] public PostProcessVolume post;
-
-    private bool _isGameOver;
+    [SerializeField] public GameObject spawnerParent;
     
     public static GameManager Instance;
     public Dictionary<string, float> ActivatedSkills = new();
     private List<Vector3> _nearestTargets = new();
-
+    private MonsterSpawner.MonsterSpawner _monsterSpawner;
     private Material _defaultMaterial;
+    
+    private bool _isGameOver;
+    private float _playtime;
 
     private void Awake()
     {
@@ -39,27 +39,25 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         levelUpRewards.HideRewards();
-
-        StartCoroutine(CreateMonster());
         StartCoroutine(FindNearestTargets(1.5f));
-
+        
+        _monsterSpawner = spawnerParent.GetComponent<MonsterSpawner.MonsterSpawner>();
         _defaultMaterial = player.GetComponent<SpriteRenderer>().material;
+    }
+
+    private void Update()
+    {
+        _playtime += Time.deltaTime;
     }
 
     public Player GetPlayer()
     {
         return player;
     }
-
-    private IEnumerator CreateMonster()
+    
+    public float GetPlayTime()
     {
-        while (!_isGameOver && isSpawning)
-        {
-            yield return new WaitForSeconds(CreateDelay);
-
-            var idx = Random.Range(1, spawnPoints.Length);
-            Instantiate(monsterPrefab, spawnPoints[idx].position, spawnPoints[idx].rotation);
-        }
+        return _playtime;
     }
 
     public void SetIsGameOver(bool value)

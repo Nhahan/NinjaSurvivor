@@ -29,7 +29,7 @@ public class Anteater : Monster, IMonster
         _animator = GetComponent<Animator>();
 
         _randomDamage = Random.Range(8, 12);
-        KnockbackDuration = 0.06f;
+        KnockbackDuration = 0.11f;
     }
 
     private void FixedUpdate()

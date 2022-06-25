@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 8536214271734221339}
   - component: {fileID: -5268044786344721609}
   - component: {fileID: -8025922953051432536}
+  - component: {fileID: 931587224}
   m_Layer: 0
   m_Name: Cannibalisia
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c33c11d6ea9400cb6e50d75052f2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expSoul1: {fileID: 0}
+  expSoul1: {fileID: 5601239791881696676, guid: 55f4fc2701b9f45289b7ba81f1572523, type: 3}
 --- !u!50 &-8025922953051432536
 Rigidbody2D:
   serializedVersion: 4
@@ -141,3 +142,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &931587224
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7417235287509454946}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.43079495, y: -0.23933136}
+  m_Size: {x: 1.1406035, y: 1.5235312}
+  m_Direction: 0

@@ -138,5 +138,10 @@ namespace Status
             if (!(Exp >= nextLevelExp)) return;
             LevelUp();
         }
+
+        public int GetLevel()
+        {
+            return Level;
+        }
     }
 }
