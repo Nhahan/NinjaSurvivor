@@ -6,30 +6,30 @@ using Random = UnityEngine.Random;
 
 namespace Monsters
 {
-    public class Cannibalisia : Monster, IMonster
+    public class RedAnteater : Monster, IMonster
     {
         [SerializeField] private GameObject expSoul1;
         
         private Player _player;
         private Animator _animator;
-        
-        private float _monsterHp = 150f;
-        private const float MonsterDamage = 30f;
+    
+        private float _monsterHp = 30f;
+        private const float MonsterDamage = 10f;
         private float _randomDamage;
-        private const float MonsterSpeed = 1.3f;
+        private const float MonsterSpeed = 1.75f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
-        private const float MonsterDefense = 5f;
+        private const float MonsterDefense = 2f;
 
         private float _attackCooltime;
-        
+    
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
 
-            _randomDamage = Random.Range(2, 10);
-            KnockbackDuration = 0.11f;
+            _randomDamage = Random.Range(8, 12);
+            KnockbackDuration = 0.06f;
         }
 
         private void FixedUpdate()
@@ -37,7 +37,7 @@ namespace Monsters
             _attackCooltime += Time.deltaTime;
             _distance = Vector3.Distance(transform.position, _player.transform.position);
 
-            if (_distance < 1 && _attackCooltime > 1.25f)
+            if (_distance < 1 && _attackCooltime > 1.125f)
             {
                 _state = State.Attacking;
             }
@@ -70,11 +70,11 @@ namespace Monsters
                     throw new ArgumentOutOfRangeException();
             }
         }
-        
+    
         private void AttackPlayer()
         {
             _animator.SetBool("isAttacking", true);
-            var finalDamage = MonsterDamage - _player.Defense.CalculateFinalValue() + _randomDamage;
+            var finalDamage = _randomDamage;
             _player.TakeDamage(finalDamage);
             StartCoroutine(IsAttackingToFalse(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
@@ -90,7 +90,7 @@ namespace Monsters
         {
             transform.localScale = transform.position.x < _player.transform.position.x ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
         }
-        
+    
         public void TakeDamage(float damage)
         { 
             _monsterHp = _monsterHp - damage + MonsterDefense;
