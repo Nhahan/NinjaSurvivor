@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
     }
 
     private IEnumerator BasicStar(GameObject prefab, Vector3 _, Quaternion rotation)
-    {      // BasicStar Level + LuckySeven Level
+{      // BasicStar Level + LuckySeven Level
         var level = _player.BasicStar.CalculateFinalValue();
         if (level < 1) yield break;
         

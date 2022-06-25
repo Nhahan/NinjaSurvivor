@@ -24,8 +24,16 @@ namespace AdSkills
             var skillLevelBonus = 1.0f + 0.1f * _player.ExplosiveShuriken.CalculateFinalValue();
             
             _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
-            _bulletDirection = (GameManager.Instance.GetNearestTarget() - transform.position -
-                                new Vector3((Random.Range(-1, 2) * 0.5f), (Random.Range(-1, 2) * 0.5f), 0)).normalized;
+            try
+            {
+                _bulletDirection = (GameManager.Instance.GetNearestTarget() - transform.position -
+                                    new Vector3((Random.Range(-1, 2) * 0.5f), (Random.Range(-1, 2) * 0.5f), 0))
+                    .normalized;
+            }
+            catch // if there is no enemy to attack
+            {
+                Destroy(gameObject);
+            }
         }
 
         private void FixedUpdate()

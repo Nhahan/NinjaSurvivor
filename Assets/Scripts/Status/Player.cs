@@ -69,13 +69,13 @@ namespace Status
         {
             Hp.SetValue(Hp.CalculateFinalValue() - damage);
             sprite.Flash();
-            Debug.Log($"Took damage: {damage} / currentHp: {Hp}");
+            Debug.Log($"Took damage: {damage} / currentHp: {Hp.CalculateFinalValue()}");
 
             // ReSharper disable once InvertIf
             if (Hp.CalculateFinalValue() <= 0)
             {
                 GameManager.Instance.SetIsGameOver(true);
-                Debug.Log($"Game Over / currentHp: {Hp}");
+                Debug.Log($"Game Over / currentHp: {Hp.CalculateFinalValue()}");
             }
         }
 
@@ -87,7 +87,7 @@ namespace Status
             {
                 var statName = field.Name;
                 // if (statName is "BasicStar" or "LuckySeven" or "DiagonalStar" or "ThrowingStar" or "Flamer")
-                if (statName is not ("Level" or "nextLevelExp" or "Exp" or "ExpMultiplier" or "MaxHp" or "Hp" or "AttackDamage" or "Defense" or "AttackSpeed" or "MovementSpeed" or "Cooltime" or "Critical" or "CriticalDamage" or "rewards" or "_levelTable" or "activatedSkills"))
+                if (statName is not ("Level" or "nextLevelExp" or "Exp" or "ExpMultiplier" or "MaxHp" or "Hp" or "AttackDamage" or "Defense" or "AttackSpeed" or "MovementSpeed" or "Cooltime" or "Critical" or "CriticalDamage" or "rewards" or "_levelTable" or "activatedSkills" or "sprite"))
                 {
                     var stat = (PlayerStat)field.GetValue(this);
 

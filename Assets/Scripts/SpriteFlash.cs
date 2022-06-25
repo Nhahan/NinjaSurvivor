@@ -38,8 +38,6 @@ public class SpriteFlash : MonoBehaviour
 
         public void Flash()
         {
-            Debug.Log(_originalMaterial);
-            Debug.Log(_flashMaterial);
             if (_flashRoutine != null)
             {
                 StopCoroutine(_flashRoutine);

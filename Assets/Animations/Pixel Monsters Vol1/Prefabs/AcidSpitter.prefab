@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 3262185139656416842}
   - component: {fileID: 9061494549674412017}
   - component: {fileID: 1028289176}
-  - component: {fileID: 1028289177}
   - component: {fileID: 1028289171}
-  - component: {fileID: -1027077243375973148}
+  - component: {fileID: 1386889270}
   m_Layer: 0
   m_Name: "\bAcidSpitter"
   m_TagString: Enemy
@@ -119,28 +118,12 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.42}
   m_Size: {x: 0.96, y: 1.1}
   m_Direction: 0
---- !u!58 &1028289177
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3262185139656416843}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 4.6
 --- !u!114 &1028289171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expSoul1: {fileID: 5601239791881696676, guid: 55f4fc2701b9f45289b7ba81f1572523, type: 3}
   bullet: {fileID: 8210397777342924335, guid: bb81802494510e4418d1d57a821b658a, type: 3}
---- !u!50 &-1027077243375973148
+--- !u!50 &1386889270
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -163,14 +146,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3262185139656416843}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

@@ -8,16 +8,18 @@ namespace Monsters
     public class Suicider : Monster, IMonster
     {
         [SerializeField] private GameObject expSoul1;
-        
+
+        private Player _player;
         private Animator _animator;
 
-        private float _monsterHp = 200f;
+        private float _monsterHp = 20f;
         private const float MonsterDamage = 20f;
         private float _randomDamage;
         private const float MonsterSpeed = 1.65f;
 
         private void Start()
         {
+            _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
 
             _randomDamage = Random.Range(0, 3);
@@ -29,14 +31,13 @@ namespace Monsters
             if (KnockbackTimer > 0)
             {
                 PlayKnockback();
+                return;
             }
-            else 
-            {
-                transform.position = Vector2.MoveTowards(
-                    transform.position, 
-                    player.transform.position, 
-                    MonsterSpeed * MonsterSpeedMultiplier * Time.deltaTime);
-            }
+            transform.position = Vector2.MoveTowards(
+                transform.position, 
+                _player.transform.position, 
+                MonsterSpeed * MonsterSpeedMultiplier * Time.deltaTime);
+        
             FlipSprite();
         }
 
@@ -52,23 +53,18 @@ namespace Monsters
 
         private void AttackPlayer()
         {
-            var finalDamage = MonsterDamage - player.Defense.CalculateFinalValue() + _randomDamage;
-            player.TakeDamage(finalDamage);
+            var finalDamage = MonsterDamage - _player.Defense.CalculateFinalValue() + _randomDamage;
+            _player.TakeDamage(finalDamage);
         }
 
         private void FlipSprite()
         {
-            transform.localScale = transform.position.x < player.transform.position.x ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
+            transform.localScale = transform.position.x < _player.transform.position.x ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
         }
 
-        public void SetMonsterHp(float hp)
-        {
-            _monsterHp = hp;
-        }
-        
         public void TakeDamage(float damage)
         {
-            SetMonsterHp(_monsterHp - damage);
+            _monsterHp -= damage;
             Flash();
 
             if (_monsterHp > 0) return;

@@ -112,7 +112,7 @@ namespace Status
                 }
                 else if (mod.Type == StatModType.PercentMult)
                 {
-                    finalValue *= (finalValue + mod.Value / 100 );
+                    finalValue += finalValue * mod.Value / 100;
                 }
             }
 

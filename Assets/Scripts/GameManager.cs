@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Monsters;
 using Status;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
-using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,9 +18,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] public PostProcessVolume post;
 
     private bool _isGameOver;
+    
     public static GameManager Instance;
     public Dictionary<string, float> ActivatedSkills = new();
-    public List<Vector3> nearestTargets = new();
+    private List<Vector3> _nearestTargets = new();
+
+    private Material _defaultMaterial;
 
     private void Awake()
     {
@@ -41,6 +42,8 @@ public class GameManager : MonoBehaviour
 
         StartCoroutine(CreateMonster());
         StartCoroutine(FindNearestTargets(1.5f));
+
+        _defaultMaterial = player.GetComponent<SpriteRenderer>().material;
     }
 
     public Player GetPlayer()
@@ -105,7 +108,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(second);
             var enemies = GameObject.FindGameObjectsWithTag("Enemy").Select(enemy => enemy.transform.position).ToList();
             
-            nearestTargets = enemies.OrderBy(position => Vector3.Distance(transform.position, position)).ToList();
+            _nearestTargets = enemies.OrderBy(position => Vector3.Distance(transform.position, position)).ToList();
         }
     }
 
@@ -113,16 +116,26 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            return nearestTargets.GetRange(0, count);
+            return _nearestTargets.GetRange(0, count);
         }
         catch
         {
-            return nearestTargets;
+            return _nearestTargets;
         }
     }
     
     public Vector3 GetNearestTarget()
     {
-        return nearestTargets[0];
+        return _nearestTargets[0];
+    }
+
+    public Material GetFlashMaterial()
+    {
+        return GetComponent<SpriteRenderer>().material;
+    }
+    
+    public Material GetDefaultMaterial()
+    {
+        return _defaultMaterial;
     }
 }

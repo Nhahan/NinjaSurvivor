@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1234760548377454215}
   - component: {fileID: 7786833958229510009}
   m_Layer: 0
-  m_Name: monster_11
+  m_Name: Anteater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

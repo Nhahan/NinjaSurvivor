@@ -152,7 +152,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -195,6 +195,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -984,10 +996,10 @@ TextureImporter:
       monster_11_24: -2659866665235121322
       monster_11_11: -7287476087984559352
       monster_11_28: -6594470354434487673
-      monster_11_9: 6442162133612757602
-      monster_11_21: -342244822080160189
-      monster_11_18: -7782639445917315536
       monster_11_23: 8492409065001821028
+      monster_11_9: 6442162133612757602
+      monster_11_18: -7782639445917315536
+      monster_11_21: -342244822080160189
       monster_11_32: 3465893899298581055
   spritePackingTag: 
   pSDRemoveMatte: 0
