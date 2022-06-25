@@ -19,9 +19,8 @@ namespace AdSkills
         private float _bulletDirection = 1;
         private float _skillLevelBonus;
         
-        private IEnumerator Start()
+        private void Start()
         {
-            yield return new WaitForSeconds(0.5f);
             _player = GameManager.Instance.GetPlayer();
             _bulletDirection = GetRandomSign();
             _skillLevelBonus = 0.6f + 0.05f * _player.ThrowingStar.CalculateFinalValue();
@@ -43,7 +42,6 @@ namespace AdSkills
             Destroy(gameObject);
             
             var monster = coll.gameObject.GetComponent<IMonster>();
-            
             var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * _skillLevelBonus;
             
             monster.TakeDamage(damage);

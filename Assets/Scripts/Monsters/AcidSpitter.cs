@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace Monsters
 {
-    public class AcidSpitter : MonoBehaviour, IMonster
+    public class AcidSpitter : Monster, IMonster
     {
         private enum State
         {
@@ -14,19 +14,18 @@ namespace Monsters
             Attacking
         }
 
-        private State state = State.Moving;
+        private State _state = State.Moving;
         
         [SerializeField] private GameObject expSoul1;
         [SerializeField] private GameObject bullet;
 
         private float _monsterSpeedMultiplier = 1;
-        private Player _player;
         private Animator _animator;
 
         private float _monsterHp = 300f;
         private const float MonsterDamage = 30f;
         private float _randomDamage;
-        private const float MonsterSpeed = 1.3f;
+        private const float MonsterSpeed = 1.5f;
 
         private bool _isAttacking;
         private float _distance;
@@ -35,32 +34,34 @@ namespace Monsters
 
         private void Start()
         {
-            _player = GameManager.Instance.GetPlayer();
+            OriginalMaterial = SpriteRenderer.material;
             _animator = GetComponent<Animator>();
 
             _randomDamage = Random.Range(0, 3);
+            
+            KnockbackDuration = 0.05f;
         }
 
         private void FixedUpdate()
         {
             _attackCooltime += Time.deltaTime;
-            _distance = Vector3.Distance(transform.position, _player.transform.position);
+            _distance = Vector3.Distance(transform.position, player.transform.position);
 
             if (_distance < 8 && _attackCooltime > 1)
             {
-                state = State.Attacking;
+                _state = State.Attacking;
             }
             else
             {
-                state = State.Moving;
+                _state = State.Moving;
             }
 
-            switch (state)
+            switch (_state)
             {
                 case State.Moving:
                     transform.position = Vector2.MoveTowards(
                         transform.position,
-                        _player.transform.position,
+                        player.transform.position,
                         MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
                     FlipSprite();
                     break;
@@ -77,17 +78,17 @@ namespace Monsters
         private void OnTriggerEnter2D(Collider2D coll)
         {
             if (!coll.CompareTag("Player")) return;
-            var finalDamage = MonsterDamage - _player.Defense.CalculateFinalValue() + _randomDamage;
-            _player.TakeDamage(finalDamage);
+            var finalDamage = MonsterDamage - player.Defense.CalculateFinalValue() + _randomDamage;
+            player.TakeDamage(finalDamage);
         }
 
         private void AttackPlayer()
         {
             _animator.SetBool("isAttacking", true);
             var position = transform.position;
-            var playerDirection = (_player.transform.position - position).normalized;
+            var playerDirection = (player.transform.position - position).normalized;
             var spitPositionAdjustment = new Vector2(-0.6f * playerDirection.x, 0.9f);
-            var spitInitPosition = new Vector2(position.x - spitPositionAdjustment.x, position.y - spitPositionAdjustment.y) * 1.1f;
+            var spitInitPosition = new Vector2(position.x - spitPositionAdjustment.x, position.y - spitPositionAdjustment.y);
             Instantiate(bullet, spitInitPosition, transform.rotation);
             StartCoroutine(IsAttackingToFalse(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
@@ -101,7 +102,7 @@ namespace Monsters
 
         private void FlipSprite()
         {
-            transform.localScale = transform.position.x < _player.transform.position.x ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
+            transform.localScale = transform.position.x < player.transform.position.x ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
         }
 
         public void SetMonsterHp(float hp)
@@ -117,18 +118,6 @@ namespace Monsters
             _animator.SetBool("isDead", true);
             _monsterSpeedMultiplier = 0;
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
-        }
-
-        public void StopMonster()
-        {
-            _monsterSpeedMultiplier = 0;
-            GetComponent<Animator>().enabled = false;
-        }
-        
-        public void ResumeMonster()
-        {
-            _monsterSpeedMultiplier = 1;
-            GetComponent<Animator>().enabled = true;
         }
 
         private IEnumerator BeforeDestroy(float second)

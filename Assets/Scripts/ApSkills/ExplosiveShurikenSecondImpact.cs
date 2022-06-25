@@ -34,7 +34,9 @@ namespace ApSkills
             if (!coll.CompareTag("Enemy")) return;
 
             var monster = coll.gameObject.GetComponent<IMonster>();
+            var normal = (coll.gameObject.transform.position - transform.position).normalized;
             monster.TakeDamage(_damage);
+            monster.StartKnockback(normal);
         }
 
         private void Explosion()

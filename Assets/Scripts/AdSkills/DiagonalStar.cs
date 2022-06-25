@@ -14,7 +14,7 @@ namespace AdSkills
         private Player _player;
 
         private float _liveTime = 0;
-        private const float DestroyTime = 3.3f;
+        private const float DestroyTime = 2.5f;
         
         private Vector3 _nearestEnemy;
         private Vector3 _bulletDirection;
@@ -30,9 +30,7 @@ namespace AdSkills
             _liveTime += Time.deltaTime;
             if (_liveTime > DestroyTime) { Destroy(gameObject); }
             
-            // transform.position += _bulletDirection * (bulletSpeed * Time.deltaTime);
-            // transform.Translate(_bulletDirection * (bulletSpeed * Time.deltaTime));
-            transform.position = Vector2.MoveTowards(transform.position, _bulletDirection, bulletSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, _bulletDirection * 1.5f, bulletSpeed * Time.deltaTime);
             transform.Rotate(0, 0, -450 * Time.deltaTime);
         }
 
@@ -62,7 +60,7 @@ namespace AdSkills
                 var childNum = Random.Range(0, 16);
                 
                 _bulletDirection = (_player.transform.GetChild(0).GetChild(childNum).position) - 
-                                   new Vector3((float)(Random.Range(-14, 5)), (float)(Random.Range(-14, 5)), 0);
+                                   new Vector3((float)(Random.Range(-10, 2)), (float)(Random.Range(-1, 2)), 0);
             }
             catch
             {

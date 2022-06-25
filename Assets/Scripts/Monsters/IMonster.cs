@@ -1,6 +1,10 @@
+    using UnityEngine;
+
     public interface IMonster
     {
-        void TakeDamage(float damage);
+        public void TakeDamage(float damage);
+
+        public void StartKnockback(Vector3 knockbackDirection);
 
         public void StopMonster();
 

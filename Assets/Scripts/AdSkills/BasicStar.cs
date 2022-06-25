@@ -7,23 +7,25 @@ namespace AdSkills
 {
     public class BasicStar : MonoBehaviour
     {
-        [SerializeField] private float bulletSpeed = 12f;
-        [SerializeField] private float possibleAttackDistance = 11.3f;
-        
         [SerializeField] private float damageMultiplier = 1;
 
         private Player _player;
 
         private float _lifeTime = 0;
-        private const float DestroyTime = 2.5f;
-
-        private Vector3 _nearestEnemy;
+        private const float DestroyTime = 2.8f;
+        private float _damage;
+        private const float BulletSpeed = 12f;
         private Vector3 _bulletDirection;
 
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
-            IsAvailable();
+            
+            var skillLevelBonus = 1.0f + 0.1f * _player.ExplosiveShuriken.CalculateFinalValue();
+            
+            _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
+            _bulletDirection = (GameManager.Instance.GetNearestTarget() - transform.position -
+                                new Vector3((Random.Range(-1, 2) * 0.5f), (Random.Range(-1, 2) * 0.5f), 0)).normalized;
         }
 
         private void FixedUpdate()
@@ -31,8 +33,8 @@ namespace AdSkills
             _lifeTime += Time.deltaTime;
             if (_lifeTime > DestroyTime) { Destroy(gameObject); }
 
-            transform.position += _bulletDirection * (bulletSpeed * Time.deltaTime);
-            transform.Rotate(0, 0, -230 * Time.deltaTime);
+            transform.position += _bulletDirection * (BulletSpeed * Time.deltaTime);
+            transform.Rotate(0, 0, -350 * Time.deltaTime);
         }
 
         private void OnTriggerEnter2D(Collider2D coll)
@@ -42,28 +44,12 @@ namespace AdSkills
             Destroy(gameObject);
             var monster = coll.gameObject.GetComponent<IMonster>();
             var skillLevelBonus = 1f + 0.1f * _player.BasicStar.CalculateFinalValue();
-            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
+            _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
 
-            monster.TakeDamage(damage);
-        }
-
-        public void IsAvailable()
-        {
-            try
-            {
-                _nearestEnemy = GameManager.Instance.GetNearestTarget();
-                if (_nearestEnemy == null || Vector3.Distance(_nearestEnemy, transform.position) > possibleAttackDistance)
-                {
-                    Destroy(gameObject);
-                }
-
-                _bulletDirection = (_nearestEnemy - transform.position -
-                                    new Vector3((Random.Range(-1, 2)*0.5f), (Random.Range(-1, 2)*0.5f), 0)).normalized;
-            }
-            catch
-            {
-                Destroy(gameObject);
-            }
+            var normal = (coll.gameObject.transform.position - transform.position).normalized;
+            Debug.Log($"normal: {normal}");
+            monster.TakeDamage(_damage);
+            monster.StartKnockback(normal);
         }
     }
 }

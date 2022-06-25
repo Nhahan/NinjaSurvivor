@@ -11,7 +11,7 @@ public class AcidSpitterBullet : MonoBehaviour
     private void Start()
     {
         _player = GameManager.Instance.GetPlayer();
-        _target = _player.transform.position - new Vector3(Random.Range(-15, 15), Random.Range(-15, 15)) / 10f;
+        _target = _player.transform.position * 1.5f;
 
         AdjustDirection();
     }
@@ -28,7 +28,7 @@ public class AcidSpitterBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (!coll.CompareTag("Player")) return;
-        var damage = 25f - _player.Defense.CalculateFinalValue() + Random.Range(0, 5);
+        var damage = 50f - _player.Defense.CalculateFinalValue() + Random.Range(1, 10);
         _player.TakeDamage(damage);
         Destroy(gameObject);
     }

@@ -1,25 +1,23 @@
 using System.Collections;
 using Status;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Monsters
 {
-    public class Suicider : MonoBehaviour, IMonster
+    public class Suicider : Monster, IMonster
     {
         [SerializeField] private GameObject expSoul1;
-
-        private float _monsterSpeedMultiplier = 1;
-        private Player _player;
+        
         private Animator _animator;
 
-        private float _monsterHp = 20f;
+        private float _monsterHp = 200f;
         private const float MonsterDamage = 20f;
         private float _randomDamage;
         private const float MonsterSpeed = 1.65f;
 
         private void Start()
         {
-            _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
 
             _randomDamage = Random.Range(0, 3);
@@ -28,10 +26,17 @@ namespace Monsters
         private void FixedUpdate()
         {
             if (gameObject.tag.Equals("Dead")) return;
-            transform.position = Vector2.MoveTowards(
-                transform.position, 
-                _player.transform.position, 
-                MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
+            if (KnockbackTimer > 0)
+            {
+                PlayKnockback();
+            }
+            else 
+            {
+                transform.position = Vector2.MoveTowards(
+                    transform.position, 
+                    player.transform.position, 
+                    MonsterSpeed * MonsterSpeedMultiplier * Time.deltaTime);
+            }
             FlipSprite();
         }
 
@@ -39,7 +44,7 @@ namespace Monsters
         {
             if (!coll.CompareTag("Player")) return;
             AttackPlayer();
-            _monsterSpeedMultiplier = 0;
+            MonsterSpeedMultiplier = 0;
             _animator.SetBool("isAttacking", true);
             gameObject.tag = "Dead";
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
@@ -47,13 +52,13 @@ namespace Monsters
 
         private void AttackPlayer()
         {
-            var finalDamage = MonsterDamage - _player.Defense.CalculateFinalValue() + _randomDamage;
-            _player.TakeDamage(finalDamage);
+            var finalDamage = MonsterDamage - player.Defense.CalculateFinalValue() + _randomDamage;
+            player.TakeDamage(finalDamage);
         }
 
         private void FlipSprite()
         {
-            transform.localScale = transform.position.x < _player.transform.position.x ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
+            transform.localScale = transform.position.x < player.transform.position.x ? new Vector3(1, 1, 1) : new Vector3(-1, 1, 1);
         }
 
         public void SetMonsterHp(float hp)
@@ -64,25 +69,14 @@ namespace Monsters
         public void TakeDamage(float damage)
         {
             SetMonsterHp(_monsterHp - damage);
+            Flash();
 
             if (_monsterHp > 0) return;
             GetComponent<SpriteRenderer>().color = new Color(255, 83, 83, 255);
             _animator.SetBool("isDead", true);
-            _monsterSpeedMultiplier = 0;
+            MonsterSpeedMultiplier = 0;
             gameObject.tag = "Dead";
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
-        }
-
-        public void StopMonster()
-        {
-            _monsterSpeedMultiplier = 0;
-            GetComponent<Animator>().enabled = false;
-        }
-        
-        public void ResumeMonster()
-        {
-            _monsterSpeedMultiplier = 1;
-            GetComponent<Animator>().enabled = true;
         }
 
         private IEnumerator BeforeDestroy(float second)

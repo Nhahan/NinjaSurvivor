@@ -39,7 +39,7 @@ public class PlayerAttack : MonoBehaviour
         var level = _player.BasicStar.CalculateFinalValue();
         if (level < 1) yield break;
         
-        for (var i = 0; i < _player.LuckySeven.CalculateFinalValue(); i++) {
+        for (var i = 0; i < _player.LuckySeven.CalculateFinalValue() + 1; i++) {
             yield return new WaitForSeconds(0.04f);
             Instantiate(prefab, transform.position, rotation);
         }

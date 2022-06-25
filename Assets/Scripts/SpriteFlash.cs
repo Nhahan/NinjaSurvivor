@@ -8,17 +8,14 @@ public class SpriteFlash : MonoBehaviour
 
         #region Editor Settings
 
-        [Tooltip("Material to switch to during the flash.")]
-        [SerializeField] private Material flashMaterial;
-
-        [Tooltip("Duration of the flash.")]
-        [SerializeField] private float duration;
+        private const float Duration = 0.1f;
 
         #endregion
         #region Private Fields
 
         private SpriteRenderer _spriteRenderer;
         private Material _originalMaterial;
+        private Material _flashMaterial;
         private Coroutine _flashRoutine;
 
         #endregion
@@ -32,27 +29,29 @@ public class SpriteFlash : MonoBehaviour
 
         void Start()
         {
-            _spriteRenderer = GameManager.Instance.GetPlayer().GetComponent<SpriteRenderer>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
             _originalMaterial = _spriteRenderer.material;
+            _flashMaterial = GameManager.Instance.GetComponent<SpriteRenderer>().material;
         }
 
         #endregion
 
         public void Flash()
         {
+            Debug.Log(_originalMaterial);
+            Debug.Log(_flashMaterial);
             if (_flashRoutine != null)
             {
                 StopCoroutine(_flashRoutine);
             }
 
             _flashRoutine = StartCoroutine(FlashRoutine());
-            Debug.Log(345);
         }
 
         private IEnumerator FlashRoutine()
         {
-            _spriteRenderer.material = flashMaterial;
-            yield return new WaitForSeconds(duration);
+            _spriteRenderer.material = _flashMaterial;
+            yield return new WaitForSeconds(Duration);
 
             _spriteRenderer.material = _originalMaterial;
             _flashRoutine = null;
