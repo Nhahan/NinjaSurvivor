@@ -6,7 +6,7 @@ namespace Monsters
 {
     public class Suicider : MonoBehaviour, IMonster
     {
-        [SerializeField] private GameObject ExpSoul1;
+        [SerializeField] private GameObject expSoul1;
 
         private float _monsterSpeedMultiplier = 1;
         private Player _player;
@@ -88,7 +88,7 @@ namespace Monsters
         private IEnumerator BeforeDestroy(float second)
         {
             yield return new WaitForSeconds(second);
-            Instantiate(ExpSoul1, transform.position, transform.rotation);
+            Instantiate(expSoul1, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

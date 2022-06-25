@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using Monsters;
 using Status;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace AdSkills
 {
@@ -15,11 +17,14 @@ namespace AdSkills
         private float _liveTime = 0;
         private const float DestroyTime = 6f;
         private float _bulletDirection = 1;
+        private float _skillLevelBonus;
         
         private IEnumerator Start()
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(0.5f);
+            _player = GameManager.Instance.GetPlayer();
             _bulletDirection = GetRandomSign();
+            _skillLevelBonus = 0.6f + 0.05f * _player.ThrowingStar.CalculateFinalValue();
         }
 
         private void FixedUpdate()
@@ -38,8 +43,8 @@ namespace AdSkills
             Destroy(gameObject);
             
             var monster = coll.gameObject.GetComponent<IMonster>();
-            var skillLevelBonus = 0.6f + 0.05f * _player.ThrowingStar.CalculateFinalValue();
-            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
+            
+            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * _skillLevelBonus;
             
             monster.TakeDamage(damage);
         }

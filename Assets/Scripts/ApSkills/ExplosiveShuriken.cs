@@ -4,6 +4,7 @@ using System.Linq;
 using Monsters;
 using Status;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ApSkills
 {
@@ -37,7 +38,14 @@ namespace ApSkills
         private void FixedUpdate()
         {
             _bulletSpeed += Time.deltaTime * 0.5f;
-            transform.position = Vector2.MoveTowards(transform.position, _target, _bulletSpeed);
+            try
+            {
+                transform.position = Vector2.MoveTowards(transform.position, _target, _bulletSpeed);
+            }
+            catch
+            {
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(Random.Range(-2,3), Random.Range(-2,3)) * 5, _bulletSpeed);
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D coll)

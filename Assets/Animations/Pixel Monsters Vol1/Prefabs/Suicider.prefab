@@ -120,10 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3feb53d90e30641b3b7bb6712d781d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterSpeed: 1.5
-  monsterDamage: 33
-  monsterHp: 13
-  prefab: {fileID: 5601239791881696676, guid: 55f4fc2701b9f45289b7ba81f1572523, type: 3}
+  expSoul1: {fileID: 5601239791881696676, guid: 55f4fc2701b9f45289b7ba81f1572523, type: 3}
 --- !u!50 &302503506
 Rigidbody2D:
   serializedVersion: 4

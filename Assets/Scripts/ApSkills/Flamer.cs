@@ -25,12 +25,12 @@ namespace ApSkills
             _animator = GetComponent<Animator>();
             _flamer = _player.transform.Find("SkillPoints").Find("Flamer");
             
-            var skillLevelBonus = (float)(1 + 1.5 * _player.Flamer.CalculateFinalValue());
+            var skillLevelBonus = 1f + 1.5f * _player.Flamer.CalculateFinalValue();
             _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
             
             var animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
             
-            Invoke(nameof(ToNotAvailable), animationLength / 0.8f);
+            Invoke(nameof(ToNotAvailable), animationLength / 0.7f);
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
 
@@ -40,7 +40,7 @@ namespace ApSkills
             Destroy(gameObject);
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             _fireDirection = _playerRb.velocity;
             FlipSprite();

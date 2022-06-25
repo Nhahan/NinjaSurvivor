@@ -1,5 +1,3 @@
-namespace Monsters
-{
     public interface IMonster
     {
         void TakeDamage(float damage);
@@ -8,4 +6,3 @@ namespace Monsters
 
         public void ResumeMonster();
     }
-}
