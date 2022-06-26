@@ -39,10 +39,17 @@ public class PlayerApAttack : MonoBehaviour
 
     private IEnumerator Flamer(GameObject prefab, Vector3 position, Quaternion rotation)
     {
-        if (_player.Flamer.CalculateFinalValue() < 1) yield break;
-        Instantiate(prefab, flamer.transform.position, rotation);
-        yield return new WaitForSeconds(_createDelay / 2f);
-        Instantiate(prefab, flamer.transform.position, rotation);
+        var level = _player.Flamer.CalculateFinalValue();
+        if (level < 1) yield break;
+        
+        yield return new WaitForSeconds(1);
+        
+        var xPosition = (flamer.transform.position - transform.position).normalized.x * 1.55f;
+        Instantiate(prefab, new Vector3(xPosition, transform.position.y, transform.position.y), rotation);
+        if (level >= 5)
+        {
+            Instantiate(prefab,  new Vector3(xPosition * -1, transform.position.y, transform.position.y), rotation);
+        }
     }
     
     private IEnumerator LightningStrike(GameObject prefab, Vector3 position, Quaternion rotation)
@@ -67,7 +74,7 @@ public class PlayerApAttack : MonoBehaviour
             {
                 continue;
             }
-            yield return new WaitForSeconds(0);
+            yield return new WaitForSeconds(0.1f);
         }
     }
     

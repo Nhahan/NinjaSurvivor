@@ -13,7 +13,6 @@ namespace ApSkills
         private Transform _flamer;
         private Animator _animator;
         private Rigidbody2D _playerRb;
-        private Vector2 _fireDirection;
     
         private bool _isAvailable = true;
         private float _damage;
@@ -42,7 +41,6 @@ namespace ApSkills
 
         private void FixedUpdate()
         {
-            _fireDirection = _playerRb.velocity;
             FlipSprite();
             if (_isAvailable)
             {
@@ -67,7 +65,7 @@ namespace ApSkills
     
         private void FlipSprite()
         {
-            transform.localScale = new Vector2(Mathf.Sign(_fireDirection.x), 1f);
+            transform.localScale = new Vector2(Mathf.Sign((_flamer.transform.position - transform.position).normalized.x), 1f);
         }
     }
 }
