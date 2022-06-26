@@ -158,7 +158,7 @@ Transform:
   m_Children:
   - {fileID: 1274011008}
   m_Father: {fileID: 7903036393026126682}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &29132111
 GameObject:
@@ -138381,67 +138381,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7903036392278357091, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
   m_PrefabInstance: {fileID: 7903036393026126681}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1054312786
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1054312787}
-  - component: {fileID: 1054312788}
-  - component: {fileID: 1054312789}
-  m_Layer: 7
-  m_Name: AttakRadius
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1054312787
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1054312786}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7903036393026126682}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1054312788
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1054312786}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 7.5
---- !u!114 &1054312789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1054312786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 270cf5ba7989b4140906d641cb534d1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1108441097
 GameObject:
   m_ObjectHideFlags: 0
@@ -139372,7 +139311,7 @@ MonoBehaviour:
   player: {fileID: 752662084}
   levelUpRewards: {fileID: 1308799144}
   post: {fileID: 1927299679}
-  spawnerParent: {fileID: 7903036393026126684}
+  expSoul1: {fileID: -2448330971732011182, guid: 55f4fc2701b9f45289b7ba81f1572523, type: 3}
 --- !u!4 &1927299678
 Transform:
   m_ObjectHideFlags: 0
@@ -140250,11 +140189,11 @@ PrefabInstance:
       objectReference: {fileID: 5447375999564444073, guid: 6820af34c93ed4356a5d09ad105b6af4, type: 3}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: Hp.BaseValue
-      value: 100
+      value: 99999
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: MaxHp.BaseValue
-      value: 100
+      value: 99999
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: Flamer.BaseValue
@@ -140270,11 +140209,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: LuckySeven.BaseValue
-      value: 30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: AttackSpeed.BaseValue
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
+      propertyPath: AttackDamage.BaseValue
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: DiagonalStar.BaseValue

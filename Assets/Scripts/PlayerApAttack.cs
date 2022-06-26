@@ -25,7 +25,6 @@ public class PlayerApAttack : MonoBehaviour
             yield return new WaitForSeconds(_createDelay);
             foreach (var prefab in apSkillPrefabs)
             {
-                if (!GameManager.Instance.isTargetOn()) break;
                 switch (prefab.name)
                 {
                     case "Flamer":
@@ -62,7 +61,7 @@ public class PlayerApAttack : MonoBehaviour
         var level = (int)_player.LightningStrike.CalculateFinalValue();
         if (level < 1) yield break;
         
-        var count = level * 3;
+        var count = level * 3 + 1;
         var targets = GameManager.Instance.GetTargets(count);
 
         

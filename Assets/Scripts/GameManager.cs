@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using Monsters;
 using Pickups;
 using Status;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using Vector3 = UnityEngine.Vector3;
 
 public class GameManager : MonoBehaviour
 {
@@ -115,12 +117,6 @@ public class GameManager : MonoBehaviour
             return _enemies[0].transform.position;
     }
 
-    public bool isTargetOn()
-    {
-        Debug.Log(_enemies.Count);
-        return _enemies.Count > 0;
-    }
-
     public void AddTarget(GameObject enemy)
     {
         _enemies.Add(enemy);
@@ -129,6 +125,25 @@ public class GameManager : MonoBehaviour
     public void RemoveTarget(GameObject enemy)
     {
         _enemies.Remove(enemy);
+    }
+
+    public Vector3 GetClosestTarget(float distance)
+    {
+        var closestDistance = distance;
+        Vector3 pos = default;
+
+        Debug.Log("Count: " + _enemies.Count);
+        foreach (var enemy in _enemies)
+        {
+            var currentDistance = Vector3.Distance(transform.position, enemy.transform.position);
+            if (currentDistance < closestDistance)
+            {
+                closestDistance = currentDistance;
+                pos = enemy.transform.position;
+            }
+        }
+
+        return pos;
     }
 
     public Material GetFlashMaterial()

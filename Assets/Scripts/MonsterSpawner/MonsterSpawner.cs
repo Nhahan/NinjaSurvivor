@@ -67,6 +67,7 @@ namespace MonsterSpawner
                         RandomSpawn(77f, suicider, r);
                         RandomSpawn(level * 8f, anteater, r);
                         RandomSpawn(level * 2.3f, cannibalisia, r);
+                        RandomSpawn(level * 0.2f, acidSpitter, r);
                         break;
                     }
                     case < 10:
@@ -79,16 +80,18 @@ namespace MonsterSpawner
                         }
                         RandomSpawn(level * 6f, cannibalisia, r);
                         RandomSpawn(0.9f, redAnteater, r);
+                        RandomSpawn(level * 0.3f, acidSpitter, r);
                         break;
                     }
                     case < 13:
                     {
                         for (var i = 0; i < level - 9; i++)
                         {
-                            Instantiate(cannibalisia, GetRandomSpawnPoint(), r);
-                            Instantiate(redAnteater, GetRandomSpawnPoint(), r);
+                            RandomSpawn(100f, cannibalisia, r);
+                            RandomSpawn(100f, redAnteater, r);
                             RandomSpawn(100f, suicider, r);
                         }
+                        RandomSpawn(level * 0.3f, acidSpitter, r);
                         break;
                     }
                     case < 17:
@@ -100,6 +103,7 @@ namespace MonsterSpawner
                             RandomSpawn(100f, suicider, r);
                         }
                         RandomSpawn(66f, cannibalisia, r);
+                        RandomSpawn(level * 0.4f, acidSpitter, r);
                         RandomSpawn(level * 2f, redAnteater, r);
                         break;
                     }

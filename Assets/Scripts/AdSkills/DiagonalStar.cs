@@ -12,7 +12,7 @@ namespace AdSkills
         private Player _player;
 
         private float _liveTime = 0;
-        private const float Duration = 2.5f;
+        private const float Duration = 1.8f;
         private float _bulletSpeed = 12f;
         private float _damage;
         private float _baseSkillDamage = 1.7f;

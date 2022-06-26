@@ -12,7 +12,7 @@ namespace AdSkills
         private Player _player;
 
         private float _liveTime = 0;
-        private const float Duration = 2.7f;
+        private const float Duration = 2f;
         private float _damage;
         private const float BulletSpeed = 12f;
         private float _baseSkillDamage = 1.5f;
@@ -28,7 +28,7 @@ namespace AdSkills
             _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * _skillLevelBonus;
             try
             {
-                _bulletDirection = (GameManager.Instance.GetTarget() - transform.position -
+                _bulletDirection = (GameManager.Instance.GetClosestTarget(7.5f) - transform.position -
                                     new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0)).normalized;
             }
             catch // if there is no enemy to attack

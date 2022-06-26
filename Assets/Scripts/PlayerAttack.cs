@@ -26,7 +26,6 @@ public class PlayerAttack : MonoBehaviour
             yield return new WaitForSeconds(_attackSpeed);
             foreach (var prefab in adSkillPrefabs)
             {
-                if (!GameManager.Instance.isTargetOn()) break;
                 switch (prefab.name)
                 {
                     case "BasicStar":
@@ -44,13 +43,16 @@ public class PlayerAttack : MonoBehaviour
     }
 
     private IEnumerator BasicStar(GameObject prefab, Vector3 _, Quaternion rotation)
-    {   // BasicStar Level + LuckySeven Level
+    {
+        // BasicStar Level + LuckySeven Level
         var level = _player.BasicStar.CalculateFinalValue();
-        if (level < 1 || Vector3.Distance(transform.position, _player.transform.position) > 8.5) yield break;
+        if (level < 1) yield break;
 
-        for (var i = 0; i < _player.LuckySeven.CalculateFinalValue() + 1; i++) {
+        for (var i = 0; i < _player.LuckySeven.CalculateFinalValue() + 1; i++)
+        {
             yield return new WaitForSeconds(0.02f);
-            Instantiate(prefab, transform.position, rotation);
+            var target = GameManager.Instance.GetClosestTarget(7.5f);
+            if (target != default) Instantiate(prefab, transform.position, rotation);
         }
     }
 
