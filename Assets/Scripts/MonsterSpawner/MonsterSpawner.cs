@@ -19,7 +19,7 @@ namespace MonsterSpawner
 
         private Player _player;
 
-        private readonly List<Vector3> _spawnPoints = new();
+        private readonly List<Transform> _spawnPoints = new();
         private float _pointsCount;
 
         private void Start()
@@ -28,50 +28,56 @@ namespace MonsterSpawner
             
             foreach(Transform child in transform)
             {
-                _spawnPoints.Add(child.position);
+                _spawnPoints.Add(child);
             }
 
             _pointsCount = _spawnPoints.Count;
 
-            StartCoroutine(SpawnMonster(1));
+            StartCoroutine(SpawnMonster(3f));
         }
 
         private IEnumerator SpawnMonster(float second)
         {
             var r = transform.rotation;
+            Instantiate(anteater, GetRandomSpawnPoint(), r);
             while (true)
             {
                 var level = _player.GetLevel();
-                var difficulty = 0.5f + second / (40f / level) / 100f;
+                var difficulty = 4f + second / level;
                 yield return new WaitForSeconds(difficulty);
                 switch (level)
                 {
                     case < 3:
                     {
-                        for (var i = 0; i < level; i++)
+                        for (var i = 0; i < 1; i++)
                         {
                             Instantiate(anteater, GetRandomSpawnPoint(), r);
                         }
+                        RandomSpawn(level * 50f, suicider, r);
                         break;
                     }
                     case < 6:
                     {
-                        for (var i = 0; i < level - 2; i++)
+                        for (var i = 0; i < level - 3; i++)
                         {
                             Instantiate(anteater, GetRandomSpawnPoint(), r);
-                            Instantiate(suicider, GetRandomSpawnPoint(), r);
+                            Instantiate(anteater, GetRandomSpawnPoint(), r);
                         }
-                        RandomSpawn(level * 3.3f, cannibalisia, r);
+                        RandomSpawn(77f, suicider, r);
+                        RandomSpawn(level * 8f, anteater, r);
+                        RandomSpawn(level * 2.3f, cannibalisia, r);
                         break;
                     }
                     case < 10:
                     {
-                        for (var i = 0; i < level; i++)
+                        for (var i = 0; i < level - 3; i++)
                         {
+                            Instantiate(anteater, GetRandomSpawnPoint(), r);
                             Instantiate(anteater, GetRandomSpawnPoint(), r);
                             Instantiate(suicider, GetRandomSpawnPoint(), r);
                         }
-                        RandomSpawn(level * 7f, cannibalisia, r);
+                        RandomSpawn(level * 6f, cannibalisia, r);
+                        RandomSpawn(0.9f, redAnteater, r);
                         break;
                     }
                     case < 13:
@@ -79,9 +85,11 @@ namespace MonsterSpawner
                         for (var i = 0; i < level; i++)
                         {
                             Instantiate(anteater, GetRandomSpawnPoint(), r);
+                            Instantiate(anteater, GetRandomSpawnPoint(), r);
                             Instantiate(suicider, GetRandomSpawnPoint(), r);
                         }
-                        RandomSpawn(66f, cannibalisia, r);
+                        RandomSpawn(2f, redAnteater, r);
+                        RandomSpawn(60f, cannibalisia, r);
                         break;
                     }
                     case < 17:
@@ -118,11 +126,11 @@ namespace MonsterSpawner
         {
             try
             {
-                return _spawnPoints[(int)Random.Range(0, _pointsCount)];
+                return _spawnPoints[(int)Random.Range(0, _pointsCount)].position;
             }
             catch
             {
-                return _spawnPoints[0];
+                return _spawnPoints[0].position;
             }
         }
 

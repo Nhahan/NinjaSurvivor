@@ -1,0 +1,16 @@
+{
+    "adSkills": [{
+        "BasicStar": {
+            "duration":  2.5,
+            "bulletSpeed": 12,
+            "baseDamage": 0,
+            "levelMultiplier": 10            
+        }       
+    }],
+    "apSkills": [{
+        
+    }],
+    "subSkills": [{
+        
+    }]
+}

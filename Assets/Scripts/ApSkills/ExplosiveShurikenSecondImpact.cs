@@ -21,7 +21,7 @@ namespace ApSkills
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
 
-            var skillLevelBonus = 1.0f + 0.1f * _player.ExplosiveShuriken.CalculateFinalValue();
+            var skillLevelBonus = 1.0f + 3f * _player.ExplosiveShuriken.CalculateFinalValue();
 
             _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
 

@@ -1,5 +1,7 @@
-    using UnityEngine;
+using UnityEngine;
 
+namespace Monsters
+{
     public interface IMonster
     {
         public void TakeDamage(float damage);
@@ -10,3 +12,4 @@
 
         public void ResumeMonster();
     }
+}

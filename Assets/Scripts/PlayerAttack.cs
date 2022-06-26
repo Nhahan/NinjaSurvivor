@@ -35,10 +35,10 @@ public class PlayerAttack : MonoBehaviour
     }
 
     private IEnumerator BasicStar(GameObject prefab, Vector3 _, Quaternion rotation)
-{      // BasicStar Level + LuckySeven Level
+    {   // BasicStar Level + LuckySeven Level
         var level = _player.BasicStar.CalculateFinalValue();
-        if (level < 1) yield break;
-        
+        if (level < 1 || Vector3.Distance(transform.position, _player.transform.position) > 8.5) yield break;
+
         for (var i = 0; i < _player.LuckySeven.CalculateFinalValue() + 1; i++) {
             yield return new WaitForSeconds(0.04f);
             Instantiate(prefab, transform.position, rotation);
@@ -50,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
         var level = _player.DiagonalStar.CalculateFinalValue();
         if (level < 1) yield break;
         
-        for (var i = 0; i < _player.DiagonalStar.CalculateFinalValue() * 2; i++)
+        for (var i = 0; i < _player.DiagonalStar.CalculateFinalValue() * 2 + 2; i++)
         {
             Instantiate(prefab, transform.position, rotation);
             yield return new WaitForSeconds(0);

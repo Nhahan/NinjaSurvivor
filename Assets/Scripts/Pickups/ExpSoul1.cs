@@ -10,7 +10,7 @@ namespace Pickups
         private float _liveTime;
         private float _speed = 0f;
 
-        private const float TimeToDisappear = 7f;
+        private const float TimeToDisappear = 9f;
 
         private void Start()
         {

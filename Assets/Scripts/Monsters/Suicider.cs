@@ -1,6 +1,5 @@
 using System.Collections;
 using Status;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Monsters
@@ -12,7 +11,7 @@ namespace Monsters
         private Player _player;
         private Animator _animator;
 
-        private float _monsterHp = 20f;
+        private float _monsterHp = 22f;
         private const float MonsterDamage = 20f;
         private float _randomDamage;
         private const float MonsterSpeed = 1.65f;

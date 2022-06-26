@@ -139254,7 +139254,7 @@ MonoBehaviour:
   player: {fileID: 752662084}
   levelUpRewards: {fileID: 1308799144}
   post: {fileID: 1927299679}
-  spawnerParent: {fileID: 0}
+  spawnerParent: {fileID: 7903036393026126684}
 --- !u!4 &1927299678
 Transform:
   m_ObjectHideFlags: 0
@@ -139554,6 +139554,7 @@ GameObject:
   - component: {fileID: 2103962764}
   - component: {fileID: 2103962763}
   - component: {fileID: 2103962762}
+  - component: {fileID: 2103962766}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -139645,6 +139646,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!210 &2103962766
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2103962761}
+  m_Enabled: 1
+  m_SortingLayerID: 1899176979
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!4 &2111155062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7903036393349916719, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
@@ -140120,11 +140132,11 @@ PrefabInstance:
       objectReference: {fileID: 5447375999564444073, guid: 6820af34c93ed4356a5d09ad105b6af4, type: 3}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: Hp.BaseValue
-      value: 10000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: MaxHp.BaseValue
-      value: 10000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: Flamer.BaseValue
@@ -140140,7 +140152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: LuckySeven.BaseValue
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: DiagonalStar.BaseValue
@@ -140279,11 +140291,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b129501d098c4b13b9f5d481cee683e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suicider: {fileID: 4942595661954804564, guid: 1113057115e49aa49b17c3e1827ab5a2, type: 3}
   anteater: {fileID: 3776090965816088465, guid: 06cae15f9e85fa64ebbef9e90083394b, type: 3}
+  suicider: {fileID: 4942595661954804564, guid: 1113057115e49aa49b17c3e1827ab5a2, type: 3}
   cannibalisia: {fileID: 7417235287509454946, guid: 73b6b88acbbfa8d4685c31ee509be853, type: 3}
   acidSpitter: {fileID: 3262185139656416843, guid: 1ed60ac497d7f904fb74f3a66fbd14f3, type: 3}
   redAnteater: {fileID: 3776090965816088465, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
+--- !u!114 &7903036393026126687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605400114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5fb0e3a2402a4ec798271e3d5b32ba0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  makeGhost: 0
+  ghost: {fileID: 77528634188787386, guid: 8e6fe2a4153f945c58ae04907a52a3e6, type: 3}
 --- !u!222 &8282208141825825780
 CanvasRenderer:
   m_ObjectHideFlags: 0

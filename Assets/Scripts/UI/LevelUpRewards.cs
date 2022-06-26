@@ -19,6 +19,7 @@ public class LevelUpRewards : MonoBehaviour
     private List<Reward> _apSkillRewards = new();
     private List<Reward> _subSkillRewards = new();
     private List<Reward> _itemRewards = new();
+    private List<Reward> _onlyAttackSkillRewards = new();
     private List<Reward> _onlySkillRewards = new();
 
     private readonly List<Reward> _randomRewards = new();
@@ -27,16 +28,19 @@ public class LevelUpRewards : MonoBehaviour
     private GameObject _rewardsGrid;
     private GameObject _textGrid;
     private GameObject _levelGrid;
-    
+
+    private Player _player;
+
     private void Start()
     {
+        _player = GameManager.Instance.GetPlayer();
         SetSlotSettingsOnGrids();
-
-        Debug.Log($"_rewards count: {rewards.Count}");
+        
         _adSkillRewards = rewards.FindAll(r => r.RewardType.Equals(RewardType.AdSkill));
         _apSkillRewards = rewards.FindAll(r => r.RewardType.Equals(RewardType.ApSkill));
         _subSkillRewards = rewards.FindAll(r => r.RewardType.Equals(RewardType.SubSkill));
 
+        _onlyAttackSkillRewards = _adSkillRewards.Concat(_apSkillRewards).ToList();
         _onlySkillRewards = _adSkillRewards.Concat(_apSkillRewards).Concat(_subSkillRewards).ToList();
 
         _itemRewards = rewards.FindAll(r => r.RewardType.Equals(RewardType.Item));
@@ -44,11 +48,39 @@ public class LevelUpRewards : MonoBehaviour
 
     private void SetRandomRewards(int count)
     {
-        var total = rewards.Count;
-        for (var i = 0; i < count; i ++)
+        var level = _player.GetLevel();
+        
+        switch (level)
         {
-            var randomNum = Random.Range(0, total);
-            _randomRewards.Add(rewards[randomNum]);
+            case < 4:
+            {
+                for (var i = 0; i < count; i++)
+                {
+                    var randomNum = Random.Range(0, _adSkillRewards.Count);
+                    _randomRewards.Add(_adSkillRewards[randomNum]);
+                }
+
+                break;
+            }
+            case < 8:
+            {
+                for (var i = 0; i < count; i++)
+                {
+                    var randomNum = Random.Range(0, _onlyAttackSkillRewards.Count);
+                    _randomRewards.Add(_onlyAttackSkillRewards[randomNum]);
+                }
+
+                break;
+            }
+            default:
+            {
+                for (var i = 0; i < count; i++)
+                {
+                    var randomNum = Random.Range(0, rewards.Count);
+                    _randomRewards.Add(rewards[randomNum]);
+                }
+                break;
+            }
         }
     }
     
