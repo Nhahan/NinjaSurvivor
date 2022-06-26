@@ -7,13 +7,17 @@ namespace AdSkills
 {
     public class DiagonalStar : MonoBehaviour
     {
-        [SerializeField] private float bulletSpeed = 12.5f;
         [SerializeField] private float damageMultiplier = 1;
 
         private Player _player;
 
         private float _liveTime = 0;
         private const float Duration = 2.5f;
+        private float _bulletSpeed = 12f;
+        private float _damage;
+        private float _baseSkillDamage = 8f;
+        private float _skillLevelMultiplier = 3f;
+        private float _skillLevelBonus;
         
         private Vector3 _nearestEnemy;
         private Vector3 _bulletDirection;
@@ -22,6 +26,9 @@ namespace AdSkills
         {
             _player = GameManager.Instance.GetPlayer();
             IsAvailable();
+            
+            _skillLevelBonus = _baseSkillDamage + _skillLevelMultiplier * _player.BasicStar.CalculateFinalValue();
+            _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * _skillLevelBonus;
         }
 
         private void FixedUpdate()
@@ -29,7 +36,7 @@ namespace AdSkills
             _liveTime += Time.deltaTime;
             if (_liveTime > Duration) { Destroy(gameObject); }
             
-            transform.position = Vector2.MoveTowards(transform.position, _bulletDirection * 1.1f, bulletSpeed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, _bulletDirection * 1.1f, _bulletSpeed * Time.deltaTime);
             transform.Rotate(0, 0, -450 * Time.deltaTime);
         }
 
@@ -40,10 +47,10 @@ namespace AdSkills
             Destroy(gameObject);
             
             var monster = coll.gameObject.GetComponent<IMonster>();
-            var skillLevelBonus = 2.1f * _player.DiagonalStar.CalculateFinalValue();
-            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
+            var normal = (coll.gameObject.transform.position - transform.position).normalized;
             
-            monster.TakeDamage(damage);
+            monster.TakeDamage(_damage);
+            monster.StartKnockback(normal);
         }
         
         public void IsAvailable()

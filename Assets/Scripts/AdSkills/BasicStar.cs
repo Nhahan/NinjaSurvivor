@@ -15,8 +15,8 @@ namespace AdSkills
         private const float Duration = 2.7f;
         private float _damage;
         private const float BulletSpeed = 12f;
-        private float _baseSkillDamage = 0f;
-        private float _skillLevelMultiplier = 10f;
+        private float _baseSkillDamage = 8f;
+        private float _skillLevelMultiplier = 3f;
         private Vector3 _bulletDirection;
         private float _skillLevelBonus;
 
@@ -24,12 +24,11 @@ namespace AdSkills
         {
             _player = GameManager.Instance.GetPlayer();
             
-            _skillLevelBonus = _baseSkillDamage + 10f * _player.ExplosiveShuriken.CalculateFinalValue();
-            
+            _skillLevelBonus = _baseSkillDamage + _skillLevelMultiplier * _player.BasicStar.CalculateFinalValue();
             _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * _skillLevelBonus;
             try
             {
-                _bulletDirection = (GameManager.Instance.GetNearestTarget() - transform.position -
+                _bulletDirection = ((GameManager.Instance.GetTarget() is Vector3 ? (Vector3)GameManager.Instance.GetTarget() : default) - transform.position -
                                     new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), 0))
                     .normalized;
             }
@@ -53,14 +52,13 @@ namespace AdSkills
             if (!coll.CompareTag("Enemy")) return;
             
             var monster = coll.gameObject.GetComponent<IMonster>();
-            _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * _skillLevelBonus;
+            _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * _skillLevelBonus + Random.Range(-5, 5);
 
             var normal = (coll.gameObject.transform.position - transform.position).normalized;
-            Debug.Log($"normal: {normal}");
             monster.TakeDamage(_damage);
             monster.StartKnockback(normal);
             
-            if (Random.Range(0,10) < 4.1) Destroy(gameObject);
+            if (Random.Range(0,10) < 4.1 + _player.BasicStar.CalculateFinalValue() * 0.5f) Destroy(gameObject);
         }
     }
 }

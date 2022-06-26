@@ -47,6 +47,7 @@ namespace Status
         private readonly Dictionary<string, float> activatedSkills = new();
 
         private SpriteFlash sprite;
+        private CircleCollider2D attackRadius;
         
         private void Awake()
         {
@@ -63,6 +64,7 @@ namespace Status
             }
 
             sprite = GetComponent<SpriteFlash>();
+            attackRadius = transform.Find("AttackRadius").gameObject.GetComponent<CircleCollider2D>();
         }
 
         public void TakeDamage(float damage)
@@ -142,6 +144,11 @@ namespace Status
         public int GetLevel()
         {
             return Level;
+        }
+        
+        public CircleCollider2D GetAttackRadius()
+        {
+            return attackRadius;
         }
     }
 }

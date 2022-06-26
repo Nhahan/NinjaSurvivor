@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     
     public static GameManager Instance;
     public Dictionary<string, float> ActivatedSkills = new();
-    private List<Vector3> _nearestTargets = new();
+    private readonly List<GameObject> _enemies = new();
     private MonsterSpawner.MonsterSpawner _monsterSpawner;
     private Material _defaultMaterial;
     
@@ -40,15 +40,15 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         levelUpRewards.HideRewards();
-        StartCoroutine(FindNearestTargets(1.5f));
         
         _monsterSpawner = spawnerParent.GetComponent<MonsterSpawner.MonsterSpawner>();
         _defaultMaterial = player.GetComponent<SpriteRenderer>().material;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         _playtime += Time.deltaTime;
+        _monsterSpawner.transform.Rotate(0, 0, -450 * Time.deltaTime);
     }
 
     public Player GetPlayer()
@@ -99,33 +99,39 @@ public class GameManager : MonoBehaviour
         }
         ActivatedSkills = player.GetActivatedSkills(true);
     }
-    
-    // ReSharper disable Unity.PerformanceAnalysis
-    private IEnumerator FindNearestTargets(float second)
-    {
-        while (!_isGameOver) {
-            yield return new WaitForSeconds(second);
-            var enemies = GameObject.FindGameObjectsWithTag("Enemy").Select(enemy => enemy.transform.position).ToList();
-            
-            _nearestTargets = enemies.OrderBy(position => Vector3.Distance(transform.position, position)).ToList();
-        }
-    }
 
-    public List<Vector3> GetNearestTargets(int count)
+    public List<Vector3> GetTargets(int count)
     {
         try
         {
-            return _nearestTargets.GetRange(0, count);
+            return _enemies.GetRange(0, count).Select(e => e.transform.position).ToList();
         }
         catch
         {
-            return _nearestTargets;
+            return _enemies.Select(e => e.transform.position).ToList();
         }
     }
     
-    public Vector3 GetNearestTarget()
+    public dynamic GetTarget()
     {
-        return _nearestTargets[0];
+        try
+        {
+            return _enemies[0].transform.position;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public void AddTarget(GameObject enemy)
+    {
+        _enemies.Add(enemy);
+    }
+
+    public void RemoveTarget(GameObject enemy)
+    {
+        _enemies.Remove(enemy);
     }
 
     public Material GetFlashMaterial()

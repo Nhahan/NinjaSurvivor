@@ -13,7 +13,7 @@ namespace Monsters
         private Player _player;
         private Animator _animator;
     
-        private float _monsterHp = 30f;
+        private float _monsterHp = 35f;
         private const float MonsterDamage = 10f;
         private float _randomDamage;
         private const float MonsterSpeed = 1.75f;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Status;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -11,24 +12,25 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private List<GameObject> adSkillPrefabs = new();
 
     private Player _player;
-    private float _createDelay;
+    private float _attackSpeed;
 
+    private readonly Vector3 _v = new(0, 0, 0);
+    
     private IEnumerator Start()
     {
         _player = GameManager.Instance.GetPlayer();
-        _createDelay = _player.AttackSpeed.CalculateFinalValue();
+        _attackSpeed = _player.AttackSpeed.CalculateFinalValue();
 
-        while (_player.Hp.CalculateFinalValue() > 0)
+        while (!GameManager.Instance.GetIsGameOver())
         {
-            yield return new WaitForSeconds(_createDelay);
-            foreach (var prefab in adSkillPrefabs)
+            yield return new WaitForSeconds(_attackSpeed);
+            foreach (var prefab in adSkillPrefabs.TakeWhile(_ => GameManager.Instance.GetTarget()))
             {
-                var fixedTransform = transform;
                 switch (prefab.name)
                 {
-                    case "BasicStar": StartCoroutine(BasicStar(prefab, fixedTransform.position, fixedTransform.rotation)); break;
-                    case "DiagonalStar": DiagonalStar(prefab, fixedTransform.position, fixedTransform.rotation); break;
-                    case "ThrowingStar": StartCoroutine(ThrowingStar(prefab, fixedTransform.position, fixedTransform.rotation)); break;
+                    case "BasicStar": StartCoroutine(BasicStar(prefab, _v, transform.rotation)); break;
+                    case "DiagonalStar": StartCoroutine(DiagonalStar(prefab, _v, transform.rotation)); break;
+                    case "ThrowingStar": StartCoroutine(ThrowingStar(prefab, _v, transform.rotation)); break;
                 }
             }
         }
@@ -40,7 +42,7 @@ public class PlayerAttack : MonoBehaviour
         if (level < 1 || Vector3.Distance(transform.position, _player.transform.position) > 8.5) yield break;
 
         for (var i = 0; i < _player.LuckySeven.CalculateFinalValue() + 1; i++) {
-            yield return new WaitForSeconds(0.04f);
+            yield return new WaitForSeconds(0.01f);
             Instantiate(prefab, transform.position, rotation);
         }
     }
@@ -50,7 +52,7 @@ public class PlayerAttack : MonoBehaviour
         var level = _player.DiagonalStar.CalculateFinalValue();
         if (level < 1) yield break;
         
-        for (var i = 0; i < _player.DiagonalStar.CalculateFinalValue() * 2 + 2; i++)
+        for (var i = 0; i < _player.DiagonalStar.CalculateFinalValue() * 2; i++)
         {
             Instantiate(prefab, transform.position, rotation);
             yield return new WaitForSeconds(0);
@@ -61,13 +63,12 @@ public class PlayerAttack : MonoBehaviour
     {
         var level = _player.ThrowingStar.CalculateFinalValue();
         if (level < 1) yield break;
-        
-        var starCounts = level + 1;
-        for (var i = 0; i < starCounts; i++)
+
+        for (var i = 0; i < level; i++)
         {
-            yield return new WaitForSeconds(_createDelay / 3 * 2 / starCounts);
+            yield return new WaitForSeconds(_attackSpeed / 3 * 2 / level);
             Instantiate(prefab, _player.transform.position, rotation);
-            yield return new WaitForSeconds(_createDelay / 3 * 1 / starCounts);
+            yield return new WaitForSeconds(_attackSpeed / 3 * 1 / level);
         }
     }
 }

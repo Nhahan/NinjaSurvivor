@@ -25,7 +25,7 @@ namespace ApSkills
         {
             _player = GameManager.Instance.GetPlayer();
 
-            var targets = GameManager.Instance.GetNearestTargets(4);
+            var targets = GameManager.Instance.GetTargets(4);
             var skillLevelBonus = 2f + 2f * _player.ExplosiveShuriken.CalculateFinalValue();
 
             _target = targets.Aggregate(new Vector3(0,0,0), (s,v) => s + v) / targets.Count;

@@ -52,7 +52,7 @@ public class LevelUpRewards : MonoBehaviour
         
         switch (level)
         {
-            case < 4:
+            case < 6:
             {
                 for (var i = 0; i < count; i++)
                 {
@@ -62,7 +62,7 @@ public class LevelUpRewards : MonoBehaviour
 
                 break;
             }
-            case < 8:
+            case < 10:
             {
                 for (var i = 0; i < count; i++)
                 {

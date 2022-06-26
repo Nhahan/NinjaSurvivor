@@ -23,10 +23,8 @@ public class PlayerApAttack : MonoBehaviour
         while (_player.Hp.CalculateFinalValue() > 0)
         {
             yield return new WaitForSeconds(_createDelay);
-            foreach (var prefab in apSkillPrefabs)
+            foreach (var prefab in apSkillPrefabs.TakeWhile(_ => GameManager.Instance.GetTarget()))
             {
-                Debug.Log(prefab.name);
-                var fixedTransform = transform;
                 switch (prefab.name)
                 {
                     case "Flamer": StartCoroutine(Flamer(prefab, _v, transform.rotation)); break;
@@ -58,17 +56,14 @@ public class PlayerApAttack : MonoBehaviour
         if (level < 1) yield break;
         
         var count = level * 2;
-        var targets = GameManager.Instance.GetNearestTargets(count);
+        var targets = GameManager.Instance.GetTargets(count);
         
         for (var i = 0; i < count; i++)
         {
             try
             {
-                var distance = Vector3.Distance(_player.transform.position, targets[i]);
-                if (distance < 17)
-                {
-                    Instantiate(prefab, targets[i], rotation);
-                }
+                Instantiate(prefab, targets[i], rotation);
+                
             }
             catch
             {

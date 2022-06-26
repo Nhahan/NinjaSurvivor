@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1960108886363460295}
   - component: {fileID: 6419031702634838668}
   - component: {fileID: 2641421941639675773}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: GhostTrailor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
