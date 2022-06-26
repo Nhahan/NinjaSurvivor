@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour
 {
-    private float _ghostDelaySeconds = 0.15f;
+    private float _ghostDelaySeconds = 0.2f;
 
     [SerializeField] private GameObject ghost;
+
+    private void Start()
+    {
+        var normal = (GameManager.Instance.GetPlayer().transform.position - transform.position).normalized;
+        transform.localScale = new Vector2(Mathf.Sign(normal.x), 1f);
+    }
 
     private void Update()
     {
@@ -17,7 +23,7 @@ public class Ghost : MonoBehaviour
             else
             {
                 Instantiate(ghost, transform.position, transform.rotation);
-                _ghostDelaySeconds = 0.15f;
+                _ghostDelaySeconds = 0.2f;
             }
     }
 }

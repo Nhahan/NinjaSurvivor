@@ -19,7 +19,7 @@ namespace ApSkills
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
             
-            var skillLevelBonus = 5f + 2f * _player.BasicStar.CalculateFinalValue();
+            var skillLevelBonus = 1.5f * _player.BasicStar.CalculateFinalValue();
             _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
             
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));

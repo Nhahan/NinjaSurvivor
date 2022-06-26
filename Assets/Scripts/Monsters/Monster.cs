@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Pickups;
 using Status;
 using UnityEngine;
 
@@ -25,6 +26,14 @@ namespace Monsters
 
         protected SpriteRenderer SpriteRenderer;
         private Coroutine _flashRoutine;
+        
+        protected IEnumerator BeforeDestroy(float second)
+        {
+            yield return new WaitForSeconds(second);
+            Instantiate(GameManager.Instance.expSoul1, transform.position, transform.rotation);
+            GameManager.Instance.RemoveTarget(gameObject);
+            Destroy(gameObject);
+        }
 
         public void StopMonster()
         {

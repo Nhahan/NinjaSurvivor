@@ -24,7 +24,7 @@ namespace ApSkills
             _animator = GetComponent<Animator>();
             _flamer = _player.transform.Find("SkillPoints").Find("Flamer");
             
-            var skillLevelBonus = 5f + 1.5f * _player.Flamer.CalculateFinalValue();
+            var skillLevelBonus = 2f + 2f * _player.Flamer.CalculateFinalValue();
             _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
             
             var animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;

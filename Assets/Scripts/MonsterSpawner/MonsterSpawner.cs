@@ -33,13 +33,13 @@ namespace MonsterSpawner
 
             _pointsCount = _spawnPoints.Count;
 
-            StartCoroutine(SpawnMonster(3f));
+            StartCoroutine(SpawnMonster(0.1f));
         }
 
         private IEnumerator SpawnMonster(float second)
         {
             var r = transform.rotation;
-            Instantiate(anteater, GetRandomSpawnPoint(), r);
+            RandomSpawn(100f, anteater, r);
             while (true)
             {
                 var level = _player.GetLevel();
@@ -51,17 +51,18 @@ namespace MonsterSpawner
                     {
                         for (var i = 0; i < 1; i++)
                         {
-                            Instantiate(anteater, GetRandomSpawnPoint(), r);
+                            RandomSpawn(100f, anteater, r);
                         }
                         RandomSpawn(level * 50f, suicider, r);
+                        RandomSpawn(50f, anteater, r);
                         break;
                     }
                     case < 6:
                     {
-                        for (var i = 0; i < level - 3; i++)
+                        for (var i = 0; i < level - 4; i++)
                         {
-                            Instantiate(anteater, GetRandomSpawnPoint(), r);
-                            Instantiate(anteater, GetRandomSpawnPoint(), r);
+                            RandomSpawn(100f, anteater, r);
+                            RandomSpawn(100f, anteater, r);
                         }
                         RandomSpawn(77f, suicider, r);
                         RandomSpawn(level * 8f, anteater, r);
@@ -70,11 +71,11 @@ namespace MonsterSpawner
                     }
                     case < 10:
                     {
-                        for (var i = 0; i < level - 3; i++)
+                        for (var i = 0; i < level - 6; i++)
                         {
-                            Instantiate(anteater, GetRandomSpawnPoint(), r);
-                            Instantiate(anteater, GetRandomSpawnPoint(), r);
-                            Instantiate(suicider, GetRandomSpawnPoint(), r);
+                            RandomSpawn(100f, anteater, r);
+                            RandomSpawn(100f, anteater, r);
+                            RandomSpawn(100f, suicider, r);
                         }
                         RandomSpawn(level * 6f, cannibalisia, r);
                         RandomSpawn(0.9f, redAnteater, r);
@@ -82,23 +83,21 @@ namespace MonsterSpawner
                     }
                     case < 13:
                     {
-                        for (var i = 0; i < level; i++)
+                        for (var i = 0; i < level - 9; i++)
                         {
-                            Instantiate(anteater, GetRandomSpawnPoint(), r);
-                            Instantiate(anteater, GetRandomSpawnPoint(), r);
-                            Instantiate(suicider, GetRandomSpawnPoint(), r);
+                            Instantiate(cannibalisia, GetRandomSpawnPoint(), r);
+                            Instantiate(redAnteater, GetRandomSpawnPoint(), r);
+                            RandomSpawn(100f, suicider, r);
                         }
-                        RandomSpawn(2f, redAnteater, r);
-                        RandomSpawn(60f, cannibalisia, r);
                         break;
                     }
                     case < 17:
                     {
                         for (var i = 0; i < level; i++)
                         {
-                            Instantiate(anteater, GetRandomSpawnPoint(), r);
-                            Instantiate(anteater, GetRandomSpawnPoint(), r);
-                            Instantiate(suicider, GetRandomSpawnPoint(), r);
+                            RandomSpawn(100f, anteater, r);
+                            RandomSpawn(100f, anteater, r);
+                            RandomSpawn(100f, suicider, r);
                         }
                         RandomSpawn(66f, cannibalisia, r);
                         RandomSpawn(level * 2f, redAnteater, r);
@@ -108,10 +107,10 @@ namespace MonsterSpawner
                     {
                         for (var i = 0; i < level; i++)
                         {
-                            Instantiate(anteater, GetRandomSpawnPoint(), r);
-                            Instantiate(anteater, GetRandomSpawnPoint(), r);
-                            Instantiate(suicider, GetRandomSpawnPoint(), r);
-                            Instantiate(suicider, GetRandomSpawnPoint(), r);
+                            RandomSpawn(100f, acidSpitter, r);
+                            RandomSpawn(100f, anteater, r);
+                            RandomSpawn(100f, anteater, r);
+                            RandomSpawn(100f, suicider, r);
                         }
                         RandomSpawn(66f, cannibalisia, r);
                         RandomSpawn(level * 1.5f, redAnteater, r);
@@ -136,9 +135,9 @@ namespace MonsterSpawner
 
         private void RandomSpawn(float percentage, GameObject prefab, Quaternion r)
         {
-            if (Random.Range(0, 100) < percentage)
+            if (percentage == 100f || Random.Range(0, 100) < percentage)
             {
-                Instantiate(prefab, GetRandomSpawnPoint(), r);
+                GameManager.Instance.AddTarget(Instantiate(prefab, GetRandomSpawnPoint(), r));
             }
         }
     }

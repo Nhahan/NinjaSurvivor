@@ -8,8 +8,6 @@ namespace Monsters
 {
     public class RedAnteater : Monster, IMonster
     {
-        [SerializeField] private GameObject expSoul1;
-        
         private Player _player;
         private Animator _animator;
     
@@ -55,12 +53,12 @@ namespace Monsters
             switch (_state)
             {
                 case State.Moving:
+                    _monsterSpeedMultiplier = 1;
                     transform.position = Vector2.MoveTowards(
                         transform.position,
                         _player.transform.position,
                         MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
                     FlipSprite();
-                    SpriteRenderer.color = new Color(255, 71, 71, 255);
                     break;
                 case State.Attacking:
                     _monsterSpeedMultiplier = 0;
@@ -101,13 +99,6 @@ namespace Monsters
             _animator.SetBool("isDead", true);
             _monsterSpeedMultiplier = 0;
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
-        }
-
-        private IEnumerator BeforeDestroy(float second)
-        {
-            yield return new WaitForSeconds(second);
-            Instantiate(expSoul1, transform.position, transform.rotation);
-            Destroy(gameObject);
         }
     }
 }

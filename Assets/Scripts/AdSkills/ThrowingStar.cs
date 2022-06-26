@@ -23,7 +23,7 @@ namespace AdSkills
         {
             _player = GameManager.Instance.GetPlayer();
             _bulletDirection = GetRandomSign();
-            _skillLevelBonus = 0.6f + 0.9f * _player.ThrowingStar.CalculateFinalValue();
+            _skillLevelBonus = 1.6f + 0.9f * _player.ThrowingStar.CalculateFinalValue();
         }
 
         private void FixedUpdate()
@@ -40,11 +40,11 @@ namespace AdSkills
             if (!coll.CompareTag("Enemy")) return;
 
             var monster = coll.gameObject.GetComponent<IMonster>();
-            var damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * _skillLevelBonus;
+            var damage = _player.AttackDamage.CalculateFinalValue() + damageMultiplier * _skillLevelBonus;
             
             monster.TakeDamage(damage);
             
-            if (Random.Range(0,10) < 3.1) Destroy(gameObject);
+            if (Random.Range(0,10) < 5.1f * 0.5f) Destroy(gameObject);
         }
 
         private int GetRandomSign()

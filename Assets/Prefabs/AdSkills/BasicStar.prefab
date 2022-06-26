@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1046574007960841263}
   - component: {fileID: -5497512151956144236}
   - component: {fileID: 5287148550116973757}
+  - component: {fileID: -1291400371183475958}
   m_Layer: 6
   m_Name: BasicStar
   m_TagString: Weapon
@@ -167,21 +168,21 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
-        inSlope: -2.3319588
-        outSlope: -2.3319588
+        value: 0.8453609
+        inSlope: -0.9649488
+        outSlope: -0.9649488
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.14150944
+        outWeight: 0.25943395
       - serializedVersion: 3
         time: 0.9059829
         value: 0
-        inSlope: -0.096494846
-        outSlope: -0.096494846
+        inSlope: -1.0051546
+        outSlope: -1.0051546
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.23584904
+        inWeight: 0.16981131
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -224,3 +225,24 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!50 &-1291400371183475958
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5447375999564444073}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

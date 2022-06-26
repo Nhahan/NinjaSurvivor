@@ -23,13 +23,20 @@ public class PlayerApAttack : MonoBehaviour
         while (_player.Hp.CalculateFinalValue() > 0)
         {
             yield return new WaitForSeconds(_createDelay);
-            foreach (var prefab in apSkillPrefabs.TakeWhile(_ => GameManager.Instance.GetTarget()))
+            foreach (var prefab in apSkillPrefabs)
             {
+                if (!GameManager.Instance.isTargetOn()) break;
                 switch (prefab.name)
                 {
-                    case "Flamer": StartCoroutine(Flamer(prefab, _v, transform.rotation)); break;
-                    case "LightningStrike": StartCoroutine(LightningStrike(prefab, _v, transform.rotation)); break;
-                    case "ExplosiveShuriken": StartCoroutine(ExplosiveShuriken(prefab, _v, transform.rotation)); break;
+                    case "Flamer":
+                        StartCoroutine(Flamer(prefab, _v, transform.rotation));
+                        break;
+                    case "LightningStrike":
+                        StartCoroutine(LightningStrike(prefab, _v, transform.rotation));
+                        break;
+                    case "ExplosiveShuriken":
+                        StartCoroutine(ExplosiveShuriken(prefab, _v, transform.rotation));
+                        break;
                 }
             }
         }
@@ -55,8 +62,9 @@ public class PlayerApAttack : MonoBehaviour
         var level = (int)_player.LightningStrike.CalculateFinalValue();
         if (level < 1) yield break;
         
-        var count = level * 2;
+        var count = level * 3;
         var targets = GameManager.Instance.GetTargets(count);
+
         
         for (var i = 0; i < count; i++)
         {

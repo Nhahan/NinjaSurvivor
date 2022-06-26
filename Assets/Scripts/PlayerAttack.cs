@@ -24,13 +24,20 @@ public class PlayerAttack : MonoBehaviour
         while (!GameManager.Instance.GetIsGameOver())
         {
             yield return new WaitForSeconds(_attackSpeed);
-            foreach (var prefab in adSkillPrefabs.TakeWhile(_ => GameManager.Instance.GetTarget()))
+            foreach (var prefab in adSkillPrefabs)
             {
+                if (!GameManager.Instance.isTargetOn()) break;
                 switch (prefab.name)
                 {
-                    case "BasicStar": StartCoroutine(BasicStar(prefab, _v, transform.rotation)); break;
-                    case "DiagonalStar": StartCoroutine(DiagonalStar(prefab, _v, transform.rotation)); break;
-                    case "ThrowingStar": StartCoroutine(ThrowingStar(prefab, _v, transform.rotation)); break;
+                    case "BasicStar":
+                        StartCoroutine(BasicStar(prefab, _v, transform.rotation));
+                        break;
+                    case "DiagonalStar":
+                        StartCoroutine(DiagonalStar(prefab, _v, transform.rotation));
+                        break;
+                    case "ThrowingStar":
+                        StartCoroutine(ThrowingStar(prefab, _v, transform.rotation));
+                        break;
                 }
             }
         }
@@ -42,7 +49,7 @@ public class PlayerAttack : MonoBehaviour
         if (level < 1 || Vector3.Distance(transform.position, _player.transform.position) > 8.5) yield break;
 
         for (var i = 0; i < _player.LuckySeven.CalculateFinalValue() + 1; i++) {
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.02f);
             Instantiate(prefab, transform.position, rotation);
         }
     }
@@ -52,7 +59,7 @@ public class PlayerAttack : MonoBehaviour
         var level = _player.DiagonalStar.CalculateFinalValue();
         if (level < 1) yield break;
         
-        for (var i = 0; i < _player.DiagonalStar.CalculateFinalValue() * 2; i++)
+        for (var i = 0; i < _player.DiagonalStar.CalculateFinalValue() * 2 + 1; i++)
         {
             Instantiate(prefab, transform.position, rotation);
             yield return new WaitForSeconds(0);

@@ -8,8 +8,6 @@ namespace Monsters
 {
     public class Cannibalisia : Monster, IMonster
     {
-        [SerializeField] private GameObject expSoul1;
-        
         private Player _player;
         private Animator _animator;
         
@@ -100,13 +98,6 @@ namespace Monsters
             _animator.SetBool("isDead", true);
             _monsterSpeedMultiplier = 0;
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
-        }
-
-        private IEnumerator BeforeDestroy(float second)
-        {
-            yield return new WaitForSeconds(second);
-            Instantiate(expSoul1, transform.position, transform.rotation);
-            Destroy(gameObject);
         }
     }
 }

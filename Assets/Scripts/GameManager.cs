@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Monsters;
+using Pickups;
 using Status;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private LevelUpRewards levelUpRewards;
     [SerializeField] public PostProcessVolume post;
-    [SerializeField] public GameObject spawnerParent;
+    [SerializeField] public ExpSoul1 expSoul1;
     
     public static GameManager Instance;
     public Dictionary<string, float> ActivatedSkills = new();
@@ -40,15 +41,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         levelUpRewards.HideRewards();
-        
-        _monsterSpawner = spawnerParent.GetComponent<MonsterSpawner.MonsterSpawner>();
         _defaultMaterial = player.GetComponent<SpriteRenderer>().material;
     }
 
     private void FixedUpdate()
     {
         _playtime += Time.deltaTime;
-        _monsterSpawner.transform.Rotate(0, 0, -450 * Time.deltaTime);
     }
 
     public Player GetPlayer()
@@ -112,16 +110,15 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    public dynamic GetTarget()
+    public Vector3 GetTarget()
     {
-        try
-        {
             return _enemies[0].transform.position;
-        }
-        catch
-        {
-            return false;
-        }
+    }
+
+    public bool isTargetOn()
+    {
+        Debug.Log(_enemies.Count);
+        return _enemies.Count > 0;
     }
 
     public void AddTarget(GameObject enemy)

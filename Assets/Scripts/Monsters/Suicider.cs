@@ -6,8 +6,6 @@ namespace Monsters
 {
     public class Suicider : Monster, IMonster
     {
-        [SerializeField] private GameObject expSoul1;
-
         private Player _player;
         private Animator _animator;
 
@@ -72,13 +70,6 @@ namespace Monsters
             MonsterSpeedMultiplier = 0;
             gameObject.tag = "Dead";
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
-        }
-
-        private IEnumerator BeforeDestroy(float second)
-        {
-            yield return new WaitForSeconds(second);
-            Instantiate(expSoul1, transform.position, transform.rotation);
-            Destroy(gameObject);
         }
     }
 }

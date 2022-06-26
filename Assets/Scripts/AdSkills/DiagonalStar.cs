@@ -15,8 +15,8 @@ namespace AdSkills
         private const float Duration = 2.5f;
         private float _bulletSpeed = 12f;
         private float _damage;
-        private float _baseSkillDamage = 8f;
-        private float _skillLevelMultiplier = 3f;
+        private float _baseSkillDamage = 1.7f;
+        private float _skillLevelMultiplier = 0.4f;
         private float _skillLevelBonus;
         
         private Vector3 _nearestEnemy;
@@ -28,7 +28,7 @@ namespace AdSkills
             IsAvailable();
             
             _skillLevelBonus = _baseSkillDamage + _skillLevelMultiplier * _player.BasicStar.CalculateFinalValue();
-            _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * _skillLevelBonus;
+            _damage = _player.AttackDamage.CalculateFinalValue() + damageMultiplier * _skillLevelBonus;
         }
 
         private void FixedUpdate()
@@ -51,6 +51,8 @@ namespace AdSkills
             
             monster.TakeDamage(_damage);
             monster.StartKnockback(normal);
+            
+            if (Random.Range(0,10) < 6.3f * 0.5f) Destroy(gameObject);
         }
         
         public void IsAvailable()

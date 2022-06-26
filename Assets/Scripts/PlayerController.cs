@@ -10,15 +10,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private FixedJoystick joystick;
     [SerializeField] private Animator animator;
     [SerializeField] private Player player;
-
-    public static Vector2 LatestDirection { get; private set; }
     
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(joystick.Horizontal, joystick.Vertical) * player.MovementSpeed.CalculateFinalValue();
-        LatestDirection = new Vector2(
-            rb.velocity.x / Mathf.Abs(rb.velocity.x),
-            rb.velocity.y / Mathf.Abs(rb.velocity.y));
 
         var hasHorizontalSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
 
