@@ -1,4 +1,3 @@
-using System.Linq;
 using Monsters;
 using Status;
 using UnityEngine;
@@ -28,7 +27,7 @@ namespace AdSkills
             IsAvailable();
             
             _skillLevelBonus = _baseSkillDamage + _skillLevelMultiplier * _player.BasicStar.CalculateFinalValue();
-            _damage = _player.AttackDamage.CalculateFinalValue() + damageMultiplier * _skillLevelBonus;
+            _damage = _player.Damage() * damageMultiplier * _skillLevelBonus;
         }
 
         private void FixedUpdate()

@@ -25,9 +25,10 @@ namespace Monsters
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
+            _indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(2, 10);
-            KnockbackDuration = 0.11f;
+            KnockbackDuration = 0.01f;
         }
 
         private void FixedUpdate()
@@ -92,6 +93,7 @@ namespace Monsters
         public void TakeDamage(float damage)
         { 
             _monsterHp = _monsterHp - damage + MonsterDefense;
+            ShowDamage(damage);
             Flash();
 
             if (_monsterHp > 0) return;

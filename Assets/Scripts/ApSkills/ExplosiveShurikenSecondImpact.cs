@@ -23,7 +23,7 @@ namespace ApSkills
 
             var skillLevelBonus = 2.2f * _player.ExplosiveShuriken.CalculateFinalValue();
 
-            _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
+            _damage = _player.Damage() * damageMultiplier * skillLevelBonus;
 
             Explosion();
         }

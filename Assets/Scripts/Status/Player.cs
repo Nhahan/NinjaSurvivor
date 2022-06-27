@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Reflection;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Status
 {
@@ -142,6 +140,11 @@ namespace Status
         public int GetLevel()
         {
             return Level;
+        }
+
+        public float Damage()
+        {
+            return AttackDamage.CalculateFinalValue() - Random.Range(-3, 3);
         }
     }
 }

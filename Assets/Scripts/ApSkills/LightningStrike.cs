@@ -20,7 +20,7 @@ namespace ApSkills
             _animator = GetComponent<Animator>();
             
             var skillLevelBonus = 1.5f * _player.BasicStar.CalculateFinalValue();
-            _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus;
+            _damage = _player.Damage() * damageMultiplier * skillLevelBonus;
             
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
@@ -31,7 +31,9 @@ namespace ApSkills
 
             var monster = coll.gameObject.GetComponent<IMonster>();
 
+            var normal = (coll.gameObject.transform.position - transform.position).normalized;
             monster.TakeDamage(_damage);
+            monster.StartKnockback(normal);
         }
         
         private IEnumerator BeforeDestroy(float second)

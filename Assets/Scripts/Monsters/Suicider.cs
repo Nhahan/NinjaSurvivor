@@ -13,18 +13,19 @@ namespace Monsters
         private const float MonsterDamage = 20f;
         private float _randomDamage;
         private const float MonsterSpeed = 1.65f;
+        private const float MonsterDefense = 2f;
 
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
+            _indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(0, 3);
         }
 
         private void FixedUpdate()
         {
-            if (gameObject.tag.Equals("Dead")) return;
             if (KnockbackTimer > 0)
             {
                 PlayKnockback();
@@ -44,7 +45,6 @@ namespace Monsters
             AttackPlayer();
             MonsterSpeedMultiplier = 0;
             _animator.SetBool("isAttacking", true);
-            gameObject.tag = "Dead";
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
 
@@ -60,15 +60,14 @@ namespace Monsters
         }
 
         public void TakeDamage(float damage)
-        {
-            _monsterHp -= damage;
+        { 
+            _monsterHp = _monsterHp - damage + MonsterDefense;
+            ShowDamage(damage);
             Flash();
 
             if (_monsterHp > 0) return;
-            GetComponent<SpriteRenderer>().color = new Color(255, 83, 83, 255);
             _animator.SetBool("isDead", true);
             MonsterSpeedMultiplier = 0;
-            gameObject.tag = "Dead";
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
     }

@@ -17,6 +17,7 @@ namespace Monsters
         private const float MonsterDamage = 30f;
         private float _randomDamage;
         private const float MonsterSpeed = 1.5f;
+        private const float MonsterDefense = 1.5f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
 
@@ -26,6 +27,7 @@ namespace Monsters
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
+            _indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(0, 3);
             KnockbackDuration = 0.07f;
@@ -104,8 +106,9 @@ namespace Monsters
         }
 
         public void TakeDamage(float damage)
-        {
-            _monsterHp -= damage;
+        { 
+            _monsterHp = _monsterHp - damage + MonsterDefense;
+            ShowDamage(damage);
             Flash();
 
             if (_monsterHp > 0) return;

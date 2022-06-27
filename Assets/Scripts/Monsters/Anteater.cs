@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Status;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -25,6 +26,7 @@ namespace Monsters
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
+            _indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(8, 12);
             KnockbackDuration = 0.11f;
@@ -93,6 +95,7 @@ namespace Monsters
         public void TakeDamage(float damage)
         { 
             _monsterHp = _monsterHp - damage + MonsterDefense;
+            ShowDamage(damage);
             Flash();
 
             if (_monsterHp > 0) return;

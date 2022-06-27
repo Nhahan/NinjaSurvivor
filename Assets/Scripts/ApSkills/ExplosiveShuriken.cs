@@ -29,7 +29,7 @@ namespace ApSkills
             var skillLevelBonus = 2f * _player.ExplosiveShuriken.CalculateFinalValue();
 
             _target = targets.Aggregate(new Vector3(0,0,0), (s,v) => s + v) / targets.Count;
-            _damage = _player.AttackDamage.CalculateFinalValue() * DamageMultiplier * skillLevelBonus;
+            _damage = _player.Damage() * DamageMultiplier * skillLevelBonus;
             
             AdjustDirection();
             StartCoroutine(Explosion(3.5f));

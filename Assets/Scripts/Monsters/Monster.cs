@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using Pickups;
 using Status;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Monsters
 {
-    public class Monster : MonoBehaviour
+    public abstract class Monster : MonoBehaviour
     {
         protected enum State
         {
@@ -25,8 +27,9 @@ namespace Monsters
         protected const float Duration = 0.12f;
 
         protected SpriteRenderer SpriteRenderer;
+        protected GameObject _indicator;
         private Coroutine _flashRoutine;
-        
+
         protected IEnumerator BeforeDestroy(float second)
         {
             yield return new WaitForSeconds(second);
@@ -78,6 +81,12 @@ namespace Monsters
 
             SpriteRenderer.material = GameManager.Instance.GetDefaultMaterial();
             _flashRoutine = null;
+        }
+        
+        protected void ShowDamage(float damage)
+        {
+            var indicator = Instantiate(_indicator, transform.position, transform.rotation);
+            indicator.GetComponent<TextMeshPro>().text = damage < 1 ? "1" : Mathf.RoundToInt(damage).ToString();
         }
     }
 }

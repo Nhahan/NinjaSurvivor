@@ -13,11 +13,10 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private bool isSpawning;
     
-    [SerializeField] private Transform[] spawnPoints;
-    [SerializeField] private GameObject monsterPrefab;
     [SerializeField] private Player player;
     [SerializeField] private LevelUpRewards levelUpRewards;
     [SerializeField] public PostProcessVolume post;
+    [SerializeField] public GameObject indicator;
     [SerializeField] public ExpSoul1 expSoul1;
     
     public static GameManager Instance;

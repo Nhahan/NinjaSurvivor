@@ -12,22 +12,21 @@ namespace ApSkills
         private Player _player;
         private Transform _flamer;
         private Animator _animator;
-    
-        private bool _isAvailable = true;
         private float _damage;
+        private bool _isOpposite;
 
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
-            _animator = GetComponent<Animator>();
             _flamer = _player.transform.Find("SkillPoints").Find("Flamer");
+            TransformUpdate();
             
-            var skillLevelBonus = 2f + 2f * _player.Flamer.CalculateFinalValue();
-            _damage = _player.AttackDamage.CalculateFinalValue() * damageMultiplier * skillLevelBonus + Random.Range(-2, 0);
+            _animator = GetComponent<Animator>();
+            
+            var skillLevelBonus = 0.5f * _player.Flamer.CalculateFinalValue();
+            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + 20f;
             
             var animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
-            
-            Invoke(nameof(ToNotAvailable), animationLength / 0.7f);
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
 
@@ -39,30 +38,32 @@ namespace ApSkills
 
         private void FixedUpdate()
         {
-            if (!_isAvailable) return;
-            FlipSprite();
-            transform.position = _flamer.position;
-        }
-
-        private void ToNotAvailable()
-        {
-            _isAvailable = false;
+            TransformUpdate();
         }
 
         private void OnTriggerEnter2D(Collider2D coll)
         {
-            if (!_isAvailable) return;
             if (!coll.CompareTag("Enemy")) return;
 
-            Debug.Log("Flamer" + _damage);
-
             var monster = coll.gameObject.GetComponent<IMonster>();
+            
             monster.TakeDamage(_damage);
         }
     
-        private void FlipSprite()
+        private void TransformUpdate()
         {
-            transform.localScale = new Vector2(Mathf.Sign((_flamer.transform.position - transform.position).normalized.x), 1f);
+            var fireDirection = Mathf.Sign((_flamer.transform.position - _player.transform.position).x);
+            if (_isOpposite)
+            {
+                fireDirection *= -1;
+            }
+            transform.localScale = new Vector2(Mathf.Sign(fireDirection), 1f);
+            transform.position = _player.transform.position + new Vector3(fireDirection * 2.35f, 0.175f, 0);
+        }
+
+        public void SetOpposite(bool value)
+        {
+            _isOpposite = true;
         }
     }
 }
