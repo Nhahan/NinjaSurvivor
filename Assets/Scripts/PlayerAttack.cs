@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AdSkills;
 using Status;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -50,9 +51,16 @@ public class PlayerAttack : MonoBehaviour
 
         for (var i = 0; i < _player.LuckySeven.CalculateFinalValue() + 1; i++)
         {
-            yield return new WaitForSeconds(0.02f);
-            var target = GameManager.Instance.GetClosestTarget(7.5f);
-            if (target != default) Instantiate(prefab, transform.position, rotation);
+                yield return new WaitForSeconds(0.02f);
+            try
+            {
+                var target = GameManager.Instance.GetClosestTarget(8.75f);
+                Instantiate(prefab, transform.position, rotation).GetComponent<BasicStar>().SetClosestTarget(target);
+            }
+            catch
+            {
+                break;
+            }
         }
     }
 

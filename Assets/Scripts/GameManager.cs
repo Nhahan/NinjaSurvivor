@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using Monsters;
+using Newtonsoft.Json;
 using Pickups;
 using Status;
 using UnityEngine;
@@ -21,12 +23,14 @@ public class GameManager : MonoBehaviour
     
     public static GameManager Instance;
     public Dictionary<string, float> ActivatedSkills = new();
-    private readonly List<GameObject> _enemies = new();
-    private MonsterSpawner.MonsterSpawner _monsterSpawner;
+    private List<GameObject> _enemies = new();
+
     private Material _defaultMaterial;
     
     private bool _isGameOver;
     private float _playtime;
+
+    private Player _initialPlayerStatus;
 
     private void Awake()
     {
@@ -43,6 +47,8 @@ public class GameManager : MonoBehaviour
     {
         levelUpRewards.HideRewards();
         _defaultMaterial = player.GetComponent<SpriteRenderer>().material;
+
+        _initialPlayerStatus = DeepClone(player);
     }
 
     private void FixedUpdate()
@@ -64,6 +70,13 @@ public class GameManager : MonoBehaviour
     {
         _isGameOver = value;
         AllStop();
+    }
+
+    public void Restart()
+    {
+        _isGameOver = true;
+        player = _initialPlayerStatus;
+        Resume();
     }
 
     public bool GetIsGameOver()
@@ -103,17 +116,17 @@ public class GameManager : MonoBehaviour
     {
         try
         {
-            return _enemies.GetRange(0, count).Select(e => e.transform.position).ToList();
+            return DeepClone(_enemies.GetRange(0, count).Select(e => e.transform.position).ToList());
         }
         catch
         {
-            return _enemies.Select(e => e.transform.position).ToList();
+            return DeepClone(_enemies.Select(e => e.transform.position).ToList());
         }
     }
     
     public Vector3 GetTarget()
     {
-            return _enemies[0].transform.position;
+        return DeepClone(_enemies[0].transform.position);
     }
 
     public void AddTarget(GameObject enemy)
@@ -128,21 +141,17 @@ public class GameManager : MonoBehaviour
 
     public Vector3 GetClosestTarget(float distance)
     {
-        var closestDistance = distance;
-        Vector3 pos = default;
+        KdTree<Transform> enemiesTree = new();
+        enemiesTree.AddAll(_enemies.Select(e => e.transform).ToList());
 
-        Debug.Log("Count: " + _enemies.Count);
-        foreach (var enemy in _enemies)
+        Debug.Log("Count: " + enemiesTree.Count);
+        var pos = enemiesTree.FindClosest(player.transform.position).position;
+        
+        if (Vector3.Distance(pos, player.transform.position) <= distance) 
         {
-            var currentDistance = Vector3.Distance(transform.position, enemy.transform.position);
-            if (currentDistance < closestDistance)
-            {
-                closestDistance = currentDistance;
-                pos = enemy.transform.position;
-            }
+            return enemiesTree.FindClosest(player.transform.position).position;
         }
-
-        return pos;
+        throw new InvalidOperationException();
     }
 
     public Material GetFlashMaterial()
@@ -153,5 +162,10 @@ public class GameManager : MonoBehaviour
     public Material GetDefaultMaterial()
     {
         return _defaultMaterial;
+    }
+    
+    public T DeepClone<T>(T instance)
+    {
+        return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(instance));
     }
 }

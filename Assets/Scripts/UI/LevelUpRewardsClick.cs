@@ -15,7 +15,7 @@ public class LevelUpRewardsClick : MonoBehaviour
     {
         _player = GameManager.Instance.GetPlayer();
         GameManager.Instance.post.profile.TryGetSettings(out Bloom bloom);
-        bloom.intensity.value = 7.7f;
+        bloom.intensity.value = 8f;
     }
 
     public void GetReward()
@@ -25,13 +25,7 @@ public class LevelUpRewardsClick : MonoBehaviour
         var reward = levelUpRewards.GetRandomRewards().Find(r => r.Icon == _sprite);
         
         reward.Equip(_player);
-        Debug.Log($"Equipped: {reward.Name} / " +
-                  $"BasicStar: {_player.BasicStar.CalculateFinalValue()} / " +
-                  $"LuckySeven: {_player.LuckySeven.CalculateFinalValue()} / " +
-                  $"DiagonalStar: {_player.DiagonalStar.CalculateFinalValue()} / " +
-                  $"ThrowingStar: {_player.ThrowingStar.CalculateFinalValue()} / " +
-                  $"Footwork Training: {_player.FootworkTraining.CalculateFinalValue()} & {_player.MovementSpeed.CalculateFinalValue()}");
-        
         levelUpRewards.HideRewards();
     }
 }
+ 

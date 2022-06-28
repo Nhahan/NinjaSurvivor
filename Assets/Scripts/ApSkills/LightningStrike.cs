@@ -12,6 +12,8 @@ namespace ApSkills
         private Player _player;
         private Animator _animator;
 
+        private float _baseSkillDamage = 1.5f;
+        private float _skillLevelMultiplier = 0.25f;
         private float _damage;
 
         private void Start()
@@ -19,8 +21,8 @@ namespace ApSkills
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
             
-            var skillLevelBonus = 1.5f * _player.BasicStar.CalculateFinalValue();
-            _damage = _player.Damage() * damageMultiplier * skillLevelBonus;
+            var skillLevelBonus = _skillLevelMultiplier * _player.BasicStar.CalculateFinalValue();
+            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _baseSkillDamage;
             
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }

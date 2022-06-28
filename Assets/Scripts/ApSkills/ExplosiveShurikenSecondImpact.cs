@@ -14,6 +14,7 @@ namespace ApSkills
         private Animator _animator;
 
         private float _damage;
+        private float _skillLevelMultiplier = 0.3f;
         private bool _isAvailable = true;
 
         private void Start()
@@ -21,9 +22,9 @@ namespace ApSkills
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
 
-            var skillLevelBonus = 2.2f * _player.ExplosiveShuriken.CalculateFinalValue();
+            var skillLevelBonus = _skillLevelMultiplier * _player.ExplosiveShuriken.CalculateFinalValue();
 
-            _damage = _player.Damage() * damageMultiplier * skillLevelBonus;
+            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage();
 
             Explosion();
         }

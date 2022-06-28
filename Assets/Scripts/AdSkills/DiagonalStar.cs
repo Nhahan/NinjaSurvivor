@@ -14,9 +14,8 @@ namespace AdSkills
         private const float Duration = 1.8f;
         private float _bulletSpeed = 12f;
         private float _damage;
-        private float _baseSkillDamage = 1.7f;
-        private float _skillLevelMultiplier = 0.4f;
-        private float _skillLevelBonus;
+        private float _baseSkillDamage = 10f;
+        private float _skillLevelMultiplier = 0.25f;
         
         private Vector3 _nearestEnemy;
         private Vector3 _bulletDirection;
@@ -26,8 +25,8 @@ namespace AdSkills
             _player = GameManager.Instance.GetPlayer();
             IsAvailable();
             
-            _skillLevelBonus = _baseSkillDamage + _skillLevelMultiplier * _player.BasicStar.CalculateFinalValue();
-            _damage = _player.Damage() * damageMultiplier * _skillLevelBonus;
+            var skillLevelBonus = _skillLevelMultiplier * _player.BasicStar.CalculateFinalValue();
+            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _baseSkillDamage;
         }
 
         private void FixedUpdate()
@@ -51,7 +50,7 @@ namespace AdSkills
             monster.TakeDamage(_damage);
             monster.StartKnockback(normal);
             
-            if (Random.Range(0,10) < 6.3f * 0.5f) Destroy(gameObject);
+            if (Random.Range(0,10) > 3.3f + _player.DiagonalStar.CalculateFinalValue() * 0.5f) Destroy(gameObject);
         }
         
         public void IsAvailable()
@@ -59,7 +58,7 @@ namespace AdSkills
             var childNum = Random.Range(0, 16);
             
             _bulletDirection = (_player.transform.GetChild(0).GetChild(childNum).position) - 
-                               new Vector3((float)(Random.Range(-5, 2)), (float)(Random.Range(-5, 2)), 0);
+                               new Vector3((float)(Random.Range(-3, 2)), (float)(Random.Range(-3, 2)), 0);
         }
     }
 }

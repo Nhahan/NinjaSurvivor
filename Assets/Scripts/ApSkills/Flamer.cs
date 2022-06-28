@@ -14,6 +14,8 @@ namespace ApSkills
         private Animator _animator;
         private float _damage;
         private bool _isOpposite;
+        
+        private float _skillLevelMultiplier = 0.4f;
 
         private void Start()
         {
@@ -23,8 +25,8 @@ namespace ApSkills
             
             _animator = GetComponent<Animator>();
             
-            var skillLevelBonus = 0.5f * _player.Flamer.CalculateFinalValue();
-            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + 20f;
+            var skillLevelBonus = _skillLevelMultiplier * _player.Flamer.CalculateFinalValue();
+            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage();
             
             var animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));

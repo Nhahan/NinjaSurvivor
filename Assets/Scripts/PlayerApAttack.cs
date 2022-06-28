@@ -21,9 +21,9 @@ public class PlayerApAttack : MonoBehaviour
         _player = GameManager.Instance.GetPlayer();
         _createDelay = _player.Cooltime.CalculateFinalValue();
 
-        while (_player.Hp.CalculateFinalValue() > 0)
+        while (!GameManager.Instance.GetIsGameOver())
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(_createDelay);
             foreach (var prefab in apSkillPrefabs)
             {
                 switch (prefab.name)
@@ -52,12 +52,15 @@ public class PlayerApAttack : MonoBehaviour
         var fireDirection = Mathf.Sign((flamer.transform.position - transform.position).normalized.x);
         var fixedPosition = new Vector2(transform.position.x + fireDirection * 2.35f, transform.position.y + 0.175f);
 
-        Instantiate(prefab, fixedPosition, rotation);
-        if ((level < 5)) yield break;
-        
-        fixedPosition = new Vector2(transform.position.x + fireDirection * -2.35f, transform.position.y + 0.175f);
-        var additional = Instantiate(prefab, fixedPosition, rotation);
-        additional.GetComponent<Flamer>().SetOpposite(true);
+        for (var i = 0; i < 2; i ++) 
+        {
+            yield return new WaitForSeconds(_createDelay / 2);
+            Instantiate(prefab, fixedPosition, rotation);
+            if ((level < 5)) yield break;
+            
+            fixedPosition = new Vector2(transform.position.x + fireDirection * -2.35f, transform.position.y + 0.175f);
+            Instantiate(prefab, fixedPosition, rotation).GetComponent<Flamer>().SetOpposite(true);
+        }
     }
     
     private IEnumerator LightningStrike(GameObject prefab, Vector3 position, Quaternion rotation)
@@ -65,7 +68,7 @@ public class PlayerApAttack : MonoBehaviour
         var level = (int)_player.LightningStrike.CalculateFinalValue();
         if (level < 1) yield break;
         
-        var count = level * 3 + 1;
+        var count = level * 2 + 3;
         var targets = GameManager.Instance.GetTargets(count);
 
         

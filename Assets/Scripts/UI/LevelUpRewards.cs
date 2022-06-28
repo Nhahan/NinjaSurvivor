@@ -11,6 +11,7 @@ using Random = UnityEngine.Random;
 
 public class LevelUpRewards : MonoBehaviour
 {
+    [SerializeField] private GameObject progressBar;
     [SerializeField] private GameObject[] rewardSlots;
     [SerializeField] private List<Reward> rewards = new();
     [SerializeField] private LevelUpEffect levelUpEffect;
@@ -28,6 +29,7 @@ public class LevelUpRewards : MonoBehaviour
     private GameObject _rewardsGrid;
     private GameObject _textGrid;
     private GameObject _levelGrid;
+    private GameObject _dim;
 
     private Player _player;
 
@@ -92,6 +94,9 @@ public class LevelUpRewards : MonoBehaviour
         
         GameManager.Instance.AllStop();
         
+        progressBar.SetActive(false);
+        
+        _dim.SetActive(true);
         _framesGrid.SetActive(true);
         _rewardsGrid.SetActive(true);
         _textGrid.SetActive(true);
@@ -103,10 +108,13 @@ public class LevelUpRewards : MonoBehaviour
         GameManager.Instance.Resume();
         
         _randomRewards.Clear();
+        _dim.SetActive(false);
         _framesGrid.SetActive(false);
         _rewardsGrid.SetActive(false);
         _textGrid.SetActive(false);
         _levelGrid.SetActive(false);
+        
+        progressBar.SetActive(true);
         
         GameManager.Instance.post.profile.TryGetSettings(out Bloom bloom);
         bloom.intensity.value = 5.5f;
@@ -163,5 +171,6 @@ public class LevelUpRewards : MonoBehaviour
         _rewardsGrid = transform.GetChild(1).gameObject;
         _textGrid = transform.GetChild(2).gameObject;
         _levelGrid = transform.GetChild(3).gameObject;
+        _dim = transform.GetChild(4).gameObject;
     }
 }

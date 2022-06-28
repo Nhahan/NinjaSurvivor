@@ -21,6 +21,8 @@ namespace ApSkills
 
         private float _damage;
 
+        private bool _isHit;
+
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
@@ -29,14 +31,16 @@ namespace ApSkills
             var skillLevelBonus = 2f * _player.ExplosiveShuriken.CalculateFinalValue();
 
             _target = targets.Aggregate(new Vector3(0,0,0), (s,v) => s + v) / targets.Count;
-            _damage = _player.Damage() * DamageMultiplier * skillLevelBonus;
+            _damage = _player.Damage() * DamageMultiplier * skillLevelBonus + _player.Damage();
             
             AdjustDirection();
-            StartCoroutine(Explosion(3.5f));
+            StartCoroutine(Explosion(1.5f));
         }
 
         private void FixedUpdate()
         {
+            if (_isHit) return;
+            
             _bulletSpeed += Time.deltaTime * 0.5f;
             try
             {
@@ -44,13 +48,14 @@ namespace ApSkills
             }
             catch
             {
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(Random.Range(-2,3), Random.Range(-2,3)) * 5, _bulletSpeed);
+                transform.position = Vector2.MoveTowards(transform.position, new Vector2(Random.Range(-1,1), Random.Range(-1,1)), _bulletSpeed);
             }
         }
 
         private void OnTriggerEnter2D(Collider2D coll)
         {
             if (!coll.CompareTag("Enemy")) return;
+            _isHit = true;
 
             var monster = coll.gameObject.GetComponent<IMonster>();
             var normal = (coll.gameObject.transform.position - transform.position).normalized;

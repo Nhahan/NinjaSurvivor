@@ -2,6 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace Status
@@ -9,9 +10,10 @@ namespace Status
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class Player : MonoBehaviour
     {
-        private int Level; // level starts form 0
-        private float nextLevelExp;
-        private float Exp; // Level will be automatically calculated by Exp
+        public int Level; // level starts form 0
+        public float nextLevelExp;
+        public float Exp; // Level will be automatically calculated by Exp
+        public float previousExp = 0;
         public PlayerStat ExpMultiplier; // Earn Exp(100+ExpMultiplier)
         [Space] 
         public PlayerStat MaxHp;
@@ -74,6 +76,9 @@ namespace Status
             {
                 GameManager.Instance.SetIsGameOver(true);
                 Debug.Log($"Game Over / currentHp: {Hp.CalculateFinalValue()}");
+
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                GameManager.Instance.Restart();
             }
         }
 
@@ -85,7 +90,7 @@ namespace Status
             {
                 var statName = field.Name;
                 // if (statName is "BasicStar" or "LuckySeven" or "DiagonalStar" or "ThrowingStar" or "Flamer")
-                if (statName is not ("Level" or "nextLevelExp" or "Exp" or "ExpMultiplier" or "MaxHp" or "Hp" or "AttackDamage" or "Defense" or "AttackSpeed" or "MovementSpeed" or "Cooltime" or "Critical" or "CriticalDamage" or "rewards" or "_levelTable" or "activatedSkills" or "sprite"))
+                if (statName is not ("Level" or "nextLevelExp" or "Exp" or "ExpMultiplier" or "MaxHp" or "Hp" or "AttackDamage" or "Defense" or "AttackSpeed" or "MovementSpeed" or "Cooltime" or "Critical" or "CriticalDamage" or "rewards" or "_levelTable" or "activatedSkills" or "sprite" or "previousExp"))
                 {
                     var stat = (PlayerStat)field.GetValue(this);
 
@@ -123,6 +128,7 @@ namespace Status
         private void LevelUp()
         {
             nextLevelExp = _levelTable[Level].exp;
+            previousExp = _levelTable[Level - 1].exp;
             Level += 1;
             Debug.Log($"LevelUp! to {Level}, currentExp: {Exp}");
             GameManager.Instance.LevelUpEvent();

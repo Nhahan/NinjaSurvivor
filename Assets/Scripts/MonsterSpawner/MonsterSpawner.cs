@@ -33,14 +33,14 @@ namespace MonsterSpawner
 
             _pointsCount = _spawnPoints.Count;
 
-            StartCoroutine(SpawnMonster(0.1f));
+            StartCoroutine(SpawnMonster(3f));
         }
 
         private IEnumerator SpawnMonster(float second)
         {
             var r = transform.rotation;
             RandomSpawn(100f, anteater, r);
-            while (true)
+            while (!GameManager.Instance.GetIsGameOver())
             {
                 var level = _player.GetLevel();
                 var difficulty = 4f + second / level;
@@ -49,22 +49,24 @@ namespace MonsterSpawner
                 {
                     case < 3:
                     {
-                        for (var i = 0; i < 1; i++)
+                        for (var i = 0; i < level; i++)
                         {
                             RandomSpawn(100f, anteater, r);
                         }
                         RandomSpawn(level * 50f, suicider, r);
+                        RandomSpawn(1.5f, redAnteater, r);
                         RandomSpawn(50f, anteater, r);
                         break;
                     }
                     case < 6:
                     {
-                        for (var i = 0; i < level - 4; i++)
+                        for (var i = 0; i < level - 3; i++)
                         {
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
                         }
                         RandomSpawn(77f, suicider, r);
+                        RandomSpawn(16f, redAnteater, r);
                         RandomSpawn(level * 8f, anteater, r);
                         RandomSpawn(level * 2.3f, cannibalisia, r);
                         RandomSpawn(level * 0.2f, acidSpitter, r);
@@ -79,7 +81,7 @@ namespace MonsterSpawner
                             RandomSpawn(100f, suicider, r);
                         }
                         RandomSpawn(level * 6f, cannibalisia, r);
-                        RandomSpawn(0.9f, redAnteater, r);
+                        RandomSpawn(16f, redAnteater, r);
                         RandomSpawn(level * 0.3f, acidSpitter, r);
                         break;
                     }
