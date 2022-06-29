@@ -54,6 +54,9 @@ TagManager:
   - name: Player
     uniqueID: 404801611
     locked: 0
+  - name: progressUI
+    uniqueID: 1551664735
+    locked: 0
   - name: UI
     uniqueID: 1899176979
     locked: 0

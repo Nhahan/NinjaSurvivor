@@ -33,96 +33,96 @@ namespace MonsterSpawner
 
             _pointsCount = _spawnPoints.Count;
 
-            StartCoroutine(SpawnMonster(3f));
+            StartCoroutine(SpawnMonster(1f));
         }
 
         private IEnumerator SpawnMonster(float second)
         {
             var r = transform.rotation;
-            RandomSpawn(100f, anteater, r);
+            RandomSpawn(100f, acidSpitter, r);
             while (!GameManager.Instance.GetIsGameOver())
             {
                 var level = _player.GetLevel();
-                var difficulty = 4f + second / level;
+                var difficulty = 0f + second / level;
                 yield return new WaitForSeconds(difficulty);
                 switch (level)
                 {
-                    case < 3:
-                    {
-                        for (var i = 0; i < level; i++)
-                        {
-                            RandomSpawn(100f, anteater, r);
-                        }
-                        RandomSpawn(level * 50f, suicider, r);
-                        RandomSpawn(1.5f, redAnteater, r);
-                        RandomSpawn(50f, anteater, r);
-                        break;
-                    }
-                    case < 6:
-                    {
-                        for (var i = 0; i < level - 3; i++)
-                        {
-                            RandomSpawn(100f, anteater, r);
-                            RandomSpawn(100f, anteater, r);
-                        }
-                        RandomSpawn(77f, suicider, r);
-                        RandomSpawn(16f, redAnteater, r);
-                        RandomSpawn(level * 8f, anteater, r);
-                        RandomSpawn(level * 2.3f, cannibalisia, r);
-                        RandomSpawn(level * 0.2f, acidSpitter, r);
-                        break;
-                    }
-                    case < 10:
-                    {
-                        for (var i = 0; i < level - 6; i++)
-                        {
-                            RandomSpawn(100f, anteater, r);
-                            RandomSpawn(100f, anteater, r);
-                            RandomSpawn(100f, suicider, r);
-                        }
-                        RandomSpawn(level * 6f, cannibalisia, r);
-                        RandomSpawn(16f, redAnteater, r);
-                        RandomSpawn(level * 0.3f, acidSpitter, r);
-                        break;
-                    }
-                    case < 13:
-                    {
-                        for (var i = 0; i < level - 9; i++)
-                        {
-                            RandomSpawn(100f, cannibalisia, r);
-                            RandomSpawn(100f, redAnteater, r);
-                            RandomSpawn(100f, suicider, r);
-                        }
-                        RandomSpawn(level * 0.3f, acidSpitter, r);
-                        break;
-                    }
-                    case < 17:
-                    {
-                        for (var i = 0; i < level; i++)
-                        {
-                            RandomSpawn(100f, anteater, r);
-                            RandomSpawn(100f, anteater, r);
-                            RandomSpawn(100f, suicider, r);
-                        }
-                        RandomSpawn(66f, cannibalisia, r);
-                        RandomSpawn(level * 0.4f, acidSpitter, r);
-                        RandomSpawn(level * 2f, redAnteater, r);
-                        break;
-                    }
-                    case < 23:
-                    {
-                        for (var i = 0; i < level; i++)
-                        {
-                            RandomSpawn(100f, acidSpitter, r);
-                            RandomSpawn(100f, anteater, r);
-                            RandomSpawn(100f, anteater, r);
-                            RandomSpawn(100f, suicider, r);
-                        }
-                        RandomSpawn(66f, cannibalisia, r);
-                        RandomSpawn(level * 1.5f, redAnteater, r);
-                        RandomSpawn(level * 0.5f, acidSpitter, r);
-                        break;
-                    }
+                    // case < 3:
+                    // {
+                    //     for (var i = 0; i < level; i++)
+                    //     {
+                    //         RandomSpawn(100f, anteater, r);
+                    //     }
+                    //     RandomSpawn(level * 50f, suicider, r);
+                    //     RandomSpawn(1.5f, redAnteater, r);
+                    //     RandomSpawn(50f, anteater, r);
+                    //     break;
+                    // }
+                    // case < 6:
+                    // {
+                    //     for (var i = 0; i < level - 3; i++)
+                    //     {
+                    //         RandomSpawn(100f, anteater, r);
+                    //         RandomSpawn(100f, anteater, r);
+                    //     }
+                    //     RandomSpawn(77f, suicider, r);
+                    //     RandomSpawn(16f, redAnteater, r);
+                    //     RandomSpawn(level * 8f, anteater, r);
+                    //     RandomSpawn(level * 2.3f, cannibalisia, r);
+                    //     RandomSpawn(level * 0.2f, acidSpitter, r);
+                    //     break;
+                    // }
+                    // case < 10:
+                    // {
+                    //     for (var i = 0; i < level - 6; i++)
+                    //     {
+                    //         RandomSpawn(100f, anteater, r);
+                    //         RandomSpawn(100f, anteater, r);
+                    //         RandomSpawn(100f, suicider, r);
+                    //     }
+                    //     RandomSpawn(level * 6f, cannibalisia, r);
+                    //     RandomSpawn(16f, redAnteater, r);
+                    //     RandomSpawn(level * 0.3f, acidSpitter, r);
+                    //     break;
+                    // }
+                    // case < 13:
+                    // {
+                    //     for (var i = 0; i < level - 9; i++)
+                    //     {
+                    //         RandomSpawn(100f, cannibalisia, r);
+                    //         RandomSpawn(100f, redAnteater, r);
+                    //         RandomSpawn(100f, suicider, r);
+                    //     }
+                    //     RandomSpawn(level * 0.3f, acidSpitter, r);
+                    //     break;
+                    // }
+                    // case < 17:
+                    // {
+                    //     for (var i = 0; i < level; i++)
+                    //     {
+                    //         RandomSpawn(100f, anteater, r);
+                    //         RandomSpawn(100f, anteater, r);
+                    //         RandomSpawn(100f, suicider, r);
+                    //     }
+                    //     RandomSpawn(66f, cannibalisia, r);
+                    //     RandomSpawn(level * 0.4f, acidSpitter, r);
+                    //     RandomSpawn(level * 2f, redAnteater, r);
+                    //     break;
+                    // }
+                    // case < 23:
+                    // {
+                    //     for (var i = 0; i < level; i++)
+                    //     {
+                    //         RandomSpawn(100f, acidSpitter, r);
+                    //         RandomSpawn(100f, anteater, r);
+                    //         RandomSpawn(100f, anteater, r);
+                    //         RandomSpawn(100f, suicider, r);
+                    //     }
+                    //     RandomSpawn(66f, cannibalisia, r);
+                    //     RandomSpawn(level * 1.5f, redAnteater, r);
+                    //     RandomSpawn(level * 0.5f, acidSpitter, r);
+                    //     break;
+                    // }
                 }
             }
         }

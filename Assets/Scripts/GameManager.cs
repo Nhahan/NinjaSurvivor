@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using Monsters;
 using Newtonsoft.Json;
 using Pickups;
@@ -76,7 +74,7 @@ public class GameManager : MonoBehaviour
     {
         _isGameOver = true;
         player = _initialPlayerStatus;
-        Resume();
+        Invoke(nameof(Resume), 1.5f);
     }
 
     public bool GetIsGameOver()

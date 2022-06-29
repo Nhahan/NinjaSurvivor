@@ -108,6 +108,8 @@ public class LevelUpRewards : MonoBehaviour
         GameManager.Instance.Resume();
         
         _randomRewards.Clear();
+        progressBar.SetActive(true);
+        
         _dim.SetActive(false);
         _framesGrid.SetActive(false);
         _rewardsGrid.SetActive(false);

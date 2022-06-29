@@ -203,7 +203,7 @@ SortingGroup:
   m_GameObject: {fileID: 29132111}
   m_Enabled: 1
   m_SortingLayerID: 1899176979
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -2
 --- !u!114 &29132114
 MonoBehaviour:
@@ -369,6 +369,67 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &158606820
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1608136220582859145, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+      propertyPath: lengthInSec
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492017199412092725, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+      propertyPath: m_Name
+      value: Flamer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492017199412092731, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492017199412092731, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492017199412092731, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492017199412092731, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.078567356
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492017199412092731, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492017199412092731, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492017199412092731, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492017199412092731, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492017199412092731, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492017199412092731, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7492017199412092731, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c8f9ddb5a9e8b46f8af2aece482e4893, type: 3}
 --- !u!1 &194704678
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +591,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1899176979
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -611,7 +672,7 @@ SortingGroup:
   m_GameObject: {fileID: 276793884}
   m_Enabled: 1
   m_SortingLayerID: 1899176979
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -2
 --- !u!114 &276793887
 MonoBehaviour:
@@ -123365,6 +123426,7 @@ GameObject:
   - component: {fileID: 528289708}
   - component: {fileID: 528289710}
   - component: {fileID: 528289709}
+  - component: {fileID: 528289711}
   m_Layer: 5
   m_Name: MaxHp
   m_TagString: Untagged
@@ -123430,6 +123492,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528289707}
   m_CullTransparentMesh: 1
+--- !u!210 &528289711
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528289707}
+  m_Enabled: 1
+  m_SortingLayerID: 1551664735
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1 &680206060
 GameObject:
   m_ObjectHideFlags: 0
@@ -123579,7 +123652,7 @@ SortingGroup:
   m_GameObject: {fileID: 837664564}
   m_Enabled: 1
   m_SortingLayerID: 1899176979
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
 --- !u!1 &847098005
 GameObject:
@@ -138334,7 +138407,7 @@ SortingGroup:
   m_GameObject: {fileID: 979445120}
   m_Enabled: 1
   m_SortingLayerID: 1899176979
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
 --- !u!1 &1019424694
 GameObject:
@@ -138519,7 +138592,7 @@ SortingGroup:
   m_GameObject: {fileID: 1020640165}
   m_Enabled: 1
   m_SortingLayerID: 1899176979
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -2
 --- !u!114 &1020640168
 MonoBehaviour:
@@ -139068,7 +139141,7 @@ SortingGroup:
   m_GameObject: {fileID: 1228919898}
   m_Enabled: 1
   m_SortingLayerID: 1899176979
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
 --- !u!114 &1228919901
 MonoBehaviour:
@@ -139134,13 +139207,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1277903725}
+  - component: {fileID: 1277903726}
   m_Layer: 5
   m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1277903725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -139159,13 +139233,24 @@ RectTransform:
   - {fileID: 1399146299}
   - {fileID: 1019424695}
   m_Father: {fileID: 2103962765}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!210 &1277903726
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277903724}
+  m_Enabled: 1
+  m_SortingLayerID: 1551664735
+  m_SortingLayer: 2
+  m_SortingOrder: 0
 --- !u!1 &1308799139
 GameObject:
   m_ObjectHideFlags: 0
@@ -139202,7 +139287,7 @@ RectTransform:
   - {fileID: 1228919899}
   - {fileID: 1185200281}
   m_Father: {fileID: 2103962765}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -139321,7 +139406,7 @@ SortingGroup:
   m_GameObject: {fileID: 1347206072}
   m_Enabled: 1
   m_SortingLayerID: -548820895
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
 --- !u!1 &1386177708
 GameObject:
@@ -139500,63 +139585,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1478305427
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2701774237059698686, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701774237059698686, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 109.05758
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701774237059698686, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 56.13919
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701774237059698686, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701774237059698686, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701774237059698686, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701774237059698686, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701774237059698686, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701774237059698686, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701774237059698686, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2701774237059698686, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3776090965816088465, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
-      propertyPath: m_Name
-      value: RedAnteater
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
 --- !u!1 &1605400114 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7903036392560801130, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
@@ -139866,7 +139894,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.75
+  m_Radius: 3
 --- !u!114 &1933633113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139993,8 +140021,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1971404046}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1551664735
+  m_SortingLayer: 2
   m_SortingOrder: 0
 --- !u!1001 &2042050286
 PrefabInstance:
@@ -140212,8 +140240,8 @@ RectTransform:
   m_Children:
   - {fileID: 1124607974}
   - {fileID: 1128236151}
-  - {fileID: 1308799140}
   - {fileID: 1277903725}
+  - {fileID: 1308799140}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -140231,7 +140259,7 @@ SortingGroup:
   m_GameObject: {fileID: 2103962761}
   m_Enabled: 1
   m_SortingLayerID: 1899176979
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
 --- !u!114 &393739254849523611
 MonoBehaviour:
@@ -140440,7 +140468,7 @@ SortingGroup:
   m_GameObject: {fileID: 6789366026521117767}
   m_Enabled: 1
   m_SortingLayerID: 1899176979
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -2
 --- !u!210 &2555376327007832186
 SortingGroup:
@@ -140451,7 +140479,7 @@ SortingGroup:
   m_GameObject: {fileID: 6789366025003454456}
   m_Enabled: 1
   m_SortingLayerID: 1899176979
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -2
 --- !u!222 &2691887954184873934
 CanvasRenderer:
@@ -140703,19 +140731,19 @@ PrefabInstance:
       objectReference: {fileID: 5447375999564444073, guid: 6820af34c93ed4356a5d09ad105b6af4, type: 3}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: Hp.BaseValue
-      value: 100
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: MaxHp.BaseValue
-      value: 100
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: Flamer.BaseValue
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: Cooltime.BaseValue
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: BasicStar.BaseValue
@@ -140909,5 +140937,5 @@ SortingGroup:
   m_GameObject: {fileID: 690033517796012994}
   m_Enabled: 1
   m_SortingLayerID: 1899176979
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: -2

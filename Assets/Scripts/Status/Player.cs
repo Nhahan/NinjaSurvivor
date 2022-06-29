@@ -15,7 +15,7 @@ namespace Status
         public float Exp; // Level will be automatically calculated by Exp
         public float previousExp = 0;
         public PlayerStat ExpMultiplier; // Earn Exp(100+ExpMultiplier)
-        [Space] 
+        [Space]
         public PlayerStat MaxHp;
         public PlayerStat Hp;
         public PlayerStat AttackDamage;
@@ -150,7 +150,7 @@ namespace Status
 
         public float Damage()
         {
-            return AttackDamage.CalculateFinalValue() - Random.Range(-3, 3);
+            return AttackDamage.CalculateFinalValue() - Random.Range(-9, 5);
         }
     }
 }

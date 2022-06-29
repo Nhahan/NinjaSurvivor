@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Security.Cryptography;
 using Monsters;
 using Status;
 using UnityEngine;
@@ -27,15 +28,7 @@ namespace ApSkills
             
             var skillLevelBonus = _skillLevelMultiplier * _player.Flamer.CalculateFinalValue();
             _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage();
-            
-            var animationLength = _animator.GetCurrentAnimatorStateInfo(0).length;
-            StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
-        }
-
-        private IEnumerator BeforeDestroy(float second)
-        {
-            yield return new WaitForSeconds(second);
-            Destroy(gameObject);
+            Destroy(gameObject, 0.9f);
         }
 
         private void FixedUpdate()

@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using Monsters;
 using Status;
 using UnityEngine;
@@ -14,7 +12,7 @@ namespace AdSkills
 
         private float _bulletSpeed = 1f;
         private float _liveTime = 0;
-        private float _duration = 3.5f;
+        private float _duration = 1.75f;
         private float _damageMultiplier = 1f;
         private float _baseSkillDamage = 10f;
         private float _skillLevelMultiplier = 0.2f;
@@ -34,7 +32,7 @@ namespace AdSkills
             _liveTime += Time.deltaTime;
             if (_liveTime > _duration) { Destroy(gameObject); }
             
-            transform.Translate(_bulletSpeed * (-_liveTime) * Vector3.up);
+            transform.Translate(-_liveTime *_bulletSpeed * Vector3.up);
             transform.Rotate(0, 0, -350 * Time.deltaTime);
         }
 

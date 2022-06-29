@@ -7,13 +7,7 @@ public class Ghost : MonoBehaviour
     private float _ghostDelaySeconds = 0.2f;
 
     [SerializeField] private GameObject ghost;
-
-    private void Start()
-    {
-        var normal = (GameManager.Instance.GetPlayer().transform.position - transform.position).normalized;
-        transform.localScale = new Vector2(Mathf.Sign(normal.x), 1f);
-    }
-
+    
     private void Update()
     {
             if (_ghostDelaySeconds > 0)
