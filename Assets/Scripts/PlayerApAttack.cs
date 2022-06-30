@@ -67,13 +67,13 @@ public class PlayerApAttack : MonoBehaviour
         if (level < 1) yield break;
         
         var count = level * 2 + 3;
+        var targets = GameManager.Instance.GetClosestTargets(8.5f, count);
 
         for (var i = 0; i < count; i++)
         {
             try
             {
-                var target = GameManager.Instance.GetClosestTarget(8.25f) + new Vector3(Random.Range(-2,2) ,Random.Range(-2, 2), 0);
-                Debug.Log(target);
+                var target = targets[i] + new Vector3(Random.Range(-2,2) ,Random.Range(-2, 2), 0);
                 Instantiate(prefab, target + new Vector3(0, 8, 0), rotation).GetComponent<LightningStrike>().SetTarget(target);
                 
             }

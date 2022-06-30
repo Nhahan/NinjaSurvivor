@@ -110,23 +110,6 @@ public class GameManager : MonoBehaviour
         ActivatedSkills = player.GetActivatedSkills(true);
     }
 
-    public List<Vector3> GetTargets(int count)
-    {
-        try
-        {
-            return DeepClone(_enemies.GetRange(0, count).Select(e => e.transform.position).ToList());
-        }
-        catch
-        {
-            return DeepClone(_enemies.Select(e => e.transform.position).ToList());
-        }
-    }
-    
-    public Vector3 GetTarget()
-    {
-        return DeepClone(_enemies[0].transform.position);
-    }
-
     public void AddTarget(GameObject enemy)
     {
         _enemies.Add(enemy);
@@ -145,11 +128,34 @@ public class GameManager : MonoBehaviour
         Debug.Log("Count: " + enemiesTree.Count);
         var pos = enemiesTree.FindClosest(player.transform.position).position;
         
-        if (Vector3.Distance(pos, player.transform.position) <= distance) 
+        if (Vector3.Distance(pos, player.transform.position) <= distance)
         {
-            return enemiesTree.FindClosest(player.transform.position).position;
+            return pos;
         }
         throw new InvalidOperationException();
+    }
+    
+    public List<Vector3> GetClosestTargets(float distance, int count)
+    {
+        KdTree<Transform> enemiesTree = new();
+        enemiesTree.AddAll(_enemies.Select(e => e.transform).ToList());
+
+        List<Vector3> targets = new();
+
+        var p = player.transform.position;
+        foreach (var e in enemiesTree) 
+        {
+            var pos = enemiesTree.FindClosest(p).position;
+            targets.Add(pos);
+            
+            enemiesTree.RemoveAt(0);
+            if (targets.Count == count)
+            {
+                return targets; 
+            }
+        }
+
+        return targets;
     }
 
     public Material GetFlashMaterial()

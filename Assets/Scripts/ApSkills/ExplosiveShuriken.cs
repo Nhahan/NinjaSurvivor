@@ -26,11 +26,9 @@ namespace ApSkills
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
-
-            var targets = GameManager.Instance.GetTargets(4);
             var skillLevelBonus = 2f * _player.ExplosiveShuriken.CalculateFinalValue();
 
-            _target = targets.Aggregate(new Vector3(0,0,0), (s,v) => s + v) / targets.Count;
+            _target = GameManager.Instance.GetClosestTarget(20f);
             _damage = _player.Damage() * DamageMultiplier * skillLevelBonus + _player.Damage();
             
             AdjustDirection();

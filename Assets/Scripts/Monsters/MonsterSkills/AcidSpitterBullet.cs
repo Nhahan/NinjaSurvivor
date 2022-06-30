@@ -22,7 +22,7 @@ public class AcidSpitterBullet : MonoBehaviour
         _speed += Time.deltaTime;
         if (_speed > 2f) {Destroy(gameObject);}
         
-        transform.position += _target * (_speed * 1.25f);
+        transform.position += _target * (_speed * 1.125f);
     }
 
     private void OnTriggerEnter2D(Collider2D coll)

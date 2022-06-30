@@ -14,7 +14,7 @@ namespace ApSkills
         private ParticleSystem _system;
         private static readonly ParticleSystem.Particle[] Particles = new ParticleSystem.Particle[50];
 
-        private float _baseSkillDamage = 1.5f;
+        private float _baseSkillDamage = 10f;
         private float _skillLevelMultiplier = 0.25f;
         private float _damage;
         
@@ -54,7 +54,7 @@ namespace ApSkills
             _player = GameManager.Instance.GetPlayer();
             
             var skillLevelBonus = _skillLevelMultiplier * _player.BasicStar.CalculateFinalValue();
-            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _baseSkillDamage;
+            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _baseSkillDamage + Random.Range(-1, 6);
             
             Destroy(gameObject, 0.45f);
         }

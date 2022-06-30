@@ -33,7 +33,7 @@ namespace MonsterSpawner
 
             _pointsCount = _spawnPoints.Count;
 
-            StartCoroutine(SpawnMonster(1f));
+            StartCoroutine(SpawnMonster(10f));
         }
 
         private IEnumerator SpawnMonster(float second)
@@ -109,20 +109,20 @@ namespace MonsterSpawner
                     //     RandomSpawn(level * 2f, redAnteater, r);
                     //     break;
                     // }
-                    // case < 23:
-                    // {
-                    //     for (var i = 0; i < level; i++)
-                    //     {
-                    //         RandomSpawn(100f, acidSpitter, r);
-                    //         RandomSpawn(100f, anteater, r);
-                    //         RandomSpawn(100f, anteater, r);
-                    //         RandomSpawn(100f, suicider, r);
-                    //     }
-                    //     RandomSpawn(66f, cannibalisia, r);
-                    //     RandomSpawn(level * 1.5f, redAnteater, r);
-                    //     RandomSpawn(level * 0.5f, acidSpitter, r);
-                    //     break;
-                    // }
+                    case < 23:
+                    {
+                        for (var i = 0; i < level; i++)
+                        {
+                            RandomSpawn(100f, acidSpitter, r);
+                            RandomSpawn(100f, anteater, r);
+                            RandomSpawn(100f, anteater, r);
+                            RandomSpawn(100f, suicider, r);
+                        }
+                        RandomSpawn(66f, cannibalisia, r);
+                        RandomSpawn(level * 1.5f, redAnteater, r);
+                        RandomSpawn(level * 0.5f, acidSpitter, r);
+                        break;
+                    }
                 }
             }
         }

@@ -28,7 +28,7 @@ TagManager:
   - 
   - 
   - Tilemap
-  - 
+  - TilemapBackgorund
   - 
   - 
   - 
@@ -45,6 +45,9 @@ TagManager:
   - 
   - Glow
   m_SortingLayers:
+  - name: TilemapBackGround
+    uniqueID: 2001654327
+    locked: 0
   - name: Tilemap
     uniqueID: 3726823633
     locked: 0
