@@ -140065,6 +140065,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f347cb93b80244fd881a3e18622cf327, type: 2}
   - {fileID: 11400000, guid: a3223cdaa5e544e69a45e93c8602f7fe, type: 2}
   - {fileID: 11400000, guid: cf0b22150a5944b8e9c6f77a2994a24e, type: 2}
+  - {fileID: 11400000, guid: 232ff275bc5cc47948c636b4243c7d43, type: 2}
   levelUpEffect: {fileID: 204947396}
 --- !u!1 &1347206072
 GameObject:

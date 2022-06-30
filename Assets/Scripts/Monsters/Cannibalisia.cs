@@ -28,7 +28,7 @@ namespace Monsters
             _indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(2, 10);
-            KnockbackDuration = 0.01f;
+            KnockbackDuration = 0.05f;
         }
 
         private void FixedUpdate()
@@ -36,7 +36,12 @@ namespace Monsters
             _attackCooltime += Time.deltaTime;
             _distance = Vector3.Distance(transform.position, _player.transform.position);
 
-            if (_distance < 1 && _attackCooltime > 1.25f)
+            if (_monsterHp < 0)
+            {
+                _monsterSpeedMultiplier = 0;
+            }
+            
+            if (_distance < 1.05f && _attackCooltime > 1.25f)
             {
                 _state = State.Attacking;
             }

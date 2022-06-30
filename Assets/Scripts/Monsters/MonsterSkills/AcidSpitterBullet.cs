@@ -22,13 +22,13 @@ public class AcidSpitterBullet : MonoBehaviour
         _speed += Time.deltaTime;
         if (_speed > 2f) {Destroy(gameObject);}
         
-        transform.position += _target * (_speed * 1.125f);
+        transform.position += _target * (_speed);
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (!coll.CompareTag("Player")) return;
-        var damage = 35f - _player.Defense.CalculateFinalValue() + Random.Range(1, 10);
+        var damage = 22f - _player.Defense.CalculateFinalValue() + Random.Range(1, 10);
         _player.TakeDamage(damage);
         Destroy(gameObject);
     }

@@ -16,7 +16,7 @@ namespace ApSkills
         private float _damage;
         private bool _isOpposite;
         
-        private float _skillLevelMultiplier = 0.4f;
+        private float _skillLevelMultiplier = 0.3f;
 
         private void Start()
         {

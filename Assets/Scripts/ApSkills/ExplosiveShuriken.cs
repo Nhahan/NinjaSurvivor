@@ -16,7 +16,7 @@ namespace ApSkills
         private Animator _animator;
         private Vector3 _target;
 
-        private float _bulletSpeed;
+        private float _bulletSpeed = 9;
         private const float DamageMultiplier = 1f;
 
         private float _damage;
@@ -26,28 +26,20 @@ namespace ApSkills
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
-            var skillLevelBonus = 2f * _player.ExplosiveShuriken.CalculateFinalValue();
+            var skillLevelBonus = 1f * _player.ExplosiveShuriken.CalculateFinalValue();
 
             _target = GameManager.Instance.GetClosestTarget(20f);
             _damage = _player.Damage() * DamageMultiplier * skillLevelBonus + _player.Damage();
             
             AdjustDirection();
-            StartCoroutine(Explosion(1.5f));
+            StartCoroutine(Explosion(1f));
         }
 
         private void FixedUpdate()
         {
             if (_isHit) return;
-            
-            _bulletSpeed += Time.deltaTime * 0.5f;
-            try
-            {
-                transform.position = Vector2.MoveTowards(transform.position, _target, _bulletSpeed);
-            }
-            catch
-            {
-                transform.position = Vector2.MoveTowards(transform.position, new Vector2(Random.Range(-1,1), Random.Range(-1,1)), _bulletSpeed);
-            }
+
+            transform.position = Vector2.MoveTowards(transform.position, _target, _bulletSpeed);
         }
 
         private void OnTriggerEnter2D(Collider2D coll)

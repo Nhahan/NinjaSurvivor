@@ -35,7 +35,7 @@ namespace MonsterSpawner
 
             _pointsCount = _spawnPoints.Count;
 
-            StartCoroutine(SpawnMonster(7f));
+            StartCoroutine(SpawnMonster(9f));
             StartCoroutine(SpawnBasicMonster(4.5f));
         }
 
@@ -129,7 +129,7 @@ namespace MonsterSpawner
                     }
                     default:
                     {
-                        for (var i = 0; i < 11; i++)
+                        for (var i = 0; i < 9; i++)
                         {
                             RandomSpawn(100f, acidSpitter, r);
                             RandomSpawn(100f, acidSpitter, r);

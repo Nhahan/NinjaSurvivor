@@ -9,11 +9,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private FixedJoystick joystick;
     [SerializeField] private Animator animator;
-    [SerializeField] private Player player;
-    
+    private Player _player;
+    private float _movementSpeed;
+
+    private void Start()
+    {
+        _player = GameManager.Instance.GetPlayer();
+        _movementSpeed = _player.MovementSpeed.CalculateFinalValue();
+    }
+
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(joystick.Horizontal, joystick.Vertical) * player.MovementSpeed.CalculateFinalValue();
+        var speedMult = _player.FootworkTraining.CalculateFinalValue() / 20;
+        rb.velocity = new Vector2(joystick.Horizontal, joystick.Vertical) *
+                      (_movementSpeed + _movementSpeed * speedMult);
 
         var hasHorizontalSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
 

@@ -47,7 +47,6 @@ namespace Status
         private readonly Dictionary<string, float> activatedSkills = new();
 
         private SpriteFlash sprite;
-        [SerializeField] private PlayerStat playerStat;
         
         private void Awake()
         {

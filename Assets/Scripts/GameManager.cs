@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        Initialize();
+    }
+
+    private void Initialize()
+    {
         levelUpRewards.HideRewards();
         _defaultMaterial = player.GetComponent<SpriteRenderer>().material;
     }
@@ -71,10 +76,11 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        _isGameOver = true;
+        SetIsGameOver(true);
+        Initialize();
         playerStat.Initialize();
         player.Initialize();
-        Invoke(nameof(Resume), 1f);
+        Resume();
     }
 
     public bool GetIsGameOver()
@@ -91,8 +97,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         Debug.Log("AllStop");
-        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (var enemy in enemies)
+        _enemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+        foreach (var enemy in _enemies)
         {
             enemy.GetComponent<IMonster>().StopMonster();
         }
@@ -102,8 +108,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
         Debug.Log("Resume");
-        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (var enemy in enemies)
+        _enemies = GameObject.FindGameObjectsWithTag("Enemy").ToList();
+        foreach (var enemy in _enemies)
         {
             enemy.GetComponent<IMonster>().ResumeMonster();
         }
@@ -125,7 +131,7 @@ public class GameManager : MonoBehaviour
         KdTree<Transform> enemiesTree = new();
         enemiesTree.AddAll(_enemies.Select(e => e.transform).ToList());
 
-        Debug.Log("Count: " + enemiesTree.Count);
+        // Debug.Log("Count: " + enemiesTree.Count);
         var pos = enemiesTree.FindClosest(player.transform.position).position;
         
         if (Vector3.Distance(pos, player.transform.position) <= distance)

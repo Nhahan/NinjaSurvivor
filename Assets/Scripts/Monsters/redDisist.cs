@@ -31,7 +31,7 @@ namespace Monsters
             _monsterSpeed += Random.Range(1, 1) / 0.5f;
 
             _randomDamage = Random.Range(10, 20) * 1.5f;
-            KnockbackDuration = 0.15f;
+            KnockbackDuration = 0.075f;
         }
 
         private void FixedUpdate()
@@ -39,7 +39,12 @@ namespace Monsters
             _attackCooltime += Time.deltaTime;
             _distance = Vector3.Distance(transform.position, _player.transform.position);
 
-            if (_distance < 1.1 && _attackCooltime > 1.1f)
+            if (_monsterHp < 0)
+            {
+                _monsterSpeedMultiplier = 0;
+            }
+
+            if (_distance < 1.25f && _attackCooltime > 1.1f)
             {
                 _state = State.Attacking;
             }
@@ -62,7 +67,6 @@ namespace Monsters
                         transform.position,
                         _player.transform.position,
                         _monsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
-                    FlipSprite();
                     break;
                 case State.Attacking:
                     _monsterSpeedMultiplier = 0;
@@ -89,11 +93,6 @@ namespace Monsters
             _animator.SetBool("isAttacking", false);
         }
 
-        private void FlipSprite()
-        {
-            transform.localScale = transform.position.x < _player.transform.position.x ? new Vector3(-1, 1, 1) : new Vector3(1, 1, 1);
-        }
-    
         public void TakeDamage(float damage)
         { 
             _monsterHp = _monsterHp - damage + MonsterDefense;

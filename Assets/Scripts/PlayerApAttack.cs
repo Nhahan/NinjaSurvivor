@@ -50,7 +50,8 @@ public class PlayerApAttack : MonoBehaviour
         var fireDirection = Mathf.Sign((flamer.transform.position - transform.position).normalized.x);
         var fixedPosition = new Vector2(transform.position.x + fireDirection * 2.35f, transform.position.y + 0.175f);
 
-        for (var i = 0; i < 2; i ++) 
+        var count = level > 3 ? 1 : 2; 
+        for (var i = 0; i < count; i ++) 
         {
             yield return new WaitForSeconds(_createDelay / 2);
             Instantiate(prefab, fixedPosition, rotation);
@@ -66,7 +67,7 @@ public class PlayerApAttack : MonoBehaviour
         var level = (int)_player.LightningStrike.CalculateFinalValue();
         if (level < 1) yield break;
         
-        var count = level * 2 + 3;
+        var count = level * 2 + 4;
         var targets = GameManager.Instance.GetClosestTargets(8.5f, count);
 
         for (var i = 0; i < count; i++)
@@ -74,8 +75,7 @@ public class PlayerApAttack : MonoBehaviour
             try
             {
                 var target = targets[i] + new Vector3(Random.Range(-2,2) ,Random.Range(-2, 2), 0);
-                Instantiate(prefab, target + new Vector3(0, 8, 0), rotation).GetComponent<LightningStrike>().SetTarget(target);
-                
+                Instantiate(prefab, target + new Vector3(0, 8, 0), rotation);
             }
             catch
             {

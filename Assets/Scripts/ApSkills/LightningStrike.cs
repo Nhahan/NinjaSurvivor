@@ -17,26 +17,6 @@ namespace ApSkills
         private float _baseSkillDamage = 10f;
         private float _skillLevelMultiplier = 0.25f;
         private float _damage;
-        
-        int count;
-        void FixedUpdate()
-        {
-            count = _system.GetParticles(Particles);
-            
-            for (int i = 0; i < count; i++)
-            {
-                ParticleSystem.Particle particle = Particles[i];
-
-                Vector3 v1 = _system.transform.TransformPoint(particle.position);
-                Vector3 v2 = target;
-                
-                Vector3 tarPosi = (v2 - v1) *  (particle.remainingLifetime / particle.startLifetime);
-                particle.position = _system.transform.InverseTransformPoint(v2 - tarPosi);
-                Particles[i] = particle;
-            }
-
-            _system.SetParticles(Particles, count);
-        }
 
         private void Start()
         {
@@ -52,11 +32,33 @@ namespace ApSkills
             }
 
             _player = GameManager.Instance.GetPlayer();
+
+            target = transform.position - new Vector3(0, 8, 0);
             
             var skillLevelBonus = _skillLevelMultiplier * _player.BasicStar.CalculateFinalValue();
             _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _baseSkillDamage + Random.Range(-1, 6);
             
             Destroy(gameObject, 0.45f);
+        }
+
+        private void FixedUpdate()
+        {
+            var count = _system.GetParticles(Particles);
+
+            int i = 0;
+            for (; i < count; i++)
+            {
+                ParticleSystem.Particle particle = Particles[i];
+
+                Vector3 v1 = _system.transform.TransformPoint(particle.position);
+                Vector3 v2 = target;
+                
+                Vector3 targetPosition = (v2 - v1) *  (particle.remainingLifetime / particle.startLifetime);
+                particle.position = _system.transform.InverseTransformPoint(v2 - targetPosition);
+                Particles[i] = particle;
+            }
+
+            _system.SetParticles(Particles, count);
         }
 
         private void OnTriggerEnter2D(Collider2D coll)
@@ -68,11 +70,6 @@ namespace ApSkills
             var normal = (coll.gameObject.transform.position - transform.position).normalized;
             monster.TakeDamage(_damage);
             monster.StartKnockback(normal);
-        }
-
-        public void SetTarget(Vector3 t)
-        {
-            target = t;
         }
     }
 }

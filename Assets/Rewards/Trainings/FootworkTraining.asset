@@ -24,12 +24,13 @@ MonoBehaviour:
   MovementSpeedBonus: 0
   CooltimeBonus: 0
   CriticalBonus: 0
+  CriticalDamageBonus: 0
   MaxHpPercentBonus: 0
   HpPercentBonus: 0
   AttackDamagePercentBonus: 0
   DefensePercentBonus: 0
   AttackSpeedPercentBonus: 0
-  MovementSpeedPercentBonus: 5
+  MovementSpeedPercentBonus: 10
   CooltimePercentBonus: 0
   CriticalPercentBonus: 0
   CriticalDamagePercentBonus: 0
@@ -38,6 +39,7 @@ MonoBehaviour:
   DiagonalStar: 0
   ThrowingStar: 0
   Flamer: 0
+  ExplosiveShuriken: 0
   LightningStrike: 0
   AssassinationTraining: 0
   BodycoreTraining: 0

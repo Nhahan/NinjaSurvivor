@@ -30,8 +30,8 @@ namespace AdSkills
             var skillLevelBonus = _skillLevelMultiplier * _player.BasicStar.CalculateFinalValue();
             _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _baseSkillDamage;
             _bulletDirection = (_closestTarget - transform.position -
-                                new Vector3((Random.Range(-2, 2) / 0.75f) / (_playerLevel / 5f),
-                                    (Random.Range(-2, 2) / 0.75f) / (_playerLevel / 5f), 0)).normalized;
+                                new Vector3(Random.Range(-2, 2) / _player.BasicStar.CalculateFinalValue(),
+                                    Random.Range(-2, 2) / _player.BasicStar.CalculateFinalValue(), 0)).normalized;
             }
 
         private void FixedUpdate()
