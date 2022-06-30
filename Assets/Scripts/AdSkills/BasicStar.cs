@@ -10,6 +10,7 @@ namespace AdSkills
         [SerializeField] private float damageMultiplier = 1;
 
         private Player _player;
+        private int _playerLevel;
 
         private Vector3 _closestTarget;
 
@@ -24,11 +25,13 @@ namespace AdSkills
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
+            _playerLevel = _player.GetLevel();
             
             var skillLevelBonus = _skillLevelMultiplier * _player.BasicStar.CalculateFinalValue();
             _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _baseSkillDamage;
             _bulletDirection = (_closestTarget - transform.position -
-                                new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0)).normalized;
+                                new Vector3((Random.Range(-2, 2) / 0.75f) / (_playerLevel / 5f),
+                                    (Random.Range(-2, 2) / 0.75f) / (_playerLevel / 5f), 0)).normalized;
             }
 
         private void FixedUpdate()

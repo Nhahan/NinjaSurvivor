@@ -159,7 +159,5 @@ namespace Status
             p.MuscleTraining.RemoveAllModifiersFromSource(this);
             p.PhysicalTraining.RemoveAllModifiersFromSource(this);
         }
-        
-        public RewardType RewardTypes { get; set; }
     }
 }

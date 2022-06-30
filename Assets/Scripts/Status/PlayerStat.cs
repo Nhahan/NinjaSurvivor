@@ -76,6 +76,14 @@ namespace Status
             return false;
         }
 
+        public virtual void Initialize()
+        {
+            foreach (var mod in statModifiers)
+            {
+                statModifiers.Remove(mod);   
+            }
+        }
+
         protected virtual int CompareModifierOrder(StatModifier a, StatModifier b)
         {
             if (a.Order < b.Order)

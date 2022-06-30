@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelUpRewards levelUpRewards;
     [SerializeField] public PostProcessVolume post;
     [SerializeField] public GameObject indicator;
+    [SerializeField] public PlayerStat playerStat;
     [SerializeField] public ExpSoul1 expSoul1;
     
     public static GameManager Instance;
@@ -45,8 +46,6 @@ public class GameManager : MonoBehaviour
     {
         levelUpRewards.HideRewards();
         _defaultMaterial = player.GetComponent<SpriteRenderer>().material;
-
-        _initialPlayerStatus = DeepClone(player);
     }
 
     private void FixedUpdate()
@@ -73,8 +72,9 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         _isGameOver = true;
-        player = _initialPlayerStatus;
-        Invoke(nameof(Resume), 1.5f);
+        playerStat.Initialize();
+        player.Initialize();
+        Invoke(nameof(Resume), 1f);
     }
 
     public bool GetIsGameOver()

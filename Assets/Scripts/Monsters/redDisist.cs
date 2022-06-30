@@ -1,24 +1,23 @@
 using System;
 using System.Collections;
 using Status;
-using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Monsters
 {
-    public class Anteater : Monster, IMonster
+    public class RedDisist : Monster, IMonster
     {
         private Player _player;
         private Animator _animator;
     
-        private float _monsterHp = 35f;
+        private float _monsterHp = 18f;
         private const float MonsterDamage = 10f;
         private float _randomDamage;
-        private const float MonsterSpeed = 1.6f;
+        private float _monsterSpeed = 1.65f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
-        private const float MonsterDefense = 2f;
+        private const float MonsterDefense = 5f;
 
         private float _attackCooltime;
     
@@ -28,8 +27,11 @@ namespace Monsters
             _animator = GetComponent<Animator>();
             _indicator = GameManager.Instance.indicator;
 
-            _randomDamage = Random.Range(8, 12);
-            KnockbackDuration = 0.11f;
+            _monsterHp += _player.GetLevel() * 1.5f;
+            _monsterSpeed += Random.Range(1, 1) / 0.5f;
+
+            _randomDamage = Random.Range(10, 20) * 1.5f;
+            KnockbackDuration = 0.15f;
         }
 
         private void FixedUpdate()
@@ -37,7 +39,7 @@ namespace Monsters
             _attackCooltime += Time.deltaTime;
             _distance = Vector3.Distance(transform.position, _player.transform.position);
 
-            if (_distance < 1.1 && _attackCooltime > 1.125f)
+            if (_distance < 1.1 && _attackCooltime > 1.1f)
             {
                 _state = State.Attacking;
             }
@@ -59,7 +61,7 @@ namespace Monsters
                     transform.position = Vector2.MoveTowards(
                         transform.position,
                         _player.transform.position,
-                        MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
+                        _monsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
                     FlipSprite();
                     break;
                 case State.Attacking:
@@ -75,7 +77,7 @@ namespace Monsters
         private void AttackPlayer()
         {
             _animator.SetBool("isAttacking", true);
-            var finalDamage = _randomDamage;
+            var finalDamage = _randomDamage + MonsterDamage;
             _player.TakeDamage(finalDamage);
             StartCoroutine(IsAttackingToFalse(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
@@ -99,7 +101,6 @@ namespace Monsters
             Flash();
 
             if (_monsterHp > 0) return;
-            _animator.SetBool("isDead", true);
             _monsterSpeedMultiplier = 0;
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }

@@ -47,6 +47,7 @@ namespace Status
         private readonly Dictionary<string, float> activatedSkills = new();
 
         private SpriteFlash sprite;
+        [SerializeField] private PlayerStat playerStat;
         
         private void Awake()
         {
@@ -56,13 +57,18 @@ namespace Status
 
         private void Start()
         {
+            ResetLevel();
+
+            sprite = GetComponent<SpriteFlash>();
+        }
+
+        private void ResetLevel()
+        {
             Level = _levelTable[0].value;
             foreach (var reward in rewards)
             {
                 reward.Equip(this);
             }
-
-            sprite = GetComponent<SpriteFlash>();
         }
 
         public void TakeDamage(float damage)
@@ -77,8 +83,8 @@ namespace Status
                 GameManager.Instance.SetIsGameOver(true);
                 Debug.Log($"Game Over / currentHp: {Hp.CalculateFinalValue()}");
 
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 GameManager.Instance.Restart();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
 
@@ -151,6 +157,27 @@ namespace Status
         public float Damage()
         {
             return AttackDamage.CalculateFinalValue() - Random.Range(-9, 5);
+        }
+
+        public void Initialize()
+        {
+            ResetLevel();
+            nextLevelExp = 0;
+            Exp = 0;
+            previousExp = 0;
+            ExpMultiplier.SetValue(1);
+
+            MaxHp.SetValue(100);
+            Hp.SetValue(MaxHp.CalculateFinalValue());
+            AttackDamage.SetValue(10);
+            Defense.SetValue(0);
+            AttackSpeed.SetValue(2);
+            MovementSpeed.SetValue(4);
+            Cooltime.SetValue(4);
+            Critical.SetValue(0);
+            CriticalDamage.SetValue(0);
+            
+            BasicStar.SetValue(1);
         }
     }
 }
