@@ -83,7 +83,6 @@ namespace Status
                 Debug.Log($"Game Over / currentHp: {Hp.CalculateFinalValue()}");
 
                 GameManager.Instance.Restart();
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
 

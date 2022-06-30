@@ -7,6 +7,7 @@ using Pickups;
 using Status;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 using Vector3 = UnityEngine.Vector3;
 
 public class GameManager : MonoBehaviour
@@ -35,7 +36,6 @@ public class GameManager : MonoBehaviour
     {
         if(Instance == null)
         {
-            DontDestroyOnLoad(gameObject);
             Instance = this;
         } else if(Instance != this)
         {
@@ -76,10 +76,11 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        SetIsGameOver(true);
-        Initialize();
-        playerStat.Initialize();
-        player.Initialize();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // SetIsGameOver(true);
+        // Initialize();
+        // playerStat.Initialize();
+        // player.Initialize();
         Resume();
     }
 
