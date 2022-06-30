@@ -72,6 +72,11 @@ namespace Monsters
                     AttackPlayer();
                     _attackCooltime = 0;
                     break;
+                case State.Dead:
+                    _monsterSpeedMultiplier = 0;
+                    _animator.SetBool("isDead", true);
+                    StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -99,8 +104,9 @@ namespace Monsters
     
         public void TakeDamage(float damage)
         { 
-            _monsterHp = _monsterHp - damage + MonsterDefense;
-            ShowDamage(damage);
+            var finalDamage = damage + MonsterDefense;
+            _monsterHp = _monsterHp - finalDamage;
+            ShowDamage(finalDamage);
             Flash();
 
             if (_monsterHp > 0) return;

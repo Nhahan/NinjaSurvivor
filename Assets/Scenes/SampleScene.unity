@@ -1016,7 +1016,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -10
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -114494,7 +114494,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: -9
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -124151,7 +124151,7 @@ TilemapRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -142022,7 +142022,7 @@ MonoBehaviour:
   acidSpitter: {fileID: 3262185139656416843, guid: 1ed60ac497d7f904fb74f3a66fbd14f3, type: 3}
   redAnteater: {fileID: 3776090965816088465, guid: 59e87602f85cb4355bd34cdb33652ccd, type: 3}
   disist: {fileID: 8012064784144346932, guid: 897db0e24134ce84a8ebd60da8bb5b98, type: 3}
-  redDisist: {fileID: 0}
+  redDisist: {fileID: 8012064784144346932, guid: 4ec564811d0304dd08871b6360d7d1f3, type: 3}
 --- !u!114 &7903036393026126687
 MonoBehaviour:
   m_ObjectHideFlags: 0

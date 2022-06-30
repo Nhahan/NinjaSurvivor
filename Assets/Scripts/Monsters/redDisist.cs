@@ -14,7 +14,7 @@ namespace Monsters
         private float _monsterHp = 18f;
         private const float MonsterDamage = 10f;
         private float _randomDamage;
-        private float _monsterSpeed = 1.65f;
+        private float _monsterSpeed = 1.15f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
         private const float MonsterDefense = 5f;
@@ -28,10 +28,10 @@ namespace Monsters
             _indicator = GameManager.Instance.indicator;
 
             _monsterHp += _player.GetLevel() * 1.5f;
-            _monsterSpeed += Random.Range(1, 1) / 0.5f;
+            _monsterSpeed += Random.Range(1, 2) / 0.65f;
 
             _randomDamage = Random.Range(10, 20) * 1.5f;
-            KnockbackDuration = 0.075f;
+            KnockbackDuration = 0.1f;
         }
 
         private void FixedUpdate()
@@ -42,6 +42,7 @@ namespace Monsters
             if (_monsterHp < 0)
             {
                 _monsterSpeedMultiplier = 0;
+                _state = State.Dead;
             }
 
             if (_distance < 1.25f && _attackCooltime > 1.1f)
@@ -73,6 +74,16 @@ namespace Monsters
                     AttackPlayer();
                     _attackCooltime = 0;
                     break;
+                case State.Dead:
+                    Debug.Log(_state);
+                    transform.position = Vector2.MoveTowards(
+                        transform.position,
+                        transform.position,
+                        0);
+                    _animator.SetBool("isDead", true);
+                    _monsterSpeedMultiplier = 0;
+                    StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -80,17 +91,8 @@ namespace Monsters
     
         private void AttackPlayer()
         {
-            _animator.SetBool("isAttacking", true);
             var finalDamage = _randomDamage + MonsterDamage;
             _player.TakeDamage(finalDamage);
-            StartCoroutine(IsAttackingToFalse(_animator.GetCurrentAnimatorStateInfo(0).length));
-        }
-
-        private IEnumerator IsAttackingToFalse(float second)
-        {
-            yield return new WaitForSeconds(second);
-            _monsterSpeedMultiplier = 1;
-            _animator.SetBool("isAttacking", false);
         }
 
         public void TakeDamage(float damage)
@@ -100,6 +102,7 @@ namespace Monsters
             Flash();
 
             if (_monsterHp > 0) return;
+            _animator.SetBool("isDead", true);
             _monsterSpeedMultiplier = 0;
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }

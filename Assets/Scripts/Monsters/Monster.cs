@@ -13,7 +13,8 @@ namespace Monsters
         protected enum State
         {
             Moving,
-            Attacking
+            Attacking,
+            Dead
         }
 
         // ReSharper disable once InconsistentNaming

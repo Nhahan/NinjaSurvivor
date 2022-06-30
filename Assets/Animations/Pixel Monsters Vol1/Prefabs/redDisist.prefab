@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7990636573366072793}
   - component: {fileID: 9183497581791406129}
   - component: {fileID: 4283466588958789856}
-  - component: {fileID: -9153279639359329549}
   - component: {fileID: 2467482258024239205}
   - component: {fileID: 9016238904268174763}
   - component: {fileID: -8308001373173848502}
+  - component: {fileID: 1067856165036646147}
   m_Layer: 0
-  m_Name: redDisist
+  m_Name: RedDisist
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 8012064784144346932}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 293eb8ca075d3457faa3073d3aeb0d8f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8ecac92f206134acf9e2bfd85f19b668, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -109,18 +109,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-9153279639359329549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8012064784144346932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1d2b7d9864a148feaa5fc697e758e71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &2467482258024239205
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4916,3 +4904,15 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1067856165036646147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012064784144346932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fc652809ccae481e8bb3a76ce77fa5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

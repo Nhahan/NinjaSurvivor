@@ -74,14 +74,11 @@ namespace Status
         {
             Hp.SetValue(Hp.CalculateFinalValue() - damage);
             sprite.Flash();
-            Debug.Log($"Took damage: {damage} / currentHp: {Hp.CalculateFinalValue()}");
 
             // ReSharper disable once InvertIf
             if (Hp.CalculateFinalValue() <= 0)
             {
                 GameManager.Instance.SetIsGameOver(true);
-                Debug.Log($"Game Over / currentHp: {Hp.CalculateFinalValue()}");
-
                 GameManager.Instance.Restart();
             }
         }
@@ -134,7 +131,6 @@ namespace Status
             nextLevelExp = _levelTable[Level].exp;
             previousExp = _levelTable[Level - 1].exp;
             Level += 1;
-            Debug.Log($"LevelUp! to {Level}, currentExp: {Exp}");
             GameManager.Instance.LevelUpEvent();
         }
 

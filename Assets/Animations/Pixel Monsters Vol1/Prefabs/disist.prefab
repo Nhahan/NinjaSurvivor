@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -9153279639359329549}
   - component: {fileID: 2467482258024239205}
   m_Layer: 0
-  m_Name: disist
+  m_Name: Disist
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

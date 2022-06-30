@@ -30,7 +30,7 @@ namespace Monsters
             _monsterHp += _player.GetLevel();
 
             _randomDamage = Random.Range(10, 20);
-            KnockbackDuration = 0.09f;
+            KnockbackDuration = 0.105f;
         }
 
         private void FixedUpdate()
@@ -100,7 +100,7 @@ namespace Monsters
 
             if (_monsterHp > 0) return;
             _monsterSpeedMultiplier = 0;
-            StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
+            StartCoroutine(BeforeDestroy(0.35f));
         }
     }
 }

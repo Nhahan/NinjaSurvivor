@@ -155,9 +155,10 @@ namespace MonsterSpawner
                 yield return new WaitForSeconds(second);
                 switch (level) {
                     case < 10:
-                    {                        
-                        RandomSpawn(100f, disist, r);
-                        RandomSpawn(100f, disist, r);
+                    {       
+                        RandomSpawn(100f, redDisist, r);
+                        // RandomSpawn(100f, disist, r);
+                        // RandomSpawn(100f, disist, r);
                         break;
                     }
                     case < 20:
