@@ -14,8 +14,8 @@ namespace ApSkills
         private ParticleSystem _system;
         private static readonly ParticleSystem.Particle[] Particles = new ParticleSystem.Particle[50];
 
-        private float _baseSkillDamage = 10f;
-        private float _skillLevelMultiplier = 0.25f;
+        private float _baseSkillDamage = 7.5f;
+        private float _skillLevelMultiplier = 0.2f;
         private float _damage;
 
         private void Start()
@@ -25,9 +25,9 @@ namespace ApSkills
                 _system = GetComponent<ParticleSystem>();
             }
 
-            if (_system == null){
+            if (_system == null) {
                 this.enabled = false;
-            }else{
+            } else {
                 _system.Play();
             }
 
@@ -44,9 +44,8 @@ namespace ApSkills
         private void FixedUpdate()
         {
             var count = _system.GetParticles(Particles);
-
-            int i = 0;
-            for (; i < count; i++)
+            
+            for (var i = 0; i < count; i++)
             {
                 ParticleSystem.Particle particle = Particles[i];
 

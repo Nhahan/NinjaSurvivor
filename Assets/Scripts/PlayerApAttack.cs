@@ -36,7 +36,7 @@ public class PlayerApAttack : MonoBehaviour
                         StartCoroutine(ExplosiveShuriken(prefab, _v, transform.rotation));
                         break;
                     case "FireCross":
-                        StartCoroutine(ExplosiveShuriken(prefab, _v, transform.rotation));
+                        StartCoroutine(FireCross(prefab, _v, transform.rotation));
                         break;
                 }
             }
@@ -58,7 +58,7 @@ public class PlayerApAttack : MonoBehaviour
         {
             yield return new WaitForSeconds(_createDelay / 2);
             Instantiate(prefab, fixedPosition, rotation);
-            if ((level < 5)) yield break;
+            if (level < 5) yield break;
             
             fixedPosition = new Vector2(transform.position.x + fireDirection * -2.35f, transform.position.y + 0.175f);
             Instantiate(prefab, fixedPosition, rotation).GetComponent<Flamer>().SetOpposite(true);
@@ -101,15 +101,23 @@ public class PlayerApAttack : MonoBehaviour
         
         yield return new WaitForSeconds(0.5f);
 
-        var count = level > 3 ? 1 : 2; 
-        for (var i = 0; i < count; i ++) 
+        if (level < 5)
         {
-            yield return new WaitForSeconds(_createDelay / 1 / 3);
+            yield return new WaitForSeconds(_createDelay / 2 / 3);
             Instantiate(prefab, transform.position, rotation);
-            if ((level < 5)) yield break;
-            
-            yield return new WaitForSeconds(_createDelay / 1 / 3);
-            Instantiate(prefab, transform.position, new Quaternion(0, 0, 90, 0));
+            yield return new WaitForSeconds(_createDelay / 2 / 3);
+            Instantiate(prefab, transform.position, Quaternion.Euler(0f, 0f, 90f));
+        }
+        else
+        {
+            yield return new WaitForSeconds(_createDelay / 2 / 3);
+            Instantiate(prefab, transform.position, rotation);
+            Instantiate(prefab, transform.position, Quaternion.Euler(0f, 0f, 90f));
+            yield return new WaitForSeconds(_createDelay / 2 / 3);
+            Instantiate(prefab, transform.position, rotation);
+
+            if (level > 8)
+                Instantiate(prefab, transform.position, Quaternion.Euler(0f, 0f, 90f));
         }
     }
 }

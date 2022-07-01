@@ -38,6 +38,9 @@ public class PlayerAttack : MonoBehaviour
                     case "ThrowingStar":
                         StartCoroutine(ThrowingStar(prefab, _v, transform.rotation));
                         break;
+                    case "Slash":
+                        StartCoroutine(Slash(prefab, _v, transform.rotation));
+                        break;
                 }
             }
         }
@@ -69,7 +72,7 @@ public class PlayerAttack : MonoBehaviour
         var level = _player.DiagonalStar.CalculateFinalValue();
         if (level < 1) yield break;
         
-        for (var i = 0; i < _player.DiagonalStar.CalculateFinalValue() * 2 + 1; i++)
+        for (var i = 0; i < _player.DiagonalStar.CalculateFinalValue() * 2 + 3; i++)
         {
             Instantiate(prefab, transform.position, rotation);
             yield return new WaitForSeconds(0);
@@ -86,6 +89,22 @@ public class PlayerAttack : MonoBehaviour
             yield return new WaitForSeconds(_attackSpeed / 3 * 2 / level);
             Instantiate(prefab, _player.transform.position, rotation);
             yield return new WaitForSeconds(_attackSpeed / 3 * 1 / level);
+        }
+    }
+    
+    private IEnumerator Slash(GameObject prefab, Vector3 _, Quaternion rotation)
+    {
+        var level = _player.Slash.CalculateFinalValue();
+        if (level < 1) yield break;
+        
+        yield return new WaitForSeconds(_attackSpeed * 1 / 7);
+
+        var count = level > 4 ? 3 : 2;
+        var slashSpeed = (7 - 1) / count;
+        for (var i = 0; i < count; i++)
+        {
+            Instantiate(prefab, _player.transform.position, rotation);
+            yield return new WaitForSeconds(_attackSpeed * slashSpeed / 7);
         }
     }
 }

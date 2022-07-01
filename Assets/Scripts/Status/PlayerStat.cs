@@ -96,7 +96,6 @@ namespace Status
         public virtual float CalculateFinalValue()
         {
             float finalValue = BaseValue;
-            float sumPercentAdd = 0;
 
             statModifiers.Sort(CompareModifierOrder);
 
@@ -108,19 +107,9 @@ namespace Status
                 {
                     finalValue += mod.Value;
                 }
-                else if (mod.Type == StatModType.PercentAdd)
-                {
-                    sumPercentAdd += mod.Value;
-                
-                    if (i + 1 >= statModifiers.Count || statModifiers[i + 1].Type != StatModType.PercentAdd)
-                    {
-                        finalValue *= 1 + sumPercentAdd;
-                        sumPercentAdd = 0;
-                    }
-                }
                 else if (mod.Type == StatModType.PercentMult)
                 {
-                    finalValue += finalValue * mod.Value / 100;
+                    finalValue += mod.Value;
                 }
             }
 

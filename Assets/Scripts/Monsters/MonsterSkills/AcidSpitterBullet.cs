@@ -19,8 +19,8 @@ public class AcidSpitterBullet : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        _speed += Time.deltaTime;
-        if (_speed > 1.8f) {Destroy(gameObject);}
+        _speed += Time.deltaTime * 0.75f;
+        if (_speed > 1.65f) {Destroy(gameObject);}
         
         transform.position += _target * _speed;
     }

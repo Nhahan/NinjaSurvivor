@@ -15,7 +15,7 @@ namespace ApSkills
         private bool _isOpposite;
         private float _liveTime;
     
-        private float _skillLevelMultiplier = 0.33f;
+        private float _skillLevelMultiplier = 0.175f;
 
         private void Start()
         {
@@ -23,7 +23,9 @@ namespace ApSkills
             _collider2D = GetComponent<BoxCollider2D>();
 
             var skillLevelBonus = _skillLevelMultiplier * _player.FireCross.CalculateFinalValue();
-            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage();
+            Debug.Log("FireCross init");
+            Debug.Log(_player.FireCross.CalculateFinalValue());
+            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage() * 0.5f;
             Destroy(gameObject, 0.6f);
         }
 
@@ -42,8 +44,9 @@ namespace ApSkills
             if (!coll.CompareTag("Enemy")) return;
 
             var monster = coll.gameObject.GetComponent<IMonster>();
-        
+            var normal = (coll.gameObject.transform.position - transform.position).normalized;
             monster.TakeDamage(_damage);
+            monster.StartKnockback(normal);
         }
     }
 }

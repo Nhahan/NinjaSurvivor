@@ -14,7 +14,7 @@ namespace Monsters
         private float _monsterHp = 20f;
         private const float MonsterDamage = 10f;
         private float _randomDamage;
-        private float _monsterSpeed = 1.025f;
+        private float _monsterSpeed = 2.025f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
         private const float MonsterDefense = 5f;
@@ -28,7 +28,6 @@ namespace Monsters
             _indicator = GameManager.Instance.indicator;
 
             _monsterHp += _player.GetLevel() * 2f;
-            _monsterSpeed += Random.Range(1, 2) / 0.65f;
 
             _randomDamage = Random.Range(10, 20) * 1.5f;
             KnockbackDuration = 0.1f;

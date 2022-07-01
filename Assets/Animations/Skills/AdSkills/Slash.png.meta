@@ -1,40 +1,7 @@
 fileFormatVersion: 2
-guid: b80b04e85215614408bd2902320da1d1
+guid: d5d914ed02d5647bc956c8ee79aa1fb4
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 21300000
-    second: basicShapes3_0
-  - first:
-      213: 21300002
-    second: basicShapes3_1
-  - first:
-      213: 21300004
-    second: basicShapes3_2
-  - first:
-      213: 21300006
-    second: basicShapes3_3
-  - first:
-      213: 21300008
-    second: basicShapes3_4
-  - first:
-      213: 21300010
-    second: basicShapes3_5
-  - first:
-      213: 21300012
-    second: basicShapes3_6
-  - first:
-      213: 21300014
-    second: basicShapes3_7
-  - first:
-      213: 21300016
-    second: basicShapes3_8
-  - first:
-      213: 21300018
-    second: basicShapes3_9
-  - first:
-      213: 21300020
-    second: basicShapes3_10
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -71,7 +38,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 0
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -80,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 120
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,7 +62,7 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -122,7 +89,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -132,7 +99,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
     maxTextureSize: 2048
@@ -144,9 +111,9 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -156,30 +123,18 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: basicShapes3_0
+      name: ezgif.com-gif-maker-removebg-preview (1)_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1280
-        width: 256
-        height: 256
+        y: 632
+        width: 632
+        height: 632
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +142,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 612d83b2312fdc64297f470d641e089d
-      internalID: 21300000
+      spriteID: 8891a7f92a5a64be5b16913fd502b85d
+      internalID: 1024594390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basicShapes3_1
+      name: ezgif.com-gif-maker-removebg-preview (1)_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1280
-        width: 256
-        height: 256
+        x: 632
+        y: 632
+        width: 632
+        height: 632
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adbeb923bda91d74e93b9123cc109cff
-      internalID: 21300002
+      spriteID: b3de8368b4a934c3690da00e9d1c8c5a
+      internalID: 1161804371
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basicShapes3_2
+      name: ezgif.com-gif-maker-removebg-preview (1)_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1024
-        width: 256
-        height: 256
+        x: 1264
+        y: 632
+        width: 632
+        height: 632
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 420f919e530b55e498fcdfc37780d0f5
-      internalID: 21300004
+      spriteID: 0c308852cb1d34415b223ce1777df12a
+      internalID: 1788047954
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basicShapes3_3
+      name: ezgif.com-gif-maker-removebg-preview (1)_3
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1024
-        width: 256
-        height: 256
+        x: 1896
+        y: 632
+        width: 632
+        height: 632
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91f5a6c2bb75a7745be3a3f3fcc3d183
-      internalID: 21300006
+      spriteID: 7fda550e7ec084890ba54b150e662e64
+      internalID: -1778871748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basicShapes3_4
+      name: ezgif.com-gif-maker-removebg-preview (1)_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 768
-        width: 256
-        height: 256
+        x: 2528
+        y: 632
+        width: 632
+        height: 632
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,125 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f115c9292a769d408d9c8e64f1cb1c8
-      internalID: 21300008
+      spriteID: 8bf5cc82a8492454baa1023ff14835df
+      internalID: -379982702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: basicShapes3_5
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 768
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6262288bb380e49429e61a925e747a6d
-      internalID: 21300010
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: basicShapes3_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 949ff041afb7edb4bb549dac7ea02dac
-      internalID: 21300012
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: basicShapes3_7
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 512
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 731bfc5edb4fe3e4782f501827cfaab5
-      internalID: 21300014
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: basicShapes3_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f120b61e2f28ee34abb60379b4f30005
-      internalID: 21300016
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: basicShapes3_9
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 256
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 95d8ef2792310b948a621f774d56c484
-      internalID: 21300018
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: basicShapes3_10
+      name: ezgif.com-gif-maker-removebg-preview (1)_5
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 256
+        width: 632
+        height: 632
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,8 +247,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d281a19f52a76dd47b358ddd423af3ac
-      internalID: 21300020
+      spriteID: 9bf075ff4eea2459398f472872cf6aa5
+      internalID: -1759639903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ezgif.com-gif-maker-removebg-preview (1)_6
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 0
+        width: 632
+        height: 632
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee2a1ac8ff40047d19ae63971cc33df7
+      internalID: -1994383051
       vertices: []
       indices: 
       edges: []
@@ -406,7 +277,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9ac0ab10f2429174c8d5d9067740d131
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -414,17 +285,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      basicShapes3_6: 21300012
-      basicShapes3_8: 21300016
-      basicShapes3_1: 21300002
-      basicShapes3_3: 21300006
-      basicShapes3_4: 21300008
-      basicShapes3_9: 21300018
-      basicShapes3_2: 21300004
-      basicShapes3_5: 21300010
-      basicShapes3_0: 21300000
-      basicShapes3_7: 21300014
-      basicShapes3_10: 21300020
+      ezgif.com-gif-maker-removebg-preview (1)_2: 1788047954
+      ezgif.com-gif-maker-removebg-preview (1)_6: -1994383051
+      ezgif.com-gif-maker-removebg-preview (1)_3: -1778871748
+      ezgif.com-gif-maker-removebg-preview (1)_0: 1024594390
+      ezgif.com-gif-maker-removebg-preview (1)_4: -379982702
+      ezgif.com-gif-maker-removebg-preview (1)_1: 1161804371
+      ezgif.com-gif-maker-removebg-preview (1)_5: -1759639903
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -16,7 +16,7 @@ namespace ApSkills
         private bool _isOpposite;
         private float _liveTime;
         
-        private float _skillLevelMultiplier = 0.3f;
+        private float _skillLevelMultiplier = 0.25f;
 
         private void Start()
         {
@@ -25,7 +25,7 @@ namespace ApSkills
             TransformUpdate();
 
             var skillLevelBonus = _skillLevelMultiplier * _player.Flamer.CalculateFinalValue();
-            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage();
+            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage() * 0.75f;
             Destroy(gameObject, 0.9f);
         }
 

@@ -30,6 +30,7 @@ namespace Status
         public PlayerStat LuckySeven;
         public PlayerStat DiagonalStar;
         public PlayerStat ThrowingStar;
+        public PlayerStat Slash;
         [Space] 
         public PlayerStat Flamer;
         public PlayerStat ExplosiveShuriken;

@@ -14,8 +14,8 @@ namespace AdSkills
         private float _liveTime = 0;
         private float _duration = 1.75f;
         private float _damageMultiplier = 1f;
-        private float _baseSkillDamage = 10f;
-        private float _skillLevelMultiplier = 0.2f;
+        private float _baseSkillDamage = 8.5f;
+        private float _skillLevelMultiplier = 0.22f;
         private float _damage;
         
         private void Start()
@@ -24,7 +24,7 @@ namespace AdSkills
             
             var skillLevelBonus = _skillLevelMultiplier * _player.ThrowingStar.CalculateFinalValue();
             _damage = _player.Damage() * _damageMultiplier * skillLevelBonus + _baseSkillDamage;
-            _duration += _player.ThrowingStar.CalculateFinalValue() * 0.12f;
+            _duration += _player.ThrowingStar.CalculateFinalValue() * 0.11f;
         }
 
         private void FixedUpdate()

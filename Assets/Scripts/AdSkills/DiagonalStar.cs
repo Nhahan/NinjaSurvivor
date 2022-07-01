@@ -15,7 +15,7 @@ namespace AdSkills
         private float _bulletSpeed = 12f;
         private float _damage;
         private float _baseSkillDamage = 10f;
-        private float _skillLevelMultiplier = 0.25f;
+        private float _skillLevelMultiplier = 0.225f;
         
         private Vector3 _nearestEnemy;
         private Vector3 _bulletDirection;

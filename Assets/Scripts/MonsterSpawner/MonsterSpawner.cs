@@ -93,11 +93,12 @@ namespace MonsterSpawner
                     {
                         for (var i = 0; i < level - 9; i++)
                         {
-                            RandomSpawn(100f, cannibalisia, r);
+                            RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, redAnteater, r);
                             RandomSpawn(100f, suicider, r);
                         }
                         RandomSpawn(level * 0.3f, acidSpitter, r);
+                        RandomSpawn(level * 4f, cannibalisia, r);
                         break;
                     }
                     case < 17:
