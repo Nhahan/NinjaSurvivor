@@ -33,7 +33,7 @@ namespace AdSkills
             if (_liveTime > _duration) { Destroy(gameObject); }
             
             transform.Translate(-_liveTime *_bulletSpeed * Vector3.up);
-            transform.Rotate(0, 0, -350 * Time.deltaTime);
+            transform.Rotate(0, 0, -450 * Time.deltaTime);
         }
 
         private void OnTriggerEnter2D(Collider2D coll)

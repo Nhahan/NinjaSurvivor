@@ -23,8 +23,6 @@ namespace ApSkills
             _collider2D = GetComponent<BoxCollider2D>();
 
             var skillLevelBonus = _skillLevelMultiplier * _player.FireCross.CalculateFinalValue();
-            Debug.Log("FireCross init");
-            Debug.Log(_player.FireCross.CalculateFinalValue());
             _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage() * 0.5f;
             Destroy(gameObject, 0.6f);
         }

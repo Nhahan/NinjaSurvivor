@@ -51,9 +51,20 @@ namespace MonsterSpawner
                 yield return new WaitForSeconds(difficulty);
                 switch (level)
                 {
-                    case < 3:
+                    case < 4:
                     {
                         for (var i = 0; i < level; i++)
+                        {
+                            RandomSpawn(90f, disist, r);
+                        }
+                        RandomSpawn(level * 33f, suicider, r);
+                        RandomSpawn(1.5f, redAnteater, r);
+                        RandomSpawn(50f, anteater, r);
+                        break;
+                    }
+                    case < 7:
+                    {
+                        for (var i = 0; i < level-2; i++)
                         {
                             RandomSpawn(100f, anteater, r);
                         }
@@ -62,9 +73,9 @@ namespace MonsterSpawner
                         RandomSpawn(50f, anteater, r);
                         break;
                     }
-                    case < 6:
+                    case < 10:
                     {
-                        for (var i = 0; i < level - 3; i++)
+                        for (var i = 0; i < level - 4; i++)
                         {
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
@@ -76,9 +87,9 @@ namespace MonsterSpawner
                         RandomSpawn(level * 0.2f, acidSpitter, r);
                         break;
                     }
-                    case < 10:
+                    case < 14:
                     {
-                        for (var i = 0; i < level - 6; i++)
+                        for (var i = 0; i < level - 5; i++)
                         {
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
@@ -89,21 +100,21 @@ namespace MonsterSpawner
                         RandomSpawn(level * 0.3f, acidSpitter, r);
                         break;
                     }
-                    case < 13:
+                    case < 18:
                     {
-                        for (var i = 0; i < level - 9; i++)
+                        for (var i = 0; i < level - 6; i++)
                         {
                             RandomSpawn(100f, anteater, r);
-                            RandomSpawn(100f, redAnteater, r);
+                            RandomSpawn(30, redAnteater, r);
                             RandomSpawn(100f, suicider, r);
                         }
                         RandomSpawn(level * 0.3f, acidSpitter, r);
                         RandomSpawn(level * 4f, cannibalisia, r);
                         break;
                     }
-                    case < 17:
+                    case < 24:
                     {
-                        for (var i = 0; i < level - 10; i++)
+                        for (var i = 0; i < level - 7; i++)
                         {
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
@@ -111,20 +122,20 @@ namespace MonsterSpawner
                         }
                         RandomSpawn(66f, cannibalisia, r);
                         RandomSpawn(level * 0.4f, acidSpitter, r);
-                        RandomSpawn(level * 2f, redAnteater, r);
+                        RandomSpawn(level * 1f, redAnteater, r);
                         break;
                     }
-                    case < 23:
+                    case < 30:
                     {
-                        for (var i = 0; i < level - 13; i++)
+                        for (var i = 0; i < level - 8; i++)
                         {
-                            RandomSpawn(100f, acidSpitter, r);
+                            RandomSpawn(20f, acidSpitter, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, suicider, r);
                         }
                         RandomSpawn(66f, cannibalisia, r);
-                        RandomSpawn(level * 1.5f, redAnteater, r);
+                        RandomSpawn(level * 1f, redAnteater, r);
                         RandomSpawn(level * 0.5f, acidSpitter, r);
                         break;
                     }
@@ -194,7 +205,7 @@ namespace MonsterSpawner
 
         private void RandomSpawn(float percentage, GameObject prefab, Quaternion r)
         {
-            if (percentage == 100f || Random.Range(0, 100) < percentage)
+            if (percentage >= 100f || Random.Range(0, 100) < percentage)
             {
                 GameManager.Instance.AddTarget(Instantiate(prefab, GetRandomSpawnPoint(), r));
             }

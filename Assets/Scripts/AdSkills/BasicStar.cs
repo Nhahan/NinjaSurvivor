@@ -10,7 +10,6 @@ namespace AdSkills
         [SerializeField] private float damageMultiplier = 1;
 
         private Player _player;
-        private int _playerLevel;
 
         private Vector3 _closestTarget;
 
@@ -25,14 +24,22 @@ namespace AdSkills
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
-            _playerLevel = _player.GetLevel();
+            switch (_player.BasicStar.CalculateFinalValue()) 
+            {
+                case > 9:
+                    transform.localScale *= 2f;
+                    break;
+                case > 4:
+                    transform.localScale *= 1.5f;
+                    break;
+            }
             
             var skillLevelBonus = _skillLevelMultiplier * _player.BasicStar.CalculateFinalValue();
             _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _baseSkillDamage;
             _bulletDirection = (_closestTarget - transform.position -
                                 new Vector3(Random.Range(-2, 2) / _player.BasicStar.CalculateFinalValue(),
                                     Random.Range(-2, 2) / _player.BasicStar.CalculateFinalValue(), 0)).normalized;
-            }
+        }
 
         private void FixedUpdate()
         {
@@ -40,7 +47,7 @@ namespace AdSkills
             if (_liveTime > Duration) { Destroy(gameObject); }
 
             transform.position += _bulletDirection * (BulletSpeed * Time.deltaTime);
-            transform.Rotate(0, 0, -350 * Time.deltaTime);
+            transform.Rotate(0, 0, -500 * Time.deltaTime);
         }
 
         private void OnTriggerEnter2D(Collider2D coll)

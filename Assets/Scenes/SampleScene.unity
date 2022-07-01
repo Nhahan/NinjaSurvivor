@@ -141941,7 +141941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: Slash.BaseValue
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: Flamer.BaseValue
@@ -141953,7 +141953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: BasicStar.BaseValue
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7903036392560801053, guid: 72aa6ca9f8f9c4576bdbdf89c214ef8f, type: 3}
       propertyPath: FireCross.BaseValue

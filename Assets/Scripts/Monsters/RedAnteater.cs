@@ -85,7 +85,6 @@ namespace Monsters
         private IEnumerator IsAttackingToFalse(float second)
         {
             yield return new WaitForSeconds(second);
-            _monsterSpeedMultiplier = 1;
             _animator.SetBool("isAttacking", false);
         }
 

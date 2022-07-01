@@ -15,11 +15,10 @@ namespace AdSkills
         private float _damage;
         private float _liveTime;
         
-        private float _skillLevelMultiplier = 0.25f;
+        private float _skillLevelMultiplier = 0.3f;
 
         private void Start()
         {
-            Debug.Log("hello");
             _player = GameManager.Instance.GetPlayer();
             _flamer = _player.transform.Find("SkillPoints").Find("Flamer");
             _slash = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -32,7 +31,7 @@ namespace AdSkills
 
             var skillLevelBonus = _skillLevelMultiplier * _player.Flamer.CalculateFinalValue();
             _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage() * 0.225f;
-            Destroy(gameObject, 0.582f);
+            Destroy(gameObject, 0.565f);
         }
 
         private void FixedUpdate()
