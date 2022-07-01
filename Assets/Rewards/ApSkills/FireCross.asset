@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RewardType: 1
   Name: FiresCross
-  Icon: {fileID: 21300000, guid: 058283480e5974da8a2af16c13659571, type: 3}
+  Icon: {fileID: 21300000, guid: 2557205d9b5c843b597ba771095a4ac3, type: 3}
   MaxCount: 0
   MaxHpBonus: 0
   HpBonus: 0
@@ -38,6 +38,7 @@ MonoBehaviour:
   LuckySeven: 0
   DiagonalStar: 0
   ThrowingStar: 0
+  Slash: 0
   Flamer: 0
   ExplosiveShuriken: 0
   LightningStrike: 0
