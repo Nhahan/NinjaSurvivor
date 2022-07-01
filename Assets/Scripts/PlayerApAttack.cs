@@ -35,6 +35,9 @@ public class PlayerApAttack : MonoBehaviour
                     case "ExplosiveShuriken":
                         StartCoroutine(ExplosiveShuriken(prefab, _v, transform.rotation));
                         break;
+                    case "FireCross":
+                        StartCoroutine(ExplosiveShuriken(prefab, _v, transform.rotation));
+                        break;
                 }
             }
         }
@@ -89,5 +92,24 @@ public class PlayerApAttack : MonoBehaviour
     {
         if (_player.ExplosiveShuriken.CalculateFinalValue() < 1) yield break;
         Instantiate(prefab, _player.transform.position, rotation);
+    }
+    
+    private IEnumerator FireCross(GameObject prefab, Vector3 position, Quaternion rotation)
+    {
+        var level = _player.FireCross.CalculateFinalValue();
+        if (level < 1) yield break;
+        
+        yield return new WaitForSeconds(0.5f);
+
+        var count = level > 3 ? 1 : 2; 
+        for (var i = 0; i < count; i ++) 
+        {
+            yield return new WaitForSeconds(_createDelay / 1 / 3);
+            Instantiate(prefab, transform.position, rotation);
+            if ((level < 5)) yield break;
+            
+            yield return new WaitForSeconds(_createDelay / 1 / 3);
+            Instantiate(prefab, transform.position, new Quaternion(0, 0, 90, 0));
+        }
     }
 }

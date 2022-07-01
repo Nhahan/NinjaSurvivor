@@ -11,10 +11,10 @@ namespace Monsters
         private Player _player;
         private Animator _animator;
     
-        private float _monsterHp = 18f;
+        private float _monsterHp = 20f;
         private const float MonsterDamage = 10f;
         private float _randomDamage;
-        private float _monsterSpeed = 1.15f;
+        private float _monsterSpeed = 1.025f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
         private const float MonsterDefense = 5f;
@@ -27,7 +27,7 @@ namespace Monsters
             _animator = GetComponent<Animator>();
             _indicator = GameManager.Instance.indicator;
 
-            _monsterHp += _player.GetLevel() * 1.5f;
+            _monsterHp += _player.GetLevel() * 2f;
             _monsterSpeed += Random.Range(1, 2) / 0.65f;
 
             _randomDamage = Random.Range(10, 20) * 1.5f;
@@ -39,13 +39,7 @@ namespace Monsters
             _attackCooltime += Time.deltaTime;
             _distance = Vector3.Distance(transform.position, _player.transform.position);
 
-            if (_monsterHp < 0)
-            {
-                _monsterSpeedMultiplier = 0;
-                _state = State.Dead;
-            }
-
-            if (_distance < 1.25f && _attackCooltime > 1.1f)
+            if (_distance < 1.275f && _attackCooltime > 1.1f)
             {
                 _state = State.Attacking;
             }
@@ -63,26 +57,19 @@ namespace Monsters
             switch (_state)
             {
                 case State.Moving:
-                    _monsterSpeedMultiplier = 1;
                     transform.position = Vector2.MoveTowards(
                         transform.position,
                         _player.transform.position,
                         _monsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
+                    if (_attackCooltime > 1.1f && _monsterHp > 0)
+                    {
+                        _monsterSpeedMultiplier = 1;
+                    }
                     break;
                 case State.Attacking:
                     _monsterSpeedMultiplier = 0;
                     AttackPlayer();
                     _attackCooltime = 0;
-                    break;
-                case State.Dead:
-                    Debug.Log(_state);
-                    transform.position = Vector2.MoveTowards(
-                        transform.position,
-                        transform.position,
-                        0);
-                    _animator.SetBool("isDead", true);
-                    _monsterSpeedMultiplier = 0;
-                    StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

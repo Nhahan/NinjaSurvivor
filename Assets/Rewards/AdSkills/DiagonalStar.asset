@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RewardType: 0
   Name: DiagonalStar
-  Icon: {fileID: 21300000, guid: fedf8270707e64676a7bbf90f002cc01, type: 3}
+  Icon: {fileID: 21300000, guid: 0979f98cb411c4bf59f6e23d750033f9, type: 3}
   MaxCount: 99
   MaxHpBonus: 0
   HpBonus: 0
@@ -24,6 +24,7 @@ MonoBehaviour:
   MovementSpeedBonus: 0
   CooltimeBonus: 0
   CriticalBonus: 0
+  CriticalDamageBonus: 0
   MaxHpPercentBonus: 0
   HpPercentBonus: 0
   AttackDamagePercentBonus: 0
@@ -37,4 +38,12 @@ MonoBehaviour:
   LuckySeven: 0
   DiagonalStar: 1
   ThrowingStar: 0
+  Flamer: 0
+  ExplosiveShuriken: 0
+  LightningStrike: 0
   AssassinationTraining: 0
+  BodycoreTraining: 0
+  FootworkTraining: 0
+  MuscleTraining: 0
+  PhysicalTraining: 0
+  memo: 

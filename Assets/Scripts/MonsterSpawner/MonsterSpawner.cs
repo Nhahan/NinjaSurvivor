@@ -131,7 +131,7 @@ namespace MonsterSpawner
                     {
                         for (var i = 0; i < 9; i++)
                         {
-                            RandomSpawn(100f, acidSpitter, r);
+                            RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, acidSpitter, r);
                             RandomSpawn(100f, acidSpitter, r);
                             RandomSpawn(100f, redAnteater, r);
@@ -155,22 +155,24 @@ namespace MonsterSpawner
                 yield return new WaitForSeconds(second);
                 switch (level) {
                     case < 10:
-                    {       
-                        RandomSpawn(100f, redDisist, r);
-                        // RandomSpawn(100f, disist, r);
-                        // RandomSpawn(100f, disist, r);
+                    {
+                        RandomSpawn(100f, disist, r);
+                        RandomSpawn(100f, disist, r);
+                        RandomSpawn(5f, redDisist, r);
                         break;
                     }
                     case < 20:
                     {
                         RandomSpawn(100f, disist, r);
                         RandomSpawn(100f, redDisist, r);
+                        RandomSpawn(50f, redDisist, r);
                         break;
                     }
                     default:
                     {
                         RandomSpawn(100f, redDisist, r);
                         RandomSpawn(100f, redDisist, r);
+                        RandomSpawn(10f, disist, r);
                         break;
                     }
                 }

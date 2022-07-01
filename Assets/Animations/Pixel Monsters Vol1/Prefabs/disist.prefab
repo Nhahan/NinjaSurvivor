@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7990636573366072793}
   - component: {fileID: 9183497581791406129}
   - component: {fileID: 4283466588958789856}
-  - component: {fileID: -9153279639359329549}
   - component: {fileID: 2467482258024239205}
+  - component: {fileID: 5215288432060704645}
   m_Layer: 0
   m_Name: Disist
   m_TagString: Enemy
@@ -107,18 +107,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-9153279639359329549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8012064784144346932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1d2b7d9864a148feaa5fc697e758e71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &2467482258024239205
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -135,3 +123,15 @@ CircleCollider2D:
   m_Offset: {x: 0.31, y: -0.11}
   serializedVersion: 2
   m_Radius: 0.6
+--- !u!114 &5215288432060704645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012064784144346932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1d2b7d9864a148feaa5fc697e758e71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

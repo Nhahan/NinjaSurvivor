@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RewardType: 0
   Name: LuckySeven
-  Icon: {fileID: 21300000, guid: 1fbae1ce5271d4bd4b193d3ff287aa6a, type: 3}
+  Icon: {fileID: 21300000, guid: bc4eff6675c3546e18beae5881206192, type: 3}
   MaxCount: 10
   MaxHpBonus: 0
   HpBonus: 0
@@ -24,6 +24,7 @@ MonoBehaviour:
   MovementSpeedBonus: 0
   CooltimeBonus: 0
   CriticalBonus: 0
+  CriticalDamageBonus: 0
   MaxHpPercentBonus: 0
   HpPercentBonus: 0
   AttackDamagePercentBonus: 0
@@ -37,4 +38,12 @@ MonoBehaviour:
   LuckySeven: 1
   DiagonalStar: 0
   ThrowingStar: 0
+  Flamer: 0
+  ExplosiveShuriken: 0
+  LightningStrike: 0
   AssassinationTraining: 0
+  BodycoreTraining: 0
+  FootworkTraining: 0
+  MuscleTraining: 0
+  PhysicalTraining: 0
+  memo: 

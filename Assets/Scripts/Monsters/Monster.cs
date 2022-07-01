@@ -14,7 +14,6 @@ namespace Monsters
         {
             Moving,
             Attacking,
-            Dead
         }
 
         // ReSharper disable once InconsistentNaming

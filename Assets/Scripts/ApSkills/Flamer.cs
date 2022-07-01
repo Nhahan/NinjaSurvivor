@@ -12,9 +12,9 @@ namespace ApSkills
 
         private Player _player;
         private Transform _flamer;
-        private Animator _animator;
         private float _damage;
         private bool _isOpposite;
+        private float _liveTime;
         
         private float _skillLevelMultiplier = 0.3f;
 
@@ -23,9 +23,7 @@ namespace ApSkills
             _player = GameManager.Instance.GetPlayer();
             _flamer = _player.transform.Find("SkillPoints").Find("Flamer");
             TransformUpdate();
-            
-            _animator = GetComponent<Animator>();
-            
+
             var skillLevelBonus = _skillLevelMultiplier * _player.Flamer.CalculateFinalValue();
             _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage();
             Destroy(gameObject, 0.9f);
@@ -33,6 +31,10 @@ namespace ApSkills
 
         private void FixedUpdate()
         {
+            _liveTime += Time.deltaTime;
+
+            if (_liveTime > 0.5f) return;
+                
             TransformUpdate();
         }
 

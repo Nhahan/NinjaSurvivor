@@ -34,6 +34,7 @@ namespace Status
         public PlayerStat Flamer;
         public PlayerStat ExplosiveShuriken;
         public PlayerStat LightningStrike;
+        public PlayerStat FireCross;
         [Space] 
         public PlayerStat AssassinationTraining;
         public PlayerStat BodycoreTraining;
@@ -151,27 +152,6 @@ namespace Status
         public float Damage()
         {
             return AttackDamage.CalculateFinalValue() - Random.Range(-9, 5);
-        }
-
-        public void Initialize()
-        {
-            ResetLevel();
-            nextLevelExp = 0;
-            Exp = 0;
-            previousExp = 0;
-            ExpMultiplier.SetValue(1);
-
-            MaxHp.SetValue(100);
-            Hp.SetValue(MaxHp.CalculateFinalValue());
-            AttackDamage.SetValue(10);
-            Defense.SetValue(0);
-            AttackSpeed.SetValue(2);
-            MovementSpeed.SetValue(4);
-            Cooltime.SetValue(4);
-            Critical.SetValue(0);
-            CriticalDamage.SetValue(0);
-            
-            BasicStar.SetValue(1);
         }
     }
 }

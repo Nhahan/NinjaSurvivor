@@ -36,11 +36,6 @@ namespace Monsters
             _attackCooltime += Time.deltaTime;
             _distance = Vector3.Distance(transform.position, _player.transform.position);
 
-            if (_monsterHp < 0)
-            {
-                _monsterSpeedMultiplier = 0;
-            }
-            
             if (_distance < 1.2f && _attackCooltime > 0.92f)
             {
                 _state = State.Attacking;
@@ -59,12 +54,15 @@ namespace Monsters
             switch (_state)
             {
                 case State.Moving:
-                    _monsterSpeedMultiplier = 1;
                     transform.position = Vector2.MoveTowards(
                         transform.position,
                         _player.transform.position,
                         MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
                     FlipSprite();
+                    if (_attackCooltime > 1.1f)
+                    {
+                        _monsterSpeedMultiplier = 1;
+                    }
                     break;
                 case State.Attacking:
                     _monsterSpeedMultiplier = 0;

@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageMultiplier: 1
+  flamer: {fileID: 7492017199412092725}
 --- !u!50 &1714327667622043881
 Rigidbody2D:
   serializedVersion: 4

@@ -37,11 +37,6 @@ namespace Monsters
             _attackCooltime += Time.deltaTime;
             _distance = Vector3.Distance(transform.position, _player.transform.position);
 
-            if (_monsterHp < 0)
-            {
-                _monsterSpeedMultiplier = 0;
-            }
-
             if (_distance < 1.1 && _attackCooltime > 1.125f)
             {
                 _state = State.Attacking;
@@ -60,22 +55,20 @@ namespace Monsters
             switch (_state)
             {
                 case State.Moving:
-                    _monsterSpeedMultiplier = 1;
                     transform.position = Vector2.MoveTowards(
                         transform.position,
                         _player.transform.position,
                         MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
                     FlipSprite();
+                    if (_attackCooltime > 1.1f)
+                    {
+                        _monsterSpeedMultiplier = 1;
+                    }
                     break;
                 case State.Attacking:
                     _monsterSpeedMultiplier = 0;
                     AttackPlayer();
                     _attackCooltime = 0;
-                    break;
-                case State.Dead:
-                    _monsterSpeedMultiplier = 0;
-                    _animator.SetBool("isDead", true);
-                    StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
