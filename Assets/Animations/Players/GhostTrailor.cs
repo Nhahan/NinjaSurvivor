@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GhostTrailor : MonoBehaviour
@@ -9,8 +7,15 @@ public class GhostTrailor : MonoBehaviour
 
     private void Start()
     {
-        var normal = (GameManager.Instance.GetPlayer().transform.position - transform.position).normalized;
-        transform.localScale = new Vector2(Mathf.Sign(normal.x), 1f);
+        try
+        {
+            var normal = (GameManager.Instance.GetPlayer().transform.position - transform.position).normalized;
+            transform.localScale = new Vector2(Mathf.Sign(normal.x), 1f);
+        }
+        catch
+        {
+            throw new ArgumentNullException();
+        }
     }
 
     private void Update()
