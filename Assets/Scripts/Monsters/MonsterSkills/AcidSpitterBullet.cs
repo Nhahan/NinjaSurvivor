@@ -29,7 +29,7 @@ public class AcidSpitterBullet : MonoBehaviour
     {
         if (!coll.CompareTag("Player")) return;
         var damage = 22f - _player.Defense.CalculateFinalValue() + Random.Range(1, 10);
-        _player.TakeDamage(damage);
+        _player.TakeDamage(damage > 0 ? damage : 1);
         Destroy(gameObject);
     }
     
