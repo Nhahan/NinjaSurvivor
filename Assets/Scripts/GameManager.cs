@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Facebook.Unity;
 using Monsters;
 using Newtonsoft.Json;
 using Pickups;
@@ -29,22 +30,45 @@ public class GameManager : MonoBehaviour
     
     private bool _isGameOver;
     private float _playtime;
+    
+    public int monsterCount;
 
     private Player _initialPlayerStatus;
 
     private void Awake()
     {
-        if(Instance == null)
+        Application.targetFrameRate = 60;
+    
+        FB.Init(InitCallback, OnHideUnity);
+
+            if(Instance == null)
         {
             Instance = this;
-        } else if(Instance != this)
+        } else if (Instance != this)
         {
             Destroy(gameObject);
         }
     }
+    
+    private void InitCallback ()
+    {
+        if (FB.IsInitialized) {
+            Debug.Log("Facebook SDK initialized");
+
+            FB.ActivateApp();
+        } else {
+            Debug.Log("Failed to Initialize the Facebook SDK");
+        }
+    }
+
+    private void OnHideUnity (bool isGameShown)
+    {
+    }
+    
     private void Start()
     {
         Initialize();
+        LevelUpEvent();
     }
 
     private void Initialize()

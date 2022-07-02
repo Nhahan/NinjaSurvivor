@@ -35,8 +35,8 @@ namespace MonsterSpawner
 
             _pointsCount = _spawnPoints.Count;
 
-            StartCoroutine(SpawnMonster(9f));
-            StartCoroutine(SpawnBasicMonster(4.5f));
+            StartCoroutine(SpawnMonster(8f));
+            StartCoroutine(SpawnBasicMonster(6f));
         }
 
         private IEnumerator SpawnMonster(float second)
@@ -47,8 +47,11 @@ namespace MonsterSpawner
             while (!GameManager.Instance.GetIsGameOver())
             {
                 var level = _player.GetLevel();
-                var difficulty = 2f + second / level;
+                var difficulty = 3.5f + second / level;
                 yield return new WaitForSeconds(difficulty);
+                
+                if (GameManager.Instance.monsterCount > 500) { continue; }
+                
                 switch (level)
                 {
                     case < 4:
@@ -89,7 +92,7 @@ namespace MonsterSpawner
                     }
                     case < 14:
                     {
-                        for (var i = 0; i < level - 5; i++)
+                        for (var i = 0; i < 7; i++)
                         {
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
@@ -102,7 +105,7 @@ namespace MonsterSpawner
                     }
                     case < 18:
                     {
-                        for (var i = 0; i < level - 6; i++)
+                        for (var i = 0; i < 7; i++)
                         {
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(30, redAnteater, r);
@@ -114,7 +117,7 @@ namespace MonsterSpawner
                     }
                     case < 24:
                     {
-                        for (var i = 0; i < level - 7; i++)
+                        for (var i = 0; i < 7; i++)
                         {
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
@@ -127,7 +130,7 @@ namespace MonsterSpawner
                     }
                     case < 30:
                     {
-                        for (var i = 0; i < level - 8; i++)
+                        for (var i = 0; i < 7; i++)
                         {
                             RandomSpawn(20f, acidSpitter, r);
                             RandomSpawn(100f, anteater, r);
@@ -141,7 +144,7 @@ namespace MonsterSpawner
                     }
                     default:
                     {
-                        for (var i = 0; i < 9; i++)
+                        for (var i = 0; i < 7; i++)
                         {
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, acidSpitter, r);
@@ -208,6 +211,7 @@ namespace MonsterSpawner
             if (percentage >= 100f || Random.Range(0, 100) < percentage)
             {
                 GameManager.Instance.AddTarget(Instantiate(prefab, GetRandomSpawnPoint(), r));
+                GameManager.Instance.monsterCount++;
             }
         }
     }

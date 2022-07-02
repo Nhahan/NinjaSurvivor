@@ -14,7 +14,7 @@ namespace Monsters
         private float _monsterHp = 20f;
         private const float MonsterDamage = 10f;
         private float _randomDamage;
-        private float _monsterSpeed = 2.025f;
+        private float _monsterSpeed = 1.45f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
         private const float MonsterDefense = 5f;

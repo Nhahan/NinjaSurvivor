@@ -30,6 +30,7 @@ public class LevelUpRewards : MonoBehaviour
     private GameObject _textGrid;
     private GameObject _levelGrid;
     private GameObject _dim;
+    private SpriteRenderer _levelUpMessage;
 
     private Player _player;
 
@@ -37,6 +38,7 @@ public class LevelUpRewards : MonoBehaviour
     {
         _player = GameManager.Instance.GetPlayer();
         SetSlotSettingsOnGrids();
+        _levelUpMessage.enabled = false;
         
         _adSkillRewards = rewards.FindAll(r => r.RewardType.Equals(RewardType.AdSkill));
         _apSkillRewards = rewards.FindAll(r => r.RewardType.Equals(RewardType.ApSkill));
@@ -95,8 +97,10 @@ public class LevelUpRewards : MonoBehaviour
         GameManager.Instance.AllStop();
         
         progressBar.SetActive(false);
-        
+
+        if (_player.Level != 1) _levelUpMessage.enabled = true;
         _dim.SetActive(true);
+        
         _framesGrid.SetActive(true);
         _rewardsGrid.SetActive(true);
         _textGrid.SetActive(true);
@@ -174,5 +178,6 @@ public class LevelUpRewards : MonoBehaviour
         _textGrid = transform.GetChild(2).gameObject;
         _levelGrid = transform.GetChild(3).gameObject;
         _dim = transform.GetChild(4).gameObject;
+        _levelUpMessage = _dim.transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
 }
