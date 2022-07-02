@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject indicator;
     [SerializeField] public PlayerStat playerStat;
     [SerializeField] public ExpSoul1 expSoul1;
+    [SerializeField] public GameObject joystick;
     
     public static GameManager Instance;
     public Dictionary<string, float> ActivatedSkills = new();
@@ -127,6 +128,9 @@ public class GameManager : MonoBehaviour
         {
             enemy.GetComponent<IMonster>().StopMonster();
         }
+
+        player.GetComponent<PlayerController>().ResetJoystick();
+        joystick.SetActive(false);
     }
 
     public void Resume()
@@ -139,6 +143,7 @@ public class GameManager : MonoBehaviour
             enemy.GetComponent<IMonster>().ResumeMonster();
         }
         ActivatedSkills = player.GetActivatedSkills(true);
+        joystick.SetActive(true);
     }
 
     public void AddTarget(GameObject enemy)

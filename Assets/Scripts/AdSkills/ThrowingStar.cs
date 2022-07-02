@@ -12,10 +12,10 @@ namespace AdSkills
 
         private float _bulletSpeed = 1f;
         private float _liveTime = 0;
-        private float _duration = 1.75f;
+        private float _duration = 1.79f;
         private float _damageMultiplier = 1f;
-        private float _baseSkillDamage = 8.5f;
-        private float _skillLevelMultiplier = 0.22f;
+        private float _baseSkillDamage = 9.5f;
+        private float _skillLevelMultiplier = 0.175f;
         private float _damage;
         
         private void Start()

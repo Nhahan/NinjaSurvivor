@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private FixedJoystick joystick;
+    [SerializeField] private VariableJoystick variableJoystick;
     [SerializeField] private Animator animator;
     private Player _player;
     private float _movementSpeed;
@@ -21,8 +21,12 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         var speedMult = _player.FootworkTraining.CalculateFinalValue() / 20;
-        rb.velocity = new Vector2(joystick.Horizontal, joystick.Vertical) *
+        rb.velocity = new Vector2(variableJoystick.Horizontal, variableJoystick.Vertical) *
                       (_movementSpeed + _movementSpeed * speedMult);
+        // Debug.Log(joystick.Horizontal + " / " + joystick.Vertical);
+        // Vector3 direction = Vector3.forward * variableJoystick.Vertical + 
+        //                     Vector3.right * (variableJoystick.Horizontal * (_movementSpeed + _movementSpeed * speedMult));
+        // rb.AddForce(direction  * Time.fixedDeltaTime, (ForceMode2D)ForceMode.VelocityChange);
 
         var hasHorizontalSpeed = Mathf.Abs(rb.velocity.x) > Mathf.Epsilon;
 
@@ -41,5 +45,10 @@ public class PlayerController : MonoBehaviour
         {
             transform.localScale = new Vector2(Mathf.Sign(rb.velocity.x), 1f);
         }
+    }
+
+    public void ResetJoystick()
+    {
+        variableJoystick.SetInputReset();
     }
 }
