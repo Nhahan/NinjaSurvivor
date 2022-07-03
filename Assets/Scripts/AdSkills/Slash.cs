@@ -15,7 +15,7 @@ namespace AdSkills
         private float _damage;
         private float _liveTime;
         
-        private float _skillLevelMultiplier = 0.3f;
+        private float _skillLevelMultiplier = 0.2f;
 
         private void Start()
         {
@@ -29,8 +29,14 @@ namespace AdSkills
                 transform.localScale *= -1;
             }
 
-            var skillLevelBonus = _skillLevelMultiplier * _player.Flamer.CalculateFinalValue();
-            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage() * 0.225f;
+            if (_player.Slash.CalculateFinalValue() > 9)
+            {
+                transform.localScale *= 1.15f;
+                _slash.color = Color.red;
+            }
+
+            var skillLevelBonus = _skillLevelMultiplier * _player.Slash.CalculateFinalValue();
+            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage() * 0.25f;
             Destroy(gameObject, 0.565f);
         }
 

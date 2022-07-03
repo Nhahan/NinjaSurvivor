@@ -81,7 +81,7 @@ public class LevelUpRewards : MonoBehaviour
                 for (var i = 0; i < count; i++)
                 {
                     var randomNum = Random.Range(0, rewards.Count);
-                    _randomRewards.Add(rewards[randomNum]);
+                    _randomRewards.Add(_onlyAttackSkillRewards[randomNum]);
                 }
                 break;
             }

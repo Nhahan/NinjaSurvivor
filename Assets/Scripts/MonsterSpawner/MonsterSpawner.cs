@@ -132,7 +132,7 @@ namespace MonsterSpawner
                     {
                         for (var i = 0; i < 7; i++)
                         {
-                            RandomSpawn(20f, acidSpitter, r);
+                            RandomSpawn(10f, acidSpitter, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, suicider, r);
@@ -140,6 +140,11 @@ namespace MonsterSpawner
                         RandomSpawn(66f, cannibalisia, r);
                         RandomSpawn(level * 1f, redAnteater, r);
                         RandomSpawn(level * 0.5f, acidSpitter, r);
+                        break;
+                    }
+                    case 30:
+                    {
+                        // Golem Boss
                         break;
                     }
                     default:
