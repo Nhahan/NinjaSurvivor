@@ -12,10 +12,10 @@ namespace AdSkills
 
         private float _bulletSpeed = 1f;
         private float _liveTime = 0;
-        private float _duration = 1.79f;
+        private float _duration = 2f;
         private float _damageMultiplier = 1f;
         private float _baseSkillDamage = 9.5f;
-        private float _skillLevelMultiplier = 0.175f;
+        private float _skillLevelMultiplier = 0.15f;
         private float _damage;
         
         private void Start()
@@ -24,7 +24,7 @@ namespace AdSkills
             
             var skillLevelBonus = _skillLevelMultiplier * _player.ThrowingStar.CalculateFinalValue();
             _damage = _player.Damage() * _damageMultiplier * skillLevelBonus + _baseSkillDamage;
-            _duration += _player.ThrowingStar.CalculateFinalValue() * 0.11f;
+            _duration += _player.ThrowingStar.CalculateFinalValue() * 0.09f;
         }
 
         private void FixedUpdate()
@@ -44,7 +44,7 @@ namespace AdSkills
             
             monster.TakeDamage(_damage);
             
-            if (Random.Range(0,10) > 3.8f + _player.ThrowingStar.CalculateFinalValue() * 0.5f) Destroy(gameObject);
+            if (Random.Range(0,10) > 7f + _player.ThrowingStar.CalculateFinalValue() * 0.1f) Destroy(gameObject);
         }
     }
 }

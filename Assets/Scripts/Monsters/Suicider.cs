@@ -19,7 +19,7 @@ namespace Monsters
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
-            _indicator = GameManager.Instance.indicator;
+            Indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(0, 3);
         }

@@ -27,7 +27,7 @@ namespace Monsters
         protected const float Duration = 0.12f;
 
         protected SpriteRenderer SpriteRenderer;
-        protected GameObject _indicator;
+        protected GameObject Indicator;
         private Coroutine _flashRoutine;
 
         protected IEnumerator BeforeDestroy(float second)
@@ -86,7 +86,7 @@ namespace Monsters
         
         protected void ShowDamage(float damage)
         {
-            var indicator = Instantiate(_indicator, transform.position, transform.rotation);
+            var indicator = Instantiate(Indicator, transform.position, transform.rotation);
             indicator.GetComponent<TextMeshPro>().text = damage < 1 ? "1" : Mathf.RoundToInt(damage).ToString();
         }
     }

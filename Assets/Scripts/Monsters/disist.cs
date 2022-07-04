@@ -25,7 +25,7 @@ namespace Monsters
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
-            _indicator = GameManager.Instance.indicator;
+            Indicator = GameManager.Instance.indicator;
 
             _monsterHp += _player.GetLevel();
 
@@ -60,7 +60,7 @@ namespace Monsters
                         transform.position,
                         _player.transform.position,
                         MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
-                    if (_attackCooltime > 1.1f)
+                    if (_attackCooltime > 1.25f && _monsterHp > 0)
                     {
                         _monsterSpeedMultiplier = 1;
                     }

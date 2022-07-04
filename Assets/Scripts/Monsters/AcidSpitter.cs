@@ -13,7 +13,7 @@ namespace Monsters
         private Player _player;
         private Animator _animator;
 
-        private float _monsterHp = 300f;
+        private float _monsterHp = 250f;
         private const float MonsterDamage = 30f;
         private float _randomDamage;
         private const float MonsterSpeed = 0.9f;
@@ -27,7 +27,7 @@ namespace Monsters
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
-            _indicator = GameManager.Instance.indicator;
+            Indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(0, 3);
             KnockbackDuration = 0.07f;
@@ -38,7 +38,7 @@ namespace Monsters
             _attackCooltime += Time.deltaTime;
             _distance = Vector3.Distance(transform.position, _player.transform.position);
 
-            if (_distance < 8 && _attackCooltime > 1.125f)
+            if (_distance < 8 && _attackCooltime > 2f)
             {
                 _state = State.Attacking;
             }
@@ -61,6 +61,10 @@ namespace Monsters
                         _player.transform.position,
                         MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
                     FlipSprite();
+                    if (_attackCooltime > 2.1f && _monsterHp > 0)
+                    {
+                        _monsterSpeedMultiplier = 1;
+                    }
                     break;
                 case State.Attacking:
                     _monsterSpeedMultiplier = 0;

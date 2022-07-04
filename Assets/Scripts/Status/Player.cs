@@ -62,6 +62,15 @@ namespace Status
 
             sprite = GetComponent<SpriteFlash>();
         }
+        
+        private void FixedUpdate()
+        {
+            Debug.Log(GetSkillCount() + " / " + Level);
+            if (GetSkillCount() <= Level)
+            {
+                GameManager.Instance.LevelUpEvent();       
+            }
+        }
 
         private void ResetLevel()
         {
@@ -133,7 +142,6 @@ namespace Status
             nextLevelExp = _levelTable[Level].exp;
             previousExp = _levelTable[Level - 1].exp;
             Level += 1;
-            GameManager.Instance.LevelUpEvent();
         }
 
         public void EarnExp(float exp)
@@ -153,6 +161,17 @@ namespace Status
         public float Damage()
         {
             return AttackDamage.CalculateFinalValue() - Random.Range(-9, 5);
+        }
+
+        public int GetSkillCount()
+        {
+            var skillCount = 0;
+            foreach (int value in activatedSkills.Values)
+            {
+                skillCount += value;
+            }
+
+            return skillCount;
         }
     }
 }

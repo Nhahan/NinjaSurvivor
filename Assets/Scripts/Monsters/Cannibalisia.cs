@@ -11,7 +11,7 @@ namespace Monsters
         private Player _player;
         private Animator _animator;
         
-        private float _monsterHp = 150f;
+        private float _monsterHp = 175f;
         private const float MonsterDamage = 50f;
         private float _randomDamage;
         private const float MonsterSpeed = 1.0f;
@@ -25,10 +25,10 @@ namespace Monsters
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
-            _indicator = GameManager.Instance.indicator;
+            Indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(2, 10);
-            KnockbackDuration = 0.05f;
+            KnockbackDuration = 0.04f;
         }
 
         private void FixedUpdate()

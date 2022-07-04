@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         _playtime += Time.deltaTime;
+        
     }
 
     public Player GetPlayer()
@@ -161,8 +162,16 @@ public class GameManager : MonoBehaviour
         KdTree<Transform> enemiesTree = new();
         enemiesTree.AddAll(_enemies.Select(e => e.transform).ToList());
 
+        Vector3 pos;
         // Debug.Log("Count: " + enemiesTree.Count);
-        var pos = enemiesTree.FindClosest(player.transform.position).position;
+        try
+        {
+            pos = enemiesTree.FindClosest(player.transform.position).position;
+        }
+        catch
+        {
+            pos = transform.position;
+        }
         
         if (Vector3.Distance(pos, player.transform.position) <= distance)
         {

@@ -25,7 +25,7 @@ namespace Monsters
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
-            _indicator = GameManager.Instance.indicator;
+            Indicator = GameManager.Instance.indicator;
 
             _monsterHp += _player.GetLevel() * 2f;
 

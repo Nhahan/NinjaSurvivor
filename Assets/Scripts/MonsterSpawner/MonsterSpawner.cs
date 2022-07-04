@@ -50,7 +50,7 @@ namespace MonsterSpawner
                 var difficulty = 3.5f + second / level;
                 yield return new WaitForSeconds(difficulty);
                 
-                if (GameManager.Instance.monsterCount > 500) { continue; }
+                if (GameManager.Instance.monsterCount > 400) { continue; }
                 
                 switch (level)
                 {

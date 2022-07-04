@@ -25,7 +25,7 @@ namespace Monsters
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
-            _indicator = GameManager.Instance.indicator;
+            Indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(8, 12);
             KnockbackDuration = 0.11f;
@@ -59,7 +59,7 @@ namespace Monsters
                         _player.transform.position,
                         MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
                     FlipSprite();
-                    if (_attackCooltime > 1.1f)
+                    if (_attackCooltime > 1.3f)
                     {
                         _monsterSpeedMultiplier = 1;
                     }

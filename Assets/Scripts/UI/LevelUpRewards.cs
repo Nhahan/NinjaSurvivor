@@ -56,7 +56,7 @@ public class LevelUpRewards : MonoBehaviour
         
         switch (level)
         {
-            case < 6:
+            case < 5:
             {
                 for (var i = 0; i < count; i++)
                 {
