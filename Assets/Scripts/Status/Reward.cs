@@ -46,6 +46,7 @@ namespace Status
         public int DiagonalStar;
         public int ThrowingStar;
         public int Slash;
+        public int Gyeok;
         [Space] 
         public int Flamer;
         public int ExplosiveShuriken;
@@ -113,7 +114,9 @@ namespace Status
             if (ThrowingStar != 0)
                 p.ThrowingStar.AddModifier(new StatModifier(ThrowingStar, StatModType.Flat, this));            
             if (Slash != 0)
-                p.Slash.AddModifier(new StatModifier(Slash, StatModType.Flat, this));
+                p.Slash.AddModifier(new StatModifier(Slash, StatModType.Flat, this));            
+            if (Gyeok != 0)
+                p.Gyeok.AddModifier(new StatModifier(Gyeok, StatModType.Flat, this));
             
             // apSkills
             if (Flamer != 0)
@@ -155,6 +158,7 @@ namespace Status
             p.DiagonalStar.RemoveAllModifiersFromSource(this);
             p.ThrowingStar.RemoveAllModifiersFromSource(this);            
             p.Slash.RemoveAllModifiersFromSource(this);
+            p.Gyeok.RemoveAllModifiersFromSource(this);
             
             p.Flamer.RemoveAllModifiersFromSource(this);
             p.ExplosiveShuriken.RemoveAllModifiersFromSource(this);

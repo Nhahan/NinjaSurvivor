@@ -116,7 +116,7 @@ public class PlayerApAttack : MonoBehaviour
             yield return new WaitForSeconds(_createDelay / 2 / 3);
             Instantiate(prefab, transform.position, rotation);
 
-            if (level > 8)
+            if (level > 9)
                 Instantiate(prefab, transform.position, Quaternion.Euler(0f, 0f, 90f));
         }
     }

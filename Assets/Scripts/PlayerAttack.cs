@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using AdSkills;
+using fbg;
 using Status;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -40,6 +41,9 @@ public class PlayerAttack : MonoBehaviour
                         break;
                     case "Slash":
                         StartCoroutine(Slash(prefab, _v, transform.rotation));
+                        break;
+                    case "Gyeok":
+                        StartCoroutine(Gyeok(prefab, _v, transform.rotation));
                         break;
                 }
             }
@@ -105,6 +109,23 @@ public class PlayerAttack : MonoBehaviour
         {
             Instantiate(prefab, _player.transform.position, rotation);
             yield return new WaitForSeconds(_attackSpeed * slashSpeed / 7);
+        }
+    }
+    
+    private IEnumerator Gyeok(GameObject prefab, Vector3 _, Quaternion rotation)
+    {
+        var level = _player.Gyeok.CalculateFinalValue();
+        if (level < 1) yield break;
+        
+        yield return new WaitForSeconds(_attackSpeed * 1.5f);
+        try
+        {
+            var target = GameManager.Instance.GetClosestTargets(6.75f, 1)[0];
+            Instantiate(prefab, target, rotation);
+        }
+        catch
+        {
+            // ignored
         }
     }
 }

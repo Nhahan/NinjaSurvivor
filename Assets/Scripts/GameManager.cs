@@ -186,12 +186,16 @@ public class GameManager : MonoBehaviour
         enemiesTree.AddAll(_enemies.Select(e => e.transform).ToList());
 
         List<Vector3> targets = new();
-
+        
         var p = player.transform.position;
         foreach (var e in enemiesTree) 
         {
             var pos = enemiesTree.FindClosest(p).position;
-            targets.Add(pos);
+            
+            if (Vector3.Distance(pos, player.transform.position) < distance) 
+            {
+                targets.Add(pos);
+            }
             
             enemiesTree.RemoveAt(0);
             if (targets.Count == count)

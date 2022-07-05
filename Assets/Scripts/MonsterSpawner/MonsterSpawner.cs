@@ -105,7 +105,7 @@ namespace MonsterSpawner
                     }
                     case < 18:
                     {
-                        for (var i = 0; i < 7; i++)
+                        for (var i = 0; i < 8; i++)
                         {
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(30, redAnteater, r);
@@ -117,7 +117,7 @@ namespace MonsterSpawner
                     }
                     case < 24:
                     {
-                        for (var i = 0; i < 7; i++)
+                        for (var i = 0; i < 9; i++)
                         {
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
@@ -130,7 +130,7 @@ namespace MonsterSpawner
                     }
                     case < 30:
                     {
-                        for (var i = 0; i < 7; i++)
+                        for (var i = 0; i < 10; i++)
                         {
                             RandomSpawn(10f, acidSpitter, r);
                             RandomSpawn(100f, anteater, r);

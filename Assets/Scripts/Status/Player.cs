@@ -25,12 +25,13 @@ namespace Status
         public PlayerStat Cooltime;
         public PlayerStat Critical;
         public PlayerStat CriticalDamage;
-        [Space] 
+        [Space]
         public PlayerStat BasicStar;
         public PlayerStat LuckySeven;
         public PlayerStat DiagonalStar;
         public PlayerStat ThrowingStar;
         public PlayerStat Slash;
+        public PlayerStat Gyeok;
         [Space] 
         public PlayerStat Flamer;
         public PlayerStat ExplosiveShuriken;
