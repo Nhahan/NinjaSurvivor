@@ -12,7 +12,7 @@ namespace AdSkills
 
         private float _liveTime = 0;
         private const float Duration = 1.8f;
-        private float _bulletSpeed = 12f;
+        private float _bulletSpeed = 0.5f;
         private float _damage;
         private float _baseSkillDamage = 10f;
         private float _skillLevelMultiplier = 0.225f;
@@ -23,9 +23,9 @@ namespace AdSkills
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
-            IsAvailable();
+            _bulletDirection = new Vector3(Random.Range(-360, 360), Random.Range(-360, 360), 0).normalized;
             
-            var skillLevelBonus = _skillLevelMultiplier * _player.BasicStar.CalculateFinalValue();
+            var skillLevelBonus = _skillLevelMultiplier * _player.DiagonalStar.CalculateFinalValue();
             _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _baseSkillDamage;
         }
 
@@ -33,8 +33,8 @@ namespace AdSkills
         {
             _liveTime += Time.deltaTime;
             if (_liveTime > Duration) { Destroy(gameObject); }
-            
-            transform.position = Vector2.MoveTowards(transform.position, _bulletDirection * 1.1f, _bulletSpeed * Time.deltaTime);
+
+            transform.position += _bulletDirection * _bulletSpeed;
             transform.Rotate(0, 0, -450 * Time.deltaTime);
         }
 
@@ -51,14 +51,6 @@ namespace AdSkills
             monster.StartKnockback(normal);
             
             if (Random.Range(0,10) > 3.3f + _player.DiagonalStar.CalculateFinalValue() * 0.5f) Destroy(gameObject);
-        }
-        
-        public void IsAvailable()
-        {
-            var childNum = Random.Range(0, 16);
-            
-            _bulletDirection = (_player.transform.GetChild(0).GetChild(childNum).position) - 
-                               new Vector3((float)(Random.Range(-3, 2)), (float)(Random.Range(-3, 2)), 0);
         }
     }
 }

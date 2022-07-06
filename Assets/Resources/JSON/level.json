@@ -2,7 +2,7 @@
     "levels": [
         {
             "value": 1,
-            "exp": 0
+            "exp": 1
         },
         {
             "value": 2,
@@ -10,27 +10,27 @@
         },
         {
             "value": 3,
-            "exp": 7
+            "exp": 6
         },
         {
             "value": 4,
-            "exp": 12
+            "exp": 10
         },
         {
             "value": 5,
-            "exp": 18
+            "exp": 16
         },
         {
             "value": 6,
-            "exp": 25
+            "exp": 23
         },
         {
             "value": 7,
-            "exp": 33
+            "exp": 31
         },
         {
             "value": 8,
-            "exp": 42
+            "exp": 40
         },
         {
             "value": 9,
@@ -42,23 +42,23 @@
         },
         {
             "value": 11,
-            "exp": 80
+            "exp": 89
         },
         {
             "value": 12,
-            "exp": 97
+            "exp": 104
         },
         {
             "value": 13,
-            "exp": 114
+            "exp": 120
         },
         {
             "value": 14,
-            "exp": 133
+            "exp": 137
         },
         {
             "value": 15,
-            "exp": 156
+            "exp": 157
         },
         {
             "value": 16,

@@ -60,7 +60,7 @@ namespace AdSkills
             monster.TakeDamage(_damage);
             monster.StartKnockback(normal);
             
-            if (Random.Range(0,10) > 5.4 + _player.BasicStar.CalculateFinalValue() * 0.5f) Destroy(gameObject);
+            if (Random.Range(0,10) > 7.9f + _player.BasicStar.CalculateFinalValue() * 0.5f) Destroy(gameObject);
         }
 
         public void SetClosestTarget(Vector3 target)

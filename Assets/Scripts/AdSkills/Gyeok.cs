@@ -43,7 +43,7 @@ namespace AdSkills
             }
             
             _damage = _player.Damage() * damageMultiplier * skillLevelBonus;
-            Destroy(gameObject, 0.11f * _skillLevel);
+            Destroy(gameObject, 0.1f * (_skillLevel  < 5 ? 5 : _skillLevel) + 0.1f);
         }
 
         private void FixedUpdate()
@@ -61,7 +61,8 @@ namespace AdSkills
 
         public IEnumerator AttackTimes(IMonster monster)
         {
-            var count = _skillLevel  < 5 ? 4 : _skillLevel;
+            var count = _skillLevel  < 5 ? 5 : _skillLevel;
+            Debug.Log(count + " / " + _skillLevel);
             
             for (var i = 0; i < count; i++)
             {

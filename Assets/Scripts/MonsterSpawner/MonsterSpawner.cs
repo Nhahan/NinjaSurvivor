@@ -1,8 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Monsters;
 using Status;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -35,22 +32,22 @@ namespace MonsterSpawner
 
             _pointsCount = _spawnPoints.Count;
 
-            StartCoroutine(SpawnMonster(8f));
-            StartCoroutine(SpawnBasicMonster(6f));
+            StartCoroutine(SpawnMonster(9f));
+            StartCoroutine(SpawnBasicMonster(2.5f));
         }
 
         private IEnumerator SpawnMonster(float second)
         {
             var r = transform.rotation;
             RandomSpawn(100f, anteater, r);
-            RandomSpawn(77f, suicider, r);
+            RandomSpawn(100f, suicider, r);
             while (!GameManager.Instance.GetIsGameOver())
             {
                 var level = _player.GetLevel();
-                var difficulty = 3.5f + second / level;
+                var difficulty = 4f + second / level;
                 yield return new WaitForSeconds(difficulty);
                 
-                if (GameManager.Instance.monsterCount > 400) { continue; }
+                if (GameManager.Instance.monsterCount > 300) { continue; }
                 
                 switch (level)
                 {
@@ -169,6 +166,14 @@ namespace MonsterSpawner
         private IEnumerator SpawnBasicMonster(float second)
         {
             var r = transform.rotation;
+            RandomSpawn(100f, disist, r);
+            RandomSpawn(100f, disist, r);
+            RandomSpawn(100f, disist, r);
+            RandomSpawn(100f, disist, r);
+            RandomSpawn(100f, disist, r);
+            RandomSpawn(100f, disist, r);
+            RandomSpawn(100f, disist, r);
+            RandomSpawn(100f, disist, r);
             while (!GameManager.Instance.GetIsGameOver())
             {
                 var level = _player.GetLevel();
@@ -178,11 +183,15 @@ namespace MonsterSpawner
                     {
                         RandomSpawn(100f, disist, r);
                         RandomSpawn(100f, disist, r);
+                        RandomSpawn(100f, disist, r);
+                        RandomSpawn(100f, disist, r);
                         RandomSpawn(5f, redDisist, r);
                         break;
                     }
                     case < 20:
                     {
+                        RandomSpawn(100f, disist, r);
+                        RandomSpawn(100f, disist, r);
                         RandomSpawn(100f, disist, r);
                         RandomSpawn(100f, redDisist, r);
                         RandomSpawn(50f, redDisist, r);
@@ -192,6 +201,9 @@ namespace MonsterSpawner
                     {
                         RandomSpawn(100f, redDisist, r);
                         RandomSpawn(100f, redDisist, r);
+                        RandomSpawn(100f, redDisist, r);
+                        RandomSpawn(100f, disist, r);
+                        RandomSpawn(10f, disist, r);
                         RandomSpawn(10f, disist, r);
                         break;
                     }
@@ -203,7 +215,7 @@ namespace MonsterSpawner
         {
             try
             {
-                return _spawnPoints[(int)Random.Range(0, _pointsCount)].position;
+                return _spawnPoints[(int)Random.Range(0, _pointsCount)].position + new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0);
             }
             catch
             {
