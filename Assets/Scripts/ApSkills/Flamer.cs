@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Security.Cryptography;
 using Monsters;
 using Status;
 using UnityEngine;
@@ -15,7 +13,7 @@ namespace ApSkills
         private float _damage;
         private bool _isOpposite;
         private float _liveTime;
-        
+
         private float _skillLevelMultiplier = 0.25f;
 
         private void Start()
@@ -34,7 +32,7 @@ namespace ApSkills
             _liveTime += Time.deltaTime;
 
             if (_liveTime > 0.5f) return;
-                
+
             TransformUpdate();
         }
 
@@ -43,10 +41,10 @@ namespace ApSkills
             if (!coll.CompareTag("Enemy")) return;
 
             var monster = coll.gameObject.GetComponent<IMonster>();
-            
+
             monster.TakeDamage(_damage);
         }
-    
+
         private void TransformUpdate()
         {
             var fireDirection = Mathf.Sign((_flamer.transform.position - _player.transform.position).x);

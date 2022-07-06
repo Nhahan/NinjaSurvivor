@@ -37,6 +37,7 @@ namespace Status
         public PlayerStat ExplosiveShuriken;
         public PlayerStat LightningStrike;
         public PlayerStat FireCross;
+        public PlayerStat Tetralogy;
         [Space] 
         public PlayerStat AssassinationTraining;
         public PlayerStat BodycoreTraining;
@@ -66,7 +67,6 @@ namespace Status
         
         private void FixedUpdate()
         {
-            Debug.Log(GetSkillCount() + " / " + Level);
             if (GetSkillCount() <= Level)
             {
                 GameManager.Instance.LevelUpEvent();       
