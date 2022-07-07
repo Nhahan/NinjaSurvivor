@@ -15,7 +15,7 @@ namespace ApSkills
         private bool _isOpposite;
         private float _liveTime;
     
-        private float _skillLevelMultiplier = 0.175f;
+        private float _skillLevelMultiplier = 0.3f;
 
         private void Start()
         {
@@ -43,6 +43,7 @@ namespace ApSkills
 
             var monster = coll.gameObject.GetComponent<IMonster>();
             var normal = (coll.gameObject.transform.position - transform.position).normalized;
+            
             monster.TakeDamage(_damage);
             monster.StartKnockback(normal);
         }

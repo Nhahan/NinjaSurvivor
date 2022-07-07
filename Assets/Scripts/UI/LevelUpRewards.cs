@@ -56,7 +56,7 @@ public class LevelUpRewards : MonoBehaviour
         
         switch (level)
         {
-            case < 5:
+            case < 3:
             {
                 for (var i = 0; i < count; i++)
                 {
@@ -66,7 +66,7 @@ public class LevelUpRewards : MonoBehaviour
 
                 break;
             }
-            case < 10:
+            default:
             {
                 for (var i = 0; i < count; i++)
                 {
@@ -74,15 +74,6 @@ public class LevelUpRewards : MonoBehaviour
                     _randomRewards.Add(_onlyAttackSkillRewards[randomNum]);
                 }
 
-                break;
-            }
-            default:
-            {
-                for (var i = 0; i < count; i++)
-                {
-                    var randomNum = Random.Range(0, rewards.Count);
-                    _randomRewards.Add(_onlyAttackSkillRewards[randomNum]);
-                }
                 break;
             }
         }

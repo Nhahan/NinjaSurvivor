@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 9016238904268174763}
   - component: {fileID: -8308001373173848502}
   - component: {fileID: 1067856165036646147}
+  - component: {fileID: -2114118156337977865}
+  - component: {fileID: -1342561730249845254}
   m_Layer: 0
   m_Name: RedDisist
   m_TagString: Enemy
@@ -4917,3 +4919,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc652809ccae481e8bb3a76ce77fa5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &-2114118156337977865
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012064784144346932}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &-1342561730249845254
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8012064784144346932}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.47, y: -0.23}
+  serializedVersion: 2
+  m_Radius: 0.78

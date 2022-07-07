@@ -4,13 +4,16 @@ using UnityEngine;
 public class AcidSpitterBullet : MonoBehaviour
 {
     private Player _player;
+    private Rigidbody2D _rb;
 
-    private Vector3 _target;
+    private Vector2 _target;
     private float _speed;
 
     private void Start()
     {
         _player = GameManager.Instance.GetPlayer();
+        _rb = GetComponent<Rigidbody2D>();
+        
         _target = (_player.transform.position - transform.position).normalized;
 
         AdjustDirection();
@@ -19,10 +22,9 @@ public class AcidSpitterBullet : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        _speed += Time.deltaTime * 0.35f;
-        if (_speed > 1.25f) {Destroy(gameObject);}
-        
-        transform.position += _target * _speed;
+        _speed += Time.fixedDeltaTime * 0.35f;
+        if (_speed > 1.1f) {Destroy(gameObject);}
+        _rb.MovePosition(_rb.position + _target * _speed);
     }
 
     private void OnTriggerEnter2D(Collider2D coll)

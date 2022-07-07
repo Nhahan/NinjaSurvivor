@@ -20,7 +20,7 @@ namespace ApSkills
             _player = GameManager.Instance.GetPlayer();
 
             var skillLevelBonus = _skillLevelMultiplier * _player.Tetralogy.CalculateFinalValue();
-            _damage = _player.Damage() * _damageMultiplier * skillLevelBonus + _player.Damage() * 0.35f;
+            _damage = _player.Damage() * _damageMultiplier * skillLevelBonus + _player.Damage() * 0.75f;
         }
 
         private void OnTriggerEnter2D(Collider2D coll)
@@ -28,8 +28,14 @@ namespace ApSkills
             if (!coll.CompareTag("Enemy")) return;
 
             var monster = coll.gameObject.GetComponent<IMonster>();
+            var normal = (coll.gameObject.transform.position - transform.position).normalized;
 
             monster.TakeDamage(_damage);
+
+            if (Random.Range(0, 10) < 3f)
+            {
+                monster.StartKnockback(normal);
+            }
         }
     }
 }

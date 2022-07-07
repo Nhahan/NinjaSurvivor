@@ -39,7 +39,11 @@ namespace AdSkills
             }
             else if (_skillLevel > 14)
             {
-                skillLevelBonus *= 2.15f;
+                skillLevelBonus *= 2.25f;
+            }
+            else
+            {
+                skillLevelBonus *= 1.25f;
             }
             
             _damage = _player.Damage() * damageMultiplier * skillLevelBonus;
@@ -56,19 +60,25 @@ namespace AdSkills
             if (!coll.CompareTag("Enemy") || _liveTime > 0.25f) return;
 
             var monster = coll.gameObject.GetComponent<IMonster>();
-            StartCoroutine(AttackTimes(monster));
+            var normal = (coll.gameObject.transform.position - transform.position).normalized;
+
+            StartCoroutine(AttackTimes(monster, normal));
         }
 
-        public IEnumerator AttackTimes(IMonster monster)
+        public IEnumerator AttackTimes(IMonster monster, Vector3 normal)
         {
             var count = _skillLevel  < 5 ? 5 : _skillLevel;
-            Debug.Log(count + " / " + _skillLevel);
             
             for (var i = 0; i < count; i++)
             {
                 try
                 {
                     monster.TakeDamage(_damage + Random.Range(-2, 3));
+
+                    if (count % 3 == 0)
+                    {
+                        monster.StartKnockback(normal);
+                    }
                 }
                 catch
                 {

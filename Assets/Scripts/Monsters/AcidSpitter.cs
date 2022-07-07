@@ -12,11 +12,12 @@ namespace Monsters
 
         private Player _player;
         private Animator _animator;
+        private Rigidbody2D _rb;
 
         private float _monsterHp = 250f;
         private const float MonsterDamage = 30f;
         private float _randomDamage;
-        private const float MonsterSpeed = 0.9f;
+        private float _monsterSpeed = 0.75f;
         private const float MonsterDefense = 1.5f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
@@ -27,6 +28,8 @@ namespace Monsters
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
+            _rb = GetComponent<Rigidbody2D>();
+            
             Indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(0, 3);
@@ -38,7 +41,7 @@ namespace Monsters
             _attackCooltime += Time.deltaTime;
             _distance = Vector3.Distance(transform.position, _player.transform.position);
 
-            if (_distance < 8 && _attackCooltime > 2f)
+            if (_distance < 8 && _attackCooltime > 4f)
             {
                 _state = State.Attacking;
             }
@@ -56,12 +59,10 @@ namespace Monsters
             switch (_state)
             {
                 case State.Moving:
-                    transform.position = Vector2.MoveTowards(
-                        transform.position,
-                        _player.transform.position,
-                        MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
+                    Vector2 direction = (_player.transform.position - transform.position).normalized;
+                    _rb.MovePosition(_rb.position + direction * (_monsterSpeed * Time.fixedDeltaTime * _monsterSpeedMultiplier));
                     FlipSprite();
-                    if (_attackCooltime > 2.1f && _monsterHp > 0)
+                    if (_attackCooltime > 4f && _monsterHp > 0)
                     {
                         _monsterSpeedMultiplier = 1;
                     }

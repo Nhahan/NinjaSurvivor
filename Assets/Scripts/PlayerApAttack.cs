@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using ApSkills;
 using Status;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerApAttack : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class PlayerApAttack : MonoBehaviour
 
     private Player _player;
     private float _createDelay;
+    private float _tetralogyCooltime;
     
     private readonly Vector3 _v = new(0, 0, 0);
 
@@ -38,9 +41,17 @@ public class PlayerApAttack : MonoBehaviour
                     case "FireCross":
                         StartCoroutine(FireCross(prefab, _v, transform.rotation));
                         break;
+                    case "Tetralogy":
+                        StartCoroutine(Tetralogy(prefab, _v, transform.rotation));
+                        break;
                 }
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        _tetralogyCooltime += Time.deltaTime;
     }
 
     private IEnumerator Flamer(GameObject prefab, Vector3 position, Quaternion rotation)
@@ -119,5 +130,14 @@ public class PlayerApAttack : MonoBehaviour
             if (level > 9)
                 Instantiate(prefab, transform.position, Quaternion.Euler(0f, 0f, 90f));
         }
+    }
+    
+    private IEnumerator Tetralogy(GameObject prefab, Vector3 position, Quaternion rotation)
+    {
+        var level = _player.Tetralogy.CalculateFinalValue();
+        Debug.Log(_tetralogyCooltime);
+        if (level < 1 || _tetralogyCooltime < 9.8f + level * 0.2f) yield break;
+        _tetralogyCooltime = 0;
+        Instantiate(prefab, _player.transform.position, rotation);
     }
 }

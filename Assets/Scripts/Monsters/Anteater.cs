@@ -11,10 +11,11 @@ namespace Monsters
     {
         private Player _player;
         private Animator _animator;
+        private Rigidbody2D _rb;
     
         private float _monsterHp = 55f;
         private float _randomDamage;
-        private const float MonsterSpeed = 1.4f;
+        private float _monsterSpeed = 1.4f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
         private const float MonsterDefense = 4f;
@@ -25,6 +26,8 @@ namespace Monsters
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
+            _rb = GetComponent<Rigidbody2D>();
+            
             Indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(8, 12);
@@ -36,7 +39,7 @@ namespace Monsters
             _attackCooltime += Time.deltaTime;
             _distance = Vector3.Distance(transform.position, _player.transform.position);
 
-            if (_distance < 1.1 && _attackCooltime > 1.125f)
+            if (_distance < 1.1 && _attackCooltime > 1.3f)
             {
                 _state = State.Attacking;
             }
@@ -54,10 +57,8 @@ namespace Monsters
             switch (_state)
             {
                 case State.Moving:
-                    transform.position = Vector2.MoveTowards(
-                        transform.position,
-                        _player.transform.position,
-                        MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
+                    Vector2 direction = (_player.transform.position - transform.position).normalized;
+                    _rb.MovePosition(_rb.position + direction * (_monsterSpeed * Time.fixedDeltaTime * _monsterSpeedMultiplier));
                     FlipSprite();
                     if (_attackCooltime > 1.3f)
                     {
@@ -103,7 +104,7 @@ namespace Monsters
             if (_monsterHp > 0) return;
             _animator.SetBool("isDead", true);
             _monsterSpeedMultiplier = 0;
-            StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
+            StartCoroutine(BeforeDestroy(0.05f));
         }
     }
 }

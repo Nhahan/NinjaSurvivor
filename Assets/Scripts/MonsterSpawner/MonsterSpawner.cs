@@ -47,7 +47,8 @@ namespace MonsterSpawner
                 var difficulty = 4f + second / level;
                 yield return new WaitForSeconds(difficulty);
                 
-                if (GameManager.Instance.monsterCount > 300) { continue; }
+                if (GameManager.Instance.monsterCount > 350) { continue; }
+                Debug.Log("Monsters : " + GameManager.Instance.monsterCount);
                 
                 switch (level)
                 {
@@ -108,7 +109,7 @@ namespace MonsterSpawner
                             RandomSpawn(30, redAnteater, r);
                             RandomSpawn(100f, suicider, r);
                         }
-                        RandomSpawn(level * 0.3f, acidSpitter, r);
+                        RandomSpawn(level * 0.5f, acidSpitter, r);
                         RandomSpawn(level * 4f, cannibalisia, r);
                         break;
                     }
@@ -121,7 +122,7 @@ namespace MonsterSpawner
                             RandomSpawn(100f, suicider, r);
                         }
                         RandomSpawn(66f, cannibalisia, r);
-                        RandomSpawn(level * 0.4f, acidSpitter, r);
+                        RandomSpawn(level * 0.5f, acidSpitter, r);
                         RandomSpawn(level * 1f, redAnteater, r);
                         break;
                     }
@@ -130,6 +131,7 @@ namespace MonsterSpawner
                         for (var i = 0; i < 10; i++)
                         {
                             RandomSpawn(10f, acidSpitter, r);
+                            RandomSpawn(5f, acidSpitter, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, suicider, r);
@@ -139,18 +141,18 @@ namespace MonsterSpawner
                         RandomSpawn(level * 0.5f, acidSpitter, r);
                         break;
                     }
-                    case 30:
-                    {
-                        // Golem Boss
-                        break;
-                    }
+                    // case 30:
+                    // {
+                    //     // Golem Boss
+                    //     break;
+                    // }
                     default:
                     {
                         for (var i = 0; i < 7; i++)
                         {
                             RandomSpawn(100f, anteater, r);
-                            RandomSpawn(100f, acidSpitter, r);
-                            RandomSpawn(100f, acidSpitter, r);
+                            RandomSpawn(20f, acidSpitter, r);
+                            RandomSpawn(level * 2f, acidSpitter, r);
                             RandomSpawn(100f, redAnteater, r);
                             RandomSpawn(100f, redAnteater, r);
                             RandomSpawn(100f, suicider, r);

@@ -10,11 +10,12 @@ namespace Monsters
     {
         private Player _player;
         private Animator _animator;
+        private Rigidbody2D _rb;
     
         private float _monsterHp = 50f;
         private const float MonsterDamage = 10f;
         private float _randomDamage;
-        private const float MonsterSpeed = 0.6f;
+        private float _monsterSpeed = 0.6f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
         private const float MonsterDefense = 0f;
@@ -25,6 +26,8 @@ namespace Monsters
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
+            _rb = GetComponent<Rigidbody2D>();
+            
             Indicator = GameManager.Instance.indicator;
 
             _monsterHp += _player.GetLevel();
@@ -38,7 +41,7 @@ namespace Monsters
             _attackCooltime += Time.deltaTime;
             _distance = Vector3.Distance(transform.position, _player.transform.position);
 
-            if (_distance < 1.2f && _attackCooltime > 1.125f)
+            if (_distance < 1.4f && _attackCooltime > 1.125f)
             {
                 _state = State.Attacking;
             }
@@ -56,10 +59,8 @@ namespace Monsters
             switch (_state)
             {
                 case State.Moving:
-                    transform.position = Vector2.MoveTowards(
-                        transform.position,
-                        _player.transform.position,
-                        MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
+                    Vector2 direction = (_player.transform.position - transform.position).normalized;
+                    _rb.MovePosition(_rb.position + direction * (_monsterSpeed * Time.fixedDeltaTime * _monsterSpeedMultiplier));
                     if (_attackCooltime > 1.25f && _monsterHp > 0)
                     {
                         _monsterSpeedMultiplier = 1;
@@ -98,7 +99,7 @@ namespace Monsters
 
             if (_monsterHp > 0) return;
             _monsterSpeedMultiplier = 0;
-            StartCoroutine(BeforeDestroy(0.35f));
+            StartCoroutine(BeforeDestroy(0.15f));
         }
     }
 }

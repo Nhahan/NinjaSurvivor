@@ -15,7 +15,7 @@ namespace AdSkills
         private float _damage;
         private float _liveTime;
         
-        private float _skillLevelMultiplier = 0.2f;
+        private float _skillLevelMultiplier = 0.215f;
 
         private void Start()
         {
@@ -36,8 +36,8 @@ namespace AdSkills
             }
 
             var skillLevelBonus = _skillLevelMultiplier * _player.Slash.CalculateFinalValue();
-            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage() * 0.25f;
-            Destroy(gameObject, 0.565f);
+            _damage = _player.Damage() * damageMultiplier * skillLevelBonus + _player.Damage() * 0.4f;
+            Destroy(gameObject, 0.52f);
         }
 
         private void FixedUpdate()

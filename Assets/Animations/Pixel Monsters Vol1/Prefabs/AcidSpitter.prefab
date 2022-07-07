@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9061494549674412017}
   - component: {fileID: 1028289176}
   - component: {fileID: 1028289171}
+  - component: {fileID: 1333360134573535578}
   m_Layer: 0
   m_Name: "\bAcidSpitter"
   m_TagString: Enemy
@@ -135,5 +136,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1780a138d02634dd08f4b86127e93b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  expSoul1: {fileID: 5601239791881696676, guid: 55f4fc2701b9f45289b7ba81f1572523, type: 3}
   bullet: {fileID: 8210397777342924335, guid: bb81802494510e4418d1d57a821b658a, type: 3}
+--- !u!50 &1333360134573535578
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3262185139656416843}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

@@ -8,17 +8,20 @@ namespace Monsters
     {
         private Player _player;
         private Animator _animator;
+        private Rigidbody2D _rb;
 
         private float _monsterHp = 30f;
         private const float MonsterDamage = 30f;
         private float _randomDamage;
-        private const float MonsterSpeed = 1.75f;
-        private const float MonsterDefense = 2f;
+        private float _monsterSpeed = 1.75f;
+        private float _monsterSpeedMultiplier = 1;
 
         private void Start()
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
+            _rb = GetComponent<Rigidbody2D>();
+            
             Indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(0, 3);
@@ -31,11 +34,11 @@ namespace Monsters
                 PlayKnockback();
                 return;
             }
-            transform.position = Vector2.MoveTowards(
-                transform.position, 
-                _player.transform.position, 
-                MonsterSpeed * MonsterSpeedMultiplier * Time.deltaTime);
-        
+
+            if (_monsterHp < 0) return;
+            Vector2 direction = (_player.transform.position - transform.position).normalized;
+            _rb.MovePosition(_rb.position + direction * (_monsterSpeed * Time.fixedDeltaTime * _monsterSpeedMultiplier));
+            
             FlipSprite();
         }
 
@@ -61,13 +64,13 @@ namespace Monsters
 
         public void TakeDamage(float damage)
         { 
-            _monsterHp = _monsterHp - damage + MonsterDefense;
+            _monsterHp = _monsterHp - damage;
             ShowDamage(damage);
             Flash();
 
             if (_monsterHp > 0) return;
-            _animator.SetBool("isDead", true);
             MonsterSpeedMultiplier = 0;
+            _animator.SetBool("isDead", true);
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
     }

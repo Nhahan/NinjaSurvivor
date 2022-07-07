@@ -52,6 +52,7 @@ namespace Status
         public int ExplosiveShuriken;
         public int LightningStrike;
         public int FireCross;
+        public int Tetralogy;
         [Space] 
         public int AssassinationTraining; // 공격속도 5% 증가
         public int BodycoreTraining; // 방어력 5% 증가
@@ -126,7 +127,9 @@ namespace Status
             if (LightningStrike != 0)
                 p.LightningStrike.AddModifier(new StatModifier(LightningStrike, StatModType.Flat, this));
             if (FireCross != 0)
-                p.FireCross.AddModifier(new StatModifier(FireCross, StatModType.Flat, this));
+                p.FireCross.AddModifier(new StatModifier(FireCross, StatModType.Flat, this));            
+            if (Tetralogy != 0)
+                p.Tetralogy.AddModifier(new StatModifier(Tetralogy, StatModType.Flat, this));
             
             // Training
             if (AssassinationTraining != 0)
@@ -164,6 +167,7 @@ namespace Status
             p.ExplosiveShuriken.RemoveAllModifiersFromSource(this);
             p.LightningStrike.RemoveAllModifiersFromSource(this);
             p.FireCross.RemoveAllModifiersFromSource(this);
+            p.Tetralogy.RemoveAllModifiersFromSource(this);
             
             p.AssassinationTraining.RemoveAllModifiersFromSource(this);
             p.BodycoreTraining.RemoveAllModifiersFromSource(this);

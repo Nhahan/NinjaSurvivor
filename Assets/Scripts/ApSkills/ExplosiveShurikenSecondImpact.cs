@@ -14,7 +14,7 @@ namespace ApSkills
         private Animator _animator;
 
         private float _damage;
-        private float _skillLevelMultiplier = 0.3f;
+        private float _skillLevelMultiplier = 0.45f;
         private bool _isAvailable = true;
 
         private void Start()

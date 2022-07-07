@@ -14,7 +14,7 @@ namespace ApSkills
         private bool _isOpposite;
         private float _liveTime;
 
-        private float _skillLevelMultiplier = 0.25f;
+        private float _skillLevelMultiplier = 0.3f;
 
         private void Start()
         {

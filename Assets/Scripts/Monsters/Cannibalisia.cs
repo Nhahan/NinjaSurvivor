@@ -10,14 +10,15 @@ namespace Monsters
     {
         private Player _player;
         private Animator _animator;
+        private Rigidbody2D _rb;
         
-        private float _monsterHp = 350f;
-        private const float MonsterDamage = 50f;
+        private float _monsterHp = 500f;
+        private const float MonsterDamage = 40f;
         private float _randomDamage;
-        private const float MonsterSpeed = 1.0f;
+        private float _monsterSpeed = 0.9f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
-        private const float MonsterDefense = 5f;
+        private const float MonsterDefense = 8f;
 
         private float _attackCooltime;
         
@@ -25,10 +26,12 @@ namespace Monsters
         {
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
+            _rb = GetComponent<Rigidbody2D>();
+            
             Indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(2, 10);
-            KnockbackDuration = 0.04f;
+            KnockbackDuration = 0.015f;
         }
 
         private void FixedUpdate()
@@ -54,10 +57,8 @@ namespace Monsters
             switch (_state)
             {
                 case State.Moving:
-                    transform.position = Vector2.MoveTowards(
-                        transform.position,
-                        _player.transform.position,
-                        MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
+                    Vector2 direction = (_player.transform.position - transform.position).normalized;
+                    _rb.MovePosition(_rb.position + direction * (_monsterSpeed * Time.fixedDeltaTime * _monsterSpeedMultiplier));
                     FlipSprite();
                     break;
                 case State.Attacking:
