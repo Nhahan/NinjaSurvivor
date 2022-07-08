@@ -28,7 +28,7 @@ namespace Monsters
 
         protected SpriteRenderer SpriteRenderer;
         protected GameObject Indicator;
-        private Coroutine _flashRoutine;
+        protected Coroutine _flashRoutine;
 
         protected IEnumerator BeforeDestroy(float second)
         {

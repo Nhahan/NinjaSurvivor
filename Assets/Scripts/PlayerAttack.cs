@@ -7,6 +7,7 @@ using Status;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Debug = UnityEngine.Debug;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -118,14 +119,35 @@ public class PlayerAttack : MonoBehaviour
         if (level < 1) yield break;
         
         yield return new WaitForSeconds(_attackSpeed * 1.5f);
-        try
+
+        var boss = GameManager.Instance.boss;
+        if (boss is not null)
         {
-            var target = GameManager.Instance.GetClosestTargets(6.75f, 1)[0];
-            Instantiate(prefab, target, rotation);
+            var target = boss.transform.position;
+            Debug.Log(target);
+            if (Vector3.Distance(_player.transform.position, target) < 10.5f)
+            {
+                Instantiate(prefab, target, rotation);
+            }
+            else
+            {
+                GyeokNotToBoss(prefab, rotation);
+            }
+                
+            yield break;
         }
-        catch
+        GyeokNotToBoss(prefab, rotation);
+        
+        void GyeokNotToBoss(GameObject o, Quaternion quaternion)
         {
-            // ignored
+            try
+            {
+                Instantiate(o, GameManager.Instance.GetClosestTargets(6.75f, 1)[0], quaternion);
+            }
+            catch
+            {
+                // ignored
+            }
         }
     }
 }

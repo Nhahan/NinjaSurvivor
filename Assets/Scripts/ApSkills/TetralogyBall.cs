@@ -13,7 +13,7 @@ namespace ApSkills
         private float _liveTime;
         private float _damageMultiplier = 1f;
 
-        private float _skillLevelMultiplier = 0.125f;
+        private float _skillLevelMultiplier = 0.1f;
 
         private void Start()
         {

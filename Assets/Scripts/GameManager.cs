@@ -25,10 +25,11 @@ public class GameManager : MonoBehaviour
     
     public static GameManager Instance;
     public Dictionary<string, float> ActivatedSkills = new();
+    public GameObject boss;
     private List<GameObject> _enemies = new();
 
     private Material _defaultMaterial;
-    
+
     private bool _isGameOver;
     private float _playtime;
     

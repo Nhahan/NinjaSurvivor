@@ -16,10 +16,15 @@ namespace MonsterSpawner
         [SerializeField] private GameObject disist;
         [SerializeField] private GameObject redDisist;
 
+        // Boss
+        [SerializeField] private GameObject golem;
+
         private Player _player;
 
         private readonly List<Transform> _spawnPoints = new();
         private float _pointsCount;
+
+        private bool _isGolemSpawned;
 
         private void Start()
         {
@@ -109,7 +114,7 @@ namespace MonsterSpawner
                             RandomSpawn(30, redAnteater, r);
                             RandomSpawn(100f, suicider, r);
                         }
-                        RandomSpawn(level * 0.5f, acidSpitter, r);
+                        RandomSpawn(level * 0.3f, acidSpitter, r);
                         RandomSpawn(level * 4f, cannibalisia, r);
                         break;
                     }
@@ -122,7 +127,7 @@ namespace MonsterSpawner
                             RandomSpawn(100f, suicider, r);
                         }
                         RandomSpawn(66f, cannibalisia, r);
-                        RandomSpawn(level * 0.5f, acidSpitter, r);
+                        RandomSpawn(level * 0.4f, acidSpitter, r);
                         RandomSpawn(level * 1f, redAnteater, r);
                         break;
                     }
@@ -138,26 +143,19 @@ namespace MonsterSpawner
                         }
                         RandomSpawn(66f, cannibalisia, r);
                         RandomSpawn(level * 1f, redAnteater, r);
-                        RandomSpawn(level * 0.5f, acidSpitter, r);
                         break;
                     }
-                    // case 30:
-                    // {
-                    //     // Golem Boss
-                    //     break;
-                    // }
                     default:
                     {
-                        for (var i = 0; i < 7; i++)
+                        for (var i = 0; i < 2; i++)
                         {
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(20f, acidSpitter, r);
-                            RandomSpawn(level * 2f, acidSpitter, r);
                             RandomSpawn(100f, redAnteater, r);
-                            RandomSpawn(100f, redAnteater, r);
+                            RandomSpawn(50f, redAnteater, r);
                             RandomSpawn(100f, suicider, r);
+                            RandomSpawn(50f, suicider, r);
                         }
-                        RandomSpawn(66f, cannibalisia, r);
                         RandomSpawn(66f, cannibalisia, r);
                         break;
                     }
@@ -212,7 +210,28 @@ namespace MonsterSpawner
                 }
             }
         }
-
+        
+        private IEnumerator SpawnBossMonster(float second)
+        {
+            var r = transform.rotation;
+            while (!GameManager.Instance.GetIsGameOver())
+            {
+                var level = _player.GetLevel();
+                yield return new WaitForSeconds(second);
+                switch (level) {
+                    case 30:
+                    {
+                        if (_isGolemSpawned == false)
+                        {
+                            _isGolemSpawned = true;
+                            SpawnBoss(golem, r);
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        
         private Vector3 GetRandomSpawnPoint()
         {
             try
@@ -232,6 +251,12 @@ namespace MonsterSpawner
                 GameManager.Instance.AddTarget(Instantiate(prefab, GetRandomSpawnPoint(), r));
                 GameManager.Instance.monsterCount++;
             }
+        }
+        
+        private void SpawnBoss(GameObject prefab, Quaternion r)
+        {
+            GameManager.Instance.AddTarget(GameManager.Instance.boss = Instantiate(prefab, GetRandomSpawnPoint(), r));
+            GameManager.Instance.monsterCount++;
         }
     }
 }

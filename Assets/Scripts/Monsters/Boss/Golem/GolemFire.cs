@@ -49,14 +49,14 @@ public class GolemFire : MonoBehaviour
     {
         if (!coll.CompareTag("Player")) return;
     
-        // var damage = _player.MaxHp.CalculateFinalValue() * 0.2f - _player.Defense.CalculateFinalValue();
-        var damage = _player.Defense.CalculateFinalValue();
+        var damage = _player.MaxHp.CalculateFinalValue() * 0.12f - _player.Defense.CalculateFinalValue();
+        
         _player.TakeDamage(damage);
     }
 
     private void ResetTrigger()
     {
-        if (_liveTime < 1.5f || _liveTime > 20.9f || _resetTriggerCooltime < 0.15f) return;
+        if (_liveTime < 1.5f || _liveTime > 20.9f || _resetTriggerCooltime < 0.25f) return;
 
         circleCollider2D.enabled = !circleCollider2D.enabled;
         _resetTriggerCooltime = 0;

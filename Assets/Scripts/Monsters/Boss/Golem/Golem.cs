@@ -17,14 +17,13 @@ namespace Monsters.Boss
     {
         private Player _player;
         private Animator _animator;
+        private Rigidbody2D _rb;
 
-        private float _monsterHp = 499;
-        private const float MonsterDamage = 10f;
-        private float _randomDamage;
-        private const float MonsterSpeed = 4.5f;
+        private float _monsterHp = 12000;
+        private float _monsterSpeed = 4.5f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
-        private const float MonsterDefense = 10f;
+        private const float MonsterDefense = 4.5f;
 
         private BossState _bossState;
         private float _idleCooltime; // 7
@@ -34,17 +33,22 @@ namespace Monsters.Boss
         private float _handUpCooltime; // 30
         private float _lighteningCooltime; // 40 
 
+        private bool _isShieldOn;
+
         [SerializeField] private GameObject handUpPoint;
         [SerializeField] private GameObject laser;
         [SerializeField] private GameObject fire;
+        [SerializeField] private GameObject energyShield;
 
         private void Start()
         {
+            GameManager.Instance.boss = gameObject;
+            
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
             Indicator = GameManager.Instance.indicator;
-
-            _randomDamage = Random.Range(10, 25);
+            _rb = GetComponent<Rigidbody2D>();
+            
             KnockbackDuration = 0.015f;
 
             _bossState = BossState.Moving;
@@ -81,23 +85,24 @@ namespace Monsters.Boss
 
         private void WhenNotMoving()
         {
-            if (_handUpCooltime > 6.5f)
-            {
-                _animator.SetBool("isHandUp", true);
-                _bossState = BossState.Attacking;
-                _handUpCooltime = 0;
-                _monsterSpeedMultiplier = 0f;
-                StartCoroutine(InstantiateHandUpFire());
-                StartCoroutine(BackToWantedState("isHandUp", false, 3.85f));
-            }
-            else if (_laserCooltime > 14f)
+            // if (_handUpCooltime > 6.5f)
+            // {
+            //     _animator.SetBool("isHandUp", true);
+            //     _bossState = BossState.Attacking;
+            //     _handUpCooltime = 0;
+            //     _monsterSpeedMultiplier = 0f;
+            //     StartCoroutine(InstantiateHandUpFire());
+            //     StartCoroutine(BackToWantedState("isHandUp", false, 3.85f));
+            // }
+            if (_laserCooltime > 9f)
             {
                 _animator.SetBool("isFloorLaser", true);
                 Debug.Log("isFloorLaser");
                 _bossState = BossState.Attacking;
                 _laserCooltime = 0;
                 _monsterSpeedMultiplier = 0f;
-                StartCoroutine(BackToWantedState("isFloorLaser", false, 2.5f));
+                StartCoroutine(InstantiateEnergyShield());
+                StartCoroutine(BackToWantedState("isFloorLaser", false, 3.75f));
             }
             else if (_lighteningCooltime > 24f)
             {
@@ -106,7 +111,7 @@ namespace Monsters.Boss
                 _bossState = BossState.Attacking;
                 _lighteningCooltime = 0;
                 _monsterSpeedMultiplier = 0f;
-                StartCoroutine(BackToWantedState("isLightening", false, 3.5f));
+                StartCoroutine(BackToWantedState("isLightening", false, 3.75f));
             }
             else if (_earthQuakeCooltime > 30f)
             {
@@ -115,7 +120,7 @@ namespace Monsters.Boss
                 _bossState = BossState.Attacking;
                 _earthQuakeCooltime = 0;
                 _monsterSpeedMultiplier = 0f;
-                StartCoroutine(BackToWantedState("isEarthQuake", false, 3.5f));
+                StartCoroutine(BackToWantedState("isEarthQuake", false, 3.75f));
             }
             else
             {
@@ -127,11 +132,9 @@ namespace Monsters.Boss
         {
             if (_distance > 4.75f && _bossState == BossState.Moving && _animator.GetCurrentAnimatorStateInfo(0).IsName("Idle")) 
             {
+                Vector2 direction = (_player.transform.position - transform.position).normalized;
+                _rb.MovePosition(_rb.position + direction * (_monsterSpeed * Time.fixedDeltaTime * _monsterSpeedMultiplier));
                 FlipSprite();
-                transform.position = Vector2.MoveTowards(
-                transform.position,
-                _player.transform.position,
-                MonsterSpeed * _monsterSpeedMultiplier * Time.deltaTime);
             }
         }
 
@@ -139,14 +142,6 @@ namespace Monsters.Boss
         {
             yield return new WaitForSeconds(s);
             _animator.SetBool(n, b);
-        }
-
-        private void AttackPlayer()
-        {
-            _animator.SetBool("isAttacking", true);
-            var finalDamage = _randomDamage;
-            _player.TakeDamage(finalDamage);
-            StartCoroutine(IsAttackingToFalse(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
 
         private IEnumerator IsAttackingToFalse(float second)
@@ -161,14 +156,19 @@ namespace Monsters.Boss
         }
 
         public void TakeDamage(float damage)
-        { 
+        {
+            
+            
+            if (_isShieldOn) return;
             _monsterHp = _monsterHp - damage + MonsterDefense;
             ShowDamage(damage);
             Flash();
 
             if (_monsterHp > 0) return;
             _animator.SetBool("isDead", true);
+            _animator.SetBool("isDead", true);
             _monsterSpeedMultiplier = 0;
+            GameManager.Instance.boss = null;
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
 
@@ -181,6 +181,21 @@ namespace Monsters.Boss
                 yield return new WaitForSeconds(1.5f);
                 Instantiate(fire, handUpPoint.transform.position, transform.rotation);
             }
+        }
+        
+        private IEnumerator InstantiateEnergyShield()
+        {
+            _isShieldOn = true;
+            var isAngry = _monsterHp < 500;
+            Instantiate(energyShield, transform.position, transform.rotation).GetComponent<EnergyShield>().SetGolem(gameObject, isAngry);
+            yield return new WaitForSeconds(4.2f);
+            _isShieldOn = false;
+        }
+
+        public void SetIsShieldOnToFalse()
+        {
+            Debug.Log("please...");
+            _isShieldOn = false;
         }
     }
 }

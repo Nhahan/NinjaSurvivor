@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 783349775}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: HandUpPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,11 +44,10 @@ GameObject:
   - component: {fileID: 5092536778847165007}
   - component: {fileID: 5092536778847165042}
   - component: {fileID: 5092536778847165043}
-  - component: {fileID: 5092536778847165044}
   - component: {fileID: 5092536778847165045}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Golem
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,45 +174,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5092536778847165006}
-  m_BodyType: 0
-  m_Simulated: 0
+  m_BodyType: 1
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 9999
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &5092536778847165044
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5092536778847165006}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.06, y: 0.12}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.4074073, y: 7.4074073}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3.8, y: 3.43}
-  m_EdgeRadius: 0
 --- !u!114 &5092536778847165045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,3 +202,4 @@ MonoBehaviour:
   handUpPoint: {fileID: 783349774}
   laser: {fileID: 437797314677740442, guid: 64ae6d536500e45d3be7f192424dfeb9, type: 3}
   fire: {fileID: 100000, guid: a92c8a3ad22114f6e82ab78b47e164e6, type: 3}
+  energyShield: {fileID: 6157517939249111768, guid: c9edea65459e34e529ee85420d9b8c25, type: 3}

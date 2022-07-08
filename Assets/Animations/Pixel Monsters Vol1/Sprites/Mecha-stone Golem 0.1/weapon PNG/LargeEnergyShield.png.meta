@@ -1,0 +1,2390 @@
+fileFormatVersion: 2
+guid: 4a9ecbf55ad644d41a2ec42aa4693a85
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LargeEnergyShield_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10760
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 883ca67ff3a4f48469de83ebec7f961a
+      internalID: -2133439849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_1
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 10760
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40feda345d84c4a459bedcb215d92186
+      internalID: 1079863625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_2
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 10760
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e92273a0b43ea4c738ed0cb813ce7ef5
+      internalID: -1642856493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_3
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 10760
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6fa0b8d3ecb948b3935363800c97ec3
+      internalID: -127015674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_4
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 10760
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f449f367d89a4437b2c2888620541b3
+      internalID: 980310509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10222
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b471d5d4210d42cda0de974f8617530
+      internalID: -2129380766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_6
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 10222
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ee0f7e4b61d461db0db0c98b606d8e
+      internalID: -2022540473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_7
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 10222
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e08c84575870e4f3cbb4e8fc189f7a3b
+      internalID: -1438420306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_8
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 10222
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1036ed7a0858148cca8b2ec5d9e83d72
+      internalID: -827031076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_9
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 10222
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e22d42f0c8ea461f8b555c37f4e2d36
+      internalID: -2049215570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9684
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38d62fc0b826a4336982b43c70d9b999
+      internalID: -2105557979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_11
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 9684
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ac004d38cc664fb0a05b46743083583
+      internalID: -1153328938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_12
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 9684
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d3590a3aafe847b9bf577428bfe8c67
+      internalID: -106422414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_13
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 9684
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82f175ac8be7c46d2a42fabf8e527b37
+      internalID: 756797378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_14
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 9684
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a2d8a8b83df347f6b666d270e2cc05f
+      internalID: 1025858551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 9146
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f94632000d814251b1acf1a4819fae9
+      internalID: 1718211860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_16
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 9146
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb90d446398144feb8bec41c33ba296e
+      internalID: -1637181412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_17
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 9146
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 789ffac52015f417685cb8a3c4184a91
+      internalID: 253659755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_18
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 9146
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf176d28ca7f04d6982e986233edaa0d
+      internalID: -65757355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_19
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 9146
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2db70f6a379094ca0a7c906188ce33bb
+      internalID: 684602345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8608
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dc8309cfae534a00ac6df98d57f18cb
+      internalID: 185963263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_21
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 8608
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd58c7b34241b45719a5ad0b8d73da70
+      internalID: -125666819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_22
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 8608
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b40360a2cb8f427f86b0f5da678eb48
+      internalID: 1469335891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_23
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 8608
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83992d5c222b14b76abe6672c0785500
+      internalID: 810053896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_24
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 8608
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 078f9b85a1fa54f6799b29887d1c667a
+      internalID: -746937370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8070
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7648bbc18507d4caa99fb86e2f32e257
+      internalID: 549165707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_26
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 8070
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6c287f4997404529aa29d42916c488a
+      internalID: -275166073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_27
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 8070
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e53a16e856ccd4b95aad34293d317771
+      internalID: 1026636329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_28
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 8070
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 736a73490db8f49029178f1cf59fb503
+      internalID: -44667978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_29
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 8070
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05b5c402d34540568450a8240ebc148
+      internalID: -1957148703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7532
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 251f4efa96d004e81add6d7236013363
+      internalID: 1780761069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_31
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 7532
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b0b767613d4c4668afc058b9a055316
+      internalID: -1357090356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_32
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 7532
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f97f17980d40746ef99ed7279cd24efd
+      internalID: 841165521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_33
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 7532
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c2da94eebb2a4b539de9c4b7ec1365f
+      internalID: 698680954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_34
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 7532
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf4e3b7db8e8a4fa0acd2c7ed1a8f1a8
+      internalID: 703397346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6994
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d83febdcdb641bb90663e45c15ad0c
+      internalID: -1617215853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_36
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 6994
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc67d5812b94040d4897b4f56dda1cdd
+      internalID: 2099833737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_37
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 6994
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a45aa0a92bdba44029e4fc574b855a6f
+      internalID: 547194126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_38
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 6994
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56ce9cfe220924952b6d886a9e1a6c93
+      internalID: -1939297800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_39
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 6994
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ab02b7c8e8c34456a447b33fe7c85f7
+      internalID: -776116531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6456
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8812be1c26a82416ebf6e263930d9e95
+      internalID: 150928309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_41
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 6456
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 621fbe08c887d41e0a4c1b74f19fa8d1
+      internalID: -1782224755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_42
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 6456
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1214bade8e7b46e5a7e8f21efca3d0a
+      internalID: 1745108619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_43
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 6456
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d69ed178556f34d88bf7df00f539d63c
+      internalID: 681903963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_44
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 6456
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0dec8562172743ef95eb0037727d5d5
+      internalID: 178768985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5918
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91a5060f9f1de46e28f25877f75645c0
+      internalID: 1248768073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_46
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 5918
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5957d72d23d324e6893475bf860de421
+      internalID: 534646203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_47
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 5918
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44de19d50acf044feaee6224a9380650
+      internalID: -167905288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_48
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 5918
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf8bd60bcca1c40b6992c0672a165a29
+      internalID: -532007057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_49
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 5918
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0c1a574f0eb649579b6ce18740cc501
+      internalID: -260290964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5380
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60406cf666ac84922a0876493d5dc87d
+      internalID: -174560911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_51
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 5380
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d1bb065bab0d446494aeaf6bdbfb7bb
+      internalID: 471019932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_52
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 5380
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e94e2d18f37b042968f9e0991c82b355
+      internalID: 315844038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_53
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 5380
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75b4b37e818894ff3a24caa90d6cb625
+      internalID: -558412748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_54
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 5380
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84d80652b8a044a5bb7d1018b70e7458
+      internalID: 1861317047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_55
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4842
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 106df6c6555594531a01364afe50203a
+      internalID: -698167318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_56
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 4842
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 989762c0719a94de48f577063989df62
+      internalID: 1353597941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_57
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 4842
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e34ec9c0eb24446dfbd63fb79ca8848a
+      internalID: 725152786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_58
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 4842
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c757b120e85c42a7b137e78effa4054
+      internalID: -1644183469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_59
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 4842
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c785db7e336d4a3cb5fd5e091a1dd40
+      internalID: 2101836284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4304
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c27bb3e7c6a7481796d0f39ec31ec8d
+      internalID: -2076663976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_61
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 4304
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2383ea160b79947a3a0cc112dc2efbf0
+      internalID: -1457609136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_62
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 4304
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e551b8c6127184300aca8d23e101c53d
+      internalID: 1513062209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_63
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 4304
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5869761bfc9414a4e8cad58ed9158f0a
+      internalID: -656954427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_64
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 4304
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0adcb0b3d071441f5b9b0cc55a2ac002
+      internalID: -1949609751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_65
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3766
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 374315f676c2241dd935266dc374df83
+      internalID: 148116917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_66
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 3766
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43f5d616678bd4fa99b5ff34fd5d0aa7
+      internalID: 70293448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_67
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 3766
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d570986df474dc5b8ce58ff6063fd9
+      internalID: 1124870824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_68
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 3766
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a48b00cfe96514f98a601b957562453c
+      internalID: 1794602083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_69
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 3766
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e86bf95cdfc994440ad72d648b636672
+      internalID: -1365628005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3228
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9974e74ba7998412ba00cf34a7ba7bb5
+      internalID: -1787174846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_71
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 3228
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97547e46f0baf4e4789091dc47f936f6
+      internalID: 962701077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_72
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 3228
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cd8febf1f4f543da8b701ea110f8524
+      internalID: 2140287449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_73
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 3228
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 583fa8b32ef704a98b8088def57e2c0d
+      internalID: -1939933780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_74
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 3228
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31a3fce4405dd4d1c9f16922e30202a7
+      internalID: -463930895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_75
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2690
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84fe5fe57cc5141e48ab69a190255787
+      internalID: 863463666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_76
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 2690
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 162477a7d2c2248fc9ec48983997a34f
+      internalID: -493593665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_77
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 2690
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fcf9e02830f04ac4ae2cca80e56b05d
+      internalID: 1196196796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_78
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 2690
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 930ff345f302a452b8234df28e70c14c
+      internalID: -2057743315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_79
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 2690
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e79c8de73aa1644b3b89be5283517884
+      internalID: 1843851698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2152
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db19b8e4078e7413a999f10489479033
+      internalID: 149030683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_81
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 2152
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3795d798d6f8b4195acffd244a801e82
+      internalID: -178297009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_82
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 2152
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9719b46a0a2784acba306f71fa9cdffe
+      internalID: 1068650445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_83
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 2152
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a06e384697ffb4559924053206b8056b
+      internalID: -416288498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_84
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 2152
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce6d1255a2742472690fd68874093a72
+      internalID: -1605268753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_85
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1614
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d165e2d4ba434dd3b5663141acfba55
+      internalID: 644872454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_86
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1614
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4288366d6cb3949c8a74ff4f93febdc4
+      internalID: 1484390755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_87
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1614
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ae94246fb194d008b319b1169749a6
+      internalID: -1853647335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_88
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 1614
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20e9508b8c622404aa28607fa0bb61cf
+      internalID: 1922636042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_89
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 1614
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f28741027025a40d090fb752de6ee991
+      internalID: -1774189607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_90
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1076
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a7321de5a0034cc6a7f6890ac29424f
+      internalID: -503055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_91
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 1076
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3008205aac8f9406397a9252e8bfa838
+      internalID: -1715018916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_92
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1076
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f3f939756c0c47ce99c172c6a3486ff
+      internalID: -122831154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_93
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 1076
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee6b520c1d50d4c4cb2eed4a67f4a3b8
+      internalID: -1110069491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_94
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 1076
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9344664147454b40b9b9881569cbd9c
+      internalID: 1347860800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_95
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 538
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2a1519dcbc0243499578337a5ca83e1
+      internalID: 969373842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_96
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 538
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 476ccb4ce643f4b0abfd5b2cf489c724
+      internalID: 1050135831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_97
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 538
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17b2e9f87766d47f8815decd9f9b0dc4
+      internalID: 596174907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_98
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 538
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c92907b9b1fe4944bca7eb9f6c9a075
+      internalID: -1411298285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_99
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 538
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d562bb850cd18488b98c1f9af5da7e51
+      internalID: 1700257529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_100
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70373a4b29bf54e52bfd165f51732dac
+      internalID: 437684814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LargeEnergyShield_101
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 960
+        height: 538
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7ed2984ddf764ae7bbfb70c0db1652f
+      internalID: 2051423188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      LargeEnergyShield_75: 863463666
+      LargeEnergyShield_69: -1365628005
+      LargeEnergyShield_76: -493593665
+      LargeEnergyShield_36: 2099833737
+      LargeEnergyShield_77: 1196196796
+      LargeEnergyShield_41: -1782224755
+      LargeEnergyShield_14: 1025858551
+      LargeEnergyShield_93: -1110069491
+      LargeEnergyShield_21: -125666819
+      LargeEnergyShield_31: -1357090356
+      LargeEnergyShield_62: 1513062209
+      LargeEnergyShield_74: -463930895
+      LargeEnergyShield_101: 2051423188
+      LargeEnergyShield_30: 1780761069
+      LargeEnergyShield_94: 1347860800
+      LargeEnergyShield_27: 1026636329
+      LargeEnergyShield_28: -44667978
+      LargeEnergyShield_64: -1949609751
+      LargeEnergyShield_53: -558412748
+      LargeEnergyShield_72: 2140287449
+      LargeEnergyShield_15: 1718211860
+      LargeEnergyShield_8: -827031076
+      LargeEnergyShield_71: 962701077
+      LargeEnergyShield_79: 1843851698
+      LargeEnergyShield_92: -122831154
+      LargeEnergyShield_85: 644872454
+      LargeEnergyShield_100: 437684814
+      LargeEnergyShield_91: -1715018916
+      LargeEnergyShield_5: -2129380766
+      LargeEnergyShield_26: -275166073
+      LargeEnergyShield_73: -1939933780
+      LargeEnergyShield_63: -656954427
+      LargeEnergyShield_23: 810053896
+      LargeEnergyShield_18: -65757355
+      LargeEnergyShield_68: 1794602083
+      LargeEnergyShield_67: 1124870824
+      LargeEnergyShield_88: 1922636042
+      LargeEnergyShield_24: -746937370
+      LargeEnergyShield_29: -1957148703
+      LargeEnergyShield_39: -776116531
+      LargeEnergyShield_70: -1787174846
+      LargeEnergyShield_17: 253659755
+      LargeEnergyShield_10: -2105557979
+      LargeEnergyShield_54: 1861317047
+      LargeEnergyShield_66: 70293448
+      LargeEnergyShield_96: 1050135831
+      LargeEnergyShield_13: 756797378
+      LargeEnergyShield_65: 148116917
+      LargeEnergyShield_52: 315844038
+      LargeEnergyShield_4: 980310509
+      LargeEnergyShield_0: -2133439849
+      LargeEnergyShield_42: 1745108619
+      LargeEnergyShield_45: 1248768073
+      LargeEnergyShield_57: 725152786
+      LargeEnergyShield_84: -1605268753
+      LargeEnergyShield_2: -1642856493
+      LargeEnergyShield_46: 534646203
+      LargeEnergyShield_59: 2101836284
+      LargeEnergyShield_82: 1068650445
+      LargeEnergyShield_58: -1644183469
+      LargeEnergyShield_37: 547194126
+      LargeEnergyShield_6: -2022540473
+      LargeEnergyShield_20: 185963263
+      LargeEnergyShield_11: -1153328938
+      LargeEnergyShield_1: 1079863625
+      LargeEnergyShield_47: -167905288
+      LargeEnergyShield_19: 684602345
+      LargeEnergyShield_60: -2076663976
+      LargeEnergyShield_90: -503055
+      LargeEnergyShield_97: 596174907
+      LargeEnergyShield_3: -127015674
+      LargeEnergyShield_61: -1457609136
+      LargeEnergyShield_48: -532007057
+      LargeEnergyShield_51: 471019932
+      LargeEnergyShield_81: -178297009
+      LargeEnergyShield_95: 969373842
+      LargeEnergyShield_98: -1411298285
+      LargeEnergyShield_9: -2049215570
+      LargeEnergyShield_38: -1939297800
+      LargeEnergyShield_80: 149030683
+      LargeEnergyShield_7: -1438420306
+      LargeEnergyShield_16: -1637181412
+      LargeEnergyShield_43: 681903963
+      LargeEnergyShield_50: -174560911
+      LargeEnergyShield_55: -698167318
+      LargeEnergyShield_40: 150928309
+      LargeEnergyShield_33: 698680954
+      LargeEnergyShield_56: 1353597941
+      LargeEnergyShield_22: 1469335891
+      LargeEnergyShield_78: -2057743315
+      LargeEnergyShield_83: -416288498
+      LargeEnergyShield_89: -1774189607
+      LargeEnergyShield_86: 1484390755
+      LargeEnergyShield_12: -106422414
+      LargeEnergyShield_25: 549165707
+      LargeEnergyShield_49: -260290964
+      LargeEnergyShield_99: 1700257529
+      LargeEnergyShield_34: 703397346
+      LargeEnergyShield_44: 178768985
+      LargeEnergyShield_35: -1617215853
+      LargeEnergyShield_87: -1853647335
+      LargeEnergyShield_32: 841165521
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
