@@ -123,11 +123,10 @@ public class PlayerAttack : MonoBehaviour
         var boss = GameManager.Instance.boss;
         if (boss is not null)
         {
-            var target = boss.transform.position;
-            Debug.Log(target);
-            if (Vector3.Distance(_player.transform.position, target) < 10.5f)
+            var bossPosition = boss.transform.position;
+            if (Vector3.Distance(_player.transform.position, bossPosition) < 10f)
             {
-                Instantiate(prefab, target, rotation);
+                Instantiate(prefab, bossPosition, rotation);
             }
             else
             {

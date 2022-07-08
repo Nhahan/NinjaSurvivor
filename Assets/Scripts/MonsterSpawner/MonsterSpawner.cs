@@ -39,6 +39,7 @@ namespace MonsterSpawner
 
             StartCoroutine(SpawnMonster(9f));
             StartCoroutine(SpawnBasicMonster(2.5f));
+            StartCoroutine(SpawnBossMonster(10f));
         }
 
         private IEnumerator SpawnMonster(float second)
@@ -135,8 +136,7 @@ namespace MonsterSpawner
                     {
                         for (var i = 0; i < 10; i++)
                         {
-                            RandomSpawn(10f, acidSpitter, r);
-                            RandomSpawn(5f, acidSpitter, r);
+                            RandomSpawn(12f, acidSpitter, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, suicider, r);
@@ -147,10 +147,10 @@ namespace MonsterSpawner
                     }
                     default:
                     {
-                        for (var i = 0; i < 2; i++)
+                        for (var i = 0; i < 7; i++)
                         {
                             RandomSpawn(100f, anteater, r);
-                            RandomSpawn(20f, acidSpitter, r);
+                            RandomSpawn(12f, acidSpitter, r);
                             RandomSpawn(100f, redAnteater, r);
                             RandomSpawn(50f, redAnteater, r);
                             RandomSpawn(100f, suicider, r);
