@@ -11,6 +11,9 @@ TagManager:
   - PickupRadius
   - ExpSoul1
   - FlashMaterial
+  - FxTemporaire
+  - TAZOFX
+  - Boss
   layers:
   - Default
   - TransparentFX

@@ -40,7 +40,7 @@ namespace AdSkills
 
         private void OnTriggerEnter2D(Collider2D coll)
         {
-            if (!coll.CompareTag("Enemy")) return;
+            if (!(coll.CompareTag("Enemy") || coll.CompareTag("Boss"))) return;
             
             Destroy(gameObject);
             

@@ -18,10 +18,10 @@ namespace Monsters.Boss
         private Player _player;
         private Animator _animator;
 
-        private float _monsterHp = 2000;
+        private float _monsterHp = 499;
         private const float MonsterDamage = 10f;
         private float _randomDamage;
-        private const float MonsterSpeed = 3.55f;
+        private const float MonsterSpeed = 4.5f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
         private const float MonsterDefense = 10f;
@@ -35,7 +35,8 @@ namespace Monsters.Boss
         private float _lighteningCooltime; // 40 
 
         [SerializeField] private GameObject handUpPoint;
-        [SerializeField] private GameObject handUpLaser;
+        [SerializeField] private GameObject laser;
+        [SerializeField] private GameObject fire;
 
         private void Start()
         {
@@ -69,7 +70,7 @@ namespace Monsters.Boss
                 {
                     _monsterSpeedMultiplier = _monsterSpeedMultiplier == 1 ? 0 : 1;
                 }
-                yield return new WaitForSeconds(1.1f);
+                yield return new WaitForSeconds(0.6f);
             }
         }
 
@@ -80,13 +81,13 @@ namespace Monsters.Boss
 
         private void WhenNotMoving()
         {
-            if (_handUpCooltime > 7.5f)
+            if (_handUpCooltime > 6.5f)
             {
                 _animator.SetBool("isHandUp", true);
                 _bossState = BossState.Attacking;
                 _handUpCooltime = 0;
                 _monsterSpeedMultiplier = 0f;
-                StartCoroutine(InstantiateHandUpLaser());
+                StartCoroutine(InstantiateHandUpFire());
                 StartCoroutine(BackToWantedState("isHandUp", false, 3.85f));
             }
             else if (_laserCooltime > 14f)
@@ -171,14 +172,14 @@ namespace Monsters.Boss
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
 
-        private IEnumerator InstantiateHandUpLaser()
+        private IEnumerator InstantiateHandUpFire()
         {
             var count = 1;
             if (_monsterHp < 500) count = 2;
             for (var i = 0; i < count; i++ ) 
             {
-                yield return new WaitForSeconds(0.4f);
-                Instantiate(handUpLaser, handUpPoint.transform.position, transform.rotation);
+                yield return new WaitForSeconds(1.5f);
+                Instantiate(fire, handUpPoint.transform.position, transform.rotation);
             }
         }
     }

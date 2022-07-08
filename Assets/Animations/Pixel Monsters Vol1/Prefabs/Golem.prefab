@@ -227,4 +227,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handUpPoint: {fileID: 783349774}
-  handUpLaser: {fileID: 437797314677740442, guid: 64ae6d536500e45d3be7f192424dfeb9, type: 3}
+  laser: {fileID: 437797314677740442, guid: 64ae6d536500e45d3be7f192424dfeb9, type: 3}
+  fire: {fileID: 100000, guid: a92c8a3ad22114f6e82ab78b47e164e6, type: 3}

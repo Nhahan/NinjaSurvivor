@@ -135,7 +135,6 @@ public class PlayerApAttack : MonoBehaviour
     private IEnumerator Tetralogy(GameObject prefab, Vector3 position, Quaternion rotation)
     {
         var level = _player.Tetralogy.CalculateFinalValue();
-        Debug.Log(_tetralogyCooltime);
         if (level < 1 || _tetralogyCooltime < 9.8f + level * 0.2f) yield break;
         _tetralogyCooltime = 0;
         Instantiate(prefab, _player.transform.position, rotation);

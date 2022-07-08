@@ -14,7 +14,7 @@ public class GhostTrailor : MonoBehaviour
         }
         catch
         {
-            throw new ArgumentNullException();
+            // ignore
         }
     }
 

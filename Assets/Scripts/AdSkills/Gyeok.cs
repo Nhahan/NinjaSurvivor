@@ -57,7 +57,7 @@ namespace AdSkills
 
         private void OnTriggerEnter2D(Collider2D coll)
         {
-            if (!coll.CompareTag("Enemy") || _liveTime > 0.25f) return;
+            if (!(coll.CompareTag("Enemy") || coll.CompareTag("Boss")) || _liveTime > 0.25f) return;
 
             var monster = coll.gameObject.GetComponent<IMonster>();
             var normal = (coll.gameObject.transform.position - transform.position).normalized;

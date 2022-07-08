@@ -48,7 +48,6 @@ namespace MonsterSpawner
                 yield return new WaitForSeconds(difficulty);
                 
                 if (GameManager.Instance.monsterCount > 350) { continue; }
-                Debug.Log("Monsters : " + GameManager.Instance.monsterCount);
                 
                 switch (level)
                 {
@@ -82,10 +81,10 @@ namespace MonsterSpawner
                             RandomSpawn(100f, anteater, r);
                         }
                         RandomSpawn(77f, suicider, r);
+                        RandomSpawn(33, suicider, r);
                         RandomSpawn(16f, redAnteater, r);
                         RandomSpawn(level * 8f, anteater, r);
                         RandomSpawn(level * 2.3f, cannibalisia, r);
-                        RandomSpawn(level * 0.2f, acidSpitter, r);
                         break;
                     }
                     case < 14:
@@ -95,10 +94,11 @@ namespace MonsterSpawner
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, suicider, r);
+                            RandomSpawn(15f, suicider, r);
                         }
                         RandomSpawn(level * 6f, cannibalisia, r);
                         RandomSpawn(16f, redAnteater, r);
-                        RandomSpawn(level * 0.3f, acidSpitter, r);
+                        RandomSpawn(level * 0.3f, redAnteater, r);
                         break;
                     }
                     case < 18:

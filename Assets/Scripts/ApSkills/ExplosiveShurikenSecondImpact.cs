@@ -32,7 +32,7 @@ namespace ApSkills
         private void OnTriggerEnter2D(Collider2D coll)
         {
             if (!_isAvailable) return;
-            if (!coll.CompareTag("Enemy")) return;
+            if (!(coll.CompareTag("Enemy") || coll.CompareTag("Boss"))) return;
 
             var monster = coll.gameObject.GetComponent<IMonster>();
             var normal = (coll.gameObject.transform.position - transform.position).normalized;
