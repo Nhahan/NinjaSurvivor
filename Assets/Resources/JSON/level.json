@@ -6,135 +6,127 @@
         },
         {
             "value": 2,
-            "exp": 3
+            "exp": 4
         },
         {
             "value": 3,
-            "exp": 6
+            "exp": 8
         },
         {
             "value": 4,
-            "exp": 10
+            "exp": 13
         },
         {
             "value": 5,
-            "exp": 16
+            "exp": 20
         },
         {
             "value": 6,
-            "exp": 23
+            "exp": 28
         },
         {
             "value": 7,
-            "exp": 31
+            "exp": 37
         },
         {
             "value": 8,
-            "exp": 40
+            "exp": 48
         },
         {
             "value": 9,
-            "exp": 52
+            "exp": 61
         },
         {
             "value": 10,
-            "exp": 65
+            "exp": 75
         },
         {
             "value": 11,
-            "exp": 89
+            "exp": 92
         },
         {
             "value": 12,
-            "exp": 104
+            "exp": 112
         },
         {
             "value": 13,
-            "exp": 120
+            "exp": 135
         },
         {
             "value": 14,
-            "exp": 137
+            "exp": 158
         },
         {
             "value": 15,
-            "exp": 157
+            "exp": 182
         },
         {
             "value": 16,
-            "exp": 180
-        },
-        {
-            "value": 16,
-            "exp": 208
-        },
-        {
-            "value": 16,
-            "exp": 238
+            "exp": 207
         },
         {
             "value": 17,
-            "exp": 272
+            "exp": 233
         },
         {
-            "value": 18, 
-            "exp": 330
+            "value": 18,
+            "exp": 259
         },
         {
             "value": 19,
-            "exp": 395
+            "exp": 287
         },
         {
-            "value": 20,
-            "exp": 360
+            "value": 20, 
+            "exp": 340
         },
         {
             "value": 21,
-            "exp": 445
+            "exp": 400
         },
         {
             "value": 22,
-            "exp": 535
+            "exp": 465
         },
         {
             "value": 23,
-            "exp": 640
+            "exp": 535
         },
         {
             "value": 24,
-            "exp": 740
+            "exp": 610
         },
         {
             "value": 25,
-            "exp": 845
+            "exp": 690
         },
         {
             "value": 26,
-            "exp": 950
+            "exp": 795
         },
         {
             "value": 27,
-            "exp": 1060
+            "exp": 880
         },
         {
             "value": 28,
-            "exp": 1170
+            "exp": 990
         },
         {
             "value": 29,
-            "exp": 1280
+            "exp": 1105
         },
         {
             "value": 30,
-            "exp": 1400
+            "exp": 1220
         },
         {
             "value": 31,
-            "exp": 1525
+            "exp": 1400
         },
         {
             "value": 32,
-            "exp": 1655
+            "exp": 1590
         },
         {
             "value": 33,
@@ -142,35 +134,71 @@
         },
         {
             "value": 34,
-            "exp": 1930
+            "exp": 1915
         },
         {
             "value": 35,
-            "exp": 2075
+            "exp": 2130
         },
         {
             "value": 36,
-            "exp": 2225
+            "exp": 2345
         },
         {
             "value": 37,
-            "exp": 2390
+            "exp": 2565
         },
         {
             "value": 38,
-            "exp": 2550
+            "exp": 2800
         },
         {
             "value": 39,
-            "exp": 2715
+            "exp": 3040
         },
         {
             "value": 40,
-            "exp": 2885
+            "exp": 3400
         },
         {
             "value": 41,
-            "exp": 3060
+            "exp": 3700
+        },
+        {
+            "value": 42,
+            "exp": 4010
+        },
+        {
+            "value": 43,
+            "exp": 4330
+        },
+        {
+            "value": 44,
+            "exp": 4660
+        },
+        {
+            "value": 45,
+            "exp": 5000
+        },
+        {
+            "value": 46,
+            "exp": 5350
+        },
+        {
+            "value": 47,
+            "exp": 5710
+        },
+        {
+            "value": 48,
+            "exp": 6080
+        },
+        {
+            "value": 49,
+            "exp": 6500
+        },
+        {
+            "value": 50,
+            "exp": 6000
         }
     ]
 }

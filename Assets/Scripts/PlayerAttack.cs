@@ -77,7 +77,7 @@ public class PlayerAttack : MonoBehaviour
         var level = _player.DiagonalStar.CalculateFinalValue();
         if (level < 1) yield break;
         
-        for (var i = 0; i < _player.DiagonalStar.CalculateFinalValue() * 2 + 3; i++)
+        for (var i = 0; i < _player.DiagonalStar.CalculateFinalValue() * 3 + 4; i++)
         {
             Instantiate(prefab, transform.position, rotation);
             yield return new WaitForSeconds(0);
@@ -121,18 +121,23 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(_attackSpeed * 1.5f);
 
         var boss = GameManager.Instance.boss;
-        if (boss is not null)
+        if (boss != null)
         {
-            var bossPosition = boss.transform.position;
-            if (Vector3.Distance(_player.transform.position, bossPosition) < 10f)
-            {
-                Instantiate(prefab, bossPosition, rotation);
+            try{
+                var bossPosition = boss.transform.position;
+                if (Vector3.Distance(_player.transform.position, bossPosition) < 10f)
+                {
+                    Instantiate(prefab, bossPosition, rotation);
+                }
+                else
+                {
+                    GyeokNotToBoss(prefab, rotation);
+                }
             }
-            else
+            catch
             {
                 GyeokNotToBoss(prefab, rotation);
             }
-                
             yield break;
         }
         GyeokNotToBoss(prefab, rotation);

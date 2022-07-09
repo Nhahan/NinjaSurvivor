@@ -376,7 +376,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: EarthQuake
-  m_Speed: 0.25
+  m_Speed: 0.7
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -6975745962215561999}

@@ -30,7 +30,7 @@ public class AcidSpitterBullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D coll)
     {
         if (!coll.CompareTag("Player")) return;
-        var damage = 2f - _player.Defense.CalculateFinalValue() + Random.Range(1, 20);
+        var damage = 5f - _player.Defense.CalculateFinalValue() + Random.Range(1, 20);
         _player.TakeDamage(damage > 0 ? damage : 1);
         Destroy(gameObject);
     }

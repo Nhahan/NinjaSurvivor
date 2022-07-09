@@ -15,7 +15,7 @@ namespace Monsters
         private Rigidbody2D _rb;
 
         private float _monsterHp = 250f;
-        private const float MonsterDamage = 30f;
+        private const float MonsterDamage = 25f;
         private float _randomDamage;
         private float _monsterSpeed = 0.75f;
         private const float MonsterDefense = 1.5f;

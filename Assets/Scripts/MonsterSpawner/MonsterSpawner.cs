@@ -39,7 +39,7 @@ namespace MonsterSpawner
 
             StartCoroutine(SpawnMonster(9f));
             StartCoroutine(SpawnBasicMonster(2.5f));
-            StartCoroutine(SpawnBossMonster(10f));
+            StartCoroutine(SpawnBossMonster(5f));
         }
 
         private IEnumerator SpawnMonster(float second)
@@ -61,7 +61,7 @@ namespace MonsterSpawner
                     {
                         for (var i = 0; i < level; i++)
                         {
-                            RandomSpawn(90f, disist, r);
+                            RandomSpawn(90f, anteater, r);
                         }
                         RandomSpawn(level * 33f, suicider, r);
                         RandomSpawn(1.5f, redAnteater, r);
@@ -75,7 +75,7 @@ namespace MonsterSpawner
                             RandomSpawn(100f, anteater, r);
                         }
                         RandomSpawn(level * 50f, suicider, r);
-                        RandomSpawn(1.5f, redAnteater, r);
+                        RandomSpawn(10f, redAnteater, r);
                         RandomSpawn(50f, anteater, r);
                         break;
                     }
@@ -100,6 +100,7 @@ namespace MonsterSpawner
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, suicider, r);
+                            RandomSpawn(50f, suicider, r);
                             RandomSpawn(15f, suicider, r);
                         }
                         RandomSpawn(level * 6f, cannibalisia, r);
@@ -111,9 +112,11 @@ namespace MonsterSpawner
                     {
                         for (var i = 0; i < 8; i++)
                         {
+                            RandomSpawn(0.4f, acidSpitter, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(30, redAnteater, r);
                             RandomSpawn(100f, suicider, r);
+                            RandomSpawn(50f, suicider, r);
                         }
                         RandomSpawn(level * 0.3f, acidSpitter, r);
                         RandomSpawn(level * 4f, cannibalisia, r);
@@ -123,12 +126,14 @@ namespace MonsterSpawner
                     {
                         for (var i = 0; i < 9; i++)
                         {
+                            RandomSpawn(0.4f, acidSpitter, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, suicider, r);
+                            RandomSpawn(50f, suicider, r);
                         }
-                        RandomSpawn(66f, cannibalisia, r);
-                        RandomSpawn(level * 0.4f, acidSpitter, r);
+                        RandomSpawn(44f, cannibalisia, r);
+                        RandomSpawn(level * 0.3f, acidSpitter, r);
                         RandomSpawn(level * 1f, redAnteater, r);
                         break;
                     }
@@ -136,12 +141,13 @@ namespace MonsterSpawner
                     {
                         for (var i = 0; i < 10; i++)
                         {
-                            RandomSpawn(12f, acidSpitter, r);
+                            RandomSpawn(3f, acidSpitter, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, anteater, r);
                             RandomSpawn(100f, suicider, r);
+                            RandomSpawn(50f, suicider, r);
                         }
-                        RandomSpawn(66f, cannibalisia, r);
+                        RandomSpawn(44f, cannibalisia, r);
                         RandomSpawn(level * 1f, redAnteater, r);
                         break;
                     }
@@ -150,11 +156,15 @@ namespace MonsterSpawner
                         for (var i = 0; i < 7; i++)
                         {
                             RandomSpawn(100f, anteater, r);
-                            RandomSpawn(12f, acidSpitter, r);
-                            RandomSpawn(100f, redAnteater, r);
-                            RandomSpawn(50f, redAnteater, r);
+                            RandomSpawn(5f, acidSpitter, r);
+                            RandomSpawn(20f, redAnteater, r);
+                            RandomSpawn(20f, redAnteater, r);
+                            RandomSpawn(20f, redAnteater, r);
+                            RandomSpawn(10f, redAnteater, r);
                             RandomSpawn(100f, suicider, r);
+                            RandomSpawn(75f, suicider, r);
                             RandomSpawn(50f, suicider, r);
+                            RandomSpawn(25f, suicider, r);
                         }
                         RandomSpawn(66f, cannibalisia, r);
                         break;
@@ -185,6 +195,8 @@ namespace MonsterSpawner
                         RandomSpawn(100f, disist, r);
                         RandomSpawn(100f, disist, r);
                         RandomSpawn(100f, disist, r);
+                        RandomSpawn(100f, disist, r);
+                        RandomSpawn(6f, redDisist, r);
                         RandomSpawn(5f, redDisist, r);
                         break;
                     }
@@ -193,12 +205,17 @@ namespace MonsterSpawner
                         RandomSpawn(100f, disist, r);
                         RandomSpawn(100f, disist, r);
                         RandomSpawn(100f, disist, r);
+                        RandomSpawn(100f, disist, r);
+                        RandomSpawn(100f, redDisist, r);
                         RandomSpawn(100f, redDisist, r);
                         RandomSpawn(50f, redDisist, r);
                         break;
                     }
                     default:
                     {
+                        RandomSpawn(100f, redDisist, r);
+                        RandomSpawn(100f, redDisist, r);
+                        RandomSpawn(100f, redDisist, r);
                         RandomSpawn(100f, redDisist, r);
                         RandomSpawn(100f, redDisist, r);
                         RandomSpawn(100f, redDisist, r);
@@ -224,6 +241,16 @@ namespace MonsterSpawner
                         if (_isGolemSpawned == false)
                         {
                             _isGolemSpawned = true;
+                            SpawnBoss(golem, r);
+                        }
+                        break;
+                    }
+                    case > 30:
+                    {
+                        if (_isGolemSpawned == false)
+                        {
+                            _isGolemSpawned = true;
+                            SpawnBoss(golem, r);
                             SpawnBoss(golem, r);
                         }
                         break;

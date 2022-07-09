@@ -12,7 +12,7 @@ namespace Monsters
         private Animator _animator;
         private Rigidbody2D _rb;
     
-        private float _monsterHp = 130;
+        private float _monsterHp = 140;
         private const float MonsterDamage = 10f;
         private float _randomDamage;
         private float _monsterSpeed = 1.85f;
@@ -30,7 +30,7 @@ namespace Monsters
             
             Indicator = GameManager.Instance.indicator;
 
-            _randomDamage = Random.Range(10, 25);
+            _randomDamage = Random.Range(5, 25);
 
             _monsterHp += _player.Level * 1.5f;
             KnockbackDuration = 0.11f;

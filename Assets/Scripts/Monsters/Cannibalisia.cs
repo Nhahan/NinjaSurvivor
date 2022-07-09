@@ -13,12 +13,12 @@ namespace Monsters
         private Rigidbody2D _rb;
         
         private float _monsterHp = 500f;
-        private const float MonsterDamage = 40f;
+        private const float MonsterDamage = 25f;
         private float _randomDamage;
-        private float _monsterSpeed = 0.9f;
+        private float _monsterSpeed = 0.75f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
-        private const float MonsterDefense = 8f;
+        private const float MonsterDefense = 6f;
 
         private float _attackCooltime;
         
@@ -31,7 +31,7 @@ namespace Monsters
             Indicator = GameManager.Instance.indicator;
 
             _randomDamage = Random.Range(2, 10);
-            KnockbackDuration = 0.015f;
+            KnockbackDuration = 0.02f;
         }
 
         private void FixedUpdate()

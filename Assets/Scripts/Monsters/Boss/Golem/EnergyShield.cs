@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Monsters;
 using Monsters.Boss;
 using Status;
@@ -11,7 +10,7 @@ public class EnergyShield : Monster, IMonster
     private Rigidbody2D _rb;
     private GameObject _golem;
     
-    private float _monsterHp = 150f;
+    private float _monsterHp = 200f;
     private float _monsterDefense = 0;
 
     private Material _defaultMaterial;

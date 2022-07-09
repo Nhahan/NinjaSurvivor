@@ -203,3 +203,4 @@ MonoBehaviour:
   laser: {fileID: 437797314677740442, guid: 64ae6d536500e45d3be7f192424dfeb9, type: 3}
   fire: {fileID: 100000, guid: a92c8a3ad22114f6e82ab78b47e164e6, type: 3}
   energyShield: {fileID: 6157517939249111768, guid: c9edea65459e34e529ee85420d9b8c25, type: 3}
+  rock: {fileID: 1106908809735361524, guid: 5df3f32bbcd7546d5baa70b1efa2068a, type: 3}

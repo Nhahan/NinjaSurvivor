@@ -11,11 +11,11 @@ namespace AdSkills
         private Player _player;
 
         private float _liveTime = 0;
-        private const float Duration = 1.8f;
-        private float _bulletSpeed = 0.5f;
+        private const float Duration = 2.1f;
+        private float _bulletSpeed = 0.6f;
         private float _damage;
         private float _baseSkillDamage = 10f;
-        private float _skillLevelMultiplier = 0.225f;
+        private float _skillLevelMultiplier = 0.25f;
         
         private Vector3 _nearestEnemy;
         private Vector3 _bulletDirection;
@@ -50,7 +50,7 @@ namespace AdSkills
             monster.TakeDamage(_damage);
             monster.StartKnockback(normal);
             
-            if (Random.Range(0,10) > 3.3f + _player.DiagonalStar.CalculateFinalValue() * 0.5f) Destroy(gameObject);
+            if (Random.Range(0,10) > 4.4f + _player.DiagonalStar.CalculateFinalValue() * 0.5f) Destroy(gameObject);
         }
     }
 }
