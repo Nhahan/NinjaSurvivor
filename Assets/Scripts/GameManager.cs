@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     
     public static GameManager Instance;
     public Dictionary<string, float> ActivatedSkills = new();
-    public GameObject boss;
+    private GameObject _boss;
     private List<GameObject> _enemies = new();
 
     private Material _defaultMaterial;
@@ -104,10 +104,6 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        // SetIsGameOver(true);
-        // Initialize();
-        // playerStat.Initialize();
-        // player.Initialize();
         Resume();
     }
 
@@ -146,16 +142,6 @@ public class GameManager : MonoBehaviour
         }
         ActivatedSkills = player.GetActivatedSkills(true);
         joystick.SetActive(true);
-    }
-
-    public void AddTarget(GameObject enemy)
-    {
-        _enemies.Add(enemy);
-    }
-
-    public void RemoveTarget(GameObject enemy)
-    {
-        _enemies.Remove(enemy);
     }
 
     public Vector3 GetClosestTarget(float distance)
@@ -221,5 +207,22 @@ public class GameManager : MonoBehaviour
     public T DeepClone<T>(T instance)
     {
         return JsonConvert.DeserializeObject<T>(JsonConvert.SerializeObject(instance));
+    }
+
+    public GameObject GetBoss()
+    {
+        try
+        {
+            return _boss;
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    public void SetBoss(GameObject boss)
+    {
+        _boss = boss;
     }
 }

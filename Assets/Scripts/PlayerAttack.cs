@@ -120,7 +120,7 @@ public class PlayerAttack : MonoBehaviour
         
         yield return new WaitForSeconds(_attackSpeed * 1.5f);
 
-        var boss = GameManager.Instance.boss;
+        var boss = GameManager.Instance.GetBoss();
         if (boss != null)
         {
             try{

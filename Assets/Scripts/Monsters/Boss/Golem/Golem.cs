@@ -40,7 +40,7 @@ namespace Monsters.Boss
 
         private void Start()
         {
-            GameManager.Instance.boss = gameObject;
+            GameManager.Instance.SetBoss(gameObject);
             
             _player = GameManager.Instance.GetPlayer();
             _animator = GetComponent<Animator>();
@@ -166,7 +166,7 @@ namespace Monsters.Boss
             if (_monsterHp > 0) return;
             _animator.SetBool("isDead", true);
             _monsterSpeedMultiplier = 0;
-            GameManager.Instance.boss = null;
+            GameManager.Instance.SetBoss(null);
             StartCoroutine(BeforeDestroy(_animator.GetCurrentAnimatorStateInfo(0).length));
         }
 

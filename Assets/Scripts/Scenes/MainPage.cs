@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Button
 {
@@ -14,6 +15,7 @@ public class MainPage : MonoBehaviour
 {
     [SerializeField] private List<TextMeshProUGUI> titleTexts;
     [SerializeField] private List<TextMeshProUGUI> menuTexts;
+    [SerializeField] private Image dim; 
 
     private float _liveTIme;
 
@@ -23,6 +25,8 @@ public class MainPage : MonoBehaviour
         {
             text.color = new Color(0, 0, 0, 0);
         }
+
+        dim.enabled = false;
     }
 
     private void FixedUpdate()
@@ -60,5 +64,11 @@ public class MainPage : MonoBehaviour
                     text.color.a + Time.fixedDeltaTime / 20);
             }
         }
+    }
+
+    public void Dim()
+    {
+        if (!dim.enabled) dim.enabled = true;
+        dim.color += new Color(dim.color.r, dim.color.g, dim.color.b, dim.color.a + Time.fixedDeltaTime / 4);
     }
 }

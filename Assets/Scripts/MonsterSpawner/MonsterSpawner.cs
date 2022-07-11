@@ -275,14 +275,14 @@ namespace MonsterSpawner
         {
             if (percentage >= 100f || Random.Range(0, 100) < percentage)
             {
-                GameManager.Instance.AddTarget(Instantiate(prefab, GetRandomSpawnPoint(), r));
+                Instantiate(prefab, GetRandomSpawnPoint(), r);
                 GameManager.Instance.monsterCount++;
             }
         }
         
         private void SpawnBoss(GameObject prefab, Quaternion r)
         {
-            GameManager.Instance.AddTarget(GameManager.Instance.boss = Instantiate(prefab, GetRandomSpawnPoint(), r));
+            GameManager.Instance.SetBoss(Instantiate(prefab, GetRandomSpawnPoint(), r));
             GameManager.Instance.monsterCount++;
         }
     }

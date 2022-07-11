@@ -12,7 +12,7 @@ namespace Monsters
         private Animator _animator;
         private Rigidbody2D _rb;
     
-        private float _monsterHp = 100f;
+        private float _monsterHp = 105f;
         private const float MonsterDamage = 10f;
         private float _randomDamage;
         private float _monsterSpeed = 0.8f;
