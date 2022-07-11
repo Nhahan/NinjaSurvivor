@@ -3,6 +3,13 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
+public enum Button
+{
+    Start,
+    Training,
+    Settings
+}
+
 public class MainPage : MonoBehaviour
 {
     [SerializeField] private List<TextMeshProUGUI> titleTexts;
