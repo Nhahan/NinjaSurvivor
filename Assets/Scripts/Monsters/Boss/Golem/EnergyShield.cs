@@ -33,7 +33,7 @@ public class EnergyShield : Monster, IMonster
     {
         if (!coll.CompareTag("Player")) return;
     
-        var damage = _player.MaxHp.CalculateFinalValue() * 0.2f - _player.Defense.CalculateFinalValue();
+        var damage = _player.MaxHp.CalculateFinalValue() * 0.15f - _player.Defense.CalculateFinalValue();
         Flash();
         
         _player.TakeDamage(damage);
@@ -65,9 +65,8 @@ public class EnergyShield : Monster, IMonster
         _golem = golem;
         if (isAngry)
         {
-            GetComponent<SpriteRenderer>().color = new Color(200f, 0f, 0f, 31f);
+            GetComponent<SpriteRenderer>().color = new Color(200f, 0f, 0f, 100f);
             _monsterHp *= 2f;
-            Debug.Log(GetComponent<SpriteRenderer>().color + "/ " + _monsterHp);
         }
     }
 }

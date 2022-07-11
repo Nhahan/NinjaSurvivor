@@ -47,7 +47,7 @@ public class GolemLaser : MonoBehaviour
     {
         if (!coll.CompareTag("Player")) return;
     
-        var damage = _player.MaxHp.CalculateFinalValue() * 0.125f + Random.Range(0, 10);
+        var damage = _player.MaxHp.CalculateFinalValue() * 0.1f + Random.Range(0, 10);
         _player.TakeDamage(damage);
     }
 

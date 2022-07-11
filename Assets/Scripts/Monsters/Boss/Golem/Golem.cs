@@ -16,7 +16,7 @@ namespace Monsters.Boss
         private Animator _animator;
         private Rigidbody2D _rb;
 
-        private float _monsterHp = 12000f;
+        private float _monsterHp = 3000f;
         private float _monsterSpeed = 6.5f;
         private float _monsterSpeedMultiplier = 1;
         private float _distance;
@@ -56,7 +56,6 @@ namespace Monsters.Boss
 
         private void FixedUpdate()
         {
-            Debug.Log(_monsterHp);
             _laserCooltime += Time.deltaTime;
             _earthQuakeCooltime += Time.deltaTime;
             _lighteningCooltime += Time.deltaTime;
@@ -79,7 +78,7 @@ namespace Monsters.Boss
 
         private IEnumerator Pattern()
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(3.1f);
             WhenNotMoving();
         }
 
@@ -91,10 +90,10 @@ namespace Monsters.Boss
                 _bossState = BossState.Attacking;
                 _handUpCooltime = 0;
                 _monsterSpeedMultiplier = 0f;
-                StartCoroutine(BackToWantedState("isHandUp", false, 2.75f));
+                StartCoroutine(BackToWantedState("isHandUp", false, 2.7f));
                 StartCoroutine(InstantiateHandUpFire());
             }
-            else if (_laserCooltime > 9f)
+            else if (_laserCooltime > 12.5f)
             {
                 _animator.SetBool("isFloorLaser", true);
                 _bossState = BossState.Attacking;
@@ -112,7 +111,7 @@ namespace Monsters.Boss
                 StartCoroutine(BackToWantedState("isLightening", false, 3f));
                 StartCoroutine(InstantiateLaser());
             }
-            if (_earthQuakeCooltime > 23f)
+            else if (_earthQuakeCooltime > 22.5f)
             {
                 _animator.SetBool("isEarthQuake", true);
                 _bossState = BossState.Attacking;
@@ -174,7 +173,7 @@ namespace Monsters.Boss
         {
             var count = 1;
             if (_monsterHp < 3500f) count = 3;
-            if (_monsterHp < 1000f) count = 5;
+            if (_monsterHp < 1250f) count = 5;
             yield return new WaitForSeconds(0.35f);
             for (var i = 0; i < count; i++ ) 
             {
@@ -188,7 +187,7 @@ namespace Monsters.Boss
             _isShieldOn = true;
             var isAngry = _monsterHp < 3500f;
             Instantiate(energyShield, transform.position, transform.rotation).GetComponent<EnergyShield>().SetGolem(gameObject, isAngry);
-            yield return new WaitForSeconds(4.2f);
+            yield return new WaitForSeconds(8.4f);
             _isShieldOn = false;
         }
         
@@ -196,6 +195,7 @@ namespace Monsters.Boss
         {
             var count = 9;
             if (_monsterHp < 3500f) count += 18;
+            if (_monsterHp < 1250f) count += 18;
             for (var i = 0; i < count; i++ ) 
             {
                 yield return new WaitForSeconds(3.7f / count);
@@ -206,14 +206,25 @@ namespace Monsters.Boss
         private IEnumerator InstantiateRock()
         {
             var count = 24;
-            if (_monsterHp < 3500f) count *= 2;
+            var delay = 3.5f / count;
+            if (_monsterHp < 3500f)
+            {
+                count *= 2;
+                delay = (3.5f + 1.8f) / count;
+            }
             yield return new WaitForSeconds(1f);
             for (var i = 0; i < count; i++ ) 
             {
+                
                 Instantiate(rock, _player.transform.position, transform.rotation);
                 Instantiate(rock, _player.transform.position, transform.rotation);
-                if (_monsterHp < 3500f) Instantiate(rock, _player.transform.position, transform.rotation);
-                yield return new WaitForSeconds((3.5f + count / 18f) / count);
+                yield return new WaitForSeconds(delay / 2);
+                if (_monsterHp < 3500f)
+                {
+                    Instantiate(rock, _player.transform.position, transform.rotation);
+                    Instantiate(rock, _player.transform.position, transform.rotation);
+                }
+                yield return new WaitForSeconds(delay / 2);
             }
         }
 

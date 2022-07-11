@@ -6,6 +6,7 @@ using Monsters;
 using Newtonsoft.Json;
 using Pickups;
 using Status;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.SceneManagement;
@@ -104,6 +105,10 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // SetIsGameOver(true);
+        // Initialize();
+        // playerStat.Initialize();
+        // player.Initialize();
         Resume();
     }
 
@@ -142,6 +147,16 @@ public class GameManager : MonoBehaviour
         }
         ActivatedSkills = player.GetActivatedSkills(true);
         joystick.SetActive(true);
+    }
+
+    public void AddTarget(GameObject enemy)
+    {
+        _enemies.Add(enemy);
+    }
+
+    public void RemoveTarget(GameObject enemy)
+    {
+        _enemies.Remove(enemy);
     }
 
     public Vector3 GetClosestTarget(float distance)

@@ -12,7 +12,7 @@ public class GolemRock : MonoBehaviour
         _player = GameManager.Instance.GetPlayer();
         
         transform.position = new Vector3(
-            transform.position.x + Random.Range(-2.5f, 2.5f), transform.position.y + Random.Range(-2.5f, 2.5f), 0);
+            transform.position.x + Random.Range(-2.75f, 2.75f), transform.position.y + Random.Range(-2.75f, 2.75f), 0);
         
         circleCollider2D.enabled = false;
         Invoke(nameof(ColliderEnable), 1.5f);
@@ -30,6 +30,6 @@ public class GolemRock : MonoBehaviour
 
     private void ColliderEnable()
     {
-        circleCollider2D.enabled = false;
+        circleCollider2D.enabled = true;
     }
 }

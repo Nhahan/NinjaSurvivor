@@ -35,6 +35,7 @@ namespace Monsters
             yield return new WaitForSeconds(second);
             Instantiate(GameManager.Instance.expSoul1, transform.position, transform.rotation);
             GameManager.Instance.monsterCount--;
+            GameManager.Instance.RemoveTarget(gameObject);
             Destroy(gameObject);
         }
 
