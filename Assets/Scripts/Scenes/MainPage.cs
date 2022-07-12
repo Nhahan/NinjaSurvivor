@@ -61,7 +61,7 @@ public class MainPage : MonoBehaviour
                     text.color.r + Time.fixedDeltaTime, 
                     text.color.g + Time.fixedDeltaTime, 
                     text.color.b + Time.fixedDeltaTime, 
-                    text.color.a + Time.fixedDeltaTime / 20);
+                    text.color.a + Time.fixedDeltaTime / 8);
             }
         }
     }

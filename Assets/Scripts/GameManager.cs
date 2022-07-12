@@ -104,11 +104,7 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        // SetIsGameOver(true);
-        // Initialize();
-        // playerStat.Initialize();
-        // player.Initialize();
+        SceneManager.LoadScene("Main");
         Resume();
     }
 
