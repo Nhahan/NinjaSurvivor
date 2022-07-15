@@ -44,10 +44,11 @@ public class GameManager : MonoBehaviour
     
         FB.Init(InitCallback, OnHideUnity);
 
-            if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
-        } else if (Instance != this)
+        } 
+        else if (Instance != this)
         {
             Destroy(gameObject);
         }
@@ -57,7 +58,6 @@ public class GameManager : MonoBehaviour
     {
         if (FB.IsInitialized) {
             Debug.Log("Facebook SDK initialized");
-
             FB.ActivateApp();
         } else {
             Debug.Log("Failed to Initialize the Facebook SDK");
